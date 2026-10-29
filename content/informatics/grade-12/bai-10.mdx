@@ -1,407 +1,548 @@
 ---
 title: "Bài 10: Tạo liên kết"
-description: "Khám phá siêu văn bản, phân biệt đường dẫn tuyệt đối - tương đối và làm chủ kỹ thuật tạo liên kết trong trang web bằng thẻ a (anchor)."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 10
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Khi em đọc một cuốn sách giáo khoa giấy hay một tờ báo in, nếu muốn tìm hiểu thêm về một tác giả hay một sự kiện được nhắc tới ở trang khác, em phải lật từng trang sách hoặc tìm trong mục lục rất mất thời gian. 📖🔍
-    
-    Ngược lại, khi em lướt một trang tin tức điện tử (website), chỉ với một cú nhấp chuột (click) vào dòng chữ màu xanh gạch chân, ngay lập tức trình duyệt sẽ đưa em đến thẳng trang thông tin chi tiết hoặc một website khác ở nửa vòng Trái Đất. 🌐⚡
-    
-    **💡 Thảo luận mở đầu:**
-    - Em hãy nêu những điểm khác biệt khi em đọc thông tin trên các trang web so với việc em đọc sách, báo giấy.
-    - Theo em, điểm khác biệt nào là quan trọng và kỳ diệu nhất giúp Internet kết nối hàng tỉ tài liệu với nhau?
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 10: TẠO LIÊN KẾT"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-    **Trả lời gợi ý:**
-    1. **Khác biệt lớn nhất:** Khả năng tương tác phi tuyến tính thông qua **Siêu liên kết (Hyperlink)**. Người đọc không bị bó buộc phải đọc tuần tự từ đầu đến cuối mà có thể chủ động chuyển hướng đến bất kỳ tài liệu liên quan nào một cách tức thì.
-    2. **Đa phương tiện:** Trang web kết hợp văn bản với âm thanh, video, ảnh động, biểu mẫu tương tác mà sách giấy không thể có.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu bài dạy:**
-    - Hiểu bản chất của siêu văn bản (Hypertext) và siêu liên kết (Hyperlink).
-    - Phân biệt chính xác đường dẫn tuyệt đối (Absolute URL) và đường dẫn tương đối (Relative URL).
-    - Sử dụng thành thạo thẻ `<a>` cùng thuộc tính `href` để tạo liên kết ngoài, liên kết trong website và liên kết nội bộ trang (Bookmark/Anchor).
-    - Biết cách biến hình ảnh thành nút liên kết điều hướng.
-
-    **Tiến trình gợi ý:**
-    - Cho học sinh trải nghiệm thực tế nhấp chuột vào liên kết trên trang web trường hoặc trang tin điện tử.
-    - Đặt câu hỏi về cách trình duyệt biết chính xác trang nào để mở ra.
-  </TeacherNotes>
-</StepEngagement>
-
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    ### 1. Siêu văn bản và đường dẫn
-
-    #### a) Khái niệm Siêu văn bản (Hypertext)
-    - **Siêu văn bản (Hypertext):** Là loại văn bản mà nội dung của nó không chỉ chứa văn bản thông thường mà còn chứa nhiều dạng dữ liệu khác như hình ảnh, âm thanh, video... và đặc biệt là chứa các **siêu liên kết (hyperlink)** trỏ tới các siêu văn bản khác.
-    - **Siêu liên kết (Hyperlink hay liên kết):** Là một tham chiếu dẫn tới một siêu văn bản hoặc một tài nguyên số khác. Người dùng có thể dễ dàng chuyển tới vị trí đích bằng cách nhấp chuột vào vị trí đặt liên kết.
-    - Nhờ có siêu liên kết, hệ thống World Wide Web (WWW) được hình thành như một mạng lưới khổng lồ kết nối hàng triệu máy chủ và trang web trên toàn cầu.
-
-    ```mermaid
-    graph LR
-        A["Trang Web A (index.html)"] -->|"Thẻ &lt;a href='...'&gt;"| B["Trang Web B (Chi tiết)"]
-        A -->|"Liên kết ngoài"| C["Website khác (Google, Wikipedia)"]
-        A -->|"Liên kết Bookmark (#id)"| A1["Phần cuối trang A"]
-        style A fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
-        style B fill:#fef3c7,stroke:#d97706,stroke-width:2px
-        style C fill:#dcfce7,stroke:#16a34a,stroke-width:2px
-    ```
-
-    #### b) Cú pháp thẻ liên kết `<a>` trong HTML
-    Trong HTML, người ta sử dụng thẻ `<a>` (viết tắt của **anchor** - mỏ neo) để tạo liên kết.
-    
-    **Cấu trúc chuẩn:**
-    ```html
-    <a href="URL">Nội dung hiển thị tại vị trí đặt liên kết</a>
-    ```
-
-    - **Thuộc tính `href` (Hypertext Reference):** Là thuộc tính bắt buộc, dùng để chỉ định địa chỉ (đường dẫn URL) của tài liệu hoặc trang web được liên kết tới.
-    - Giá trị của `href` phải được đặt trong cặp dấu nháy kép `""` hoặc nháy đơn `''`.
-    - Phần văn bản hoặc phần tử nằm giữa cặp thẻ `<a>` và `</a>` chính là đối tượng mà người dùng nhìn thấy trên màn hình để nhấp chuột (thường được trình duyệt gạch chân và đổi sang màu xanh lam mặc định).
-
-    #### c) Phân biệt đường dẫn tuyệt đối và đường dẫn tương đối
-    Có hai loại đường dẫn URL cơ bản trong thiết kế web:
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-      <div className="p-5 rounded-2xl bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 shadow-sm">
-        <h4 className="text-lg font-black text-sky-700 dark:text-sky-400 mb-2">🌐 Đường dẫn tuyệt đối (Absolute URL)</h4>
-        <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
-          Cung cấp một địa chỉ đầy đủ bao gồm giao thức truyền tải, tên miền và đường dẫn chi tiết đến tệp tin đích.
-        </p>
-        <ul className="text-xs space-y-1 text-slate-600 dark:text-slate-400">
-          <li>• Bắt đầu bằng <code>http://</code> hoặc <code>https://</code></li>
-          <li>• Thường dùng khi liên kết tới website khác nằm ngoài máy chủ của mình</li>
-          <li>• <strong>Ví dụ:</strong> <code>https://www.nxbgd.vn/</code></li>
-        </ul>
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
       </div>
-
-      <div className="p-5 rounded-2xl bg-amber-50 dark:bg-slate-800 border border-amber-200 dark:border-slate-700 shadow-sm">
-        <h4 className="text-lg font-black text-amber-700 dark:text-amber-400 mb-2">📁 Đường dẫn tương đối (Relative URL)</h4>
-        <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
-          Mô tả cách truy cập tài liệu đích tính từ vị trí của tệp tin hiện tại trong cùng cấu trúc thư mục website.
-        </p>
-        <ul className="text-xs space-y-1 text-slate-600 dark:text-slate-400">
-          <li>• Không cần giao thức và tên miền</li>
-          <li>• Giúp website dễ dàng chuyển đổi máy chủ, linh hoạt khi triển khai</li>
-          <li>• <strong>Ví dụ:</strong> <code>bai_tap/bai_tap_1.html</code> hoặc <code>../index.html</code></li>
-        </ul>
-      </div>
-    </div>
-
-    **❓ Câu hỏi củng cố (Trang 58):**  
-    *Trong các đường dẫn sau, đường dẫn nào là tuyệt đối, đường dẫn nào là tương đối?*  
-    a) `html/cach_tao_lien_ket.html`  
-    b) `http://google.com`  
-    c) `mail.google.com/mail/u/0/#inbox/FMfcgzGMpKDHQFwcdfxCmMtxvZ`  
-
-    **Lời giải chi tiết:**
-    - **a)** Là **đường dẫn tương đối** vì không có giao thức (`http://` hay `https://`) và tên miền, chỉ bắt đầu bằng thư mục con `html/`.
-    - **b)** Là **đường dẫn tuyệt đối** vì có giao thức `http://` và tên miền `google.com`.
-    - **c)** Là **đường dẫn tuyệt đối** (đã ngụ ý giao thức mạng web trên hệ thống, bắt đầu với tên miền con `mail.google.com` và đường dẫn phân cấp tài nguyên).
-
-    ---
-
-    ### 2. Các cách liên kết tới một trang web
-
-    #### a) Liên kết tới một trang web khác (Liên kết ngoài - External Link)
-    Liên kết từ trang web của mình tới một trang web hoàn toàn khác trên Internet. Sử dụng đường dẫn tuyệt đối:
-    ```html
-    <p>
-      Truy cập: 
-      <a href="https://hanhtrangso.nxbgd.vn/sach-dien-tu?book_active=0">
-        Sách điện tử Kết nối tri thức với cuộc sống
-      </a>
-    </p>
-    ```
-
-    > **💡 Mẹo:** Để mở liên kết ngoài sang một tab trình duyệt mới thay vì đè lên trang hiện tại, thêm thuộc tính `target="_blank"`:
-    > ```html
-    > <a href="https://google.com" target="_blank">Tìm kiếm trên Google</a>
-    > ```
-
-    #### b) Liên kết đến một vị trí khác trong cùng website (Liên kết trong - Internal Link)
-    Xét cấu trúc thư mục website chuẩn như sau:
-
-    ```text
-    web/
-    ├── index.html
-    ├── thong_tin.html
-    ├── images/
-    │   ├── sun.png
-    │   └── star.gif
-    └── bai_tap/
-        ├── bai_tap_1.html
-        ├── bai_tap_2.html
-        └── on_tap/
-            └── bai_tap_on_tap.html
-    ```
-
-    **Quy tắc điều hướng tương đối:**
-    1. **Tệp nằm cùng thư mục:** Chỉ cần ghi trực tiếp tên tệp đích.
-       *Từ `index.html` trỏ tới `thong_tin.html`:*
-       ```html
-       <a href="thong_tin.html">Giới thiệu về trang web</a>
-       ```
-    2. **Tệp nằm trong thư mục con (dưới 1 cấp):** Viết tên thư mục con, dấu gạch chéo `/`, rồi đến tên tệp.
-       *Từ `index.html` trỏ tới `bai_tap_1.html`:*
-       ```html
-       <a href="bai_tap/bai_tap_1.html">Bài tập 1</a>
-       ```
-    3. **Tệp nằm trong thư mục con nhiều cấp:**
-       *Từ `index.html` trỏ tới `bai_tap_on_tap.html`:*
-       ```html
-       <a href="bai_tap/on_tap/bai_tap_on_tap.html">Bài tập ôn tập</a>
-       ```
-    4. **Trở lại thư mục cha (lên trên 1 cấp):** Dùng ký hiệu `../` (hai dấu chấm và dấu gạch chéo).
-       *Từ `bai_tap_1.html` (trong thư mục con `bai_tap/`) trỏ ngược về `index.html` (ở thư mục cha `web/`):*
-       ```html
-       <a href="../index.html">Quay lại trang chủ</a>
-       ```
-       *Nếu muốn lùi lên 2 cấp thư mục:* Dùng `../../`.
-
-    #### c) Liên kết tới vị trí khác trong cùng trang web (Bookmark / Anchor Link)
-    Khi trang web rất dài, ta muốn người dùng nhấp vào mục lục ở đầu trang là nhảy ngay xuống bảng số liệu hay kết luận ở cuối trang. Kỹ thuật này gồm 2 bước:
-
-    - **Bước 1: Đặt ID định danh tại vị trí đích**  
-      Gán thuộc tính `id` cho phần tử HTML đích (lưu ý `id` phải là duy nhất trong toàn trang):
-      ```html
-      <table id="Thong_tin">
-        ... nội dung bảng ...
-      </table>
-      ```
-    - **Bước 2: Tạo liên kết trỏ tới ID đó (dùng dấu thăng `#`)**  
-      ```html
-      <a href="#Thong_tin">Xem Bảng Thông tin chi tiết</a>
-      ```
-
-    #### d) Tạo liên kết cho hình ảnh (Image Hyperlink)
-    Để biến một bức ảnh thành nút bấm có thể nhấp chuột chuyển trang, ta lồng thẻ `<img>` vào giữa cặp thẻ `<a>`:
-
-    ```html
-    <a href="thong_tin.html">
-      <img src="images/sun.png" alt="Biểu tượng mặt trời">
-    </a>
-    ```
-
-    **❓ Câu hỏi củng cố (Trang 60):**  
-    *Viết đoạn mã HTML để hiển thị một danh sách không thứ tự trong tệp `index.html`. Danh sách gồm ba mục: bài tập 1, bài tập 2 và ôn tập. Ba mục này liên kết tương ứng với ba tệp `bai_tap_1.html`, `bai_tap_2.html` và `bai_tap_on_tap.html`.*
-
-    **Lời giải mẫu:**
-    ```html
-    <h3>Danh mục bài tập:</h3>
-    <ul>
-      <li><a href="bai_tap/bai_tap_1.html">Bài tập 1</a></li>
-      <li><a href="bai_tap/bai_tap_2.html">Bài tập 2</a></li>
-      <li><a href="bai_tap/on_tap/bai_tap_on_tap.html">Bài tập ôn tập</a></li>
-    </ul>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    - Nhấn mạnh cho học sinh quy tắc `../` khi điều hướng lên thư mục cha. Lỗi phổ biến nhất của học sinh lớp 12 là quên dấu `../` khiến liên kết bị hỏng (404 Not Found).
-    - Hướng dẫn học sinh cách đặt `id` không dấu, không chứa khoảng trắng (ví dụ `id="lich-hoat-dong"` thay vì `id="lịch hoạt động"`).
-  </TeacherNotes>
-</StepKnowledge>
-
-<StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Nhiệm vụ 1: Tạo liên kết trong cùng một trang web (Trang 61)
-    
-    **Yêu cầu:**  
-    Sử dụng danh sách và bảng đã tạo trong Bài 9. Em hãy thêm phần giới thiệu lên phía đầu trang và đặt liên kết từ vị trí dòng chữ "Theo dõi lịch hoạt động các CLB Thể thao" nhảy xuống bảng "Lịch hoạt động các CLB Thể thao" bên dưới.
-
-    **Các bước thực hiện:**
-    - **Bước 1:** Mở tệp tin `CLB.html` đã làm từ bài học trước. Thêm đoạn giới thiệu hoạt động ngoại khóa vào đầu trang.
-    - **Bước 2:** Thêm thuộc tính mã định danh `id="CLBTT"` vào thẻ `<table>`:
-      ```html
-      <table id="CLBTT" border="1">
-        <caption>Lịch hoạt động các CLB Thể thao</caption>
-        <!-- Các dòng và cột của bảng -->
-      </table>
-      ```
-    - **Bước 3:** Thêm thẻ liên kết `<a>` với `href="#CLBTT"` cho dòng chữ điều hướng:
-      ```html
-      <p>
-        <a href="#CLBTT">Theo dõi lịch hoạt động các CLB Thể thao</a>
-      </p>
-      ```
-
-    ---
-
-    ### Nhiệm vụ 2: Tạo liên kết sang trang web khác trong cùng thư mục (Trang 61)
-
-    **Yêu cầu:**  
-    Bổ sung vào tệp `thong_tin.html` những thông tin về các câu lạc bộ và đặt đường liên kết từ trang chủ `CLB.html` đến trang thông tin này.
-
-    **Các bước thực hiện:**
-    - **Bước 1:** Trong cùng thư mục chứa `CLB.html`, tạo tệp mới tên là `thong_tin.html`. Soạn thảo nội dung giới thiệu chi tiết về từng CLB (Bóng đá, Bóng rổ, Cờ vua...).
-    - **Bước 2:** Mở tệp `CLB.html`, chèn liên kết tương đối đến `thong_tin.html`:
-      ```html
-      <p>
-        <a href="thong_tin.html">Thông tin chi tiết của các CLB</a>
-      </p>
-      ```
-
-    ---
-
-    ### Bài tập Luyện tập trong SGK (Trang 61)
-
-    #### Bài 1: Tạo liên kết quay về trang chủ
-    *Viết đoạn mã để tạo liên kết quay về trang chủ `CLB.html` trong trang `thong_tin.html`.*
-
-    ```html
-    <!-- Đặt ở cuối hoặc đầu trang thong_tin.html -->
-    <p>
-      <a href="CLB.html">⬅ Quay lại trang chủ Câu lạc bộ</a>
-    </p>
-    ```
-
-    #### Bài 2: Tạo trang web giới thiệu bản thân
-    *Viết một trang web giới thiệu bản thân, trong đó để ít nhất ba liên kết tới trang web của ba bạn cùng lớp (hoặc trang cá nhân, dự án).*
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Trang cá nhân của em</title>
-    </head>
-    <body>
-      <h1>Xin chào, tôi là Nguyễn Văn An! 👋</h1>
-      <p>Học sinh lớp 12A1 trường THPT Nguyễn Bỉnh Khiêm.</p>
-
-      <h2>Bạn thân của tôi:</h2>
-      <ul>
-        <li>
-          <a href="https://facebook.com/ban.binh" target="_blank">
-            Trần Bình - Lớp phó học tập
-          </a>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu bản chất của siêu văn bản (Hypertext) và siêu liên kết (Hyperlink) trong việc tạo nên mạng lưới WWW.</span>
         </li>
-        <li>
-          <a href="https://facebook.com/ban.chau" target="_blank">
-            Lê Châu - Cây văn nghệ
-          </a>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt chính xác đường dẫn tuyệt đối (Absolute URL) và đường dẫn tương đối (Relative URL).</span>
         </li>
-        <li>
-          <a href="https://github.com/ban.dung" target="_blank">
-            Hoàng Dũng - Đam mê lập trình Web
-          </a>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Sử dụng thành thạo thẻ <code>&lt;a&gt;</code>, thuộc tính <code>href</code>, <code>target="_blank"</code> và liên kết neo nội bộ trang (<code>#id</code>).</span>
         </li>
       </ul>
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    - Cho học sinh mở trình duyệt và kiểm tra thao tác click vào liên kết nội bộ xem trang có cuộn mượt mà đến đúng vị trí bảng không.
-    - Hướng dẫn học sinh tổ chức thư mục dự án bài bản: tạo thư mục `clb_web` chứa cả `CLB.html`, `thong_tin.html` và thư mục con `images/`.
-  </TeacherNotes>
-</StepPractice>
+    </div>
 
-<StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Nhiệm vụ Vận dụng thực tế (Trang 61 SGK)
-    
-    **Đề bài:**  
-    *Viết thêm các đoạn giới thiệu (địa điểm, số thành viên, thành tích, phí hội viên, điện thoại liên hệ) cho từng câu lạc bộ ở dưới bảng `Lịch hoạt động các CLB Thể thao` rồi đặt liên kết từ tên câu lạc bộ trong bảng đến đoạn giới thiệu tương ứng.*
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Xây dựng được hệ thống điều hướng (Navigation Bar) kết nối nhiều trang web tĩnh thành một website hoàn chỉnh.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Viết đúng đường dẫn tệp tương đối, không bị lỗi gãy liên kết (Broken Link 404).</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Thiết kế sơ đồ liên kết website logic, thân thiện với người dùng.</span>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-    **Mã nguồn hoàn chỉnh gợi ý:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Hệ thống CLB Thể thao Trường học</title>
-    </head>
-    <body>
-      <h1>GIỚI THIỆU CÁC HOẠT ĐỘNG NGOẠI KHÓA</h1>
-      <p>Trường THPT Nguyễn Bỉnh Khiêm có bề dày thành tích thể thao xuất sắc.</p>
-      
-      <!-- Bảng liên kết nhanh -->
-      <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
-        <caption><strong>LỊCH HOẠT ĐỘNG CÁC CLB THỂ THAO</strong></caption>
-        <tr bgcolor="#e2e8f0">
-          <th>STT</th>
-          <th>Tên Câu lạc bộ (Nhấp để xem chi tiết)</th>
-          <th>Lịch sinh hoạt</th>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td><a href="#clb-bong-da">⚽ CLB Bóng đá</a></td>
-          <td>Thứ 3, Thứ 5 (16h30)</td>
-        </tr>
-        <tr>
-          <td align="center">2</td>
-          <td><a href="#clb-bong-ro">🏀 CLB Bóng rổ</a></td>
-          <td>Thứ 4, Thứ 6 (16h30)</td>
-        </tr>
-        <tr>
-          <td align="center">3</td>
-          <td><a href="#clb-boi-loi">🏊 CLB Bơi lội</a></td>
-          <td>Sáng Thứ 7 (7h30)</td>
-        </tr>
-      </table>
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>An toàn số:</strong> Có ý thức cảnh giác khi tạo liên kết ra bên ngoài, tránh trỏ tới các trang web độc hại hoặc không rõ nguồn gốc.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
 
-      <hr style="margin: 30px 0;">
+<EquipmentChecklist />
 
-      <!-- Chi tiết từng câu lạc bộ (Vị trí đích với id tương ứng) -->
-      <div id="clb-bong-da">
-        <h3>⚽ Câu lạc bộ Bóng đá</h3>
-        <ul>
-          <li><strong>Địa điểm:</strong> Sân bóng cỏ nhân tạo trường</li>
-          <li><strong>Số thành viên:</strong> 35 học sinh</li>
-          <li><strong>Thành tích:</strong> Vô địch giải bóng đá học sinh cấp Tỉnh 2023</li>
-          <li><strong>Phí hội viên:</strong> 50.000 VNĐ/tháng</li>
-          <li><strong>Liên hệ:</strong> Thầy Nam (SĐT: 0912.345.678)</li>
-        </ul>
-        <p><a href="#top">⬆ Quay lại đầu trang</a></p>
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'SỰ KỲ DIỆU CỦA SIÊU LIÊN KẾT'"
+  duration="10 phút"
+  objective="Khám phá sức mạnh của Siêu liên kết (Hyperlink) giúp kết nối hàng tỉ tài liệu trên toàn thế giới chỉ với một cú nhấp chuột."
+  content="Học sinh so sánh việc đọc sách giấy truyền thống (tuần tự) với việc lướt web (phi tuyến tính thông qua liên kết)."
+  product="Học sinh chỉ ra được sự khác biệt: tính tức thời, khả năng mở rộng không giới hạn và tính kết nối mạng lưới."
+>
+
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đọc sách giấy vs Lướt Web"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Tình huống suy ngẫm">
+      Khi đọc một cuốn sách giấy, nếu em bắt gặp cụm từ "Tháp Eiffel tại Paris" và muốn xem ảnh hoặc vị trí bản đồ của nó, em phải làm thế nào? Còn trên một bài báo điện tử, em làm thế nào?
+    </Alert>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 not-prose text-xs md:text-sm">
+      <div className="p-4 rounded-xl bg-white border border-slate-300 shadow-sm">
+        <strong className="text-slate-700 block mb-1">📖 Sách / Báo in truyền thống:</strong>
+        <p className="text-slate-600">Đọc tuần tự từ trang trước ra trang sau. Nếu muốn tra cứu thêm phải đóng sách, tìm từ điển hoặc tra thư viện rất mất thời gian.</p>
       </div>
 
-      <div id="clb-bong-ro">
-        <h3>🏀 Câu lạc bộ Bóng rổ</h3>
-        <ul>
-          <li><strong>Địa điểm:</strong> Sân bóng rổ ngoài trời</li>
-          <li><strong>Số thành viên:</strong> 25 học sinh</li>
-          <li><strong>Thành tích:</strong> Huy chương Bạc Hội khỏe Phù Đổng</li>
-          <li><strong>Phí hội viên:</strong> Miễn phí</li>
-          <li><strong>Liên hệ:</strong> Cô Hạnh (SĐT: 0987.654.321)</li>
-        </ul>
-        <p><a href="#top">⬆ Quay lại đầu trang</a></p>
+      <div className="p-4 rounded-xl bg-sky-50 border border-sky-300 shadow-sm">
+        <strong className="text-sky-700 block mb-1">🌐 Trang web điện tử (Web):</strong>
+        <p className="text-slate-800">Chỉ cần <strong>nhấp chuột (Click)</strong> vào dòng chữ màu xanh gạch chân, ngay lập tức trang thông tin chi tiết hoặc bản đồ Google Maps hiện ra tức thì!</p>
       </div>
+    </div>
+  </SlideStep>
 
-      <div id="clb-boi-loi">
-        <h3>🏊 Câu lạc bộ Bơi lội</h3>
-        <ul>
-          <li><strong>Địa điểm:</strong> Bể bơi trung tâm văn hóa thể thao quận</li>
-          <li><strong>Số thành viên:</strong> 20 học sinh</li>
-          <li><strong>Thành tích:</strong> 03 Huy chương Vàng bơi bướm và tự do</li>
-          <li><strong>Phí hội viên:</strong> 100.000 VNĐ/tháng (vé bể bơi)</li>
-          <li><strong>Liên hệ:</strong> Thầy Tuấn (SĐT: 0903.111.222)</li>
-        </ul>
-        <p><a href="#top">⬆ Quay lại đầu trang</a></p>
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Thảo luận tại bàn"
+  >
+    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+      Học sinh xác định: Điều kì diệu kết nối toàn bộ mạng Internet chính là <strong>Siêu liên kết (Hyperlink)</strong>.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Chia sẻ phát hiện"
+  >
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+      <p>Khi con trỏ chuột di chuyển vào một liên kết trên trang web, hình dạng con trỏ thay đổi từ <em>hình mũi tên</em> thành <em>hình bàn tay chỉ ngón</em>, báo hiệu đây là một điểm nhảy thông tin!</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề"
+  >
+    <Alert type="success" title="Chốt kiến thức mở đầu">
+      Thẻ tạo liên kết trong HTML là thẻ `<a>` (viết tắt của Anchor - Mỏ neo). Nó là chìa khóa then chốt biến tài liệu tĩnh thành mạng lưới siêu văn bản liên hoàn.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút"
+  objective="Làm chủ cú pháp thẻ a, phân biệt đường dẫn tuyệt đối/tương đối, điều khiển tab mở trang bằng target và kỹ thuật tạo bookmark nội bộ trang (#id)."
+  content="Thực hành cú pháp thẻ a, viết đường dẫn trỏ tới các trang trong cùng thư mục, kiểm tra thuộc tính target='_blank' và nhảy vị trí bằng thẻ neo id."
+  product="Trang web mini gồm menu liên kết ngoài, liên kết trong website và nút Cuộn lên đầu trang."
+>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: CÚ PHÁP THẺ LIÊN KẾT <a> VÀ ĐƯỜNG DẪN URL
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="CÚ PHÁP THẺ <a> VÀ PHÂN BIỆT ĐƯỜNG DẪN TUYỆT ĐỐI / TƯƠNG ĐỐI"
+    duration="15 phút"
+    objective="Viết đúng cú pháp <a href='URL'>Văn bản</a>; phân biệt rõ đường dẫn tuyệt đối (trên Internet) và tương đối (trong cùng website)."
+    content="Phân tích thuộc tính href, giải thích vì sao khi chuyển tệp sang máy tính khác thì đường dẫn tương đối không bị gãy liên kết."
+    product="Tạo thành công liên kết tới trang web của Bộ GD&ĐT và liên kết tới trang con gioithieu.html."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Cú pháp Thẻ <a> và Thuộc tính href"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<p>1. Liên kết ngoài (Đường dẫn tuyệt đối có http/https):</p>
+<p>
+    Truy cập: <a href="https://moet.gov.vn" target="_blank" style="color: #0284c7; font-weight: bold;">
+        Cổng thông tin Bộ Giáo dục & Đào tạo
+    </a>
+</p>
+
+<p>2. Liên kết nội bộ trang trong cùng thư mục (Đường dẫn tương đối):</p>
+<p>
+    Xem thêm: <a href="gioithieu.html" style="color: #16a34a; font-weight: bold;">
+        Trang Giới thiệu bản thân
+    </a>
+</p>
+
+<p>3. Biến hình ảnh thành nút liên kết:</p>
+<a href="https://w3schools.com" target="_blank">
+    <button style="background: #059669; color: white; padding: 10px 15px; border-radius: 10px; border: none; cursor: pointer;">
+        🚀 Học Lập trình Web tại W3Schools
+    </button>
+</a>`}
+        title="Thử nghiệm trực tiếp: Thẻ liên kết <a> và thuộc tính href"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – So sánh Hai loại Đường dẫn"
+    >
+      <div className="overflow-x-auto my-2">
+        <table className="w-full text-left border-collapse rounded-2xl overflow-hidden shadow-sm">
+          <thead>
+            <tr className="bg-slate-900 text-white text-xs font-black uppercase tracking-wider">
+              <th className="py-3 px-4 w-44">Loại đường dẫn</th>
+              <th className="py-3 px-4">Đặc điểm & Cú pháp</th>
+              <th className="py-3 px-4">Khi nào nên sử dụng?</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-xs md:text-sm bg-white dark:bg-slate-900">
+            <tr>
+              <td className="py-3 px-4 font-bold text-sky-600 dark:text-sky-400">Đường dẫn tuyệt đối (Absolute URL)</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Chứa địa chỉ mạng đầy đủ gồm giao thức: <code>https://google.com</code>, <code>https://dantri.com.vn</code>.
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Khi liên kết tới một <strong>trang web ngoài</strong> thuộc máy chủ khác trên toàn cầu.
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold text-emerald-600 dark:text-emerald-400">Đường dẫn tương đối (Relative URL)</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Chỉ chứa vị trí tương đối so với tệp hiện tại: <code>about.html</code>, <code>pages/contact.html</code>, <code>../index.html</code>.
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Khi liên kết giữa <strong>các trang trong cùng một website</strong>. Giúp web có thể sao chép sang máy khác hoặc đưa lên hosting mà không bị lỗi gãy link!
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Đánh giá sản phẩm:**
-    - Tiêu chí 1: Các liên kết nhảy chính xác đến từng khối thông tin CLB.
-    - Tiêu chí 2: Có nút quay lại đầu bảng để người dùng không phải cuộn chuột ngược lại.
-  </TeacherNotes>
-</StepApplication>
+    </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức cốt lõi 🎯">
-- 🔗 **Thẻ liên kết:** Sử dụng thẻ `<a>` với cú pháp `<a href="URL">Nội dung</a>`.
-- 🌐 **Đường dẫn tuyệt đối:** Đầy đủ giao thức (`https://`) và tên miền, dùng để liên kết ra ngoài website.
-- 📁 **Đường dẫn tương đối:** Xác định vị trí tương đối giữa các tệp trong cùng website:
-  - Cùng thư mục: `ten_tep.html`
-  - Thư mục con: `thu_muc/ten_tep.html`
-  - Thư mục cha: `../ten_tep.html`
-- 🎯 **Liên kết nội bộ (Bookmark):** Sử dụng `id="ten_dinh_danh"` tại điểm đến và `href="#ten_dinh_danh"` tại điểm xuất phát.
-- 🖼 **Ảnh làm liên kết:** Lồng thẻ ảnh trong thẻ liên kết: `<a href="..."><img src="..." alt="..."></a>`.
-</GlassCard>
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Vì sao không dùng đường dẫn C:\Users..."
+    >
+      <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-xs md:text-sm">
+        <strong className="text-amber-800 dark:text-amber-300 block mb-1">
+          ⚠️ Sai lầm học sinh rất hay mắc phải:
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Viết <code>&lt;a href="C:\Users\Admin\Desktop\bai2.html"&gt;</code>. Khi copy thư mục nộp cho thầy cô giáo chấm, liên kết này sẽ bị <strong>hỏng (báo lỗi không tìm thấy tệp)</strong> vì máy tính của thầy cô không có đường dẫn ổ cứng cá nhân đó! Do đó, bắt buộc phải dùng <strong>đường dẫn tương đối:</strong> <code>&lt;a href="bai2.html"&gt;</code>.
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Thẻ <a>"
+    >
+      <Alert type="success" title="Cú pháp chuẩn">
+        `href` (Hypertext Reference) là thuộc tính bắt buộc chỉ định đích đến của liên kết. Nội dung kẹp giữa `<a>...</a>` có thể là văn bản, hình ảnh, hoặc nút bấm.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: THUỘC TÍNH TARGET VÀ LIÊN KẾT NEO NỘI BỘ TRANG (#ID)
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="THUỘC TÍNH TARGET VÀ LIÊN KẾT NEO NỘI BỘ TRANG (BOOKMARK #ID)"
+    duration="15 phút"
+    objective="Sử dụng thuộc tính target='_blank' để mở trang trong tab mới và sử dụng dấu thăng (#id) để tạo mục lục nhảy nhanh nội bộ trang dài."
+    content="Khảo sát hành vi mở tab của trình duyệt và tạo nút 'Về đầu trang' / 'Nhảy tới Chương 3'."
+    product="Trang web có mục lục liên kết neo và nút cuộn trang tức thì."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Điều khiển Tab mở và Liên kết Neo"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<!-- 1. Mở trang ngoài trong Tab mới để không làm mất trang hiện tại -->
+<p>
+    <a href="https://wikipedia.org" target="_blank" style="color: blue;">
+        Mở Wikipedia trong Tab mới (target="_blank")
+    </a>
+</p>
+
+<!-- 2. Mục lục nhảy nhanh (Bookmark #id) -->
+<h3>Mục lục nội dung bài:</h3>
+<ul>
+    <li><a href="#phan-1">Nhảy xuống Phần 1</a></li>
+    <li><a href="#phan-2">Nhảy xuống Phần 2</a></li>
+</ul>
+
+<div style="height: 120px; background: #f8fafc; padding: 10px; margin: 10px 0; border: 1px dashed #cbd5e1;">
+    <h4 id="phan-1" style="color: #0369a1;">ĐÂY LÀ PHẦN 1 (Đích nhảy của #phan-1)</h4>
+    <p>Nội dung chi tiết của phần 1 nằm ở đây...</p>
 </div>
+
+<div style="height: 120px; background: #fdf4ff; padding: 10px; margin: 10px 0; border: 1px dashed #f0abfc;">
+    <h4 id="phan-2" style="color: #a21caf;">ĐÂY LÀ PHẦN 2 (Đích nhảy của #phan-2)</h4>
+    <p>Nội dung chi tiết của phần 2...</p>
+    <a href="#top" style="color: red; font-size: 12px; font-weight: bold;">⬆️ Cuộn lên đầu trang</a>
+</div>`}
+        title="Thử nghiệm trực tiếp: Thuộc tính target và Liên kết neo #id"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Cơ chế hoạt động của Liên kết Neo"
+    >
+      <Alert type="idea" title="Nguyên lý liên kết neo (Page Anchor)">
+        - **Bước 1 (Đặt biển tên / Cắm mỏ neo):** Gán thuộc tính `id="ten_dinh_danh"` vào thẻ đích (ví dụ `<h2 id="chuong-3">`).
+        - **Bước 2 (Tạo nút bấm nhảy tới):** Viết thẻ `<a>` với thuộc tính `href="#ten_dinh_danh"` (phải có dấu thăng `#` ở đầu).
+        - Khi nhấp chuột, trình duyệt sẽ tự động cuộn màn hình đến vị trí thẻ có `id` trùng khớp mà không cần tải lại trang!
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Thuộc tính target='_blank' khi nào nên dùng?"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💡 Trải nghiệm người dùng (UX):
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Khi dẫn link sang một website khác bên ngoài, luôn thêm <code>target="_blank"</code> để trang web của chúng ta vẫn mở trên trình duyệt, tránh tình trạng người dùng bấm xong là thoát luôn khỏi website của mình!
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Điều hướng"
+    >
+      <Alert type="success" title="Tổng kết điều hướng web">
+        - `target="_blank"`: Mở trong tab trình duyệt mới.
+        - `target="_self"`: Mặc định mở đè lên tab hiện tại.
+        - `href="#id"`: Nhảy đến vị trí thẻ có thuộc tính `id` tương ứng trên cùng trang.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'XÂY DỰNG THANH ĐIỀU HƯỚNG WEBSITE'"
+  duration="20 phút"
+  objective="Rèn luyện kĩ năng tạo hệ thống menu liên kết (Navigation Bar) đa trang và phát hiện xử lý lỗi liên kết."
+  content="Thực hiện 2 thử thách: Trắc nghiệm kiến thức thẻ a và Viết mã tạo thanh menu ngang liên kết."
+  product="Tệp menu_lienket.html có thanh điều hướng chuẩn hoạt động tốt."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Củng cố (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Để liên kết nhảy xuống một phần tử có id='lien-he' trong cùng một trang web, ta thiết lập thuộc tính href như thế nào?",
+        options: [
+          'A. href="lien-he"',
+          'B. href="#lien-he"',
+          'C. href="@lien-he"',
+          'D. href="id:lien-he"'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! Dấu thăng # đứng trước tên id báo hiệu cho trình duyệt đây là liên kết neo nội bộ trang."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Thuộc tính nào giúp mở trang web liên kết trong một TAB TRÌNH DUYỆT MỚI?",
+        options: [
+          'A. target="_new"',
+          'B. target="_blank"',
+          'C. window="new"',
+          'D. open="tab"'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! target='_blank' là cú pháp chuẩn của HTML để mở liên kết trong tab mới."
+      }} />
+    </div>
+
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Thiết kế Thanh Menu Điều hướng Ngang (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Viết đoạn mã HTML tạo một thanh Menu nằm ngang gồm 4 mục liên kết: <strong>Trang chủ</strong> (index.html), <strong>Giới thiệu</strong> (about.html), <strong>Tin tức</strong> (news.html) và <strong>Liên hệ</strong> (#footer).
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn code"
+  >
+    <Alert type="tip" title="Gợi ý cấu trúc cho học sinh">
+      Sử dụng danh sách `<ul>` kết hợp thuộc tính style hoặc các thẻ `<a>` đặt cách nhau bằng dấu gạch đứng ` | ` để tạo menu ngang đẹp mắt.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Thử nghiệm mã nguồn"
+  >
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thanh Điều Hướng Website</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+    <!-- Thanh Menu Ngang -->
+    <nav style="background: #1e293b; padding: 15px; border-radius: 12px; text-align: center;">
+        <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; margin: 0 15px;">🏠 TRANG CHỦ</a>
+        <span style="color: #64748b;">|</span>
+        <a href="about.html" style="color: white; text-decoration: none; font-weight: bold; margin: 0 15px;">ℹ️ GIỚI THIỆU</a>
+        <span style="color: #64748b;">|</span>
+        <a href="https://tinhte.vn" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold; margin: 0 15px;">🌐 TIN TỨC CÔNG NGHỆ</a>
+        <span style="color: #64748b;">|</span>
+        <a href="#footer-contact" style="color: #facc15; text-decoration: none; font-weight: bold; margin: 0 15px;">📞 LIÊN HỆ</a>
+    </nav>
+
+    <div style="height: 180px; padding: 30px; margin-top: 20px; background: #f8fafc; border-radius: 12px;">
+        <h2>Nội dung trang web...</h2>
+        <p>Học sinh thử nhấp vào các liên kết trên thanh menu để quan sát.</p>
+    </div>
+
+    <!-- Đích nhảy của liên hệ -->
+    <footer id="footer-contact" style="background: #e2e8f0; padding: 20px; border-radius: 12px; margin-top: 20px;">
+        <h3>THÔNG TIN LIÊN HỆ</h3>
+        <p>Email: hotro@school.edu.vn | Điện thoại: 0123.456.789</p>
+    </footer>
+</body>
+</html>`}
+      title="Mã nguồn mẫu: Thanh Menu điều hướng chuẩn UX (Thử thách 2)"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Đánh giá"
+  >
+    <Alert type="success" title="Chốt kỹ năng">
+      Học sinh nắm vững cách liên kết các trang trong cùng thư mục bằng đường dẫn tương đối và sử dụng thẻ `<nav>` cùng thẻ `<a>` để tổ chức thanh menu chuyên nghiệp.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'XÂY DỰNG WEBSITE MINI 2 TRANG LIÊN KẾT QUA LẠI'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng kỹ năng tạo đường dẫn tương đối để tạo 2 tệp index.html và gioithieu.html có thể chuyển hướng qua lại mượt mà."
+  content="Tạo thư mục website_mini chứa 2 tệp HTML liên kết lẫn nhau và có nút nhảy về trang chủ."
+  product="Thư mục website gồm 2 trang liên kết hoàn chỉnh không lỗi 404."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề tài Dự án Mini Website"
+  >
+    <Alert type="idea" title="Yêu cầu Dự án Web 2 trang">
+      Tạo thư mục `trang_ca_nhan` trên máy tính gồm 2 tệp:
+      1. Tệp `index.html` (Trang chủ): Giới thiệu sơ lược, có link <em>"Xem chi tiết lý lịch"</em> dẫn sang `gioithieu.html`.
+      2. Tệp `gioithieu.html` (Trang giới thiệu): Liệt kê sở thích, thành tích học tập và có link <em>"⬅️ Quay về Trang chủ"</em> dẫn ngược lại `index.html`.
+      3. Cả 2 trang đều có liên kết ngoài (target="_blank") tới trang web trường hoặc kênh học tập yêu thích.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo tại phòng máy"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Thực hiện trong 10 phút">
+      Tạo cả 2 tệp trong cùng một thư mục để đường dẫn `href="gioithieu.html"` và `href="index.html"` hoạt động chính xác.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Bảng tiêu chí chấm điểm (Rubric 5512)"
+  >
+    <RubricCard />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết học & Chuẩn bị Bài 11"
+  >
+    <Alert type="success" title="Lời dặn chuẩn bị Bài 11">
+      - **Nộp bài:** Nén thư mục và nộp lên hệ thống.
+      - **Chuẩn bị Bài 11 (Chèn tệp tin đa phương tiện và khung nội tuyến):** Tìm hiểu cách chèn ảnh `<img>`, video `<video>`, nhạc nền `<audio>` và nhúng video YouTube hoặc bản đồ vào web bằng `<iframe>`!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>

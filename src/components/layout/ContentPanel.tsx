@@ -19,16 +19,18 @@ interface Heading {
 export function ContentPanel() {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
   const sidebarNavRef = useRef<HTMLElement>(null);
 
-  // Initialize collapse preference from localStorage
+  // Initialize collapse preference from localStorage (default to closed/collapsed)
   useEffect(() => {
     setIsMounted(true);
     const saved = localStorage.getItem("lesson_toc_collapsed");
     if (saved !== null) {
       setIsCollapsed(saved === "true");
+    } else {
+      setIsCollapsed(true);
     }
   }, []);
 

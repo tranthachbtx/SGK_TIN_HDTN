@@ -1,327 +1,576 @@
 ---
 title: "Bài 5: Thực hành chia sẻ tài nguyên trên mạng"
-description: "Học cách biến mạng cục bộ thành một kho dữ liệu dùng chung và kết nối máy in cho mọi người."
+description: "Thực hành kết nối thiết bị mạng, kiểm tra thông mạng bằng lệnh ping, chia sẻ tệp và máy in trên mạng cục bộ LAN chuẩn Công văn 5512."
 order: 5
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Trong một văn phòng hay một trường học, việc mỗi người cầm một chiếc USB đi copy tài liệu cho nhau là điều cực kỳ lỗi thời và mất thời gian. 🐢💾
-    
-    Hãy tưởng tượng:
-    - Em chỉ cần lưu file vào một thư mục trên máy mình, và ngay lập tức cả lớp có thể mở xem được.
-    - Cả phòng máy 40 người chỉ cần dùng chung duy nhất một chiếc máy in mà không cần cắm rút dây nhợ lằng nhằng.
-    
-    Hôm nay chúng ta sẽ biến mạng nội bộ (LAN) thành một hệ sinh thái dùng chung tài nguyên chỉ với vài thao tác thiết lập trên Windows.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - Nhận thấy sự tiện lợi của việc chia sẻ tệp và phần cứng qua mạng LAN.
-    - Chuẩn bị kỹ năng làm việc nhóm và tối ưu hóa hạ tầng công nghệ.
-    
-    **Tổ chức thực hiện:**
-    - GV đưa ra tình huống: "Thầy có một file bài tập nặng 1GB, làm sao để 40 bạn trong lớp lấy được nhanh nhất mà không dùng USB?".
-    - HS thảo luận các phương án (Email, Cloud, LAN). Dẫn dắt sang thực hành LAN.
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  title="BÀI 5: THỰC HÀNH CHIA SẺ TÀI NGUYÊN TRÊN MẠNG CỤC BỘ"
+  subject="TIN HỌC 12 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  duration="02 TIẾT (90 PHÚT THỰC HÀNH PHÒNG MÁY)"
+  topic="CHỦ ĐỀ 2: MẠNG MÁY TÍNH VÀ INTERNET"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Tài nguyên của một máy tính trên mạng có thể là dữ liệu, phần mềm hay thiết bị. Chia sẻ tài nguyên trên mạng cục bộ là cho phép một người từ một máy tính có thể "nhìn thấy" và sử dụng tài nguyên trên một máy tính khác trong mạng.
+<LearningObjectives
+  knowledge={[
+    "Nêu được các điều kiện kỹ thuật bắt buộc để hai hay nhiều máy tính chia sẻ tài nguyên trong mạng cục bộ (kết nối vật lý, cùng dải mạng IP, quyền truy cập).",
+    "Trình bày và thực hiện thành thạo quy trình thiết lập môi trường chia sẻ trên Windows: Chuyển sang mạng riêng (Private Network), bật Dò tìm mạng (Network Discovery) và Bật chia sẻ tệp và máy in (File and printer sharing).",
+    "Phân biệt được các cấp độ phân quyền chia sẻ: Quyền Read (Chỉ đọc/tải về) và Quyền Read/Write (Được phép chỉnh sửa, tạo mới và xóa tệp).",
+    "Sử dụng thành thạo định dạng đường dẫn mạng UNC (Universal Naming Convention) dạng `\\\\<Địa_chỉ_IP>` hoặc `\\\\<Tên_máy>` để truy cập thư mục từ xa.",
+    "Hiểu và sử dụng lệnh `ping` trong Command Prompt để kiểm tra tính thông suốt của đường truyền mạng LAN."
+  ]}
+  competencies={[
+    "Năng lực Tin học (NLc): Thao tác thành thạo trên giao diện Windows để chia sẻ thư mục dữ liệu; kiểm tra thông mạng và phân quyền an toàn.",
+    "Năng lực số: Chẩn đoán nhanh sự cố không kết nối được mạng LAN (kiểm tra cáp mạng, kiểm tra IP, cấu hình tường lửa Windows Firewall).",
+    "Năng lực chung: Hợp tác cặp đôi theo mô hình Client - Server nội bộ (Máy A làm máy chủ chia sẻ tài nguyên, Máy B làm máy trạm khai thác và ngược lại)."
+  ]}
+  qualities={[
+    "Rèn luyện đạo đức số và tính cẩn trọng: Tôn trọng dữ liệu của bạn bè, tuyệt đối không tùy tiện xóa, sửa hay can thiệp vào tài liệu dùng chung khi được cấp quyền.",
+    "Bảo vệ an toàn thiết bị phòng máy thực hành của nhà trường."
+  ]}
+/>
 
-    Việc chia sẻ có thể gây rủi ro như dữ liệu có thể bị truy cập với mục đích xấu hay bị làm hỏng bởi một người dùng trên mạng. Vì thế, luôn cần các cơ chế bảo mật và cấp phép khi chia sẻ tài nguyên. Chúng ta sẽ tìm hiểu điều này được thực hiện như thế nào trong mạng cục bộ gồm các máy tính chạy hệ điều hành Windows, hệ điều hành phổ biến nhất hiện nay.
+<EquipmentChecklist
+  items={[
+    {
+      name: "Phòng máy tính kết nối mạng LAN nội bộ",
+      description: "Các máy tính học sinh được kết nối vào cùng Switch phòng máy hoặc cùng Wi-Fi trường học.",
+      status: "ready"
+    },
+    {
+      name: "Bộ mô phỏng Cấu hình IP và Lệnh Ping",
+      description: "Linh kiện tương tác LanConfiguratorSimulator hỗ trợ học sinh thực hành thử nghiệm các tình huống lỗi IP.",
+      status: "ready"
+    },
+    {
+      name: "Tệp tin dữ liệu thực hành mẫu",
+      description: "Thư mục 'TAI_LIEU_NHOM' chứa một số hình ảnh và văn bản để học sinh chia sẻ chéo.",
+      status: "ready"
+    }
+  ]}
+/>
 
-    ### 1. Chia sẻ tệp và thư mục trên mạng cục bộ
+{/* =========================================================================
+    HOẠT ĐỘNG 1: KHỞI ĐỘNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-1"
+  number={1}
+  title="KHỞI ĐỘNG – 'NGHỊCH LÝ CHIẾC USB TRONG PHÒNG MÁY'"
+  time="10 phút"
+  objective="Tạo nhu cầu thực tiễn về việc chia sẻ tài liệu và phần cứng dùng chung trong mạng nội bộ, loại bỏ thói quen chép USB mất thời gian và dễ lây lan virus."
+>
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Tình huống chuyển tệp 1GB cho 40 máy"
+  >
+    <div className="space-y-3">
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Thầy giáo vừa quay xong một video bài giảng ôn tập dung lượng <strong>1.5 GB</strong>. Thầy cần gửi video này cho 40 học sinh trong phòng máy để các em làm bài tập.
+      </p>
 
-    #### Hoạt động 1: Điều kiện cần để chia sẻ tài nguyên trên mạng
+      <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm space-y-2">
+        <strong className="text-sky-800 dark:text-sky-300 block text-base font-bold">
+          ⚡ Thảo luận tình huống (03 phút):
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          - <em>Phương án 1:</em> Cầm 1 chiếc USB đi cắm lần lượt 40 máy tính để copy ➔ <em>Mất bao lâu? Rủi ro virus là gì?</em>
+        </p>
+        <p className="text-slate-700 dark:text-slate-300">
+          - <em>Phương án 2:</em> Tải lên Google Drive rồi 40 em cùng tải về ➔ <em>Nếu Internet trường học bị đứt cáp quang biển thì làm thế nào?</em>
+        </p>
+        <p className="text-slate-700 dark:text-slate-300">
+          - <em>Phương án 3:</em> <strong>Chia sẻ trực tiếp qua mạng LAN nội bộ phòng máy!</strong> Tốc độ cáp LAN đạt tới 1000 Mbps (125 MB/s), 40 máy lấy xong chỉ trong 1 phút mà không tốn một giọt dung lượng Internet nào!
+        </p>
+      </div>
 
-    Để hai máy tính có thể chia sẻ tài nguyên qua mạng cục bộ cần những điều kiện nào sau đây?
+      <ClassTimer initialMinutes={3} />
+    </div>
+  </SlideStep>
 
-    A. Kết nối hai máy tính với nhau qua mạng.
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh so sánh ưu thế mạng LAN"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Học sinh nhận thấy: Chia sẻ qua mạng LAN nội bộ vừa có tốc độ cực nhanh, vừa bảo mật, vừa hoàn toàn độc lập không phụ thuộc vào đường truyền Internet ra thế giới bên ngoài.
+    </p>
+  </SlideStep>
 
-    B. Người chia sẻ và được chia sẻ phải "kết bạn" với nhau, tương tự như trên mạng xã hội.
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Xác định điều kiện bắt buộc"
+  >
+    <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs sm:text-sm space-y-1">
+      <strong>Câu hỏi trắc nghiệm điều kiện:</strong>
+      <p className="text-slate-600 dark:text-slate-300">
+        Để hai máy tính chia sẻ tài nguyên trong mạng LAN, có cần kết bạn trên mạng xã hội hay trả phí không?
+        <br/><span className="text-emerald-600 dark:text-emerald-400 font-bold">➔ KHÔNG! Chỉ cần 2 điều kiện kỹ thuật: 1) Kết nối mạng thông suốt; 2) Người chủ máy cấp quyền truy cập!</span>
+      </p>
+    </div>
+  </SlideStep>
 
-    C. Người được chia sẻ phải đề xuất yêu cầu và trả phí truy cập tài nguyên.
-
-    D. Người chia sẻ phải cấp quyền truy cập tài nguyên, chẳng hạn được xem, được sửa, được xoá,...
-
-    **Trả lời:**
-    Chia sẻ tài nguyên trong mạng cục bộ là công việc có tính kĩ thuật, phục vụ cho công việc nội bộ của tổ chức sở hữu mạng cục bộ đó. Vì thế không có yêu cầu "kết bạn" hay "trả phí". Chia sẻ tài nguyên được thực hiện theo yêu cầu công việc và cần được người chủ tài nguyên cấp phép thông qua các biện pháp kĩ thuật thực hiện trên hệ điều hành.
-
-    **Điều kiện cần thiết:**
-    - **A. Kết nối hai máy tính với nhau qua mạng** ✅
-    - **D. Người chia sẻ phải cấp quyền truy cập tài nguyên** ✅
-
-    Windows có nhiều phương thức chia sẻ tài nguyên giữa các máy tính kết nối với nhau qua mạng, có dây hoặc không dây, trong mạng cục bộ hoặc qua Internet: chia sẻ qua tương tác gần khi phát hiện máy tính hay thiết bị ở gần, chia sẻ qua tài khoản của Microsoft, chia sẻ qua ứng dụng, chia sẻ qua đám mây hay chia sẻ qua uỷ nhiệm cho một tài khoản nào đó. Sau đây chúng ta sẽ tìm hiểu cách chia sẻ hai loại tài nguyên thường gặp là chia sẻ tệp và máy in được thiết kế sẵn trong hệ điều hành.
-
-    ### 2. Thiết lập môi trường chia sẻ
-
-    #### Nhiệm vụ 1: Thiết lập môi trường chia sẻ tệp và máy in cho người dùng trong mạng
-
-    **Yêu cầu:** Thiết lập được môi trường chia sẻ tệp và máy in.
-
-    Các phiên bản sau này của Windows đều được kiểm soát chặt chẽ về an ninh nên trước khi chia sẻ dữ liệu cần phải nới lỏng các hạn chế. Môi trường thuận lợi để có thể chia sẻ tệp và máy trong trong mạng là:
-
-    - **Thiết lập chế độ mạng riêng:** Windows từ phiên bản 10 cho phép cài đặt mạng riêng (Private) hoặc mạng công cộng (Public). Mạng công cộng thường được thiết lập ở những địa điểm công cộng như nhà ga, sân bay, quán cà phê,... với mục đích hạn chế nguy cơ lộ thông tin. Mạng riêng được hiểu là mạng của nhóm người dùng có độ tin cậy cao hơn, có thể chia sẻ tài nguyên với nhau.
-
-    - **Thiết lập cho phép các máy khác nhìn thấy (discoverable) và cho phép chia sẻ tệp và máy in (file and printer sharing).**
-
-    - **Tắt tạm thời tường lửa (firewall):** Tường lửa là phần mềm dùng để kiểm soát truy cập máy tính từ bên ngoài nhằm ngăn ngừa các nguy cơ xâm nhập, tấn công từ bên ngoài như từ Internet. Tường lửa không ngăn chặn việc truy cập tài nguyên nếu người sử dụng được đánh giá là tin cậy, ví dụ khi người dùng được cấp tài khoản truy cập trên máy tính có tài nguyên. Dù vậy, để việc chia sẻ tài nguyên thuận lợi, nên tạm dừng hoạt động của tường lửa trong thời gian chia sẻ. Ở Windows 10 và 11, tường lửa Defender mặc định được kích hoạt.
-
-    **Hướng dẫn thiết lập:**
-
-    **Bước 1: Mở chức năng thiết lập chia sẻ nâng cao**
-
-    Hãy truy cập chức năng Advanced Sharing Settings từ Control Panel theo các bước: Control Panel → Network and Internet → Network and Sharing Center → Advanced Sharing Settings.
-
-    Trong hộp thoại Advanced sharing settings, hãy kéo con trượt Network discovery và File and printer sharing sang vị trí On bên phải để cho phép các máy tính khác trong mạng "nhìn thấy" máy tính này, đồng thời cho phép chia sẻ tệp và máy in. Khi được nhìn thấy, tên máy sẽ xuất hiện trên giao diện của File Browser.
-
-    **Bước 2: Thiết lập chia sẻ thư mục công cộng**
-
-    Windows thiết lập sẵn ở mỗi máy tính trong thư mục Public (This PC → System (C) → Users → Public) các thư mục con.
-
-    Trong giao diện Advanced sharing settings, hãy chọn biểu tượng phía bên phải All networks để mở ra giao diện thiết lập chia sẻ.
-
-    Dữ liệu trong thư mục Public được mặc định là không chia sẻ, nhưng nếu trong mục Public folder sharing (Chia sẻ thư mục công cộng) được bật (On) thì mọi người dùng trên mạng có thể nhìn thấy toàn bộ những gì có trong thư mục Public.
-
-    **Bước 3: Dừng tạm thời tường lửa**
-
-    Hãy nháy chuột vào dòng chữ Privacy and Security (Riêng tư và an ninh), sau đó thực hiện dãy truy cập: Privacy and Security → Windows Security → FireWall Network Protection → Private Network.
-
-    Ở giao diện Private Network, kéo con trượt của Microsoft Defender Firewall về trạng thái Off. Khi được yêu cầu xác nhận "Do you want to allow this app to make change to your device?" (Bạn có cho phép ứng dụng này thay đổi thiết bị của bạn không?) với mặc định là "No" thì hãy chọn "Yes" để cho phép.
-
-    <Quiz data={{
-      question: "Khi chia sẻ tài nguyên trên mạng cục bộ, điều kiện nào là BẮT BUỘC?",
-      options: [
-        "A. Hai máy tính phải 'kết bạn' với nhau",
-        "B. Người được chia sẻ phải trả phí",
-        "C. Kết nối mạng và cấp quyền truy cập",
-        "D. Phải có tài khoản Microsoft"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! Chỉ cần kết nối mạng và cấp quyền truy cập là đủ để chia sẻ tài nguyên trên mạng cục bộ."
-    }} />
-
-    <Alert type="warning">
-      **Cảnh báo an ninh:**
-      - Chỉ chia sẻ trong mạng riêng tư (Private network)
-      - Không chia sẻ ở nơi công cộng (quán cafe, sân bay)
-      - Cần cấp quyền phù hợp để tránh rủi ro dữ liệu
-      - Sau khi dùng xong nên bật lại tường lửa
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chuyển sang thực hành"
+  >
+    <Alert type="info" title="Mục tiêu buổi thực hành">
+      Tiết học hôm nay là cơ hội để mỗi học sinh tự tay cấu hình máy tính phòng máy thành một máy chủ chia sẻ tệp tin và máy in thực thụ!
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS biết cách thiết lập môi trường chia sẻ tài nguyên trên mạng
-    - HS hiểu các điều kiện cần thiết để chia sẻ
-    - HS nhận biết các rủi ro bảo mật khi chia sẻ
+  </SlideStep>
+</PedagogyActivity>
 
-    **Hoạt động:**
-    - GV hướng dẫn từng bước thiết lập trên máy tính
-    - HS thực hành theo hướng dẫn
-    - **Sản phẩm:** Môi trường chia sẻ được thiết lập thành công
-  </TeacherNotes>
-</StepKnowledge>
-        <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC VÀ HƯỚNG DẪN KỸ NĂNG THỰC HÀNH
+========================================================================= */}
+<PedagogyActivity
+  id="activity-2"
+  number={2}
+  title="HÌNH THÀNH KIẾN THỨC & THỰC HÀNH KỸ NĂNG MẠNG"
+  time="50 phút"
+  objective="Làm chủ công cụ kiểm tra thông mạng bằng lệnh ping; cấu hình môi trường mạng Private; thực hành chia sẻ thư mục và phân quyền trên hệ điều hành Windows."
+>
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: KIỂM TRA THÔNG MẠNG & CẤU HÌNH IP
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.1"
+    title="KIỂM TRA THÔNG MẠNG BẰNG LỆNH PING & QUY TẮC ĐỊA CHỈ IP"
+    time="15 phút"
+    target="Hiểu bản chất địa chỉ IPv4; sử dụng lệnh ping để kiểm tra kết nối giữa 2 máy trước khi chia sẻ dữ liệu."
+  >
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Khám phá lệnh Ping qua bộ mô phỏng"
+    >
+      <p className="text-slate-700 dark:text-slate-300 text-sm mb-3">
+        Trước khi chia sẻ tệp, ta phải kiểm tra xem máy A và máy B đã &quot;thông mạng&quot; với nhau chưa. Hãy trải nghiệm bộ mô phỏng cấu hình IP và chạy lệnh Ping dưới đây:
+      </p>
 
-    #### Nhiệm vụ 2: Chia sẻ tệp và thư mục
+      {/* Interactive LAN Configurator Component */}
+      <LanConfiguratorSimulator />
+    </SlideStep>
 
-    **Yêu cầu:** Chia sẻ được tệp và thư mục.
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Thao tác thực tế trên máy tính lớp học"
+    >
+      <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-xs space-y-2 border border-slate-700">
+        <span className="text-emerald-400 font-bold block text-sm">💻 THAO TÁC TRA CỨU IP THẬT TRÊN WINDOWS:</span>
+        <div className="space-y-1.5 text-slate-300">
+          <p>1. Nhấn tổ hợp phím <code>Windows + R</code>, gõ <code>cmd</code> rồi nhấn <code>Enter</code>.</p>
+          <p>2. Gõ lệnh: <code>ipconfig</code> và tìm dòng <strong>IPv4 Address</strong> (ví dụ: <code>192.168.1.15</code>).</p>
+          <p>3. Hỏi bạn cùng bàn xem IP máy của bạn ấy là bao nhiêu (ví dụ: <code>192.168.1.22</code>).</p>
+          <p>4. Gõ lệnh kiểm tra kết nối: <code>ping 192.168.1.22</code>.</p>
+          <p>5. Nếu màn hình hiện <code>Reply from ...: bytes=32 time=1ms</code> ➔ <strong>Chúc mừng! Hai máy đã thông mạng!</strong></p>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Hướng dẫn thực hành:**
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Xử lý lỗi Request timed out"
+    >
+      <div className="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1">
+        <strong>⚠️ Hiện tượng Ping bị Request timed out (Mất gói tin 100%):</strong>
+        <p>
+          Nguyên nhân phổ biến: 1) Hai máy cắm lỏng dây mạng; 2) Đặt khác dải mạng Subnet; 3) <strong>Tường lửa Windows Firewall đang bật chặn gói tin ICMP của lệnh ping!</strong>
+        </p>
+      </div>
+    </SlideStep>
 
-    **Bước 1: Tìm kiếm máy tính trên mạng**
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt bước tiền đề"
+    >
+      <Alert type="success" title="Nguyên tắc bất di bất dịch">
+        Lệnh <code>ping</code> là công cụ chẩn đoán số 1 của mọi kỹ sư mạng. Chỉ khi ping thành công (0% loss) thì việc chia sẻ tệp mới có thể diễn ra thông suốt!
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    Mở ứng dụng quản lí tệp File Explorer, nháy chuột vào Network ở phía dưới bên trái cửa sổ. Danh sách những máy tính tham gia mạng cục bộ sẽ hiển thị.
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: THIẾT LẬP MÔI TRƯỜNG CHIA SẺ TRÊN WINDOWS
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.2"
+    title="THIẾT LẬP MÔI TRƯỜNG MẠNG RIÊNG (PRIVATE) & BẬT DISCOVERY"
+    time="15 phút"
+    target="Thực hiện chuẩn xác 3 bước mở cổng chia sẻ trong Advanced Sharing Settings và Windows Security."
+  >
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – 3 bước thiết lập Windows"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm">
+        <div className="p-3.5 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/30 space-y-1.5">
+          <strong className="text-sky-800 dark:text-sky-300 block font-bold text-sm">
+            Bước 1: Chuyển sang Private Network
+          </strong>
+          <p className="text-slate-600 dark:text-slate-400">
+            Vào <code>Settings ➔ Network & internet ➔ Wi-Fi/Ethernet</code>. Chuyển Network profile từ <strong>Public</strong> sang <strong>Private</strong> để máy tính biết đây là mạng tin cậy.
+          </p>
+        </div>
 
-    **Ví dụ thực tế:**
-    Chẳng hạn, cần chia sẻ thư mục SÁCH LỚP 12 trên MAY_1 cho tất cả người dùng trong mạng, các bước thực hiện như sau:
+        <div className="p-3.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/30 space-y-1.5">
+          <strong className="text-indigo-800 dark:text-indigo-300 block font-bold text-sm">
+            Bước 2: Bật Network Discovery
+          </strong>
+          <p className="text-slate-600 dark:text-slate-400">
+            Vào <code>Advanced sharing settings</code>. Bật <strong>ON</strong> mục <em>Network discovery</em> (để máy khác nhìn thấy) và <em>File and printer sharing</em>.
+          </p>
+        </div>
 
-    **Bước 2: Chia sẻ thư mục cụ thể**
+        <div className="p-3.5 rounded-xl border border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-950/30 space-y-1.5">
+          <strong className="text-teal-800 dark:text-teal-300 block font-bold text-sm">
+            Bước 3: Tắt Password Sharing
+          </strong>
+          <p className="text-slate-600 dark:text-slate-400">
+            Mục <code>All Networks</code>: Chuyển <em>Password protected sharing</em> về <strong>OFF</strong> để các máy trong lớp truy cập ngay mà không bị hỏi mật khẩu tài khoản Windows.
+          </p>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Trên máy MAY_1:**
-    1. Tìm thư mục SÁCH LỚP 12
-    2. Nháy nút phải chuột lên biểu tượng thư mục SÁCH LỚP 12
-    3. Chọn Properties (Thuộc tính) để mở cửa sổ Properties
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Học sinh thao tác đồng loạt"
+    >
+      <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <p>- Cả lớp mở Control Panel hoặc Settings trên Windows 10/11 thực hiện tuần tự 3 bước.</p>
+        <p>- Giáo viên đi quanh phòng máy hỗ trợ các máy tính bị khóa quyền Admin.</p>
+      </div>
+    </SlideStep>
 
-    **Bước 3: Cấu hình chia sẻ**
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Tại sao không bật ở quán cà phê?"
+    >
+      <div className="p-3 bg-rose-50 dark:bg-rose-950/40 rounded-xl border border-rose-200 dark:border-rose-900/60 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <strong>⚠️ Cảnh báo an toàn thông tin quan trọng:</strong>
+        <p>
+          Khi kết nối Wi-Fi tại quán cà phê, sân bay, nhà ga (Public Network), <strong>tuyệt đối KHÔNG ĐƯỢC bật Network Discovery và File Sharing</strong>, vì kẻ xấu cùng mạng có thể dò quét và xâm nhập đánh cắp dữ liệu trong máy của em!
+        </p>
+      </div>
+    </SlideStep>
 
-    1. Trong cửa sổ Properties, nháy chuột vào Sharing (Chia sẻ) để chia sẻ thư mục
-    2. Giao diện thiết lập chia sẻ bao gồm các mục:
-       - Network File and Folder Sharing (chia sẻ tệp thư mục trên mạng)
-       - Advanced Sharing (chia sẻ nâng cao)
-       - Password Protection (bảo vệ bằng mật khẩu)
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt môi trường mạng"
+    >
+      <Alert type="success" title="Hoàn thành bước chuẩn bị">
+        Hệ điều hành đã sẵn sàng mở cửa cho phép chia sẻ thư mục an toàn trong phạm vi phòng máy!
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    **Bước 4: Thiết lập người được chia sẻ và quyền truy cập**
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3: THỰC HÀNH CHIA SẺ VÀ PHÂN QUYỀN THƯ MỤC
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.3"
+    title="THỰC HÀNH CHIA SẺ THƯ MỤC, PHÂN QUYỀN & TRUY CẬP TỪ XA"
+    time="20 phút"
+    target="Tạo thư mục, chia sẻ cho Everyone với quyền Read/Write; máy bạn truy cập bằng đường dẫn UNC \\IP thành công."
+  >
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Quy trình chia sẻ thư mục"
+    >
+      <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-xs space-y-2 border border-slate-700">
+        <span className="text-yellow-400 font-bold block text-sm">📁 QUY TRÌNH 4 BƯỚC CHIA SẺ THƯ MỤC:</span>
+        <div className="space-y-1 text-slate-300">
+          <p>1. Tạo thư mục mới trên ổ đĩa <code>D:\CHIA_SE_LOP12</code>, copy 1 bức ảnh vào thư mục.</p>
+          <p>2. Nhấp chuột phải vào thư mục ➔ chọn <strong>Properties</strong> ➔ chọn tab <strong>Sharing</strong> ➔ nhấn nút <strong>Share...</strong>.</p>
+          <p>3. Trong ô tìm kiếm, chọn đối tượng <strong>Everyone</strong> ➔ nhấn <strong>Add</strong>.</p>
+          <p>4. Tại cột <em>Permission Level</em>, chọn quyền: <strong>Read</strong> (máy khác chỉ được xem/tải về) hoặc <strong>Read/Write</strong> (máy khác được phép thêm/sửa/xóa tệp).</p>
+          <p>5. Nhấn <strong>Share</strong> ➔ Nhấn <strong>Done</strong>.</p>
+        </div>
+      </div>
+    </SlideStep>
 
-    1. Nháy chuột vào Share để mở cửa sổ thiết lập người được chia sẻ
-    2. Thêm người dùng được phép truy cập
-    3. Thiết lập quyền truy cập cho mỗi người dùng:
-       - **Read:** Chỉ được xem và sao chép
-       - **Read/Write:** Được xem, sửa, xóa
-       - **Full Control:** Toàn quyền kiểm soát
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Máy bạn truy cập qua đường dẫn UNC"
+    >
+      <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <p>- <strong>Học sinh A (Máy chủ chia sẻ):</strong> Thực hiện 4 bước trên, đọc địa chỉ IP của máy mình cho bạn B (Ví dụ: <code>192.168.1.15</code>).</p>
+        <p>- <strong>Học sinh B (Máy khách truy cập):</strong></p>
+        <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-mono">
+          Nhấn <code>Windows + E</code> mở File Explorer. Trên thanh địa chỉ (Address Bar), gõ:
+          <br/><span className="text-indigo-600 dark:text-indigo-400 font-bold text-sm">\\192.168.1.15</span> rồi nhấn <strong>Enter</strong>.
+        </div>
+        <p>- Thư mục <code>CHIA_SE_LOP12</code> của bạn A lập tức xuất hiện trên màn hình máy bạn B!</p>
+        <p>- Học sinh B thử mở ảnh xem (kiểm tra quyền Read) và thử tạo 1 tệp văn bản mới vào đó (kiểm tra quyền Read/Write).</p>
+      </div>
+    </SlideStep>
 
-    **Bước 5: Xác nhận chia sẻ**
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – Đổi vai thực hành"
+    >
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Sau khi hoàn thành lượt 1, hai học sinh cùng bàn đổi vai: Học sinh B chia sẻ tài liệu và học sinh A truy cập vào lấy tệp.
+      </p>
+    </SlideStep>
 
-    1. Nhấn nút Share để hoàn tất
-    2. Hệ thống sẽ hiển thị đường dẫn mạng của thư mục đã chia sẻ
-    3. Ghi lại đường dẫn này để gửi cho người dùng khác
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức thực hành"
+    >
+      <Alert type="success" title="Thành tựu thực hành">
+        Cả lớp đã làm chủ kỹ năng cốt lõi của một Quản trị viên mạng văn phòng: vừa chia sẻ tài nguyên nhanh chóng, vừa phân quyền bảo mật chặt chẽ!
+      </Alert>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
 
-    **Thực hành truy cập từ máy khác:**
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP
+========================================================================= */}
+<PedagogyActivity
+  id="activity-3"
+  number={3}
+  title="LUYỆN TẬP – KIỂM TRA KỸ NĂNG THỰC HÀNH MẠNG"
+  time="15 phút"
+  objective="Củng cố kiến thức về điều kiện chia sẻ mạng LAN, phân quyền Read/Write và cú pháp đường dẫn UNC."
+>
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đấu trường Thực hành Mạng"
+  >
+    <p className="text-slate-700 dark:text-slate-300 text-sm mb-2">
+      Học sinh làm bài tập kiểm tra lý thuyết thực hành trong 05 phút:
+    </p>
 
-    **Trên máy MAY_2 (máy khách):**
-    1. Mở File Explorer
-    2. Nhấp vào Network
-    3. Tìm máy MAY_1 trong danh sách
-    4. Nhấp đúp vào MAY_1
-    5. Tìm thư mục SÁCH LỚP 12 đã được chia sẻ
-    6. Truy cập và sử dụng tài liệu theo quyền đã cấp
+    <ClassTimer initialMinutes={5} />
 
-    **Bài tập thực hành:**
+    <SpeedQuizExercise
+      multipleChoice={[
+        {
+          id: 1,
+          question: "Để truy cập vào thư mục chia sẻ trên máy tính có địa chỉ IP là 192.168.1.50 từ xa, cú pháp gõ vào thanh địa chỉ File Explorer nào sau đây là ĐÚNG?",
+          options: [
+            "A. http://192.168.1.50",
+            "B. //192.168.1.50",
+            "C. \\\\192.168.1.50",
+            "D. ftp://192.168.1.50"
+          ],
+          correctAnswer: 2,
+          explanation: "Đường dẫn mạng UNC (Universal Naming Convention) trên hệ điều hành Windows bắt buộc phải bắt đầu bằng 2 dấu gạch chéo ngược (\\\\IP)."
+        },
+        {
+          id: 2,
+          question: "Khi chia sẻ một thư mục tài liệu học tập, nếu bạn chỉ muốn các bạn trong lớp xem và tải về máy cá nhân chứ KHÔNG ĐƯỢC PHÉP xóa hay sửa file gốc của bạn, bạn cần cấp quyền gì?",
+          options: [
+            "A. Quyền Full Control",
+            "B. Quyền Read/Write",
+            "C. Quyền Read",
+            "D. Không phân quyền"
+          ],
+          correctAnswer: 2,
+          explanation: "Quyền Read (Chỉ đọc) cho phép xem và sao chép nội dung nhưng ngăn chặn mọi hành vi chỉnh sửa hoặc xóa tệp tin."
+        },
+        {
+          id: 3,
+          question: "Lệnh nào sau đây trong cửa sổ Command Prompt (cmd) dùng để kiểm tra tính thông suốt của đường truyền mạng tới một máy tính khác?",
+          options: [
+            "A. ipconfig",
+            "B. ping",
+            "C. getmac",
+            "D. cls"
+          ],
+          correctAnswer: 1,
+          explanation: "Lệnh ping gửi các gói tin ICMP Echo Request để đo độ trễ và kiểm tra xem máy đích có phản hồi hay không."
+        }
+      ]}
+      trueFalseMatrix={[
+        {
+          id: 1,
+          statement: "Hai máy tính trong mạng LAN nếu bị trùng địa chỉ IP (ví dụ cả hai máy cùng đặt tĩnh là 192.168.1.10) thì vẫn có thể ping thấy nhau bình thường.",
+          isTrue: false,
+          explanation: "Sai. Xung đột IP (IP Conflict) sẽ khiến hệ điều hành cảnh báo lỗi và ngắt kết nối mạng của một trong hai máy."
+        },
+        {
+          id: 2,
+          statement: "Ở chế độ mạng công cộng (Public Network), Windows mặc định tắt tính năng Network Discovery để bảo vệ máy tính khỏi các nguy cơ tấn công dò quét.",
+          isTrue: true,
+          explanation: "Đúng. Đây là tính năng bảo mật chủ động quan trọng của hệ điều hành Windows."
+        },
+        {
+          id: 3,
+          statement: "Một máy in văn phòng có dây cắm vào cổng USB của máy tính thầy giáo có thể được chia sẻ cho cả lớp in ấn không dây qua mạng LAN.",
+          isTrue: true,
+          explanation: "Đúng. Bằng cách bật tính năng 'Share this printer' trên máy của thầy giáo, mọi máy tính khác trong mạng LAN đều có thể gửi lệnh in tới máy in đó."
+        }
+      ]}
+    />
+  </SlideStep>
 
-    1. **Tạo thư mục chia sẻ:**
-       - Tạo một thư mục mới tên "Tài liệu chung"
-       - Thêm vài tệp văn bản vào thư mục
-       - Chia sẻ thư mục này cho bạn ngồi cạnh
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Đánh giá năng lực tự động"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Học sinh hoàn thành bài kiểm tra và theo dõi giải thích chi tiết.
+    </p>
+  </SlideStep>
 
-    2. **Thử nghiệm quyền truy cập:**
-       - Bạn ngồi cạnh thử mở thư mục đã chia sẻ
-       - Thử tạo một tệp mới trong thư mục
-       - Thử xóa một tệp trong thư mục
-       - Ghi lại kết quả theo từng quyền truy cập
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Giải đáp thắc mắc"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Giáo viên giải thích câu hỏi về sự khác biệt giữa gạch chéo xuôi <code>//</code> (dùng cho web URL) và gạch chéo ngược <code>\\</code> (dùng cho đường dẫn mạng Windows UNC).
+    </p>
+  </SlideStep>
 
-    3. **Chia sẻ nhiều thư mục:**
-       - Tạo 3 thư mục: "Công việc", "Cá nhân", "Lớp học"
-       - Chia sẻ với các quyền khác nhau
-       - Mời bạn bè kiểm tra quyền truy cập
-
-    <Alert type="tip">
-      **Mẹo thực hành:**
-      - Luôn kiểm tra lại quyền truy cập sau khi chia sẻ
-      - Sử dụng tên thư mục không có dấu cách để tránh lỗi
-      - Ghi lại đường dẫn mạng để chia sẻ nhanh hơn
-      - Thường xuyên kiểm tra ai đang truy cập tài nguyên của mình
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt kỹ năng thực hành"
+  >
+    <Alert type="success" title="Tổng kết">
+      100% học sinh đã thực hiện thành công việc chia sẻ dữ liệu và kiểm tra thông mạng bằng lệnh ping.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS thực hành thành công việc chia sẻ tệp và thư mục trên mạng.
-    **Hoạt động:** HS thực hành theo cặp, một người chia sẻ, một người truy cập.
-    **Sản phẩm:** Thư mục được chia sẻ thành công và có thể truy cập từ máy khác.
-  </TeacherNotes>
-</StepPractice>
-    <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+  </SlideStep>
+</PedagogyActivity>
 
-    #### 1. Chia sẻ máy in trên mạng
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-4"
+  number={4}
+  title="VẬN DỤNG – 'THIẾT LẬP KHO LƯU TRỮ DÙNG CHUNG CHO TỔ HỌC TẬP'"
+  time="15 phút"
+  objective="Vận dụng kỹ năng phân quyền mạng LAN để xây dựng mô hình kho nộp bài tập tổ học tập gồm 2 thư mục: Thư mục ĐỌC (Tài liệu tham khảo) và Thư mục NỘP BÀI (Được phép ghi)."
+>
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Dự án Kho Dữ liệu Tổ học tập"
+  >
+    <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+      <p>
+        <strong>Nhiệm vụ nhóm (Mỗi tổ 8 học sinh):</strong>
+      </p>
+      <p>
+        Tổ trưởng đóng vai trò Quản trị viên máy chủ (Server), thiết lập 01 thư mục chính <code>TO_HOC_TAP_12</code> trên máy của mình gồm 2 thư mục con:
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+        <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 space-y-1">
+          <strong className="text-blue-700 dark:text-blue-300 block text-sm">📁 1. THU_MUC_TAI_LIEU (Quyền READ)</strong>
+          <p className="text-slate-600 dark:text-slate-400">
+            Chứa các đề cương ôn tập do tổ trưởng soạn. Các thành viên chỉ được sao chép về, không ai được sửa hay xóa file gốc.
+          </p>
+        </div>
 
-    **Nhiệm vụ 3: Chia sẻ máy in**
+        <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-1">
+          <strong className="text-emerald-700 dark:text-emerald-300 block text-sm">📥 2. THU_MUC_NOP_BAI (Quyền READ/WRITE)</strong>
+          <p className="text-slate-600 dark:text-slate-400">
+            Nơi 7 thành viên còn lại nộp bài tập về nhà bằng cách copy tệp bài làm của mình vào đây (tên tệp: <code>Hovaten_BaiTap.docx</code>).
+          </p>
+        </div>
+      </div>
+    </div>
+  </SlideStep>
 
-    **Yêu cầu:** Thiết lập chia sẻ máy in cho các máy tính trong mạng.
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thang đo đánh giá Rubric – Chuẩn Công văn 5512"
+  >
+    <RubricCard
+      title="Thang đo đánh giá Dự án 'Kho Dữ liệu Tổ học tập LAN'"
+      criteria={[
+        {
+          name: "Tính đúng đắn của phân quyền mạng",
+          weight: "40%",
+          levels: {
+            good: "Phân quyền chuẩn xác tuyệt đối: Thư mục Tài liệu không thể bị xóa/sửa từ máy con; Thư mục Nộp bài nộp tệp thành công 100%.",
+            acceptable: "Chia sẻ được nhưng phân quyền nhầm (cả 2 thư mục đều bị mở Full quyền hoặc đều bị chặn ghi).",
+            poor: "Các máy thành viên không thể truy cập vào máy tổ trưởng."
+          }
+        },
+        {
+          name: "Tốc độ và tính thông suốt",
+          weight: "35%",
+          levels: {
+            good: "Tất cả 7 thành viên nộp bài hoàn tất trong vòng 3 phút; kiểm tra ping phản hồi dưới 1ms.",
+            acceptable: "Nộp được bài nhưng còn một vài máy gặp lỗi tường lửa phải hỗ trợ xử lý.",
+            poor: "Thời gian thao tác quá chậm, nghẽn đường truyền do xung đột."
+          }
+        },
+        {
+          name: "Văn hóa ứng xử dữ liệu số",
+          weight: "25%",
+          levels: {
+            good: "Các thành viên tuân thủ nghiêm ngặt quy tắc: đặt tên file đúng chuẩn, không xóa file bài của bạn khác trong thư mục Nộp bài.",
+            acceptable: "Đặt tên file chưa đúng quy ước nhưng không có hành vi can thiệp bài của bạn.",
+            poor: "Có hành vi xóa hoặc đổi tên bài của bạn khác."
+          }
+        }
+      ]}
+      sampleProject={{
+        title: "Bản báo cáo nghiệm thu Kho dữ liệu Tổ 1",
+        description: "Kết quả triển khai chia sẻ tài nguyên mạng LAN phòng máy 12A1.",
+        code: `[THÔNG SỐ MÁY CHỦ TỔ TRƯỞNG]:
+- Tên máy: DESKTOP-TO1-LEADER
+- Địa chỉ IP: 192.168.1.10 (Subnet Mask: 255.255.255.0)
+- Tên thư mục chia sẻ gốc: \\\\192.168.1.10\\TO_HOC_TAP_12
 
-    **Hướng dẫn thực hành:**
+[KẾT QUẢ NGHIỆM THU]:
+1. Thư mục \\TAI_LIEU (Quyền: Read):
+   - Học sinh Lê Văn B thử nhấn Shift + Delete để xóa file DeCuong.pdf
+   - Hệ thống Windows hiện thông báo chặn: 'You need permission to perform this action' ➔ PHÂN QUYỀN AN TOÀN THÀNH CÔNG!
+2. Thư mục \\NOP_BAI (Quyền: Read/Write):
+   - Đủ 7 bài tập từ NguyenVanA_Bai5.docx đến TranThiG_Bai5.docx đã được nộp thành công!
+3. Tổng thời gian thu bài cả tổ: 02 phút 15 giây (Không dùng bất kỳ thiết bị USB nào)!`
+      }}
+    />
+  </SlideStep>
 
-    **Bước 1: Kết nối và cài đặt máy in**
-    - Kết nối máy in với máy chủ (máy có máy in trực tiếp)
-    - Cài đặt driver máy in trên máy chủ
-    - In thử để đảm bảo máy in hoạt động bình thường
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Nghiệm thu sản phẩm tại lớp"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Giáo viên trực tiếp kiểm tra từ máy giáo viên bằng cách gõ <code>\\IP_Tổ_trưởng</code> để xem kho dữ liệu của từng tổ.</p>
+      <p>- Tuyên dương các tổ hoàn thành nhanh nhất và tuân thủ kỷ luật phân quyền an toàn.</p>
+    </div>
+  </SlideStep>
 
-    **Bước 2: Bật chia sẻ máy in**
-    1. Mở Control Panel
-    2. Chọn Devices and Printers
-    3. Nhấp chuột phải vào máy in muốn chia sẻ
-    4. Chọn Printer properties
-
-    **Bước 3: Cấu hình chia sẻ**
-    1. Trong cửa sổ Printer properties, chọn tab Sharing
-    2. Đánh dấu vào ô "Share this printer"
-    3. Đặt tên chia sẻ cho máy in (không có dấu cách)
-    4. Nhấn Apply rồi OK
-
-    **Bước 4: Thêm máy in trên máy khách**
-    **Trên các máy khác trong mạng:**
-    1. Mở Control Panel → Devices and Printers
-    2. Chọn "Add a printer"
-    3. Chọn "Add a network, wireless or Bluetooth printer"
-    4. Hệ thống sẽ tự động tìm máy in đã chia sẻ
-    5. Chọn máy in cần thêm và cài đặt driver
-
-    **Bước 5: Kiểm tra hoạt động**
-    - Từ máy khách, thử in một tài liệu thử
-    - Kiểm tra xem máy in có hoạt động không
-    - Kiểm tra hàng đợi in (print queue)
-
-    #### 2. Ứng dụng thực tế
-
-    **Tình huống 1: Lớp học thông minh**
-    - **Mục tiêu:** Giáo viên chia sẻ tài liệu cho cả lớp
-    - **Thực hiện:**
-      - Giáo viên tạo thư mục "Bài giảng ngày [ngày]"
-      - Chia sẻ với quyền Read cho học sinh
-      - Học sinh truy cập và tải tài liệu về học
-    - **Lợi ích:** Tiết kiệm thời gian, không cần USB
-
-    **Tình huống 2: Văn phòng làm việc nhóm**
-    - **Mục tiêu:** Nhóm làm việc chung trên dự án
-    - **Thực hiện:**
-      - Tạo thư mục "Dự án [tên dự án]"
-      - Chia sẻ với quyền Read/Write cho thành viên nhóm
-      - Mọi người cùng cập nhật tài liệu
-    - **Lợi ích:** Đồng bộ dữ liệu, làm việc hiệu quả
-
-    **Tình huống 3: Chia sẻ máy in văn phòng**
-    - **Mục tiêu:** Tối ưu hóa sử dụng máy in
-    - **Thực hiện:**
-      - Kết nối máy in với một máy chủ
-      - Chia sẻ cho toàn bộ nhân viên văn phòng
-      - Thiết lập quyền truy cập phù hợp
-    - **Lợi ích:** Tiết kiệm chi phí, quản lý tập trung
-
-    #### 3. Bài tập mở rộng
-
-    **Bài tập 1: Tìm hiểu về DNS**
-    Hãy tìm hiểu giao thức tên miền DNS theo các gợi ý sau:
-    - Lợi ích của việc dùng tên miền thay thế cho địa chỉ IP
-    - Các lớp tên miền
-    - Tổ chức nào phụ trách việc cấp tên miền ở Việt Nam
-
-    **Bài tập 2: Sử dụng lệnh ping**
-    Giao thức ICMP (Internet Control Message Protocol) cho phép gửi một yêu cầu đến một máy tính khác, một thiết bị mạng hay một ứng dụng trên mạng để lấy thông tin phản hồi.
-
-    Một trong các ứng dụng của giao thức này là lệnh ping của hệ điều hành giúp kiểm tra máy tính của em có kết nối được với một máy tính hay một thiết bị mạng hay không. Hãy tìm hiểu lệnh ping và thử nghiệm sử dụng lệnh này.
-
-    **Bài tập 3: Xây dựng mạng chia sẻ an toàn**
-    Thiết kế một kế hoạch chia sẻ tài nguyên an toàn cho:
-    - Lớp học 30 học sinh
-    - Văn phòng nhỏ 10 nhân viên
-    - Gia đình 5 thành viên
-
-    **Yêu cầu:**
-    - Xác định tài nguyên cần chia sẻ
-    - Thiết lập quyền truy cập phù hợp
-    - Đề xuất biện pháp bảo mật
-    - Lập kế hoạch backup dữ liệu
-
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành vận dụng, học sinh sẽ biết cách chia sẻ cả tệp và máy in trên mạng, đồng thời hiểu được các ứng dụng thực tế và biện pháp bảo mật.
-    </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức đã học để chia sẻ máy in và giải quyết các tình huống thực tế.
-    **Hoạt động:** HS thực hành chia sẻ máy in và thảo luận các tình huống.
-    **Sản phẩm:** Máy in được chia sẻ thành công và kế hoạch chia sẻ an toàn.
-  </TeacherNotes>
-</StepApplication>
-
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **Chia sẻ tài nguyên:** Cho phép máy khác sử dụng dữ liệu, thiết bị của mình
-- ✅ **Điều kiện cần:** Kết nối mạng + cấp quyền truy cập
-- ✅ **Thiết lập:** Bật Network discovery + File and printer sharing
-- ✅ **Quyền truy cập:** Read (chỉ xem), Read/Write (sửa/xóa), Full Control (toàn quyền)
-- ✅ **Chia sẻ máy in:** Kết nối → Properties → Sharing → Add printer
-- ✅ **Bảo mật:** Chỉ chia sẻ trong mạng riêng, bật lại firewall khi xong
-</GlassCard>
-</div>
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt lại Chủ đề 2"
+  >
+    <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white space-y-2 shadow-lg">
+      <h5 className="font-bold text-base">🎉 CHÚC MỪNG HOÀN THÀNH CHỦ ĐỀ 2: MẠNG MÁY TÍNH VÀ INTERNET!</h5>
+      <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+        Từ những khái niệm phần cứng (Switch, Router, Modem) đến giao thức truyền thông TCP/IP và thực hành chia sẻ tài nguyên mạng LAN, các em đã tích lũy trọn vẹn hành trang kỹ thuật số vững chắc của một công dân thế kỷ 21!
+      </p>
+    </div>
+  </SlideStep>
+</PedagogyActivity>

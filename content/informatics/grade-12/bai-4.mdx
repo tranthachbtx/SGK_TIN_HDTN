@@ -1,337 +1,537 @@
 ---
 title: "Bài 4: Giao thức mạng"
-description: "Tìm hiểu ngôn ngữ chung của Internet: TCP/IP và cách dữ liệu chu du khắp thế giới."
+description: "Khám phá bản chất của Giao thức mạng, nguyên lý hoạt động của bộ giao thức TCP/IP và quá trình dữ liệu chu du khắp thế giới theo chuẩn Công văn 5512."
 order: 4
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Hãy tưởng tượng hai người muốn trò chuyện nhưng một người chỉ biết tiếng Việt, người kia chỉ biết tiếng Nga. Họ có hiểu nhau không? Chắc chắn là không. 🗣️❌
-    
-    Máy tính cũng vậy. Để một chiếc máy tính sản xuất tại Nhật Bản có thể gửi email cho một chiếc máy tính tại Mỹ, chúng cần một "ngôn ngữ chung" và những "quy luật giao tiếp" nghiêm ngặt. Những quy luật đó được gọi là **Giao thức mạng (Protocol)**.
-    
-    Hôm nay, chúng ta sẽ tìm hiểu về bộ giao thức **TCP/IP** - "linh hồn" đã giúp Internet kết nối hàng tỷ người trên thế giới.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - Hiểu khái niệm "Giao thức" như một ngôn ngữ chung trong kỹ thuật.
-    - Nhận diện sự cần thiết của các quy tắc khi truyền tin qua mạng.
-    
-    **Tổ chức thực hiện:**
-    - GV đưa ra ví dụ về quy tắc giao thông (đi bên phải, dừng đèn đỏ) để minh họa cho "Giao thức giao thông".
-    - Dẫn dắt sang giao thức mạng.
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  title="BÀI 4: GIAO THỨC MẠNG"
+  subject="TIN HỌC 12 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  duration="02 TIẾT (90 PHÚT)"
+  topic="CHỦ ĐỀ 2: MẠNG MÁY TÍNH VÀ INTERNET"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Khi được hỏi mạng Internet là gì, không ít người sẽ trả lời là web, chat thậm chí là một mạng xã hội cụ thể. Cũng có người hiểu Internet là mạng máy tính giúp kết nối toàn cầu. Những câu trả lời đó là cách nhìn Internet về phương diện sử dụng mà không thấy cơ chế hoạt động của nó. Câu trả lời chính xác về mặt công nghệ là: Internet là mạng thông tin toàn cầu hoạt động theo giao thức TCP/IP. Vậy giao thức nói chung là gì và giao thức TCP/IP có vai trò gì đối với mạng Internet?
+<LearningObjectives
+  knowledge={[
+    "Trình bày được định nghĩa chính xác về Giao thức mạng (Network Protocol): tập hợp các quy định về định dạng, ngữ nghĩa và cách thức xử lý dữ liệu truyền giữa các thiết bị.",
+    "Nêu và giải thích được ý nghĩa sống còn của giao thức mạng: tạo ngôn ngữ chung, đảm bảo tính tin cậy, tối ưu hóa băng thông và khả năng tương thích toàn cầu giữa các hệ điều hành khác nhau.",
+    "Phân tích được các quy định cụ thể của giao thức gửi thư điện tử (SMTP gửi, POP3/IMAP nhận) và giao thức Ethernet trong mạng cục bộ (địa chỉ MAC, mã kiểm tra lỗi CRC, khung truyền dữ liệu Frame).",
+    "Mô tả được chức năng và cơ chế phối hợp của hai giao thức cốt lõi trong bộ giao thức TCP/IP: Giao thức IP chịu trách nhiệm đánh địa chỉ và tìm đường đi; Giao thức TCP chịu trách nhiệm phân mảnh, đánh số thứ tự, kiểm soát lỗi và đảm bảo dữ liệu đến nơi toàn vẹn."
+  ]}
+  competencies={[
+    "Năng lực Tin học (NLa, NLc): Phân biệt được địa chỉ vật lý MAC (gắn liền phần cứng card mạng) và địa chỉ logic IP (gắn liền vị trí mạng); mô phỏng được hành trình đóng gói và mở gói dữ liệu trên Internet.",
+    "Năng lực số: Hiểu lý do tại sao khi tải tệp tin bị gián đoạn thì mạng có thể tự động tải lại các phần thiếu mà không cần tải lại từ đầu nhờ TCP.",
+    "Năng lực chung: Làm việc nhóm, đóng vai mô phỏng cơ chế truyền thông mạng."
+  ]}
+  qualities={[
+    "Rèn luyện tính tuân thủ quy tắc, kỷ luật chuẩn mực – bài học từ tính chính xác tuyệt đối của các giao thức kỹ thuật số.",
+    "Tôn trọng các tiêu chuẩn mở quốc tế trong khoa học máy tính."
+  ]}
+/>
 
-    ### 1. Giao thức mạng
+<EquipmentChecklist
+  items={[
+    {
+      name: "Màn hình trình chiếu lớp học / Smart TV",
+      description: "Hiển thị sơ đồ phân rã gói tin TCP/IP, cấu trúc khung truyền dữ liệu và đồng hồ đếm ngược.",
+      status: "ready"
+    },
+    {
+      name: "Máy tính cá nhân học sinh / Phòng máy",
+      description: "Mở cửa sổ Command Prompt để tra cứu địa chỉ MAC (lệnh getmac) và địa chỉ IP (lệnh ipconfig).",
+      status: "ready"
+    },
+    {
+      name: "Thẻ hoạt cảnh đóng vai",
+      description: "Bộ thẻ mô phỏng các gói tin (Packet 1, 2, 3) có ghi Header TCP và Header IP.",
+      status: "ready"
+    }
+  ]}
+/>
 
-    #### Hoạt động 1: Cần có những quy định gì khi gửi thư điện tử?
+{/* =========================================================================
+    HOẠT ĐỘNG 1: KHỞI ĐỘNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-1"
+  number={1}
+  title="KHỞI ĐỘNG – 'NGÔN NGỮ CHUNG CỦA THẾ GIỚI SỐ'"
+  time="10 phút"
+  objective="Tạo tình huống có vấn đề về sự bất đồng ngôn ngữ và sự cần thiết của một bộ luật quy ước chung trong giao tiếp máy tính."
+>
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Tình huống Hai người lạ trên chuyến tàu"
+  >
+    <div className="space-y-3">
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Hãy tưởng tượng một người Việt Nam chỉ biết tiếng Việt và một người Nga chỉ biết tiếng Nga cùng ngồi trên một chuyến tàu hỏa. Khi một người muốn hỏi giờ hoặc mượn chiếc bật lửa, họ sẽ gặp khó khăn gì?
+      </p>
 
-    Khi gửi thư điện tử, ngoài chính nội dung văn bản của thư, cần có thêm những thông tin gì phục vụ cho việc chuyển thư? Các thông tin này sẽ được xử lí thế nào bởi các phần mềm gửi hay nhận thư?
+      <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm space-y-2">
+        <strong className="text-sky-800 dark:text-sky-300 block text-base font-bold">
+          🤔 Câu hỏi suy ngẫm (03 phút):
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          1. Để họ có thể hiểu nhau, họ cần thỏa thuận với nhau những quy tắc gì (ngôn ngữ chung, ký hiệu cử chỉ tay, quy ước gật đầu/lắc đầu)?
+        </p>
+        <p className="text-slate-700 dark:text-slate-300">
+          2. Trong mạng máy tính, hàng tỷ thiết bị do hàng ngàn hãng sản xuất khác nhau (Apple, Samsung, Dell, Lenovo) chạy các hệ điều hành khác nhau (Windows, macOS, Android, Linux) làm thế nào để gửi ảnh, tin nhắn cho nhau mà không bị lỗi?
+        </p>
+      </div>
 
-    Ngoài nội dung thư dưới dạng văn bản, thư điện tử phải mang thông tin địa chỉ người gửi và người nhận có dạng `<tên tài khoản>@<tên miền của máy chủ thư điện tử>`, ví dụ nguyenquang2003@gmail.com hay hungmanhk66@vnu.edu.vn và thông tin về các tệp đính kèm nếu có, theo một định dạng chặt chẽ.
+      <ClassTimer initialMinutes={3} />
+    </div>
+  </SlideStep>
 
-    Như vậy, cần có một phần mềm soạn thảo thư theo định dạng đã định và đóng gói toàn bộ dữ liệu gồm nội dung thư, địa chỉ người gửi và người nhận, các tệp đính kèm nếu có rồi chuyển qua Internet tới máy chủ thư điện tử tương ứng với người nhận.
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh phát biểu suy nghĩ"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh trả lời: Cần có một ngôn ngữ chung được quốc tế công nhận (như tiếng Anh trong ngoại giao) hoặc luật giao thông quốc tế.</p>
+      <p>- Trong máy tính: Cần có các tiêu chuẩn kỹ thuật được các hãng cùng tuân thủ.</p>
+    </div>
+  </SlideStep>
 
-    Máy chủ thư điện tử sẽ xử lí thư đến, nếu có người nhận đúng như địa chỉ, nó sẽ lưu vào hộp thư của người nhận. Ngược lại, nó sẽ tạo một thư báo lỗi chuyển ngược lại người gửi.
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Giới thiệu khái niệm Giao thức"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Giáo viên khẳng định: &quot;Trong thế giới công nghệ, tập hợp tất cả các quy tắc, định dạng và cách thức trao đổi thông tin đó được gọi là <strong>Giao thức mạng (Protocol)</strong>.&quot;
+    </p>
+  </SlideStep>
 
-    Người nhận dùng một phần mềm truy cập đến hộp thư, tải thư về. Phần mềm nhận thư sẽ tách các thành phần dữ liệu để lấy lại địa chỉ người gửi, người nhận, nội dung thư và danh sách các tệp đính kèm nếu có để có thể tải về.
-
-    Tất cả các quy định trên có mục đích làm rõ định dạng và ý nghĩa của các thành phần dữ liệu, qua đó xác định cách thức xử lí dữ liệu của phần mềm gửi và nhận thư.
-
-    **Tập hợp các quy định cách thức giao tiếp giữa các đối tượng tham gia truyền nhận dữ liệu qua mạng gọi là giao thức mạng (network protocol) hay còn gọi là giao thức truyền thông.** Tất cả các hoạt động truyền thông trên mạng đều cần có giao thức giúp việc gửi, nhận dữ liệu chính xác, tin cậy và hiệu quả.
-
-    Trong ví dụ trên, các quy định liên quan đến gửi thư có tên là giao thức SMTP (Simple Mail Transfer Protocol), còn các quy định về cách người nhận lấy thư có tên là giao thức POP3 (Post Office Protocol phiên bản 3) hoặc IMAP (Internet Message Access Protocol).
-
-    #### Ví dụ: Giao thức Ethernet về truyền tin trong mạng cục bộ
-
-    Việc trao đổi dữ liệu giữa các máy tính trong mạng cục bộ cũng tuân thủ theo một giao thức, gọi là Ethernet với một số quy định chính như sau:
-
-    - **Quy định về địa chỉ:** Mỗi thiết bị tham gia mạng đều có một địa chỉ bằng số khác nhau đi theo phần cứng, gọi là địa chỉ MAC (Media Access Control Address). Truyền dữ liệu trong mạng cục bộ sẽ căn cứ vào địa chỉ MAC.
-
-    - **Quy định về mã kiểm tra:** Dữ liệu chuyển đi có kèm theo một mã kiểm tra. Máy nhận sẽ dùng mã này để phát hiện lỗi truyền. Nếu có nó sẽ yêu cầu gửi lại dữ liệu.
-
-    - **Quy định khung truyền dữ liệu:** Giữa hai máy tính, không thể truyền một lượng tin dài không giới hạn trong một khoảng thời gian không định trước vì có thể làm quá tải máy nhận và cản trở các cuộc truyền khác. Việc truyền được thực hiện theo từng gói dữ liệu có độ dài xác định.
-
-    - **Quy định về cách thức xử lí các cuộc truyền khi xảy ra xung đột tín hiệu.**
-
-    **Tóm lại:**
-    - **Giao thức mạng là tập hợp các quy định về cách thức giao tiếp để truyền dữ liệu giữa các đối tượng tham gia mạng.**
-    - **Các quy định này liên quan tới định dạng, ý nghĩa và cách xử lí dữ liệu để đảm bảo việc gửi và nhận được thực hiện chính xác, tin cậy và hiệu quả.**
-
-    <Quiz data={{
-      question: "Giao thức nào được sử dụng để gửi thư điện tử từ máy người gửi đến máy chủ thư?",
-      options: [
-        "A. POP3",
-        "B. IMAP",
-        "C. SMTP",
-        "D. TCP"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! SMTP (Simple Mail Transfer Protocol) là giao thức dùng để gửi thư từ máy người gửi đến máy chủ thư."
-    }} />
-
-    <Quiz data={{
-      question: "Trong mạng cục bộ, địa chỉ nào được sử dụng để truyền dữ liệu giữa các thiết bị?",
-      options: [
-        "A. Địa chỉ IP",
-        "B. Địa chỉ MAC",
-        "C. Địa chỉ email",
-        "D. Địa chỉ website"
-      ],
-      correctAnswer: 1,
-      explanation: "Đúng! Địa chỉ MAC (Media Access Control Address) là địa chỉ phần cứng được sử dụng trong mạng cục bộ để truyền dữ liệu."
-    }} />
-
-    ### 2. Giao thức TCP/IP
-
-    #### Hoạt động 2: Quy định nào có thể là giao thức?
-
-    Hãy thảo luận và trả lời câu hỏi sau: Những quy định nào sau đây cần có với vai trò là giao thức mạng trên Internet?
-
-    a) Các máy tính cần có địa chỉ và quy định cách tìm đường để dữ liệu được truyền chính xác tới máy nhận trên phạm vi toàn cầu.
-
-    b) Quy định các cá nhân, tổ chức phải đăng kí sử dụng các dịch vụ truyền dữ liệu trên Internet.
-
-    c) Quy định người dùng phải trả phí cho các dịch vụ trao đổi dữ liệu theo khối lượng.
-
-    **Trả lời:**
-    Quy định **a)** là giao thức mạng vì nó quy định cách thức truyền dữ liệu giữa các máy tính. Các quy định b) và c) là quy định về quản lý dịch vụ và kinh doanh, không phải giao thức kỹ thuật.
-
-    **Giao thức TCP/IP** là bộ giao thức nền tảng của Internet, bao gồm nhiều giao thức khác nhau hoạt động cùng nhau. Hai giao thức quan trọng nhất là:
-
-    **IP (Internet Protocol) - Giao thức Internet:**
-    - Chịu trách nhiệm đánh địa chỉ cho các thiết bị trên Internet
-    - Xác định đường đi cho các gói tin để đến được đích
-    - Giống như hệ thống địa chỉ nhà và hệ thống bưu chính
-
-    **TCP (Transmission Control Protocol) - Giao thức kiểm soát truyền dẫn:**
-    - Chia nhỏ dữ liệu thành các gói tin (packets)
-    - Đánh số thứ tự cho các gói tin
-    - Kiểm tra xem gói tin có đến nơi không
-    - Yêu cầu gửi lại các gói tin bị mất
-    - Sắp xếp lại các gói tin theo đúng thứ tự khi nhận
-    - Giống như hệ thống quản lý chuyển phát đảm bảo thư đến nơi nguyên vẹn
-
-    **Cách TCP/IP hoạt động:**
-    Khi bạn gửi một email hoặc truy cập một website:
-    1. **TCP** chia dữ liệu thành các gói nhỏ
-    2. **TCP** đánh số thứ tự cho mỗi gói
-    3. **IP** thêm địa chỉ nguồn và đích vào mỗi gói
-    4. Các gói tin đi trên Internet qua nhiều đường khác nhau
-    5. **TCP** ở máy nhận kiểm tra các gói tin đã đến
-    6. **TCP** yêu cầu gửi lại các gói bị mất
-    7. **TCP** sắp xếp lại các gói theo đúng thứ tự
-    8. **TCP** ghép các gói thành dữ liệu hoàn chỉnh
-
-    <Quiz data={{
-      question: "Giao thức nào chịu trách nhiệm chia nhỏ dữ liệu và đảm bảo dữ liệu đến đích một cách toàn vẹn?",
-      options: [
-        "A. IP",
-        "B. TCP",
-        "C. SMTP",
-        "D. MAC"
-      ],
-      correctAnswer: 1,
-      explanation: "Đúng! TCP (Transmission Control Protocol) chịu trách nhiệm chia nhỏ dữ liệu, đánh số thứ tự và đảm bảo dữ liệu đến đích nguyên vẹn."
-    }} />
-
-    <Alert type="info">
-      **Tóm tắt TCP/IP:**
-      - **IP:** Đánh địa chỉ và tìm đường (như bưu chính)
-      - **TCP:** Đảm bảo dữ liệu nguyên vẹn và đúng thứ tự (như quản lý chuyển phát)
-      - **Cả hai cùng nhau:** Tạo nên Internet đáng tin cậy
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt mục tiêu vào bài"
+  >
+    <Alert type="info" title="Khẳng định cốt lõi">
+      Không có giao thức, Internet chỉ là một mớ dây cáp và máy tính vô tri rải rác khắp nơi. Giao thức chính là &quot;luật giao thông&quot; và &quot;ngôn ngữ phổ quát&quot; kiến tạo nên mạng thông tin toàn cầu.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS hiểu và mô tả sơ lược được vai trò và chức năng của giao thức mạng nói chung và giao thức TCP/IP nói riêng
-    - HS phân biệt được các loại giao thức khác nhau
-    - HS hiểu được cách TCP/IP hoạt động trên Internet
+  </SlideStep>
+</PedagogyActivity>
 
-    **Hoạt động:**
-    - GV sử dụng phương pháp thuyết trình kết hợp với ví dụ thực tế
-    - HS thảo luận về các quy định trong giao tiếp mạng
-    - **Sản phẩm:** Bảng tổng kết các giao thức và cách hoạt động của TCP/IP
-  </TeacherNotes>
-</StepKnowledge>
-        <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI
+========================================================================= */}
+<PedagogyActivity
+  id="activity-2"
+  number={2}
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="50 phút"
+  objective="Hiểu cặn kẽ định nghĩa và ý nghĩa giao thức mạng; mổ xẻ các ví dụ SMTP/POP3 và Ethernet; phân tích sâu cơ chế hoạt động của bộ giao thức TCP/IP."
+>
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: KHÁI NIỆM & Ý NGHĨA GIAO THỨC MẠNG
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.1"
+    title="KHÁI NIỆM GIAO THỨC MẠNG VÀ CÁC VÍ DỤ ĐIỂN HÌNH"
+    time="20 phút"
+    target="Nắm vững định nghĩa giao thức mạng; giải thích quy trình gửi thư SMTP/POP3 và các quy định của giao thức Ethernet."
+  >
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Quy trình gửi nhận Thư điện tử (Email)"
+    >
+      <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <p>
+          Khi gửi một email, ngoài nội dung thư, phần mềm phải đính kèm địa chỉ người gửi, người nhận dạng <code>user@domain.com</code> và thông tin tệp đính kèm.
+        </p>
 
-    1. Giao thức là gì?
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/30 space-y-1.5">
+            <strong className="text-sky-800 dark:text-sky-300 block text-base font-bold">
+              ✉️ GIAO THỨC GỬI THƯ: SMTP
+            </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              - <strong>SMTP (Simple Mail Transfer Protocol):</strong> Quy định cách đóng gói dữ liệu và chuyển thư từ máy tính người gửi lên máy chủ thư điện tử (Mail Server), và chuyển giữa các Mail Server với nhau.
+            </p>
+          </div>
 
-    **Trả lời:**
-    **Giao thức** là tập hợp các quy định về cách thức giao tiếp để truyền dữ liệu giữa các đối tượng tham gia mạng. Các quy định này liên quan tới định dạng, ý nghĩa và cách xử lí dữ liệu để đảm bảo việc gửi và nhận được thực hiện chính xác, tin cậy và hiệu quả.
+          <div className="p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/30 space-y-1.5">
+            <strong className="text-emerald-800 dark:text-emerald-300 block text-base font-bold">
+              📥 GIAO THỨC NHẬN THƯ: POP3 / IMAP
+            </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              - <strong>POP3 (Post Office Protocol v3) / IMAP:</strong> Quy định cách máy tính người nhận kết nối đến hòm thư trên Mail Server, xác thực tài khoản và tải các bức thư về máy để người dùng đọc.
+            </p>
+          </div>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Đặc điểm của giao thức:**
-    - Là một bộ quy tắc chuẩn hóa
-    - Được tất cả các thiết bị tuân thủ
-    - Đảm bảo khả năng tương tác giữa các hệ thống khác nhau
-    - Quy định rõ ràng về định dạng dữ liệu
-    - Xác định quy trình gửi và nhận dữ liệu
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Khám phá Giao thức Ethernet trong mạng LAN"
+    >
+      <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-xs space-y-2 border border-slate-700">
+        <span className="text-cyan-400 font-bold block text-sm">🌐 4 QUY ĐỊNH CỐT LÕI CỦA GIAO THỨC ETHERNET (IEEE 802.3):</span>
+        <div className="space-y-1.5 text-slate-300">
+          <p>1. <strong>Quy định về địa chỉ:</strong> Mỗi thiết bị cắm vào mạng phải có 01 địa chỉ vật lý duy nhất toàn cầu gọi là <strong>địa chỉ MAC (Media Access Control)</strong> gồm 48 bit (ví dụ: <code>00:1A:2B:3C:4D:5E</code>) được nhà sản xuất nạp thẳng vào chip mạng.</p>
+          <p>2. <strong>Quy định về mã kiểm tra (CRC):</strong> Mỗi gói dữ liệu gửi đi đều kèm theo một mã băm kiểm tra. Máy nhận tính toán lại mã này; nếu sai khác → phát hiện có lỗi đường truyền và yêu cầu gửi lại.</p>
+          <p>3. <strong>Quy định khung truyền (Frame Size):</strong> Dữ liệu bắt buộc phải chia nhỏ thành các khung có kích thước xác định (thường từ 64 byte đến 1518 byte) để không chiếm dụng đường truyền liên tục.</p>
+          <p>4. <strong>Quy định xử lý xung đột:</strong> Sử dụng cơ chế CSMA/CD (Lắng nghe đường truyền trước khi nói; nếu phát hiện va chạm thì dừng lại, đợi một khoảng thời gian ngẫu nhiên rồi truyền lại).</p>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Ví dụ thực tế:**
-    - Giao thức SMTP để gửi email
-    - Giao thức POP3/IMAP để nhận email
-    - Giao thức Ethernet cho mạng cục bộ
-    - Giao thức TCP/IP cho Internet
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Tra cứu địa chỉ MAC trên máy tính"
+    >
+      <div className="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1">
+        <strong>Thao tác thực hành nhanh tại chỗ:</strong>
+        <p>
+          Học sinh nhấn phím <code>Windows + R</code>, gõ <code>cmd</code> rồi gõ lệnh: <code>getmac</code>.
+          <br/>Quan sát dãy số thập lục phân hiện ra. Đó chính là &quot;căn cước công dân phần cứng&quot; của card mạng máy tính em đang ngồi!
+        </p>
+      </div>
+    </SlideStep>
 
-    2. Nêu ý nghĩa của giao thức mạng.
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Định nghĩa chuẩn xác"
+    >
+      <Alert type="success" title="Định nghĩa Giao thức mạng (Network Protocol)">
+        Giao thức mạng là <strong>tập hợp các quy định về cách thức giao tiếp để truyền dữ liệu giữa các đối tượng tham gia mạng</strong>. Các quy định này bao gồm: Cú pháp (định dạng dữ liệu), Ngữ nghĩa (ý nghĩa các trường thông tin) và Thời gian đồng bộ (tốc độ và thứ tự truyền).
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    **Trả lời:**
-    **Ý nghĩa của giao thức mạng:**
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: BỘ GIAO THỨC TCP/IP
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.2"
+    title="BỘ GIAO THỨC TCP/IP – LINH HỒN CỦA INTERNET"
+    time="30 phút"
+    target="Phân tích rõ vai trò của IP (đánh địa chỉ và định tuyến) và TCP (truyền tin cậy, ghép nối tuần tự); hiểu rõ 8 bước truyền dữ liệu trên Internet."
+  >
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Bộ đôi hoàn hảo TCP và IP"
+    >
+      <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <p>
+          Internet hoạt động dựa trên bộ giao thức mang tên <strong>TCP/IP</strong>. Hai giao thức trụ cột này phân chia trách nhiệm rất rạch ròi giống như hệ thống chuyển phát nhanh quốc tế:
+        </p>
 
-    **a) Đảm bảo giao tiếp hiệu quả:**
-    - Cho phép các thiết bị khác nhau "hiểu" nhau
-    - Tạo ra một ngôn ngữ chung trong thế giới mạng
-    - Đảm bảo dữ liệu được truyền nhận chính xác
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/30 space-y-2">
+            <div className="flex items-center gap-2 font-bold text-indigo-700 dark:text-indigo-300 text-sm">
+              <span>📍</span> <span>1. GIAO THỨC IP (Internet Protocol)</span>
+            </div>
+            <p className="text-slate-700 dark:text-slate-300">
+              - <strong>Nhiệm vụ:</strong> Đánh địa chỉ mạng logic (IPv4 / IPv6) cho mọi thiết bị tham gia mạng và tìm đường (định tuyến) cho các gói tin đi từ nguồn tới đích.
+            </p>
+            <p className="text-slate-600 dark:text-slate-400">
+              - <strong>Ẩn dụ đời sống:</strong> Giống như <em>nhân viên bưu điện đọc địa chỉ ghi trên phong bì</em> để phân loại gửi về đúng phường, xã.
+            </p>
+            <span className="text-[11px] text-amber-700 dark:text-amber-300 font-semibold block">
+              ⚠️ Đặc điểm: IP làm việc theo cơ chế &quot;Cố gắng hết sức&quot; (Best-effort), nó không đảm bảo gói tin có bị thất lạc trên đường đi hay không.
+            </span>
+          </div>
 
-    **b) Tăng tính tin cậy:**
-    - Kiểm tra và phát hiện lỗi truyền
-    - Yêu cầu truyền lại khi có lỗi
-    - Đảm bảo dữ liệu đến nơi nguyên vẹn
+          <div className="p-4 rounded-xl border border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-950/30 space-y-2">
+            <div className="flex items-center gap-2 font-bold text-teal-700 dark:text-teal-300 text-sm">
+              <span>📦</span> <span>2. GIAO THỨC TCP (Transmission Control Protocol)</span>
+            </div>
+            <p className="text-slate-700 dark:text-slate-300">
+              - <strong>Nhiệm vụ:</strong> Chia nhỏ tệp tin thành hàng ngàn gói nhỏ (Packets), đánh số thứ tự (Sequence Number: 1, 2, 3...), theo dõi xác nhận báo nhận (ACK).
+            </p>
+            <p className="text-slate-600 dark:text-slate-400">
+              - <strong>Độ tin cậy:</strong> Nếu gói tin số 2 bị mất trên đường cáp quang biển, TCP máy nhận lập tức yêu cầu máy gửi phát lại riêng gói số 2, sau đó sắp xếp ghép nối lại đúng thứ tự nguyên bản!
+            </p>
+            <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-semibold block">
+              ✓ Đảm bảo: 100% dữ liệu đến đích vẹn toàn, không mất mát dù chỉ 1 bit!
+            </span>
+          </div>
+        </div>
+      </div>
+    </SlideStep>
 
-    **c) Tối ưu hóa hiệu suất:**
-    - Chia nhỏ dữ liệu thành các gói tin
-    - Quản lý luồng dữ liệu hiệu quả
-    - Tránh quá tải mạng
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Khám phá 8 bước chu du của dữ liệu"
+    >
+      <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 text-xs sm:text-sm">
+        <strong className="text-slate-800 dark:text-slate-200 block text-sm">
+          🚀 HÀNH TRÌNH 8 BƯỚC KHI BẠN GỬI MỘT BỨC ẢNH QUA INTERNET:
+        </strong>
+        <ol className="list-decimal pl-5 space-y-1 text-slate-600 dark:text-slate-400">
+          <li><strong>TCP phía gửi:</strong> Cắt bức ảnh 5MB thành hàng trăm gói tin nhỏ (mỗi gói khoảng 1.5KB).</li>
+          <li><strong>TCP phía gửi:</strong> Đánh số thứ tự tăng dần cho từng gói: Gói 1, Gói 2, Gói 3...</li>
+          <li><strong>IP phía gửi:</strong> Dán nhãn địa chỉ IP nguồn (máy bạn) và IP đích (máy bạn bè) vào đầu mỗi gói.</li>
+          <li><strong>Mạng Internet:</strong> Các gói tin di chuyển độc lập qua nhiều router khác nhau (có gói đi đường vệ tinh, có gói đi cáp quang biển).</li>
+          <li><strong>IP phía nhận:</strong> Tiếp nhận các gói tin đến từ cổng mạng.</li>
+          <li><strong>TCP phía nhận:</strong> Kiểm tra các gói tin đã đến đủ chưa.</li>
+          <li><strong>TCP phía nhận:</strong> Nếu thiếu gói nào, gửi tín hiệu đòi máy gửi truyền lại đúng gói đó.</li>
+          <li><strong>TCP phía nhận:</strong> Sắp xếp các gói theo đúng thứ tự 1, 2, 3... và ráp lại thành bức ảnh 5MB hoàn chỉnh hiển thị lên màn hình!</li>
+        </ol>
+      </div>
+    </SlideStep>
 
-    **d) Hỗ trợ quản lý:**
-    - Cung cấp cơ chế kiểm soát và giám sát
-    - Cho phép chẩn đoán sự cố mạng
-    - Hỗ trợ bảo mật và an toàn
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Tại sao không gửi 1 khối nguyên vẹn?"
+    >
+      <div className="p-3 bg-indigo-50 dark:bg-indigo-950/40 rounded-xl border border-indigo-200 dark:border-indigo-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <strong>Câu hỏi phản biện:</strong> <em>Tại sao TCP không gửi nguyên bức ảnh 5MB hay bộ phim 2GB trong 1 gói duy nhất mà bắt buộc phải chia nhỏ thành hàng ngàn gói tin?</em>
+        <br/><span className="text-indigo-700 dark:text-indigo-300 font-semibold mt-1 block">
+          → Giải thích: Nếu gửi 1 khối lớn, khi đường truyền bị chập chờn rớt mạng ở 99%, bạn sẽ phải tải lại toàn bộ từ 0%! Hơn nữa, một tệp tin khổng lồ chiếm dụng đường truyền liên tục sẽ làm nghẽn mạng của tất cả những người khác. Chia nhỏ giúp tận dụng tối đa băng thông và chỉ cần gửi lại đúng gói bị lỗi!
+        </span>
+      </div>
+    </SlideStep>
 
-    **e) Khả năng tương tác:**
-    - Cho phép sản phẩm từ các nhà cung cấp khác nhau hoạt động cùng nhau
-    - Tạo ra tiêu chuẩn chung cho ngành công nghệ
-    - Thúc đẩy sự phát triển của Internet
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức TCP/IP"
+    >
+      <Alert type="success" title="Tổng kết công thức vàng">
+        <strong>TCP/IP = Giao thức IP (Tìm đường & Đánh địa chỉ) + Giao thức TCP (Đảm bảo tin cậy & Ghép nối dữ liệu)</strong>. Đây là nền móng vĩ đại cho sự vận hành thông suốt của toàn bộ mạng Internet thế giới suốt hơn 40 năm qua.
+      </Alert>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
 
-    **f) Bảo mật:**
-    - Cung cấp các cơ chế mã hóa và xác thực
-    - Bảo vệ dữ liệu trong quá trình truyền
-    - Ngăn chặn truy cập trái phép
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP
+========================================================================= */}
+<PedagogyActivity
+  id="activity-3"
+  number={3}
+  title="LUYỆN TẬP – ĐẤU TRƯỜNG GIAO THỨC MẠNG"
+  time="15 phút"
+  objective="Đánh giá năng lực hiểu biết về vai trò của giao thức mạng, SMTP/POP3, Ethernet, địa chỉ MAC và TCP/IP qua bài trắc nghiệm chuẩn BGDĐT."
+>
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đấu trường Giao thức mạng"
+  >
+    <p className="text-slate-700 dark:text-slate-300 text-sm mb-2">
+      Thực hiện bài kiểm tra trắc nghiệm và ma trận Đúng/Sai trong 05 phút:
+    </p>
 
-    **Ví dụ minh họa ý nghĩa:**
-    - **Không có giao thức:** Máy tính Windows không thể gửi email cho máy tính Linux
-    - **Có giao thức:** Bất kỳ thiết bị nào tuân thủ SMTP đều có thể gửi email cho nhau
-    - **Không có giao thức:** Không thể truy cập website từ các trình duyệt khác nhau
-    - **Có giao thức HTTP:** Tất cả trình duyệt đều có thể truy cập cùng một website
+    <ClassTimer initialMinutes={5} />
 
-    <Alert type="tip">
-      **Lưu ý quan trọng:**
-      - Giao thức là nền tảng của mọi hoạt động mạng
-      - Không có giao thức, Internet không thể tồn tại
-      - Mỗi loại dịch vụ mạng có giao thức riêng biệt
-      - Giao thức TCP/IP là bộ giao thức nền tảng của Internet
+    <SpeedQuizExercise
+      multipleChoice={[
+        {
+          id: 1,
+          question: "Giao thức nào sau đây được sử dụng để gửi thư điện tử (email) từ máy người dùng lên máy chủ thư điện tử?",
+          options: [
+            "A. POP3",
+            "B. IMAP",
+            "C. SMTP",
+            "D. HTTP"
+          ],
+          correctAnswer: 2,
+          explanation: "SMTP (Simple Mail Transfer Protocol) là giao thức chuẩn chuyên dùng để gửi thư điện tử đi."
+        },
+        {
+          id: 2,
+          question: "Trong mạng cục bộ Ethernet, địa chỉ nào được sử dụng để xác định duy nhất phần cứng của từng máy tính?",
+          options: [
+            "A. Địa chỉ IP",
+            "B. Địa chỉ MAC (Media Access Control)",
+            "C. Địa chỉ Email",
+            "D. Tên miền trang web (Domain)"
+          ],
+          correctAnswer: 1,
+          explanation: "Địa chỉ MAC là địa chỉ vật lý gắn liền với chip card mạng, dùng trong giao thức Ethernet để truyền dữ liệu nội bộ mạng LAN."
+        },
+        {
+          id: 3,
+          question: "Trong bộ giao thức TCP/IP, nhiệm vụ nào sau đây thuộc về giao thức TCP?",
+          options: [
+            "A. Tìm con đường ngắn nhất giữa các router trên Internet",
+            "B. Đánh địa chỉ IP logic cho các máy tính",
+            "C. Chia nhỏ dữ liệu thành các gói tin, đánh số thứ tự và kiểm soát truyền lại nếu bị mất gói",
+            "D. Chuyển đổi tín hiệu số thành tín hiệu quang cáp biển"
+          ],
+          correctAnswer: 2,
+          explanation: "TCP chịu trách nhiệm phân mảnh dữ liệu, đánh số thứ tự, kiểm tra tính toàn vẹn và yêu cầu gửi lại gói tin bị mất."
+        }
+      ]}
+      trueFalseMatrix={[
+        {
+          id: 1,
+          statement: "Giao thức IP đảm bảo chắc chắn rằng 100% tất cả các gói tin gửi đi trên Internet sẽ không bao giờ bị thất lạc.",
+          isTrue: false,
+          explanation: "Sai. IP chỉ hoạt động theo cơ chế Best-effort (không cam kết tin cậy); nhiệm vụ kiểm tra mất mát và yêu cầu gửi lại là của TCP."
+        },
+        {
+          id: 2,
+          statement: "Hai máy tính khác nhau về hệ điều hành (ví dụ một máy chạy Windows và một máy chạy macOS) vẫn gửi nhận file cho nhau thông suốt nhờ tuân thủ chung bộ giao thức TCP/IP.",
+          isTrue: true,
+          explanation: "Đúng. Giao thức mạng tạo ra tiếng nói chung, độc lập với phần cứng và hệ điều hành cụ thể."
+        },
+        {
+          id: 3,
+          statement: "Giao thức Ethernet trong mạng LAN cho phép truyền một gói dữ liệu có dung lượng dài vô hạn mà không cần ngắt quãng.",
+          isTrue: false,
+          explanation: "Sai. Ethernet quy định khung truyền dữ liệu (Frame) có độ dài giới hạn xác định để tránh nghẽn mạch và quá tải thiết bị nhận."
+        }
+      ]}
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Chấm điểm tương tác"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Học sinh chọn đáp án trực tiếp trên giao diện màn hình và theo dõi phản hồi giải thích.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Thảo luận kết quả"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Giáo viên nhấn mạnh sự khác nhau giữa địa chỉ MAC (vật lý, không đổi) và địa chỉ IP (logic, thay đổi theo mạng cắm vào).
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt phần luyện tập"
+  >
+    <Alert type="success" title="Tổng kết đánh giá">
+      Lớp học đạt yêu cầu 100% mục tiêu kiến thức về Giao thức mạng và nguyên lý cốt lõi của TCP/IP.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS củng cố kiến thức về khái niệm giao thức và hiểu rõ tầm quan trọng của giao thức mạng.
-    **Hoạt động:** GV đặt câu hỏi, HS trả lời và thảo luận mở rộng.
-    **Sản phẩm:** Bài trả lời chi tiết với các ví dụ thực tế.
-  </TeacherNotes>
-</StepPractice>
-    <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+  </SlideStep>
+</PedagogyActivity>
 
-    Hãy tìm hiểu và mô phỏng cách hoạt động của giao thức TCP/IP trong việc truyền dữ liệu qua mạng.
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-4"
+  number={4}
+  title="VẬN DỤNG – 'TRÒ CHƠI ĐÓNG VAI: MÔ PHỎNG DÒNG CHẢY TCP/IP'"
+  time="15 phút"
+  objective="Mô phỏng sinh động cơ chế phân mảnh, đánh số thứ tự và kiểm soát truyền tin của TCP/IP thông qua hoạt cảnh lớp học."
+>
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Kịch bản Hoạt cảnh mạng"
+  >
+    <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+      <p>
+        <strong>Kịch bản đóng vai (6 học sinh tham gia):</strong>
+      </p>
+      <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm">
+        <li><strong>Học sinh 1 (Máy gửi - Tầng ứng dụng):</strong> Cầm một tờ giấy ghi thông điệp bí mật: <em>&quot;CHÀO MỪNG ĐẾN VỚI LỚP TIN HỌC 12 KẾT NỐI TRI THỨC&quot;</em>.</li>
+        <li><strong>Học sinh 2 (TCP Gửi):</strong> Cắt thông điệp làm 3 mảnh, đánh số [Gói 1: CHÀO MỪNG], [Gói 2: ĐẾN VỚI LỚP], [Gói 3: TIN HỌC 12 KẾT NỐI TRI THỨC].</li>
+        <li><strong>Học sinh 3 (IP Gửi & Router):</strong> Dán nhãn IP Nguồn (Lớp 12A) và IP Đích (Lớp 12B) lên từng mảnh giấy rồi chuyển cho người giao hàng.</li>
+        <li><strong>Học sinh 4 (Kênh truyền có sự cố):</strong> Cố tình giấu đi [Gói 2] để giả lập hiện tượng mất gói tin trên đường cáp quang biển.</li>
+        <li><strong>Học sinh 5 (TCP Nhận):</strong> Nhận được [Gói 1] và [Gói 3], phát hiện thiếu [Gói 2], lập tức hô to: <em>&quot;Báo lỗi! Yêu cầu gửi lại gói số 2!&quot;</em>.</li>
+        <li><strong>Học sinh 6 (Máy nhận):</strong> Sau khi nhận đủ gói số 2, ghép 3 mảnh giấy theo thứ tự 1-2-3 và đọc to thông điệp hoàn chỉnh trước lớp!</li>
+      </ul>
+    </div>
+  </SlideStep>
 
-    **Thực hành 1: Mô phỏng quá trình truyền dữ liệu theo TCP/IP**
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thang đo đánh giá Rubric – Chuẩn Công văn 5512"
+  >
+    <RubricCard
+      title="Thang đo đánh giá Hoạt động Mô phỏng Giao thức TCP/IP"
+      criteria={[
+        {
+          name: "Hiểu đúng vai trò của TCP và IP",
+          weight: "40%",
+          levels: {
+            good: "Phân biệt chính xác nhiệm vụ cắt/đánh số gói tin (TCP) và nhiệm vụ dán nhãn định tuyến (IP); cơ chế đòi truyền lại khi mất gói mượt mà.",
+            acceptable: "Hiểu được việc chia nhỏ nhưng còn lúng túng trong bước báo nhận gói tin bị mất.",
+            poor: "Nhầm lẫn vai trò giữa TCP và IP."
+          }
+        },
+        {
+          name: "Tương tác và xử lý tình huống mất gói",
+          weight: "35%",
+          levels: {
+            good: "Phản xạ nhanh nhạy khi phát hiện gói tin thiếu, thực hiện đúng cơ chế ACK/NACK của giao thức mạng.",
+            acceptable: "Cần sự nhắc nhở của giáo viên mới phát hiện ra gói tin bị thất lạc.",
+            poor: "Không phát hiện ra gói tin bị mất, đọc thông điệp bị què cụt."
+          }
+        },
+        {
+          name: "Hợp tác nhóm & Tinh thần học tập",
+          weight: "25%",
+          levels: {
+            good: "Cả nhóm phối hợp ăn ý, tạo không khí học tập hào hứng, trực quan hóa bài học xuất sắc.",
+            acceptable: "Các thành viên tham gia đủ vai nhưng còn e dè.",
+            poor: "Thiếu hợp tác, không hoàn thành kịch bản."
+          }
+        }
+      ]}
+      sampleProject={{
+        title: "Bản tường trình hoạt cảnh: Cơ chế bắt tay và truyền gói tin TCP",
+        description: "Bản đúc kết của nhóm học sinh sau khi trải nghiệm hoạt cảnh đóng vai mạng.",
+        code: `[NHẬT KÝ THỰC NGHIỆM TRUYỀN GÓI TIN]:
+1. Thông điệp gốc: 'CHÀO MỪNG ĐẾN VỚI LỚP TIN HỌC 12 KẾT NỐI TRI THỨC'
+2. Phân mảnh TCP:
+   - Header TCP [Seq: 1, Len: 10]: 'CHÀO MỪNG '
+   - Header TCP [Seq: 2, Len: 12]: 'ĐẾN VỚI LỚP '
+   - Header TCP [Seq: 3, Len: 29]: 'TIN HỌC 12 KẾT NỐI TRI THỨC'
+3. Gán nhãn IP:
+   - Thêm Header IP: [Src: 192.168.1.10, Dst: 192.168.1.50]
+4. Sự cố giả lập:
+   - Gói Seq 2 bị rớt mạng do nhiễu tín hiệu.
+5. Xử lý khôi phục của TCP Nhận:
+   - Máy nhận nhận được Gói 1 và Gói 3.
+   - Gửi gói tin TCP Retransmission Request cho Seq 2.
+   - Máy gửi gửi lại gói Seq 2 thành công.
+6. Kết quả: Thông điệp được ghép hoàn chỉnh 100% không mất mát!`
+      }}
+    />
+  </SlideStep>
 
-    **Bước 1: Chuẩn bị**
-    - Một văn bản dài (ví dụ: một đoạn văn 200 chữ)
-    - Giấy và bút để ghi chú
-    - Một người đóng vai "Máy gửi", một người đóng vai "Máy nhận"
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Lắng nghe học sinh chia sẻ"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Cả lớp vỗ tay tuyên dương nhóm đóng vai.</p>
+      <p>- Học sinh chia sẻ: <em>&quot;Qua trò chơi này, em mới thực sự hiểu tại sao dù tải video trên mạng chập chờn nhưng khi xem lại không bao giờ bị mất tiếng hay mất hình giữa chừng!&quot;</em></p>
+    </div>
+  </SlideStep>
 
-    **Bước 2: Mô phỏng hoạt động của TCP**
-    - **Máy gửi** chia văn bản thành các đoạn nhỏ (mỗi đoạn 20 chữ)
-    - **Máy gửi** đánh số thứ tự cho mỗi đoạn (1, 2, 3, ..., 10)
-    - **Máy gửi** "đóng gói" mỗi đoạn vào một "thư" (giấy)
-
-    **Bước 3: Mô phỏng hoạt động của IP**
-    - **Máy gửi** ghi địa chỉ "Máy nhận" và "Máy gửi" trên mỗi "thư"
-    - **Máy gửi** gửi các "thư" theo thứ tự ngẫu nhiên (mô phỏng các đường đi khác nhau)
-
-    **Bước 4: Mô phỏng hoạt động của TCP ở máy nhận**
-    - **Máy nhận** kiểm tra các "thư" đã nhận
-    - **Máy nhận** thông báo cho "Máy gửi" những "thư" bị thiếu
-    - **Máy gửi** gửi lại các "thư" bị thiếu
-    - **Máy nhận** sắp xếp các "thư" theo đúng thứ tự
-    - **Máy nhận** ghép các đoạn thành văn bản hoàn chỉnh
-
-    **Thực hành 2: Sử dụng công cụ mạng để quan sát giao thức**
-
-    **Bước 1: Sử dụng lệnh ping**
-    - Mở Command Prompt (cmd)
-    - Gõ lệnh: `ping google.com`
-    - Quan sát kết quả: thời gian phản hồi, số gói tin gửi/nhận
-    - Phân tích: IP đã đóng vai trò gì trong quá trình này?
-
-    **Bước 2: Sử dụng lệnh tracert**
-    - Gõ lệnh: `tracert google.com`
-    - Quan sát các router mà gói tin đi qua
-    - Phân tích: IP đã tìm đường như thế nào?
-
-    **Bước 3: Kiểm tra địa chỉ IP và DNS**
-    - Gõ lệnh: `ipconfig` (Windows) hoặc `ifconfig` (Linux/Mac)
-    - Tìm địa chỉ IP của máy tính
-    - Gõ lệnh: `nslookup google.com`
-    - Quan sát cách DNS dịch tên miền sang địa chỉ IP
-
-    **Thực hành 3: Phân tích các giao thức phổ biến**
-
-    **Bước 1: Giao thức HTTP/HTTPS**
-    - Mở trình duyệt web
-    - Truy cập một website (ví dụ: https://www.google.com)
-    - Nhấn F12 để mở Developer Tools
-    - Chọn tab Network
-    - Tải lại trang và quan sát các giao thức được sử dụng
-
-    **Bước 2: Giao thức FTP**
-    - Sử dụng File Explorer (Windows)
-    - Kết nối đến một FTP server (nếu có)
-    - Quan sát cách truyền tệp qua FTP
-
-    **Bước 3: Giao thức SMTP/POP3**
-    - Cấu hình một chương trình email (Outlook, Thunderbird)
-    - Quan sát cách gửi và nhận email
-    - Phân tích vai trò của SMTP và POP3/IMAP
-
-    **Bài tập mở rộng:**
-    1. Tìm hiểu về các giao thức bảo mật: SSL/TLS, HTTPS
-    2. Nghiên cứu về giao thức DNS và cách hoạt động của hệ thống tên miền
-    3. Khám phá về các giao thức mới: IPv6, HTTP/3
-    4. Tìm hiểu về các giao thức trong mạng không dây: Wi-Fi (802.11), Bluetooth
-
-    **Thảo luận:**
-    - Tại sao Internet cần nhiều giao thức khác nhau?
-    - Điều gì sẽ xảy ra nếu không có giao thức TCP/IP?
-    - Tầm quan trọng của việc chuẩn hóa giao thức trong việc phát triển Internet?
-
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành thực hành, học sinh sẽ hiểu rõ cách hoạt động của TCP/IP và các giao thức mạng khác thông qua mô phỏng và công cụ thực tế.
-    </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức đã học để thực hành và quan sát cách hoạt động của các giao thức mạng.
-    **Hoạt động:** HS thực hành dưới sự hướng dẫn của GV.
-    **Sản phẩm:** Báo cáo thực hành mô phỏng TCP/IP và phân tích các giao thức mạng.
-  </TeacherNotes>
-</StepApplication>
-
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **Giao thức mạng:** Tập hợp quy định về cách thức giao tiếp giữa các thiết bị
-- ✅ **TCP/IP:** Bộ giao thức nền tảng của Internet
-- ✅ **IP:** Đánh địa chỉ và tìm đường cho gói tin
-- ✅ **TCP:** Đảm bảo dữ liệu nguyên vẹn và đúng thứ tự
-- ✅ **Các giao thức khác:** SMTP (email), HTTP (web), FTP (tệp)
-- ✅ **Internet hoạt động:** Nhờ các giao thức chuẩn hóa
-</GlassCard>
-</div>
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt bài giảng"
+  >
+    <div className="p-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-sky-600 to-teal-600 text-white space-y-2 shadow-lg">
+      <h5 className="font-bold text-base">📡 BÀI HỌC VỀ SỰ CHUẨN MỰC VÀ KỶ LUẬT</h5>
+      <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed">
+        Giao thức mạng cho chúng ta thấy vẻ đẹp của sự chuẩn hóa: khi tất cả các bên cùng tuân theo một bộ quy tắc nghiêm ngặt, cả thế giới có thể kết nối và chia sẻ tri thức không biên giới!
+      </p>
+    </div>
+  </SlideStep>
+</PedagogyActivity>

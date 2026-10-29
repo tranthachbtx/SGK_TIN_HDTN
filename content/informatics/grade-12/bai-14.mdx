@@ -1,313 +1,583 @@
 ---
 title: "Bài 14: Định dạng văn bản bằng CSS"
-description: "Làm chủ các thuộc tính CSS định dạng phông chữ (font-family, font-size, font-style, font-weight), định dạng dòng văn bản (line-height, text-align, text-decoration, text-indent), cơ chế kế thừa và thứ tự ưu tiên của CSS."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 14
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Khi đọc sách báo in truyền thống, mắt chúng ta dễ dàng bị thu hút bởi các kiểu chữ nghệ thuật, những tiêu đề in hoa đậm nét, hay những đoạn trích dẫn được in nghiêng trang trọng. Trên các trang web hiện đại cũng vậy:
-    - Một trang tin công nghệ thường sử dụng kiểu chữ thanh mảnh, hiện đại, không chân để tạo cảm giác tươi mới, gọn gàng.
-    - Một trang web văn học hay lịch sử lại ưa chuộng phông chữ có chân cổ điển, mang vẻ đẹp uy nghiêm và lắng đọng. 📜✒️
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 14: ĐỊNH DẠNG VĂN BẢN BẰNG CSS"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-    **💡 Thảo luận mở đầu:**  
-    *Làm thế nào để các nhà thiết kế web có thể điều khiển kích thước từng cỡ chữ, màu sắc, khoảng cách dòng, độ thụt đầu dòng và căn chỉnh đều hai bên mép trang cho hàng nghìn bài viết một cách tự động và chuyên nghiệp?*
-
-    **Trả lời gợi ý:**
-    - Chúng ta sử dụng hệ thống các thuộc tính định dạng văn bản và phông chữ phong phú của **CSS** kết hợp với **tính kế thừa (inheritance)** và **thứ tự ưu tiên** để tạo nên giao diện đọc dễ chịu, chuẩn mực Typography trên mọi màn hình.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu bài dạy:**
-    - Sử dụng thành thạo các thuộc tính định dạng phông chữ: `font-family`, `font-size`, `font-style`, `font-weight`.
-    - Phân biệt 5 họ phông chữ cốt lõi: `serif`, `sans-serif`, `monospace`, `cursive`, `fantasy`.
-    - Tinh chỉnh bố cục dòng chữ: `color`, `line-height`, `text-align`, `text-decoration`, `text-indent`.
-    - Hiểu sâu sắc cơ chế kế thừa (Inheritance) của cây DOM HTML, quy tắc ưu tiên theo thứ tự xuất hiện (Cascading) cùng từ khóa đặc biệt `!important` và bộ chọn toàn cục `*`.
-
-    **Định hướng sư phạm:**
-    - Nhắc nhở học sinh luôn khai báo danh sách phông chữ dự phòng kèm họ phông chung ở cuối (Fallback Font).
-    - Hướng dẫn học sinh đo lường độ cao dòng `line-height` so với đường cơ sở `baseline`.
-  </TeacherNotes>
-</StepEngagement>
-
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    ### 1. Các thuộc tính CSS định dạng văn bản
-
-    #### a) Định dạng phông chữ (Typography)
-    - **`font-family` (Họ phông chữ):** Chỉ định kiểu phông chữ hiển thị. Do mỗi máy tính người dùng cài đặt các bộ phông khác nhau, CSS cho phép liệt kê một danh sách các phông ưu tiên từ trái sang phải, kết thúc bằng một họ phông chung:
-      ```css
-      h1 {
-        font-family: Arial, "Helvetica Neue", Tahoma, sans-serif;
-      }
-      ```
-      > [!NOTE]
-      > Nếu tên phông chữ có chứa **khoảng trắng**, bắt buộc phải đặt trong dấu ngoặc kép (ví dụ: `"Times New Roman"`, `"Courier New"`).
-
-      **5 nhóm phông chữ tiêu chuẩn trong thiết kế Web:**
-      1. **`sans-serif` (Không chân):** Nét chữ thẳng, dứt khoát, hiện đại (Arial, Roboto, Open Sans). Dễ đọc nhất trên màn hình máy tính và điện thoại.
-      2. **`serif` (Có chân):** Chân chữ có các gạch nhỏ đỡ bên dưới (Times New Roman, Georgia). Thường dùng cho sách báo in, tài liệu trang trọng.
-      3. **`monospace` (Đơn cách):** Tất cả các ký tự có bề ngang bằng hệt nhau (Consolas, Courier New). Chuyên dùng hiển thị mã nguồn lập trình.
-      4. **`cursive` (Chữ viết tay):** Nét uốn lượn, mềm mại (Comic Sans MS, Dancing Script). Phù hợp thiệp mời, đề từ.
-      5. **`fantasy` (Nghệ thuật/Trừu tượng):** Nét chữ cách điệu trang trí (Impact, Algerian). Dùng cho bìa poster.
-
-    - **`font-size` (Cỡ chữ):**
-      - *Đơn vị tuyệt đối:* `px` (pixel màn hình), `pt` (point - 1/72 inch). Ví dụ: `font-size: 16px;`.
-      - *Đơn vị tương đối:* `em` (gấp n lần cỡ chữ của phần tử cha), `rem` (gấp n lần cỡ chữ phần tử gốc `html`), `%`. Ví dụ: `font-size: 1.2em;`.
-
-    - **`font-style` (Kiểu dáng chữ):** `normal` (chữ đứng thẳng bình thường) hoặc `italic` (chữ in nghiêng).
-    - **`font-weight` (Độ đậm của chữ):** `normal` (nét thường 400), `bold` (in đậm 700), hoặc các giá trị số từ `100` đến `900`.
-
-    ---
-
-    #### b) Định dạng màu chữ (`color`)
-    Thuộc tính `color` xác định màu sắc của ký tự văn bản. Ta có thể khai báo bằng tên tiếng Anh cơ bản (`red`, `blue`, `green`, `purple`, `black`, `white`,...) hoặc mã màu Hex/RGB.
-
-    ---
-
-    #### c) Định dạng dòng văn bản (Text Formatting)
-    - **`line-height` (Khoảng cách dòng):** Khoảng cách giữa các đường cơ sở (baseline) của hai dòng văn bản liền kề. Giúp văn bản thoáng đãng, không bị dí sát nhau gây mỏi mắt:
-      ```css
-      p {
-        line-height: 1.6; /* Chiều cao dòng gấp 1.6 lần cỡ chữ */
-      }
-      ```
-    - **`text-align` (Căn lề khối chữ):** Nhận 4 giá trị: `left` (căn trái), `center` (căn giữa), `right` (căn phải), `justify` (căn đều hai biên mép).
-    - **`text-decoration` (Đường kẻ trang trí):**
-      - `underline`: Đường gạch chân dưới chữ.
-      - `overline`: Đường gạch ngang trên đỉnh đầu chữ.
-      - `line-through`: Đường gạch xuyên qua giữa chữ (dùng cho giá cũ gạch đi khi giảm giá).
-      - `none`: Bỏ đường gạch mặc định (rất hay dùng để xóa gạch chân của thẻ `<a>`).
-    - **`text-indent` (Thụt lề dòng đầu):** Thụt lề ký tự đầu tiên của đoạn văn. Ví dụ: `text-indent: 2em;` hoặc `text-indent: 20px;`.
-
-    ---
-
-    ### 2. Tính kế thừa và Quy tắc ưu tiên trong CSS
-
-    #### a) Tính kế thừa (Inheritance)
-    Trong mô hình phân cấp cây DOM của HTML, các phần tử con nằm bên trong sẽ **tự động kế thừa** các định dạng chữ từ phần tử cha bao bọc nó:
-    ```css
-    body {
-      color: #334155;
-      font-family: Arial, sans-serif;
-    }
-    ```
-    Toàn bộ tiêu đề `<h1>`, đoạn văn `<p>`, thẻ `<li>` nằm trong `<body>` sẽ tự động hiển thị với phông Arial và màu xám đậm mà không cần phải viết CSS lặp lại cho từng thẻ!
-
-    #### b) Thứ tự ưu tiên theo vị trí xuất hiện (Cascading)
-    Nếu một phần tử HTML nhận hai quy tắc CSS cùng áp dụng lên một thuộc tính từ cùng cấp độ chọn, **quy tắc nào được viết sau cùng (ở vị trí dưới) sẽ ghi đè lên quy tắc viết phía trước**:
-    ```css
-    h1 {
-      text-align: center;
-      color: red;
-    }
-    h1 {
-      text-align: left; /* Quy tắc này nằm dưới -> h1 sẽ căn trái */
-    }
-    ```
-
-    #### c) Bộ chọn toàn cục `*` và Từ khóa `!important`
-    - **Bộ chọn `*` (Universal Selector):** Tác động lên mọi phần tử HTML trong trang web nhưng có **mức độ ưu tiên thấp nhất**. Bất kỳ quy tắc cụ thể nào khác cũng sẽ ghi đè lên nó.
-    - **Từ khóa `!important`:** Đặt ngay sau giá trị thuộc tính. Khi được gắn `!important`, thuộc tính đó sẽ được trao **quyền ưu tiên tuyệt đối cao nhất**, bất chấp vị trí xuất hiện hay cấp độ ưu tiên của các quy tắc khác:
-      ```css
-      h1 {
-        color: red !important; /* Luôn luôn có màu đỏ */
-      }
-      h1 {
-        color: blue; /* Bị vô hiệu hóa bởi !important phía trên */
-      }
-      ```
-  </RawContent>
-  <TeacherNotes>
-    **Lưu ý sư phạm:**
-    - Khuyên học sinh chỉ dùng `!important` khi thực sự cần thiết (như ghi đè giao diện thư viện bên ngoài), không nên lạm dụng vì sẽ làm mất đi tính mềm dẻo và logic phân tầng của CSS.
-  </TeacherNotes>
-</StepKnowledge>
-
-<StepPractice title="3. Luyện tập thực hành (Practice)">
-  <RawContent>
-    ### Nhiệm vụ 1: Thiết lập định dạng bài viết "Kĩ thuật chia để trị" (Trang 81 SGK)
-
-    **Yêu cầu:**
-    - Các tiêu đề: Căn lề trái, cỡ chữ `16px`, chữ màu đỏ (`red`), phông chữ không chân (`sans-serif`).
-    - Các dòng văn bản: Thụt lề dòng đầu `2em`, căn lề trái (`left`), phông chữ có chân (`serif`).
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Nhiệm vụ 1: Thuật toán chia để trị</title>
-      <style>
-        h1, h2 {
-          font-family: sans-serif;
-          font-size: 16px;
-          color: red;
-          text-align: left;
-        }
-        p {
-          font-family: serif;
-          text-align: left;
-          text-indent: 2em;
-          line-height: 1.6;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Kĩ thuật chia để trị</h1>
-      <p>
-        Chia để trị (Divide and Conquer) là một kĩ thuật thiết kế thuật toán và chương trình rất quan trọng. Ý tưởng chính của kĩ thuật này nằm ở hai thao tác "chia" và "trị".
-      </p>
-
-      <h2>Ý tưởng của kĩ thuật chia để trị</h2>
-      <p>
-        Từ bài toán gốc ban đầu (kí hiệu P), chúng ta chia thành các bài toán nhỏ hơn về kích thước (nhưng vẫn giữ nguyên yêu cầu). Với mỗi bài toán nhỏ hơn, có thể gọi đệ quy hoặc giải trực tiếp, sau đó kết hợp lại để giải bài toán gốc (P) ban đầu.
-      </p>
-    </body>
-    </html>
-    ```
-
-    ---
-
-    ### Nhiệm vụ 2: Biến thể nâng cao với căn đều hai bên và chữ in đậm (Trang 82 SGK)
-
-    **Yêu cầu:**
-    - Tiêu đề: Căn giữa (`center`), cỡ chữ `16px`, màu xanh dương (`blue`), phông không chân (`sans-serif`).
-    - Đoạn văn: Thụt đầu dòng `2em`, căn đều hai bên (`justify`).
-    - Các từ in đậm `<strong>` và in nghiêng `<em>` giữ nguyên cỡ chữ gốc (`font-size: 100%`).
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Nhiệm vụ 2: Tinh chỉnh thẩm mỹ nâng cao</title>
-      <style>
-        body { max-width: 700px; margin: 30px auto; padding: 20px; }
-        h1, h2 {
-          font-family: sans-serif;
-          font-size: 16px;
-          color: blue;
-          text-align: center;
-        }
-        p {
-          text-align: justify;
-          text-indent: 2em;
-          line-height: 1.7;
-        }
-        strong, em {
-          font-size: 100%;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Kĩ thuật chia để trị</h1>
-      <p>
-        Chia để trị <em>(Divide and Conquer)</em> là một kĩ thuật thiết kế thuật toán vô cùng quan trọng. Ý tưởng chính nằm ở hai thao tác <strong>chia</strong> và <strong>trị</strong>.
-      </p>
-    </body>
-    </html>
-    ```
-
-    ---
-
-    ### Phân loại các phông chữ phổ biến (Luyện tập 1 - Trang 82 SGK)
-
-    | Tên phông chữ | Thuộc nhóm họ phông (Font Family) | Đặc trưng nhận diện |
-    | :--- | :--- | :--- |
-    | **Times New Roman** | `serif` | Có chân đỡ cổ điển, chuẩn in ấn văn kiện. |
-    | **Courier New** | `monospace` | Đơn cách, độ rộng các ký tự bằng hệt nhau như máy đánh chữ. |
-    | **Abadi / Berlin Sans FB** | `sans-serif` | Không chân, hình khối góc cạnh rõ ràng. |
-    | **Bradley Hand ITC** | `cursive` | Phông mô phỏng nét viết tay cá nhân. |
-    | **ALGERIAN** | `fantasy` | Phông nghệ thuật, hoa văn đục nét viền ngoài. |
-    | **Consolas / Cascadia** | `monospace` | Phông lập trình hiển thị code trong VS Code / Terminal. |
-  </RawContent>
-  <TeacherNotes>
-    **Tiêu chuẩn nghiệm thu:**
-    - Học sinh vận dụng chính xác các giá trị phông họ.
-    - Hiểu rõ sự khác biệt giữa `text-align: left` và `text-align: justify`.
-  </TeacherNotes>
-</StepPractice>
-
-<StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng 1 (Trang 82 SGK): Mở rộng các thuộc tính đồ họa chữ nâng cao
-
-    Bên cạnh các thuộc tính cơ bản, CSS hiện đại cung cấp nhiều công cụ kiểm soát thẩm mỹ chữ đỉnh cao:
-    - **`letter-spacing`:** Khoảng cách giữa các ký tự liên tiếp (ví dụ: `letter-spacing: 2px;` giúp tiêu đề mở rộng khoảng thở sang trọng).
-    - **`word-spacing`:** Khoảng cách giữa các từ trong câu (ví dụ: `word-spacing: 4px;`).
-    - **`text-shadow`:** Hiệu ứng đổ bóng chữ rực rỡ theo công thức `text-shadow: x y độ_nhòe màu_bóng;`:
-      ```css
-      h1 {
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
-      ```
-    - **`font-variant`:** Chuyển đổi chữ in hoa nhỏ đặc biệt `small-caps` (biến toàn bộ ký tự thường thành chữ in hoa nhưng có chiều cao bằng chữ thường).
-
-    ---
-
-    ### Vận dụng 2 (Trang 82 SGK): Trình bày bài thơ "Trời Hà Nội xanh"
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Trời Hà Nội xanh</title>
-      <style>
-        .poem-container {
-          max-width: 450px;
-          margin: 40px auto;
-          padding: 30px;
-          background: #f0fdf4;
-          border: 1px dashed #22c55e;
-          border-radius: 16px;
-          text-align: center;
-          font-family: 'Segoe UI', Tahoma, sans-serif;
-        }
-        .poem-title {
-          font-size: 24px;
-          color: #0284c7;
-          font-weight: bold;
-          margin-bottom: 6px;
-        }
-        .poem-author {
-          font-style: italic;
-          color: #475569;
-          margin-bottom: 20px;
-        }
-        .poem-author span {
-          color: #dc2626;
-          font-weight: bold;
-        }
-        .poem-line {
-          font-size: 18px;
-          color: #1e293b;
-          line-height: 1.8;
-          font-style: italic;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="poem-container">
-        <div class="poem-title">Trời Hà Nội xanh</div>
-        <div class="poem-author">Sáng tác: <span>Văn Ký</span></div>
-        <div class="poem-line">Xanh xanh thắm bầu trời xanh Hà Nội</div>
-        <div class="poem-line">Hồ Gươm xanh như mái tóc em xanh</div>
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
       </div>
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Gợi ý:** Cho học sinh quan sát bài thơ được thiết kế bằng flexbox hoặc text-align: center để rèn kỹ năng cảm thụ thẩm mỹ giao diện.
-  </TeacherNotes>
-</StepApplication>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững các thuộc tính định dạng phông chữ: <code>font-family</code>, <code>font-size</code>, <code>font-style</code>, <code>font-weight</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Sử dụng thành thạo các thuộc tính căn chỉnh khối văn bản: <code>color</code>, <code>line-height</code>, <code>text-align</code>, <code>text-decoration</code>, <code>text-indent</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu cơ chế kế thừa (Inheritance) trong cây DOM và thứ tự ưu tiên của các quy tắc CSS.</span>
+        </li>
+      </ul>
+    </div>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức cốt lõi 🎯">
-- 🅰️ **Thuộc tính phông chữ:** `font-family` (chỉ định phông và danh sách dự phòng kết thúc bằng họ phông `serif`, `sans-serif`, `monospace`), `font-size` (`px`, `em`, `rem`), `font-style` (`italic`), `font-weight` (`bold`, `400`..`900`).
-- 📏 **Định dạng dòng:** `line-height` (chiều cao dòng tính từ đường baseline), `text-align` (`left`, `center`, `right`, `justify`), `text-indent` (thụt đầu dòng), `text-decoration` (`none`, `underline`, `line-through`).
-- 🌳 **Cơ chế kế thừa (Inheritance):** Các thẻ con tự động hưởng các định dạng kiểu chữ từ thẻ cha chứa nó trong cây HTML.
-- ⚖️ **Thứ tự ưu tiên và `!important`:** Cùng mức chọn, lệnh CSS viết sau sẽ ghi đè lệnh viết trước; bộ chọn toàn cục `*` có độ ưu tiên thấp nhất; từ khóa `!important` mang mức ưu tiên cao nhất.
-</GlassCard>
-</div>
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Tự tay thiết lập Typography hoàn chỉnh cho bài viết báo điện tử có độ giãn dòng thoáng đãng, căn đều hai bên (justify).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Khai báo chuỗi phông chữ dự phòng (Fallback Fonts) và đơn vị cỡ chữ tương đối (rem, em).</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Ứng dụng nghệ thuật sắp chữ số (Digital Typography) nâng cao trải nghiệm đọc tài liệu.</span>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Thẩm mỹ & chuẩn mực:</strong> Tôn trọng khoảng cách đọc của người dùng, không đặt cỡ chữ quá nhỏ hay màu chữ tương phản kém với màu nền.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist />
+
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'NGHỆ THUẬT SẮP ĐẶT CHỮ (TYPOGRAPHY)'"
+  duration="10 phút"
+  objective="Khám phá tầm quan trọng của kiểu dáng chữ, khoảng cách dòng và căn lề trong việc tạo nên một trang web chuyên nghiệp, dễ chịu cho mắt người đọc."
+  content="Học sinh so sánh 2 bài viết: Một bài chữ dính sát nhau không có khoảng cách dòng vs Một bài có giãn dòng 1.6 và phông chữ thanh thoát."
+  product="Nhận định của học sinh về độ mỏi mắt và tốc độ đọc hiểu khi văn bản có Typography chuẩn."
+>
+
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đọc thử 2 Đoạn văn"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="So sánh trải nghiệm đọc trên màn chiếu">
+      Đoạn văn bên trái có khoảng cách dòng mặc định (`line-height: 1.0`), các dòng chữ dính sát vào nhau khiến mắt dễ đọc nhầm dòng. Đoạn văn bên phải có khoảng cách dòng `line-height: 1.6`, phông chữ `sans-serif` hiện đại, thụt đầu dòng rõ ràng.
+    </Alert>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 not-prose text-xs md:text-sm">
+      <div className="p-4 rounded-xl bg-white border border-slate-300 shadow-sm leading-none space-y-1 font-serif">
+        <span className="px-2 py-0.5 rounded bg-slate-200 text-slate-700 text-xs font-bold block mb-2 w-fit">
+          Bản 1: Khoảng cách dòng chật hẹp (Khó đọc)
+        </span>
+        <p>Cuộc cách mạng công nghiệp lần thứ tư đang làm thay đổi căn bản cách con người sinh sống và làm việc. Trí tuệ nhân tạo, điện toán đám mây và dữ liệu lớn đòi hỏi thế hệ trẻ phải không ngừng nâng cao năng lực số để thích ứng với tương lai công nghệ biến đổi từng ngày.</p>
+      </div>
+
+      <div className="p-4 rounded-xl bg-sky-50 border border-sky-400 shadow-md space-y-1 font-sans" style={{ lineHeight: 1.7 }}>
+        <span className="px-2 py-0.5 rounded bg-sky-500 text-white text-xs font-bold block mb-2 w-fit">
+          Bản 2: Typography chuẩn CSS (Thoáng đãng, êm mắt)
+        </span>
+        <p style={{ textIndent: "20px", textAlign: "justify" }}>
+          Cuộc cách mạng công nghiệp lần thứ tư đang làm thay đổi căn bản cách con người sinh sống và làm việc. Trí tuệ nhân tạo, điện toán đám mây và dữ liệu lớn đòi hỏi thế hệ trẻ phải không ngừng nâng cao năng lực số để thích ứng với tương lai công nghệ biến đổi từng ngày.
+        </p>
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Chia sẻ cảm nhận"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Học sinh đồng ý: Bản 2 giúp mắt chuyển dòng mượt mà, không bị nhảy cóc dòng và đọc nhanh hơn gấp đôi!
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Nhận diện các thuộc tính"
+  >
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+      <p>Các yếu tố tạo nên sự khác biệt: Phông chữ (font-family), độ cao dòng (line-height), căn đều hai bên (text-align) và thụt lề đầu dòng (text-indent).</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Vào bài học"
+  >
+    <Alert type="success" title="Chốt mục tiêu bài học">
+      Bài 14 sẽ giúp các em làm chủ toàn bộ kho vũ khí định dạng văn bản đỉnh cao của CSS để tạo nên những trang web đạt chuẩn chuyên nghiệp của các tòa soạn báo hàng đầu.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút"
+  objective="Làm chủ các thuộc tính phông chữ, tinh chỉnh dòng văn bản và hiểu rõ cơ chế kế thừa (Inheritance) trong CSS."
+  content="Khám phá 5 họ phông chữ chuẩn W3C, thuộc tính line-height tỉ lệ vàng, text-indent và cơ chế kế thừa từ thẻ body xuống các thẻ con."
+  product="Trang bài viết có phông chữ dự phòng, căn đều 2 bên và thụt đầu dòng chuẩn mực."
+>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: ĐỊNH DẠNG PHÔNG CHỮ (TYPOGRAPHY)
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="ĐỊNH DẠNG PHÔNG CHỮ: FONT-FAMILY, FONT-SIZE, FONT-WEIGHT"
+    duration="15 phút"
+    objective="Sử dụng font-family với danh sách dự phòng; phân biệt 5 họ phông chữ; dùng font-size với px, rem, em."
+    content="Thực hành cú pháp chuỗi phông chữ font-family: Arial, sans-serif và đo lường độ đậm font-weight từ 100 đến 900."
+    product="Thiết lập thành công phông chữ không chân hiện đại và cỡ chữ theo tỉ lệ rem."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Năm Họ Phông chữ Tiêu chuẩn"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<style>
+    /* 1. Không chân (sans-serif) - Dễ đọc nhất trên màn hình máy tính */
+    .sans { font-family: Arial, Helvetica, sans-serif; }
+
+    /* 2. Có chân (serif) - Trang trọng, cổ điển */
+    .serif { font-family: "Times New Roman", Georgia, serif; }
+
+    /* 3. Đơn cách (monospace) - Dùng hiển thị code */
+    .mono { font-family: "Courier New", Consolas, monospace; }
+
+    /* 4. Viết tay (cursive) - Thiệp mừng */
+    .cursive { font-family: "Comic Sans MS", cursive; }
+</style>
+
+<p class="sans"><strong>1. Sans-serif (Không chân):</strong> Nét chữ thẳng, dứt khoát, hiện đại (Arial, Roboto).</p>
+<p class="serif"><strong>2. Serif (Có chân):</strong> Có chân gạch đỡ dưới chân chữ (Times New Roman).</p>
+<p class="mono"><strong>3. Monospace (Đơn cách):</strong> Mọi ký tự có bề ngang bằng hệt nhau (Consolas).</p>
+<p class="cursive"><strong>4. Cursive (Viết tay):</strong> Nét uốn lượn mềm mại.</p>`}
+        title="Thử nghiệm trực tiếp: 4 Nhóm phông chữ cơ bản trong CSS"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Quy tắc Khai báo Phông Dự phòng (Fallback)"
+    >
+      <Alert type="idea" title="Nguyên tắc khai báo font-family an toàn">
+        - Vì mỗi máy tính có bộ phông khác nhau, ta luôn khai báo một danh sách ưu tiên từ trái sang phải, ngăn cách bởi **dấu phẩy**:
+        `font-family: Arial, Helvetica, sans-serif;`
+        - Nếu máy tính người xem có *Arial*, trình duyệt dùng Arial. Nếu không có, tìm tiếp *Helvetica*. Nếu vẫn không có, dùng họ phông chung *sans-serif* của hệ thống.
+        - **Tên phông có dấu cách** bắt buộc phải đặt trong dấu ngoặc kép: `"Times New Roman"`, `"Segoe UI"`.
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Đo lường Cỡ chữ: px vs rem"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💡 Đơn vị `rem` là gì?
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          `1rem` bằng kích thước cỡ chữ mặc định của phần tử gốc `html` (thường là 16px). Khi người dùng chỉnh cỡ chữ trên trình duyệt to hơn để dễ đọc, các kích thước dùng `rem` sẽ tự động co giãn theo rất thông minh!
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Phông"
+    >
+      <Alert type="success" title="Tổng kết">
+        - `font-family`: Danh sách phông ưu tiên kèm họ phông chung ở cuối.
+        - `font-size`: Cỡ chữ (px, rem).
+        - `font-weight`: Độ đậm (normal, bold, hoặc từ 100 đến 900).
+        - `font-style`: Kiểu dáng (normal, italic).
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: ĐỊNH DẠNG DÒNG VĂN BẢN VÀ CƠ CHẾ KẾ THỪA
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="ĐỊNH DẠNG KHỐI VĂN BẢN VÀ TÍNH KẾ THỪA (INHERITANCE)"
+    duration="15 phút"
+    objective="Làm chủ các thuộc tính line-height, text-align, text-indent, text-decoration; hiểu tính kế thừa từ body xuống các phần tử con."
+    content="Thực hành thiết lập line-height: 1.6, text-align: justify và quan sát cách thẻ body truyền màu sắc, phông chữ cho toàn bộ trang."
+    product="Đoạn văn bài báo chuẩn mực xuất bản."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Tinh chỉnh Đoạn văn"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<style>
+    /* Cơ chế kế thừa: Mọi thẻ con bên trong body tự động nhận phông và màu này */
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        color: #1e293b;
+    }
+
+    .bai-bao {
+        text-align: justify;       /* Căn đều hai mép lề */
+        line-height: 1.6;          /* Giãn dòng tỉ lệ vàng 1.6 */
+        text-indent: 25px;         /* Thụt lề đầu dòng 25px */
+    }
+
+    .tieu-de {
+        text-align: center;        /* Căn lề giữa */
+        text-transform: uppercase; /* Tự động viết hoa */
+        letter-spacing: 1px;       /* Giãn khoảng cách giữa các chữ cái */
+    }
+
+    .link-xoa-gach-chan {
+        text-decoration: none;     /* Bỏ đường gạch chân mặc định của thẻ a */
+        color: #0284c7;
+        font-weight: bold;
+    }
+</style>
+
+<h2 class="tieu-de">Bảo vệ Môi trường Xanh</h2>
+<p class="bai-bao">
+    Rừng cây xanh là lá phổi của hành tinh, giữ vai trò quyết định trong việc điều hòa khí hậu và lọc sạch bầu không khí. Mỗi hành động trồng thêm một cây xanh hôm nay là chúng ta đang gieo mầm hy vọng cho một tương lai bền vững của muôn thế hệ mai sau.
+</p>
+<p style="text-align: right;">
+    <a href="#" class="link-xoa-gach-chan">Tìm hiểu thêm &rarr;</a>
+</p>`}
+        title="Thử nghiệm trực tiếp: line-height, text-align, text-indent và kế thừa"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Khám phá Tính Kế thừa (Inheritance)"
+    >
+      <Alert type="idea" title="Tính kế thừa hoạt động như thế nào?">
+        - Trong cây cấu trúc HTML (DOM), các thuộc tính liên quan đến **Văn bản và Phông chữ** (như `color`, `font-family`, `font-size`, `line-height`) sẽ **tự động được truyền từ phần tử Cha xuống tất cả các phần tử Con**.
+        - Vì vậy, nếu muốn toàn bộ website có phông chữ `Arial`, ta chỉ cần khai báo một lần duy nhất tại thẻ `body`:
+        `body { font-family: Arial, sans-serif; }`
+        - Tất cả các thẻ `<p>`, `<h1>`, `<li>` bên trong đều tự động mang phông chữ Arial mà không cần gõ lại!
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Bộ chọn Toàn cục (*)"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💡 Bộ chọn dấu sao (*) (Universal Selector):
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Dấu sao <code>{'*'}</code> tác động tới **100% tất cả các phần tử** trên trang web. Thường dùng ở đầu tệp CSS để xóa khoảng trắng lề mặc định của trình duyệt:
+          <br/><code>{'* { box-sizing: border-box; margin: 0; padding: 0; }'}</code>
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Dòng"
+    >
+      <Alert type="success" title="Tổng kết">
+        - `line-height`: 1.5 - 1.6 là khoảng cách giãn dòng lý tưởng nhất cho mắt người đọc.
+        - `text-align`: `justify` (căn đều 2 lề), `center` (giữa), `left` (trái), `right` (phải).
+        - `text-indent`: Thụt lề dòng mở đầu đoạn văn.
+        - `text-decoration: none`: Xóa bỏ gạch chân của liên kết thẻ `<a>`.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'BẬC THẦY TYPOGRAPHY CHO BÀI BÁO SỐ'"
+  duration="20 phút"
+  objective="Củng cố toàn bộ hệ thống thuộc tính phông chữ và định dạng dòng; tạo trang bài báo đạt chuẩn thẩm mỹ tòa soạn."
+  content="Thực hiện 2 thử thách: Trắc nghiệm thuộc tính CSS văn bản và Hoàn thiện bài viết có tiêu đề căn giữa, đoạn văn căn đều và giãn dòng 1.6."
+  product="Tệp baibao_chuan.html hiển thị hoàn hảo."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Nhanh (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Thuộc tính nào dùng để điều chỉnh KHOẢNG CÁCH GIÃN GIỮA CÁC DÒNG trong một đoạn văn?",
+        options: [
+          'A. line-spacing',
+          'B. line-height',
+          'C. text-spacing',
+          'D. row-height'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! line-height (chiều cao dòng) là thuộc tính điều khiển khoảng cách dòng trong CSS."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Để đoạn văn bản được CĂN ĐỀU HAI BÊN MÉP LỀ giống như trang sách in, ta dùng giá trị nào cho thuộc tính text-align?",
+        options: [
+          'A. text-align: center',
+          'B. text-align: justify',
+          'C. text-align: both',
+          'D. text-align: middle'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! text-align: justify giúp căn đều văn bản ở cả lề trái và lề phải."
+      }} />
+    </div>
+
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Thực hành Định dạng Bài Báo Khoa học (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Hãy viết mã CSS định dạng bài viết:
+        <br/>1. Thẻ <code>body</code> mang phông <code>'Segoe UI', Tahoma, sans-serif</code>.
+        <br/>2. Tiêu đề <code>&lt;h1&gt;</code> in hoa, màu xanh đậm (<code>#1e3a8a</code>), căn giữa.
+        <br/>3. Đoạn văn <code>&lt;p&gt;</code> căn đều 2 bên (<code>justify</code>), giãn dòng <code>1.6</code>, thụt đầu dòng <code>20px</code>.
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn code trên máy"
+  >
+    <Alert type="tip" title="Gợi ý sư phạm">
+      Tận dụng tính kế thừa của `body` để không phải gõ lặp lại `font-family` ở từng thẻ con.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Thử nghiệm mã nguồn"
+  >
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bài Báo Khoa Học</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            padding: 30px;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        h1 {
+            color: #1e3a8a;
+            text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            text-indent: 20px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 12px 16px;
+            font-style: italic;
+            margin: 20px 0;
+            text-indent: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Khám Phá Sức Mạnh Trí Tuệ Nhân Tạo 2026</h1>
+        
+        <p>
+            Trí tuệ nhân tạo (AI) không còn là khái niệm viễn tưởng mà đã len lỏi vào từng khía cạnh của đời sống con người, từ trợ lý ảo, xe tự hành cho đến chẩn đoán y tế chính xác cao.
+        </p>
+
+        <p class="highlight-box">
+            "Công nghệ không thay thế con người, nhưng những ai làm chủ công nghệ sẽ dẫn đầu kỷ nguyên mới."
+        </p>
+
+        <p>
+            Đối với học sinh lớp 12, việc trang bị tư duy cấu trúc, kỹ năng lập trình web và hiểu biết sâu sắc về dữ liệu số chính là chiếc chìa khóa vạn năng mở cánh cửa bước vào các trường đại học hàng đầu.
+        </p>
+    </div>
+</body>
+</html>`}
+      title="Mã nguồn mẫu: Bài báo khoa học Typography chuẩn W3C (Thử thách 2)"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết thực hành"
+  >
+    <Alert type="success" title="Đánh giá kết quả">
+      Học sinh đã xuất sắc vận dụng cơ chế kế thừa của `body`, tinh chỉnh độ cao dòng và căn lề tạo nên sản phẩm giao diện có trải nghiệm đọc chuyên nghiệp, đẳng cấp.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'TỔNG KẾT DỰ ÁN WEBSITE CHỦ ĐỀ 4'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Tổng hợp toàn bộ kiến thức của Chủ đề 4 (Từ Bài 7 đến Bài 14) để hoàn thiện Website cá nhân hoàn chỉnh: có cấu trúc HTML chuẩn, liên kết menu, bảng giá, biểu mẫu liên hệ và định kiểu đồng bộ bằng CSS."
+  content="Học sinh hoàn thiện sản phẩm website cá nhân hoặc website giới thiệu lớp học, kiểm tra toàn bộ liên kết và tính thẩm mỹ CSS."
+  product="Sản phẩm Website tĩnh hoàn chỉnh xuất bản trên môi trường web lớp học."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề tài Tổng kết Chủ đề 4"
+  >
+    <Alert type="idea" title="Yêu cầu Dự án Tổng kết Chủ đề 4">
+      Hoàn thiện Website cá nhân hoặc Giới thiệu Lớp học gồm ít nhất 3 trang:
+      1. **Trang chủ (`index.html`):** Tiêu đề, ảnh chân dung, video ngắn giới thiệu và danh sách thành tích.
+      2. **Trang bảng biểu (`thoikhoabieu.html`):** Bảng thời khóa biểu hoặc Bảng điểm học tập có gộp ô.
+      3. **Trang liên hệ (`lienhe.html`):** Biểu mẫu Form đặt câu hỏi hoặc đăng ký tham gia CLB.
+      4. Toàn bộ 3 trang dùng chung một tệp `style.css` duy nhất có Typography chuẩn mực!
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo tại phòng máy"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Khởi tạo khung sườn">
+      Học sinh rà soát lại các liên kết tương đối giữa 3 trang và tệp `style.css`.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Tiêu chí chấm điểm (Rubric 5512)"
+  >
+    <RubricCard />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chúc mừng hoàn thành Chủ đề 4!"
+  >
+    <Alert type="success" title="Chúc mừng Thầy Cô và Các Em Học Sinh!">
+      🎉 **CHÚC MỪNG CÁC EM ĐÃ CHINH PHỤC THÀNH CÔNG CHỦ ĐỀ 4: THIẾT KẾ WEB VỚI HTML VÀ CSS!**  
+      Từ những dòng mã khung xương sơ khai ở Bài 7, các em đã trở thành những Nhà thiết kế Web thực thụ: biết định dạng chữ, tạo danh sách, dựng bảng biểu, kết nối siêu liên kết, chèn đa phương tiện, thiết kế biểu mẫu tương tác và làm chủ sức mạnh nghệ thuật của CSS!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>

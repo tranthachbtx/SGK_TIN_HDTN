@@ -1,375 +1,583 @@
 ---
 title: "Bài 12: Tạo biểu mẫu"
-description: "Tìm hiểu cấu trúc biểu mẫu form trong HTML, các phần tử input, select, textarea, label, fieldset và thực hành xây dựng form thu thập dữ liệu người dùng."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 12
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Để tham gia hội chợ ẩm thực do Đoàn trường tổ chức, lớp em dự định tạo một trang web để quảng bá các món ăn vặt và nhận đơn đặt hàng trực tuyến từ các bạn học sinh trong toàn trường. 🍧🧋🍰
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 12: TẠO BIỂU MẪU (WEB FORM)"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-    **💡 Thảo luận mở đầu:**  
-    *Để khách hàng có thể chọn món ăn, nhập số lượng, ghi địa chỉ giao nhận và bấm gửi đơn hàng, trang web cần cung cấp những thành phần giao diện nào? Ngôn ngữ HTML cung cấp công cụ gì để đáp ứng nhu cầu này?*
-
-    **Trả lời gợi ý:**
-    - Trang web cần các ô nhập văn bản (Họ tên, Số điện thoại, Địa chỉ giao hàng), hộp chọn danh sách thả xuống (Chọn món, Kích cỡ phần ăn), nút chọn số lượng, và một nút bấm "Đặt hàng ngay".
-    - Trong HTML, công cụ thực hiện nhiệm vụ này chính là **Biểu mẫu web (Web Form)** với thẻ `<form>` cùng hệ thống các thẻ nhập liệu phong phú (`<input>`, `<select>`, `<textarea>`,...).
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu bài dạy:**
-    - Hiểu được vai trò và cơ chế hoạt động hai chiều của biểu mẫu web (thu thập dữ liệu từ người dùng và gửi về máy chủ xử lý).
-    - Sử dụng thành thạo thẻ `<form>`, các thẻ tạo nhãn `<label>`, thẻ nhập liệu `<input>` với nhiều giá trị `type` khác nhau (`text`, `password`, `radio`, `checkbox`, `date`, `number`, `submit`, `button`, `file`).
-    - Nắm vững cú pháp danh sách lựa chọn `<select>`, `<option>`, vùng nhập văn bản dài `<textarea>`, và nhóm phần tử với `<fieldset>`, `<legend>`.
-    - Thực hành thiết kế hoàn chỉnh form đặt hàng và form đăng ký dự thi tốt nghiệp.
-
-    **Định hướng sư phạm:**
-    - Cho học sinh quan sát form đăng ký tài khoản Facebook/Google hoặc form mua hàng Shopee để các em hình dung trực quan các kiểu điều khiển dữ liệu.
-    - Nhấn mạnh mối quan hệ mật thiết giữa cặp thuộc tính `id` của `<input>` và `for` của `<label>`.
-  </TeacherNotes>
-</StepEngagement>
-
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    ### 1. Khái niệm và cấu trúc Biểu mẫu Web (Form)
-
-    #### a) Biểu mẫu web là gì?
-    **Biểu mẫu web (Web Form)** là công cụ thu thập thông tin và tương tác trực tiếp giữa người dùng với hệ thống trang web. Khi người dùng nhập dữ liệu và nhấn nút gửi, thông tin sẽ được xử lý tại chỗ hoặc đóng gói gửi về máy chủ (Server).
-
-    Một hệ thống biểu mẫu đầy đủ bao gồm hai thành phần:
-    1. **Biểu mẫu hiển thị trên trình duyệt (Front-end HTML):** Được tạo bởi các thẻ HTML, cung cấp giao diện trực quan cho người dùng nhập liệu, chọn lựa và bấm gửi.
-    2. **Ứng dụng hoặc kịch bản xử lý dữ liệu (Back-end Script):** Thường nằm trên máy chủ web (viết bằng PHP, Python, NodeJS,...), tiếp nhận dữ liệu gửi lên, kiểm tra tính hợp lệ và lưu vào cơ sở dữ liệu.
-
-    #### b) Cấu trúc thẻ `<form>`
-    Biểu mẫu được bao bọc bởi cặp thẻ đóng/mở `<form>...</form>`:
-    ```html
-    <form action="xu_ly.php" method="POST">
-      <!-- Các phần tử nhập liệu, nút bấm đặt ở đây -->
-    </form>
-    ```
-    - `action`: Đường dẫn tới tệp tin xử lý dữ liệu trên máy chủ khi form được gửi đi.
-    - `method`: Phương thức truyền dữ liệu (thường là `POST` để bảo mật hoặc `GET` khi tìm kiếm).
-
-    ---
-
-    ### 2. Các phần tử điều khiển trong biểu mẫu
-
-    #### a) Thẻ nhãn `<label>`
-    Thẻ `<label>` định nghĩa nhãn mô tả cho phần tử nhập liệu. 
-    ```html
-    <label for="username">Tên đăng nhập:</label>
-    <input type="text" id="username" name="username">
-    ```
-    > [!TIP]
-    > Khi người dùng nhấp chuột vào chữ trên nhãn (`<label>`), con trỏ chuột sẽ **tự động nhảy tiêu điểm (focus)** vào ô nhập liệu có `id` tương ứng với thuộc tính `for`. Điều này nâng cao trải nghiệm người dùng, đặc biệt trên màn hình cảm ứng điện thoại!
-
-    #### b) Phần tử nhập liệu đa năng `<input>`
-    `<input>` là thẻ đơn (không có thẻ đóng), xác định vùng tiếp nhận thông tin từ người dùng:
-    ```html
-    <input id="ma_dinh_danh" type="loai_input" name="ten_input" value="gia_tri">
-    ```
-    - `id`: Mã định danh duy nhất của phần tử trong trang web (dùng kết nối với `for` của `<label>` hoặc CSS/JS).
-    - `name`: Tên định danh của biến dữ liệu, máy chủ sẽ dùng tên này để nhận biết dữ liệu gửi đến.
-    - `type`: Thuộc tính then chốt quyết định kiểu hiển thị và hành vi nhập liệu của phần tử.
-
-    **Bảng 12.1: Một số kiểu `type` thông dụng của thẻ `<input>`**
-
-    | Thuộc tính `type` | Cú pháp ví dụ | Ý nghĩa và hành vi |
-    | :--- | :--- | :--- |
-    | **`text`** | `<input type="text" name="hoten">` | Tạo ô nhập văn bản một dòng ngắn gọn (họ tên, địa chỉ,...). |
-    | **`password`** | `<input type="password" name="matkhau">` | Nhập mật khẩu, các ký tự gõ vào tự động che khuất bằng dấu chấm tròn hoặc sao `••••`. |
-    | **`radio`** | `<input type="radio" name="gioitinh" value="nam">` | Nút chọn một giá trị duy nhất trong một nhóm. **Các nút cùng nhóm bắt buộc phải có chung giá trị `name`**. |
-    | **`checkbox`** | `<input type="checkbox" name="sothich" value="thethao">` | Hộp kiểm chọn nhiều giá trị độc lập (chọn hoặc không chọn). |
-    | **`number`** | `<input type="number" name="tuoi" min="1" max="100">` | Ô chỉ cho phép nhập ký số, có nút tăng giảm giá trị. |
-    | **`date`** | `<input type="date" name="ngaysinh">` | Hộp chọn ngày tháng năm kèm bảng lịch trực quan. |
-    | **`file`** | `<input type="file" name="anh_daidien">` | Nút chọn tệp tin từ máy tính hoặc điện thoại tải lên máy chủ. |
-    | **`button`** | `<input type="button" value="Bấm vào đây">` | Tạo một nút nhấn thông thường (thường gắn kịch bản JavaScript). |
-    | **`submit`** | `<input type="submit" value="Gửi thông tin">` | Tạo nút đặc biệt dùng để đóng gói và gửi toàn bộ dữ liệu trong biểu mẫu đến máy chủ. |
-
-    #### c) Danh sách lựa chọn thả xuống `<select>` và `<option>`
-    Dùng khi danh sách có nhiều lựa chọn giúp tiết kiệm diện tích trang web:
-    ```html
-    <label for="lop">Chọn lớp học:</label>
-    <select id="lop" name="lop">
-      <option value="10">Lớp 10</option>
-      <option value="11">Lớp 11</option>
-      <option value="12" selected>Lớp 12</option>
-    </select>
-    ```
-
-    #### d) Vùng nhập văn bản nhiều dòng `<textarea>`
-    Dành cho các đoạn văn bản dài như phản hồi, lời nhắn, nội dung bài viết:
-    ```html
-    <label for="ghichu">Ghi chú yêu cầu:</label><br>
-    <textarea id="ghichu" name="ghichu" rows="4" cols="50">
-    Nhập lời nhắn của bạn tại đây...
-    </textarea>
-    ```
-
-    #### e) Nhóm phần tử bằng `<fieldset>` và `<legend>`
-    Giúp nhóm các ô nhập liệu có liên quan lại với nhau trong một đường viền bo quanh đẹp mắt kèm tiêu đề nhóm:
-    ```html
-    <fieldset>
-      <legend>Thông tin cá nhân</legend>
-      <!-- Các thẻ input nằm ở đây -->
-    </fieldset>
-    ```
-
-    ---
-
-    ### 3. Câu hỏi củng cố (Trang 69 SGK)
-
-    **Câu 1:** *Điểm khác biệt giữa `radio`, `checkbox` và `select` là gì?*
-    - `radio`: Người dùng **chỉ được phép chọn duy nhất 1 lựa chọn** trong một nhóm các phương án loại trừ lẫn nhau (ví dụ: Giới tính Nam/Nữ).
-    - `checkbox`: Cho phép người dùng **chọn cùng lúc nhiều phương án** độc lập hoặc không chọn phương án nào (ví dụ: Môn thể thao yêu thích).
-    - `select`: Tạo danh sách lựa chọn dạng hộp thả xuống (dropdown). Giúp tiết kiệm không gian màn hình tối đa, rất thích hợp khi danh sách có từ 4–5 lựa chọn trở lên (ví dụ: Tỉnh/Thành phố).
-
-    **Câu 2:** *Hãy viết câu lệnh để thêm một nút có tên "Quên mật khẩu" vào biểu mẫu.*
-    ```html
-    <input type="button" value="Quên mật khẩu">
-    <!-- Hoặc dùng thẻ button: -->
-    <button type="button">Quên mật khẩu</button>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Lưu ý quan trọng cho học sinh:**
-    1. Thuộc tính `value` trong `<input type="radio">` và `<input type="checkbox">` là bắt buộc phải có để máy chủ biết người dùng vừa tích chọn giá trị cụ thể nào.
-    2. Cặp thẻ `<textarea>` có thẻ đóng `</textarea>`, nội dung nằm giữa thẻ mở và đóng chính là giá trị mặc định ban đầu.
-  </TeacherNotes>
-</StepKnowledge>
-
-<StepPractice title="3. Luyện tập thực hành (Practice)">
-  <RawContent>
-    ### Nhiệm vụ 1: Biểu mẫu nhập thông tin món ăn (Trang 69 SGK)
-
-    **Yêu cầu:** Tạo biểu mẫu nhập thông tin món ăn gồm các trường: Tiêu đề "Thông tin món ăn", Tên món ăn, Đơn giá, Số lượng.
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Nhiệm vụ 1: Thông tin món ăn</title>
-      <style>
-        body { font-family: Arial, sans-serif; padding: 20px; line-height: 2; }
-        label { display: inline-block; width: 100px; }
-        input[type="text"], input[type="number"] { padding: 4px; border: 1px solid #ccc; border-radius: 4px; }
-      </style>
-    </head>
-    <body>
-      <h2>Thông tin món ăn</h2>
-      <form action="#" method="POST">
-        <label for="monan">Tên món ăn:</label>
-        <input type="text" id="monan" name="monan"><br>
-
-        <label for="dongia">Đơn giá:</label>
-        <input type="number" id="dongia" name="dongia"><br>
-
-        <label for="soluong">Số lượng:</label>
-        <input type="number" id="soluong" name="soluong"><br><br>
-
-        <input type="submit" value="Lưu món ăn">
-      </form>
-    </body>
-    </html>
-    ```
-
-    ---
-
-    ### Nhiệm vụ 2: Biểu mẫu đăng ký thi tốt nghiệp THPT (Trang 70 SGK)
-
-    **Yêu cầu:** Tạo biểu mẫu đăng ký thông tin môn thi tốt nghiệp hoàn chỉnh với các thành phần:
-    - Họ và tên: `type="text"`
-    - Số CCCD: `type="number"`
-    - Ngày sinh: `type="date"`
-    - Giới tính: Chọn 1 trong 2 giá trị bằng `type="radio"` (Nam / Nữ)
-    - Môn thi: `type="checkbox"` (Toán, Ngữ văn, Ngoại ngữ)
-    - Tổ hợp: Danh sách thả xuống `<select>` chọn Khoa học tự nhiên hoặc Khoa học xã hội
-    - Nút gửi thông tin: `type="submit"`
-    - Toàn bộ nội dung nằm gọn trong khung viền `<fieldset>` có tiêu đề `<legend>` là "Đăng kí môn thi tốt nghiệp".
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Nhiệm vụ 2: Đăng ký môn thi tốt nghiệp</title>
-      <style>
-        body { font-family: Arial, sans-serif; padding: 30px; background-color: #f8fafc; }
-        fieldset {
-          max-width: 480px;
-          margin: auto;
-          background: #ffffff;
-          padding: 24px;
-          border: 2px solid #38bdf8;
-          border-radius: 12px;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        legend {
-          font-size: 20px;
-          font-weight: bold;
-          color: #0284c7;
-          padding: 0 10px;
-        }
-        .form-row { margin-bottom: 14px; }
-        label.title-col { display: inline-block; width: 110px; font-weight: 500; }
-        input[type="text"], input[type="number"], input[type="date"], select {
-          padding: 6px 10px;
-          border: 1px solid #cbd5e1;
-          border-radius: 6px;
-          font-size: 14px;
-        }
-        .submit-btn {
-          margin-top: 10px;
-          padding: 8px 18px;
-          background-color: #0284c7;
-          color: white;
-          border: none;
-          border-radius: 6px;
-          cursor: pointer;
-          font-weight: 600;
-        }
-        .submit-btn:hover { background-color: #0369a1; }
-      </style>
-    </head>
-    <body>
-
-      <fieldset>
-        <legend>Đăng kí môn thi tốt nghiệp</legend>
-        <form action="#" method="POST">
-          <div class="form-row">
-            <label class="title-col" for="fullname">Họ và tên:</label>
-            <input type="text" id="fullname" name="fullname" required>
-          </div>
-
-          <div class="form-row">
-            <label class="title-col" for="cccd">CCCD:</label>
-            <input type="number" id="cccd" name="cccd" required>
-          </div>
-
-          <div class="form-row">
-            <label class="title-col" for="dob">Ngày sinh:</label>
-            <input type="date" id="dob" name="dob" required>
-          </div>
-
-          <div class="form-row">
-            <span class="title-col">Giới tính:</span>
-            <input type="radio" id="gender-male" name="gender" value="male" checked>
-            <label for="gender-male">Nam</label>
-            &nbsp;&nbsp;
-            <input type="radio" id="gender-female" name="gender" value="female">
-            <label for="gender-female">Nữ</label>
-          </div>
-
-          <div class="form-row">
-            <span class="title-col">Môn thi:</span>
-            <input type="checkbox" id="sub-math" name="subjects" value="math" checked>
-            <label for="sub-math">Toán</label>
-            &nbsp;
-            <input type="checkbox" id="sub-lit" name="subjects" value="lit" checked>
-            <label for="sub-lit">Văn</label>
-            &nbsp;
-            <input type="checkbox" id="sub-eng" name="subjects" value="eng" checked>
-            <label for="sub-eng">Ngoại ngữ</label>
-          </div>
-
-          <div class="form-row">
-            <label class="title-col" for="combo">Tổ hợp:</label>
-            <select id="combo" name="combo">
-              <option value="khtn">Khoa học tự nhiên</option>
-              <option value="khxh">Khoa học xã hội</option>
-            </select>
-          </div>
-
-          <div>
-            <input class="submit-btn" type="submit" value="Gửi thông tin">
-          </div>
-        </form>
-      </fieldset>
-
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Tiêu chí đánh giá bài thực hành:**
-    - Đúng cấu trúc ngữ nghĩa HTML5: Đủ thẻ `<form>`, `<fieldset>`, `<legend>`, `<label>`.
-    - Liên kết đúng `for` của label với `id` của từng input để khi nhấp vào chữ thì ô chọn/nhập tương ứng được kích hoạt.
-    - Nhóm radio Nam/Nữ phải chung `name="gender"`.
-  </TeacherNotes>
-</StepPractice>
-
-<StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng 1 (Trang 70 SGK): Biểu mẫu đăng ký thành viên Câu lạc bộ Tin học
-
-    Xây dựng trang web `dangky_clb.html` để thu hút học sinh tham gia sinh hoạt CLB:
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Đăng ký CLB Tin học trẻ</title>
-      <style>
-        body { font-family: system-ui, sans-serif; max-width: 500px; margin: 30px auto; padding: 20px; background: #f0fdf4; }
-        .club-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid #bbf7d0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        h2 { color: #15803d; margin-top: 0; }
-        .row { margin-bottom: 12px; }
-        label { display: block; font-weight: bold; margin-bottom: 4px; font-size: 14px; }
-        input[type="text"], input[type="email"], select, textarea { width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
-        .btn-join { width: 100%; background: #16a34a; color: white; padding: 10px; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
-        .btn-join:hover { background: #15803d; }
-      </style>
-    </head>
-    <body>
-      <div class="club-card">
-        <h2>🚀 Đăng ký tham gia CLB Tin học</h2>
-        <form action="#" method="POST">
-          <div class="row">
-            <label for="member-name">Họ và tên của em:</label>
-            <input type="text" id="member-name" name="member-name" placeholder="Nguyễn Văn A" required>
-          </div>
-          <div class="row">
-            <label for="member-email">Địa chỉ Email:</label>
-            <input type="email" id="member-email" name="member-email" placeholder="email@gmail.com" required>
-          </div>
-          <div class="row">
-            <label for="role">Ban chuyên môn muốn tham gia:</label>
-            <select id="role" name="role">
-              <option value="web">Ban Phát triển Web & Ứng dụng</option>
-              <option value="ai">Ban Nghiên cứu Trí tuệ nhân tạo (AI)</option>
-              <option value="media">Ban Thiết kế đồ họa & Truyền thông</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="intro">Kinh nghiệm hoặc nguyện vọng:</label>
-            <textarea id="intro" name="intro" rows="3" placeholder="Chia sẻ đôi điều về bản thân..."></textarea>
-          </div>
-          <button class="btn-join" type="submit">Gửi đơn đăng ký</button>
-        </form>
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
       </div>
-    </body>
-    </html>
-    ```
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu vai trò của Biểu mẫu (Form) trong việc tương tác hai chiều và thu thập dữ liệu từ người dùng.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt và sử dụng đúng các loại <code>&lt;input&gt;</code>: text, password, radio, checkbox, date, number, submit.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Sử dụng được danh sách thả xuống <code>&lt;select&gt;</code>, ô văn bản dài <code>&lt;textarea&gt;</code> và thẻ nhãn <code>&lt;label&gt;</code>.</span>
+        </li>
+      </ul>
+    </div>
 
-    ---
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Tự tay thiết kế giao diện thu thập thông tin chuẩn UX (có nhãn gợi ý placeholder, thuộc tính bắt buộc required).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Viết đúng các trường nhập liệu form và nhóm radio theo cùng thuộc tính name.</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Tạo biểu mẫu khảo sát trực tuyến hỗ trợ chuyển đổi số trong nhà trường.</span>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-    ### Vận dụng 2 (Trang 70 SGK): Tích hợp biểu mẫu mở trong khung nội tuyến `<iframe>`
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Bảo mật thông tin:</strong> Hiểu vì sao mật khẩu phải dùng <code>type="password"</code> và có ý thức bảo vệ dữ liệu cá nhân khi điền thông tin lên mạng.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
 
-    Mở lại tệp web ở Nhiệm vụ 2 - Bài 11, bổ sung một siêu liên kết `<a href="dangky_clb.html" target="target_frame">Đăng ký thành viên</a>`. Khi người dùng click chuột vào liên kết này, biểu mẫu đăng ký sẽ lập tức hiển thị mượt mà ngay trong khung `<iframe>` mà không cần tải lại toàn bộ trang web!
-  </RawContent>
-  <TeacherNotes>
-    **Gợi ý sư phạm:**
-    - Giúp học sinh thấy được tính kế thừa và xâu chuỗi giữa các bài học: Dùng liên kết `<a>` kết hợp với `target` của `<iframe>` (Bài 11) để điều hướng tải biểu mẫu (Bài 12).
-  </TeacherNotes>
-</StepApplication>
+<EquipmentChecklist />
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức cốt lõi 🎯">
-- 📝 **Biểu mẫu `<form>`:** Phần tử thu thập dữ liệu người dùng gửi về máy chủ, gồm 2 thành phần chính: giao diện web (HTML) và mã kịch bản xử lý (Back-end).
-- 🏷 **Nhãn `<label>`:** Tăng tính tiện dụng; kết nối bằng thuộc tính `for` trùng khớp với `id` của trường nhập liệu.
-- 🎛 **Phần tử `<input>`:** Phần tử nhập liệu trung tâm với các kiểu dữ liệu phong phú: `text`, `password`, `radio` (chọn 1 trong nhóm cùng `name`), `checkbox` (chọn nhiều), `number`, `date`, `file`, `button`, `submit`.
-- 📋 **Hộp thả xuống `<select>`:** Chứa các thẻ `<option>` bên trong, hiển thị danh sách lựa chọn gọn gàng, tiết kiệm không gian.
-- 📜 **Đoạn văn bản `<textarea>`:** Tiếp nhận dữ liệu văn bản nhiều dòng với hai thuộc tính kích thước `rows` (dòng) và `cols` (cột).
-- 📦 **Gom nhóm `<fieldset>` & `<legend>`:** Tạo đường viền nhóm các thông tin liên quan kèm tiêu đề mô tả trực quan.
-</GlassCard>
-</div>
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'TƯƠNG TÁC HAI CHIỀU VỚI NGƯỜI DÙNG'"
+  duration="10 phút"
+  objective="Nhận biết vai trò của biểu mẫu web (Form) khi chuyển từ đọc thông tin thụ động (1 chiều) sang tương tác gửi dữ liệu chủ động (2 chiều)."
+  content="Học sinh quan sát tình huống: Để đăng ký tham gia CLB hoặc mua hàng online, trang web cần những thành phần giao diện nào?"
+  product="Học sinh liệt kê được các thành phần: ô nhập tên, ô mật khẩu, ô chọn giới tính, nút bấm gửi."
+>
+
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đăng ký Online thế nào?"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Tình huống thực tế trên màn chiếu">
+      Đoàn trường phát động cuộc thi *"Học sinh Thanh lịch 2026"* và yêu cầu thí sinh đăng ký trực tuyến trên website của trường:
+      - Làm thế nào để học sinh nhập được Họ tên, Ngày sinh, Chi đoàn?
+      - Làm sao để chọn Giới tính (Nam/Nữ) mà không sợ nhầm?
+      - Khi điền xong, nút nào sẽ giúp gửi toàn bộ thông tin về cho Ban giám khảo?
+    </Alert>
+
+    <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mt-3">
+      ❓ <strong>Câu hỏi:</strong> Trong HTML, bộ công cụ nào giải quyết bài toán giao tiếp hai chiều này?
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Thảo luận tại chỗ"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Học sinh liên hệ với các biểu mẫu quen thuộc: Form đăng nhập Facebook/Google, Form đăng ký thi tốt nghiệp, Form khảo sát Google Forms.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Nhận diện các ô nhập liệu"
+  >
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+      <p>Cần các ô nhập văn bản, ô tích chọn hình tròn (radio), ô chọn vuông (checkbox), danh sách cuộn (select) và nút Gửi (submit).</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề"
+  >
+    <Alert type="success" title="Chốt kiến thức mở đầu">
+      Để thu thập thông tin người dùng, HTML sử dụng thẻ bao ngoài `<form>` kết hợp cùng hệ thống các phần tử điều khiển phong phú như `<input>`, `<select>`, `<textarea>` và `<button>`.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút"
+  objective="Làm chủ cấu trúc thẻ form, các thuộc tính của thẻ input, cặp thẻ nhãn label và các thẻ chọn select, textarea."
+  content="Khám phá các giá trị type của thẻ input (text, password, radio, checkbox, date), vai trò thuộc tính name và thuộc tính required."
+  product="Giao diện form đăng ký tài khoản đầy đủ các kiểu trường dữ liệu hoạt động mượt mà."
+>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: THẺ FORM VÀ CÁC KIỂU INPUT CƠ BẢN
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="CẤU TRÚC THẺ <FORM> VÀ CÁC KIỂU NHẬP LIỆU <INPUT>"
+    duration="15 phút"
+    objective="Viết đúng cú pháp thẻ <form>; hiểu các kiểu type='text', type='password', type='number', type='date'."
+    content="Thực hành nhập liệu trên sandbox, quan sát cơ chế ẩn kí tự của type='password' và giới hạn số của type='number'."
+    product="Tạo được các trường nhập họ tên, mật khẩu, tuổi và ngày sinh."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Khám phá Thẻ <input>"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<form style="background: #f8fafc; padding: 20px; border-radius: 15px; border: 1px solid #cbd5e1;">
+    <h3 style="color: #0369a1; margin-top: 0;">ĐĂNG KÝ THÀNH VIÊN</h3>
+
+    <!-- 1. Ô nhập văn bản thông thường -->
+    <p>
+        <label for="hoten">Họ và tên:</label><br>
+        <input type="text" id="hoten" name="hoten" placeholder="Nguyễn Văn A" required style="padding: 6px; width: 100%;">
+    </p>
+
+    <!-- 2. Ô nhập mật khẩu (che dấu chấm) -->
+    <p>
+        <label for="matkhau">Mật khẩu:</label><br>
+        <input type="password" id="matkhau" name="matkhau" required style="padding: 6px; width: 100%;">
+    </p>
+
+    <!-- 3. Ô nhập ngày tháng -->
+    <p>
+        <label for="ngaysinh">Ngày sinh:</label><br>
+        <input type="date" id="ngaysinh" name="ngaysinh" style="padding: 6px;">
+    </p>
+
+    <button type="submit" style="background: #0284c7; color: white; border: none; padding: 8px 18px; border-radius: 8px; cursor: pointer;">
+        Gửi đăng ký
+    </button>
+</form>`}
+        title="Thử nghiệm trực tiếp: Cấu trúc Form và các kiểu Input cơ bản"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Giải phẫu các Thuộc tính của <input>"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-sky-600 dark:text-sky-400 font-bold block mb-1">
+            🔑 Thuộc tính `type="..."`:
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Quyết định hình dáng và hành vi của ô nhập: <code>text</code> (văn bản), <code>password</code> (ẩn mật khẩu), <code>number</code> (nhập số), <code>date</code> (lịch chọn ngày), <code>submit</code> (nút gửi).
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-indigo-600 dark:text-indigo-400 font-bold block mb-1">
+            🏷️ Thuộc tính `name="..."`:
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            <strong>Cực kỳ quan trọng!</strong> Là tên biến đại diện cho dữ liệu khi gửi về máy chủ (Server). Nếu ô nhập không có thuộc tính <code>name</code>, máy chủ sẽ không nhận được dữ liệu của ô đó!
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-amber-600 dark:text-amber-400 font-bold block mb-1">
+            💡 Thuộc tính `placeholder`:
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Dòng chữ mờ hướng dẫn người dùng mẫu nhập (tự biến mất khi người dùng gõ chữ đầu tiên).
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-rose-600 dark:text-rose-400 font-bold block mb-1">
+            ⚠️ Thuộc tính `required`:
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Bắt buộc người dùng phải điền, nếu để trống thì trình duyệt sẽ chặn lại và hiện thông báo nhắc nhở!
+          </p>
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Cặp đôi 'for' và 'id'"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💡 Tại sao nên dùng thẻ &lt;label for="..."&gt;?
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Khi thuộc tính <code>for</code> của thẻ <code>&lt;label&gt;</code> trùng với <code>id</code> của <code>&lt;input&gt;</code>, người dùng chỉ cần nhấp chuột vào chữ nhãn thì con trỏ sẽ tự động nhảy vào ô nhập liệu (hoặc tự tích chọn ô radio/checkbox). Điều này giúp thao tác trên điện thoại màn hình nhỏ thuận tiện hơn rất nhiều!
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Input"
+    >
+      <Alert type="success" title="Quy tắc">
+        `<input>` là thẻ đơn. Luôn kết hợp `<label for="id">` với `<input id="..." name="...">` để tạo trải nghiệm người dùng chuẩn mực.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: RADIO, CHECKBOX, SELECT VÀ TEXTAREA
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="LỰA CHỌN (RADIO, CHECKBOX, SELECT) VÀ NHẬP VĂN BẢN DÀI (TEXTAREA)"
+    duration="15 phút"
+    objective="Phân biệt chọn 1 (radio) và chọn nhiều (checkbox); tạo danh sách thả xuống select và ô ghi chú textarea."
+    content="Thực hành gom nhóm radio bằng thuộc tính name giống nhau; tạo danh sách tỉnh thành bằng thẻ select - option."
+    product="Biểu mẫu khảo sát sở thích và chọn ngành nghề hoàn chỉnh."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Radio, Checkbox, Select, Textarea"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<form style="background: #fffbeb; padding: 20px; border-radius: 15px; border: 1px solid #fde68a;">
+    <h3 style="color: #b45309; margin-top: 0;">PHIẾU KHẢO SÁT HỌC SINH 12</h3>
+
+    <!-- 1. Radio (Chọn duy nhất 1 trong nhóm) -->
+    <p><strong>Giới tính:</strong><br>
+        <input type="radio" id="nam" name="gioitinh" value="nam">
+        <label for="nam">Nam</label> &nbsp;&nbsp;
+        <input type="radio" id="nu" name="gioitinh" value="nu">
+        <label for="nu">Nữ</label>
+    </p>
+
+    <!-- 2. Checkbox (Chọn nhiều) -->
+    <p><strong>Sở thích (Có thể chọn nhiều):</strong><br>
+        <input type="checkbox" id="st1" name="sothich" value="code">
+        <label for="st1">Lập trình</label> &nbsp;
+        <input type="checkbox" id="st2" name="sothich" value="game">
+        <label for="st2">Chơi game</label> &nbsp;
+        <input type="checkbox" id="st3" name="sothich" value="thethao">
+        <label for="st3">Thể thao</label>
+    </p>
+
+    <!-- 3. Select / Option (Thả xuống) -->
+    <p><strong>Định hướng khối ngành:</strong><br>
+        <select name="nganh" style="padding: 6px; width: 100%;">
+            <option value="cntt">Công nghệ thông tin & Trí tuệ nhân tạo</option>
+            <option value="kinhte">Kinh tế & Quản trị kinh doanh</option>
+            <option value="kithuat">Kỹ thuật & Công nghệ</option>
+        </select>
+    </p>
+
+    <!-- 4. Textarea (Văn bản nhiều dòng) -->
+    <p><strong>Ý kiến đóng góp (Nhiều dòng):</strong><br>
+        <textarea name="gopy" rows="3" style="width: 100%; padding: 6px;" placeholder="Ghi ý kiến của em vào đây..."></textarea>
+    </p>
+</form>`}
+        title="Thử nghiệm trực tiếp: Radio, Checkbox, Select, Textarea"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Quy tắc Gom nhóm Nút Radio"
+    >
+      <Alert type="danger" title="⚠️ Lỗi kinh điển khi làm nút Radio (Tròn)">
+        - Muốn các nút Radio loại trừ nhau (khi chọn Nam thì nút Nữ tự tắt), **bắt buộc tất cả các nút Radio trong cùng câu hỏi phải có cùng giá trị thuộc tính `name`!**
+        - Nếu đặt khác tên (ví dụ `name="nam"` và `name="nu"`), người dùng có thể tích chọn cả hai cùng lúc, làm sai logic giới tính!
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – So sánh Checkbox và Radio"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <p><strong>Radio (Nút tròn):</strong> Chỉ được phép chọn DUY NHẤT 1 phương án (Ví dụ: Giới tính, Khối thi, Hình thức thanh toán).</p>
+        <p className="mt-1"><strong>Checkbox (Ô vuông):</strong> Cho phép chọn NHIỀU phương án hoặc không chọn phương án nào (Ví dụ: Sở thích, Kỹ năng cá nhân, Món ăn kèm).</p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt các thành phần Form"
+    >
+      <Alert type="success" title="Tổng kết">
+        - `<select>` + `<option>`: Hộp chọn thả xuống tiết kiệm không gian màn hình.
+        - `<textarea rows="..." cols="...">`: Ô nhập văn bản dài nhiều dòng (cho phép người dùng kéo giãn kích thước).
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'THIẾT KẾ BIỂU MẪU ĐẶT HÀNG TRỰC TUYẾN'"
+  duration="20 phút"
+  objective="Củng cố toàn diện kĩ năng xây dựng biểu mẫu hoàn chỉnh có xác thực dữ liệu tại chỗ."
+  content="Thực hiện 2 thử thách: Trắc nghiệm nhận diện thẻ form và Soạn thảo form đặt món ăn trực tuyến."
+  product="Tệp dathang.html chạy chuẩn xác trên máy tính."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Củng cố (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Để đảm bảo người dùng CHỈ ĐƯỢC CHỌN 1 trong 2 nút Radio (Nam hoặc Nữ), điều kiện bắt buộc là gì?",
+        options: [
+          "A. Cả 2 nút phải có cùng thuộc tính id",
+          "B. Cả 2 nút phải có cùng thuộc tính name",
+          "C. Cả 2 nút phải có cùng thuộc tính value",
+          "D. Cả 2 nút phải đặt trong cùng một thẻ p"
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! Thuộc tính name giống nhau giúp trình duyệt hiểu đây là một nhóm lựa chọn loại trừ lẫn nhau."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Thẻ nào dùng để tạo ô nhập văn bản nhiều dòng (như viết nhận xét, ghi chú giao hàng)?",
+        options: [
+          'A. <input type="multiline">',
+          'B. <textarea>',
+          'C. <input type="paragraph">',
+          'D. <textbox>'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! Thẻ <textarea> dùng cho văn bản nhiều dòng; <input type='text'> chỉ dùng cho 1 dòng."
+      }} />
+    </div>
+
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Thực hành Thiết kế Form Đặt Hàng Trực Tuyến (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Hãy viết mã HTML tạo Form đặt trà sữa cho lớp học gồm: Ô nhập Họ tên (bắt buộc), Ô nhập Số điện thoại, Hộp chọn thả xuống Chọn món (Trà sữa trân châu, Trà đào, Trà vải), Nút chọn Size (M hoặc L - dùng radio), và Nút bấm "Gửi đơn hàng".
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn code trên máy"
+  >
+    <Alert type="tip" title="Gợi ý cấu trúc cho học sinh">
+      Dùng thẻ `<form>`, các khối `<p>` chia đoạn, gán thuộc tính `required` cho họ tên và số điện thoại.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Thử nghiệm mã nguồn"
+  >
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Đặt hàng Trà Sữa Online</title>
+</head>
+<body style="font-family: Arial; padding: 25px; background: #f1f5f9;">
+    <div style="max-width: 480px; margin: 0 auto; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+        <h2 style="color: #0f172a; text-align: center; margin-top: 0;">🛵 ĐƠN ĐẶT HÀNG TRÀ SỮA</h2>
+        <hr style="margin-bottom: 20px;">
+
+        <form action="#" method="POST">
+            <p>
+                <label for="cust_name"><strong>Họ và tên của bạn:</strong></label><br>
+                <input type="text" id="cust_name" name="cust_name" required placeholder="Nhập đầy đủ họ tên" style="width: 100%; padding: 8px; margin-top: 5px;">
+            </p>
+
+            <p>
+                <label for="cust_phone"><strong>Số điện thoại:</strong></label><br>
+                <input type="tel" id="cust_phone" name="cust_phone" required placeholder="09xxxxxxxx" style="width: 100%; padding: 8px; margin-top: 5px;">
+            </p>
+
+            <p>
+                <label for="drink"><strong>Chọn đồ uống:</strong></label><br>
+                <select id="drink" name="drink" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    <option value="ts_tc">Trà sữa trân châu hoàng gia</option>
+                    <option value="tra_dao">Trà đào cam sả thanh mát</option>
+                    <option value="tra_vai">Trà vải hoa hồng</option>
+                </select>
+            </p>
+
+            <p>
+                <strong>Kích cỡ (Size):</strong><br>
+                <input type="radio" id="size_m" name="size" value="M" checked>
+                <label for="size_m">Size M (Vừa)</label> &nbsp;&nbsp;
+                <input type="radio" id="size_l" name="size" value="L">
+                <label for="size_l">Size L (Lớn +5k)</label>
+            </p>
+
+            <p>
+                <label for="note"><strong>Ghi chú giao hàng:</strong></label><br>
+                <textarea id="note" name="note" rows="2" style="width: 100%; padding: 8px; margin-top: 5px;" placeholder="Ít đường, nhiều đá, giao giờ ra chơi..."></textarea>
+            </p>
+
+            <button type="submit" style="width: 100%; background: #059669; color: white; padding: 12px; font-size: 16px; font-weight: bold; border: none; border-radius: 10px; cursor: pointer; margin-top: 10px;">
+                XÁC NHẬN ĐẶT HÀNG
+            </button>
+        </form>
+    </div>
+</body>
+</html>`}
+      title="Mã nguồn mẫu: Đơn đặt hàng trà sữa trực tuyến (Thử thách 2)"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết thực hành"
+  >
+    <Alert type="success" title="Đánh giá kết quả">
+      Học sinh làm chủ hoàn toàn các thành phần nhập liệu cốt lõi, hiểu rõ cách gom nhóm radio và kiểm tra dữ liệu với thuộc tính required.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'BIỂU MẪU ĐĂNG KÝ XÉT TUYỂN ĐẠI HỌC / CLB TRƯỜNG'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng kỹ năng thiết kế form hoàn chỉnh để tạo Biểu mẫu đăng ký nguyện vọng Đại học hoặc Đăng ký thành viên Câu lạc bộ Tin học trường THPT."
+  content="Học sinh thiết kế tệp dangky_[TenHS].html có đầy đủ trường nhập thông tin cá nhân, ảnh chân dung file upload và nguyện vọng."
+  product="Tệp dangky_[TenHS].html đẹp mắt, chuyên nghiệp và đầy đủ kiểm tra dữ liệu."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề tài Dự án Biểu mẫu Số"
+  >
+    <Alert type="idea" title="Yêu cầu Dự án Biểu mẫu Đăng ký">
+      Tạo tệp HTML có tên <code>dangky_[TenEm].html</code>:
+      1. Tiêu đề `<h1>`: Phiếu Đăng ký Tuyển sinh / Tham gia Câu lạc bộ.
+      2. Thông tin cá nhân: Họ tên, Ngày sinh, Số CCCD/Định danh, Email.
+      3. Chọn nguyện vọng/ban chuyên môn bằng `<select>`.
+      4. Chọn kỹ năng sở trường bằng `<input type="checkbox">`.
+      5. Tải ảnh chân dung thẻ học sinh bằng `<input type="file">`.
+      6. Có nút Gửi đơn (`submit`) và nút Làm lại (`reset`).
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo khung tại phòng máy"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Khởi tạo khung sườn">
+      Học sinh tạo form hoàn chỉnh tại phòng máy trong 10 phút và hoàn thiện trang trí CSS ở nhà.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Bảng tiêu chí chấm điểm (Rubric 5512)"
+  >
+    <RubricCard />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết học & Chuẩn bị Bài 13"
+  >
+    <Alert type="success" title="Lời dặn chuẩn bị Bài 13 (CSS)">
+      - **Nộp bài:** Nộp tệp `.html` lên hệ thống học tập.
+      - **Chuẩn bị Bài 13 (Khái niệm, vai trò của CSS):** Chúng ta đã hoàn thành xong phần Khung xương HTML! Bắt đầu từ Bài 13, chúng ta sẽ bước sang thế giới của **CSS (Cascading Style Sheets)** - ngôn ngữ trang điểm và thiết kế giao diện thần thánh của lập trình web!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>

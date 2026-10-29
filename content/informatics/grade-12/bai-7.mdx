@@ -1,469 +1,680 @@
 ---
 title: "Bài 7: HTML và cấu trúc trang web"
-description: "Khám phá 'bộ xương' của mọi trang web và học cách xây dựng tệp HTML đầu tiên."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 7
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Mỗi ngày chúng ta lướt hàng chục trang web như Facebook, YouTube hay VnExpress với giao diện đầy màu sắc và hình ảnh sống động. Nhưng có bao giờ em tự hỏi "phía sau hậu trường", trình duyệt thực sự đọc cái gì? 🌐💻
-    
-    **💡 Thử thách:** 
-    Hãy mở một trang web bất kỳ trên máy tính, nhấn phím **F12**. Đừng hoảng hốt trước hàng ngàn dòng chữ chi chít hiện ra. Đó chính là mã nguồn **HTML** - "bộ xương" định hình nên toàn bộ nội dung mà em đang thấy. 
-    Hôm nay, chúng ta sẽ học cách tự tay "xây xương" cho trang web đầu đời của mình!
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS nhận diện được mã nguồn HTML đằng sau các giao diện web bóng bẩy.
-    - Hiểu vai trò của HTML trong việc định hình cấu trúc dữ liệu.
-    
-    **Tổ chức thực hiện:**
-    - GV hướng dẫn HS dùng tính năng "View Page Source" (Ctrl + U) để quan sát mã thô.
-    - Dẫn dắt sang khái niệm Ngôn ngữ đánh dấu.
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 7: HTML VÀ CẤU TRÚC TRANG WEB"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Các em đã được làm quen với khái niệm website và trang web, cũng có thể em đã biết cách sử dụng phần mềm để tạo ra các trang web với nội dung đa dạng và phong phú, hình thức trình bày đẹp.
+<LearningObjectives />
 
-    Tuy nhiên, có thể các em vẫn muốn biết:
+<EquipmentChecklist />
 
-    - Các trang web thực chất có cấu trúc như thế nào?
-    - Có thể "lập trình" để tạo ra được các trang web hay không? Nếu lập trình được thì "mã nguồn" của trang web là gì?
-    - Các trang web có quan hệ như thế nào với ngôn ngữ HTML?
-    - Trang web và trình duyệt web có quan hệ như thế nào?
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
 
-    Em hãy tìm câu trả lời.
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'BÍ MẬT PHÍA SAU MÀN HÌNH WEB'"
+  duration="10 phút"
+  objective="Khơi gợi sự tò mò thông qua việc khám phá lớp mã lệnh ẩn phía sau giao diện đồ họa của một trang web, từ đó xác định nhiệm vụ tìm hiểu ngôn ngữ HTML."
+  content="Học sinh thực hiện thao tác 'Xem nguồn trang' trên trình duyệt và trả lời câu hỏi quan sát theo cặp đôi."
+  product="Học sinh mở được cửa sổ mã nguồn HTML của một trang web bất kì và chỉ ra được sự xuất hiện của các từ khóa nằm trong cặp dấu < >."
+>
 
-    ### 1. Trang web và HTML
-
-    #### Hoạt động 1: Tìm hiểu ngôn ngữ HTML và trang web
-
-    Các trang web mà em vẫn thường xem được hiển thị bởi trình duyệt web (ví dụ: Cốc cốc, FireFox, Chrome). Thực chất chúng được tạo ra từ các tệp văn bản. Các tệp văn bản này được gọi là trang nguồn (hay mã nguồn) của trang web tương ứng.
-
-    **HTML** là viết tắt của cụm từ Hypertext Markup Language (ngôn ngữ đánh dấu siêu văn bản), là một bộ quy tắc dùng để thiết lập cấu trúc và hiển thị nội dung trang web.
-
-    Trang web được thiết lập từ các tệp văn bản thường có phần mở rộng là .html hoặc .htm được gọi là trang html. Trên trang html, ta có thể thấy nội dung bao gồm phần văn bản (text) và các kí tự đánh dấu đặc biệt nằm trong hai dấu `<`, `>`. Các kí tự này, được gọi là thể đánh dấu HTML (còn gọi là thể HTML hay tag).
-
-    Các thể HTML được sử dụng để xác định phần tử HTML tương ứng. Các phần tử HTML định dạng thông tin trong trang web. Để hiển thị thông tin trong trang web, cần phần mềm trình duyệt web.
-
-    #### a) Thẻ đánh dấu HTML
-
-    Thẻ đánh dấu HTML (tag) là các thành phần chính tạo thành ngôn ngữ đánh dấu siêu văn bản. Mỗi loại thể có một tên riêng và có ý nghĩa nhất định trong định dạng nội dung của trang web. Các thể được viết trong cặp dấu `<`, `>`. Thông thường mỗi thể sẽ bao gồm thể bắt đầu và thể kết thúc, chỉ ra phạm vi tác dụng của thể.
-
-    **Một số thẻ HTML phổ biến:**
-
-    | Thẻ | Ý nghĩa thẻ | HTML code | Hiển thị trên trình duyệt |
-    |-----|-------------|-----------|--------------------------|
-    | p | Đoạn văn bản | `<p>Đây là đoạn văn bản.</p>` | Đây là đoạn văn bản. |
-    | h1 | Tiêu đề 1 của văn bản | `<h1>Đây là tiêu đề 1</h1>` | Đây là tiêu đề 1 |
-    | h2 | Tiêu đề 2 của văn bản | `<h2>Đây là tiêu đề 2</h2>` | Đây là tiêu đề 2 |
-    | div | Phần tử khối | `<div>Nội dung trong khối</div>` | Nội dung trong khối |
-    | span | Phần tử nội tuyến | `<span>Nội dung</span>` | Nội dung |
-
-    **Lưu ý quan trọng:**
-
-    - **Tên thể HTML không phân biệt chữ hoa, chữ thường** nhưng mặc định tên thể được viết chữ thường.
-    - **Các thể có thể lồng nhau.** Ví dụ sau là thể `<em>` được lồng bên trong thể `<p>`:
-      ```html
-      <p>Trang này được lập bởi <em>nhóm bạn bè</em> thân thiết</p>
-      ```
-    - **Mỗi thể có thể đi kèm các thông tin thuộc tính của thể.** Ví dụ sau mô tả thuộc tính màu được gán thêm cho thể `<p>`, do đó toàn bộ đoạn văn bản này có màu đỏ khi hiển thị trên trình duyệt:
-      ```html
-      <p style="color: red">This is a paragraph.</p>
-      ```
-    - **Phần lớn các thể đều là thể đôi**, tức là có thể bắt đầu (opening tag) và thể kết thúc (closing tag). Ví trí kết thúc thể có thêm dấu "/" chẳng hạn `</p>`.
-    - **Tuy nhiên có một số loại thể đơn**, tức là chỉ có thể bắt đầu. Các thể đơn thường có dạng `<tên thể>` hoặc `<tên thể/>`, ví dụ `<hr/>` (dòng kề ngang), `<br/>` (ngắt xuống dòng),...
-    - **HTML và trình duyệt không nhận biết được nhiều dấu cách.** Nếu gõ nhiều dấu cách máy sẽ hiểu là chỉ có một dấu cách. Trình duyệt cũng không nhận biết dấu xuống dòng khi người dùng nhấn phím Enter trong quá trình soạn thảo. Cần chú ý điều này khi soạn thảo HTML.
-
-    #### b) Phần tử HTML
-
-    Phần tử HTML (element) là khái niệm cơ bản của trang html. Thông thường, một phần tử được định nghĩa bởi thể bắt đầu, thể kết thúc và phần nội dung nằm giữa cặp thể này.
-
-    **Lưu ý:** Các thể đơn cùng với nội dung của nó cũng được gọi là phần tử HTML.
-
-    Vậy phần tử HTML có thể hiểu là toàn bộ phần thể và nội dung của thẻ. Mỗi tệp HTML là tập hợp các phần tử HTML. Các phần tử HTML đóng vai trò quan trọng tạo nên cấu trúc và nội dung của trang web. Các phần tử HTML có thể độc lập, rời nhau hoặc lồng nhau.
-
-    Trong ví dụ về cấu trúc trang web, em thấy hai phần tử HTML rời nhau là `<head>` và `<body>`, trong khi đó phần tử `<div>` có thể chứa bên trong bốn phần tử HTML khác.
-
-    **Lưu ý thêm:**
-
-    - **Dòng đầu tiên của mỗi tệp HTML có dạng `<!DOCTYPE html>`** có vai trò thông báo kiểu của tệp là html và không được xem là phần tử HTML.
-    - **Phần tử HTML đặc biệt có ý nghĩa chú thích trong tệp HTML có dạng:**
-      ```html
-      <!-- đây là dòng chú thích -->
-      ```
-
-    **Tóm lại:**
-    Trang web được thiết lập theo một ngôn ngữ có cấu trúc đặc biệt gọi là ngôn ngữ đánh dấu siêu văn bản HTML. Các tệp HTML là tệp văn bản được cấu tạo từ các phần tử HTML. Mỗi phần tử HTML gồm nội dung được đánh dấu bởi các thẻ (HTML tag) có tính năng điều khiển hoặc định dạng nội dung. Trình duyệt có chức năng hiển thị nội dung trang web theo đúng định dạng được thiết lập.
-
-    <Quiz data={{
-      question: "Phần tử HTML bao gồm những thành phần nào?",
-      options: [
-        "A. Chỉ có thẻ bắt đầu",
-        "B. Chỉ có nội dung",
-        "C. Thẻ bắt đầu, nội dung và thẻ kết thúc",
-        "D. Chỉ có thẻ kết thúc"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! Phần tử HTML đầy đủ bao gồm thẻ bắt đầu, nội dung và thẻ kết thúc (trừ các thẻ đơn)."
-    }} />
-
-    <Quiz data={{
-      question: "Đặc điểm nào sau đây ĐÚNG về HTML?",
-      options: [
-        "A. HTML là ngôn ngữ lập trình",
-        "B. Tên thẻ HTML phân biệt chữ hoa và chữ thường",
-        "C. HTML không nhận biết nhiều dấu cách liên tiếp",
-        "D. Mọi thẻ đều phải có thẻ đóng"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! HTML chỉ nhận một dấu cách dù bạn gõ nhiều dấu cách liên tiếp."
-    }} />
-
-    <Alert type="info">
-      **Khái niệm quan trọng cần nhớ:**
-      - **HTML:** Ngôn ngữ đánh dấu siêu văn bản
-      - **Thẻ (Tag):** Đánh dấu trong dấu `<` `>`
-      - **Phần tử (Element):** Thẻ + nội dung
-      - **Trình duyệt:** Phần mềm hiển thị trang HTML
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Thử thách 'Thám tử Web'"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Màn chiếu lớp học • Thử thách dành cho học sinh (Thời gian: 03 phút)">
+      Mở một trang web tin tức (ví dụ: *vnexpress.net*, *dantri.com.vn*) hoặc trang chủ của nhà trường.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS hiểu được khái niệm HTML và vai trò của nó
-    - HS phân biệt được thẻ HTML và phần tử HTML
-    - HS biết các quy tắc cơ bản khi viết HTML
 
-    **Hoạt động:**
-    - GV hướng dẫn HS xem mã nguồn trang web thực tế
-    - HS thực hành viết các thẻ HTML cơ bản
-    - **Sản phẩm:** Bảng tổng kết các thẻ HTML cơ bản
-  </TeacherNotes>
-</StepKnowledge>
-      <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+    **Thực hiện các bước sau trên máy tính:**
+    1. Mở trình duyệt web trên máy tính (Chrome, Edge hoặc Cốc Cốc), truy cập vào một trang web bất kì.
+    2. Nhấn tổ hợp phím **Ctrl + U** (hoặc nhấp chuột phải vào vùng trống trên trang $\rightarrow$ chọn **View page source / Xem nguồn trang**).
+    3. Quan sát cửa sổ mới hiện ra và trả lời 2 câu hỏi:
+       - **Câu 1:** Những dòng văn bản bên trong cửa sổ mới có giống với giao diện hình ảnh bạn vừa nhìn thấy không?
+       - **Câu 2:** Bạn nhận thấy kí hiệu đặc biệt nào lặp đi lặp lại ở đầu và cuối các từ khóa tiếng Anh (như `html`, `head`, `body`, `div`, `p`)?
 
-    1. Tệp văn bản trong Hình 7.1 có bao nhiêu phần tử HTML?
+    <TeacherNotes>
+      **Gợi ý sư phạm cho Giáo viên:**
+      - Chiếu sẵn trang chủ nhà trường hoặc trang Báo điện tử lên màn chiếu lớn.
+      - Nhắc học sinh không nhấn Ctrl + U vào video hoặc hình ảnh động vì có thể mở ra menu ngữ cảnh của media.
+      - Kích hoạt đồng hồ đếm ngược 03 phút để tạo không khí thi đua sôi nổi giữa các nhóm bàn.
+    </TeacherNotes>
+  </SlideStep>
 
-    **Trả lời:**
-    Để xác định số lượng phần tử HTML trong một tệp, chúng ta cần đếm tất cả các cặp thẻ (thẻ mở + thẻ đóng) và các thẻ đơn.
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Thao tác trực tiếp trên máy"
+  >
+    **Hướng dẫn hiển thị trên màn hình cho học sinh:**
+    - Thực hiện theo cặp (2 học sinh cùng quan sát trên 1 máy tính).
+    - 💡 **Gợi ý hỗ trợ nhanh:** Nếu nhấn chuột phải không thấy dòng *Xem nguồn trang*, hãy tránh nhấp trực tiếp vào hình ảnh hoặc video; hãy nhấp vào vùng nền trống (khoảng trắng) của trang web.
+    - ✍️ **Nhiệm vụ tại chỗ:** Ghi nhanh **3 từ khóa** nằm trong dấu `< >` mà nhóm bạn tìm thấy ở những dòng đầu tiên của cửa sổ mã nguồn vào vở hoặc nháp.
+  </SlideStep>
 
-    **Ví dụ phân tích một tệp HTML đơn giản:**
-    ```html
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Trang web đầu tiên</title>
-    </head>
-    <body>
-        <h1>Tiêu đề chính</h1>
-        <p>Đây là một đoạn văn bản.</p>
-        <div>
-            <p>Đoạn văn bên trong div.</p>
-        </div>
-        <br/>
-    </body>
-    </html>
-    ```
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Chia sẻ phát hiện trước lớp"
+  >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
+      <div className="p-5 rounded-2xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800">
+        <h5 className="font-black text-sky-800 dark:text-sky-300 text-sm uppercase mb-2">
+          🎤 Câu hỏi tương tác 1:
+        </h5>
+        <p className="text-slate-800 dark:text-slate-200 text-sm">
+          Đại diện 2 nhóm đọc to <strong>3 từ khóa</strong> nằm trong cặp dấu <code>&lt;...&gt;</code> vừa ghi nhận được ở những dòng đầu tiên?
+        </p>
+      </div>
 
-    **Phân tích các phần tử HTML:**
-    1. `<html>...</html>` - Phần tử html
-    2. `<head>...</head>` - Phần tử head
-    3. `<title>...</title>` - Phần tử title
-    4. `<body>...</body>` - Phần tử body
-    5. `<h1>...</h1>` - Phần tử h1
-    6. `<p>...</p>` - Phần tử p (đoạn văn thứ nhất)
-    7. `<div>...</div>` - Phần tử div
-    8. `<p>...</p>` - Phần tử p (đoạn văn bên trong div)
-    9. `<br/>` - Phần tử br (thẻ đơn)
-
-    **Tổng cộng:** 9 phần tử HTML
-
-    **Lưu ý:** `<!DOCTYPE html>` không được tính là phần tử HTML.
-
-    2. Nêu sự giống và khác nhau giữa thẻ HTML và phần tử HTML.
-
-    **Trả lời:**
-
-    **Giống nhau:**
-    - Cả hai đều là thành phần cơ bản của HTML
-    - Đều được viết trong cặp dấu `< >`
-    - Đều có tên xác định chức năng
-    - Đều dùng để định dạng và cấu trúc nội dung trang web
-
-    **Khác nhau:**
-
-    | Tiêu chí | Thẻ HTML (Tag) | Phần tử HTML (Element) |
-    |----------|----------------|------------------------|
-    **Định nghĩa** | Là dấu đánh dấu | Là toàn bộ cấu trúc |
-    **Cấu thành** | Chỉ có tên thẻ | Thẻ mở + nội dung + thẻ đóng |
-    **Ví dụ** | `<p>`, `</p>`, `<h1>` | `<p>Nội dung đoạn văn</p>` |
-    **Phạm vi** | Đánh dấu bắt đầu/kết thúc | Toàn bộ khối nội dung |
-    **Loại** | Thẻ mở, thẻ đóng, thẻ đơn | Phần tử đầy đủ |
-
-    **Ví dụ cụ thể:**
-    - **Thẻ HTML:** `<h1>` và `</h1>`
-    - **Phần tử HTML:** `<h1>Đây là tiêu đề</h1>`
-
-    Trong ví dụ này:
-    - `<h1>` là thẻ mở
-    - `</h1>` là thẻ đóng
-    - `Đây là tiêu đề` là nội dung
-    - Toàn bộ `<h1>Đây là tiêu đề</h1>` là một phần tử HTML
-
-    **Bài tập thực hành:**
-
-    **Bài 1: Xác định thẻ và phần tử**
-    Cho đoạn mã sau:
-    ```html
-    <div>
-        <h2>Tiêu đề phụ</h2>
-        <p>Đoạn văn với <em>nội dung nhấn mạnh</em></p>
-        <hr/>
+      <div className="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800">
+        <h5 className="font-black text-indigo-800 dark:text-indigo-300 text-sm uppercase mb-2">
+          🤔 Câu hỏi tư duy 2:
+        </h5>
+        <p className="text-slate-800 dark:text-slate-200 text-sm">
+          Tại sao chúng ta viết văn bản trên Word thì người đọc thấy ngay chữ đó, còn trên Web lại có thêm các từ khóa nằm trong dấu <code>&lt;...&gt;</code> mà người xem bình thường không nhìn thấy?
+        </p>
+      </div>
     </div>
-    ```
+  </SlideStep>
 
-    **Câu hỏi:**
-    a) Có bao nhiêu thẻ HTML trong đoạn mã trên?
-    b) Có bao nhiêu phần tử HTML trong đoạn mã trên?
-    c) Phần tử nào lồng bên trong phần tử khác?
-
-    **Trả lời:**
-    a) **Thẻ HTML:** `<div>`, `</div>`, `<h2>`, `</h2>`, `<p>`, `</p>`, `<em>`, `</em>`, `<hr/>` → **9 thẻ**
-    b) **Phần tử HTML:** `<div>...</div>`, `<h2>...</h2>`, `<p>...</p>`, `<em>...</em>`, `<hr/>` → **5 phần tử**
-    c) **Phần tử lồng nhau:**
-       - `<h2>` và `<p>` lồng trong `<div>`
-       - `<em>` lồng trong `<p>`
-
-    **Bài 2: Viết lại cấu trúc**
-    Hãy viết lại các phần tử HTML sau cho đúng cấu trúc:
-    - Một phần tử div chứa một tiêu đề h1 và một đoạn văn p
-    - Đoạn văn p có chứa một từ được nhấn mạnh bằng thẻ em
-
-    **Trả lời:**
-    ```html
-    <div>
-        <h1>Tiêu đề chính</h1>
-        <p>Đây là đoạn văn có từ <em>nhấn mạnh</em>.</p>
-    </div>
-    ```
-
-    <Alert type="tip">
-      **Mẹo ghi nhớ:**
-      - **Thẻ** giống như **dấu ngoặc** đánh dấu bắt đầu/kết thúc
-      - **Phần tử** giống như **câu hoàn chỉnh** có dấu ngoặc và nội dung
-      - Mỗi **phần tử** luôn có ít nhất một **thẻ**
-      - Thẻ đơn vẫn là một phần tử hoàn chỉnh
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề vào bài học"
+  >
+    <Alert type="success" title="Nội dung cốt lõi chốt trên màn chiếu">
+      1. **Mọi trang web bạn thấy trên Internet** đều được xây dựng từ một tệp văn bản chứa các "nhãn đánh dấu" đặc biệt đặt trong cặp dấu `< >`.
+      
+      2. **Trình duyệt web** (Chrome, Edge, Cốc Cốc) đóng vai trò là "người phiên dịch": đọc các nhãn đánh dấu đó và hiển thị thành giao diện trang web hoàn chỉnh cho người dùng.
+      
+      3. **Ngôn ngữ tạo nên các nhãn đánh dấu đó gọi là HTML** (*HyperText Markup Language*) — chủ đề chính chúng ta sẽ chinh phục trong bài học hôm nay!
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS củng cố kiến thức về thẻ và phần tử HTML thông qua phân tích và thực hành.
-    **Hoạt động:** HS phân tích các đoạn mã HTML đơn giản và trả lời câu hỏi.
-    **Sản phẩm:** Bài trả lời chi tiết về sự khác biệt thẻ và phần tử HTML.
-  </TeacherNotes>
-</StepPractice>
+  </SlideStep>
 
-    <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+</PedagogyActivity>
 
-    #### 2. Cấu trúc cơ bản của một tệp HTML
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
 
-    #### Hoạt động 2: Tìm hiểu cấu trúc cơ bản của một tệp HTML
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút (Gồm 3 nhiệm vụ chuyên sâu)"
+  objective="Hình thành kiến thức nền tảng về khái niệm HTML, phân loại thẻ (Tag), cấu tạo phần tử (Element), bộ khung chuẩn HTML5 (DOM) và quy trình thao tác trên các phần mềm soạn thảo."
+  content="Phân tích mã nguồn mẫu, giải phẫu thẻ/phần tử, xây dựng sơ đồ cây DOM và thực hành soạn thảo tệp HTML đầu tiên."
+  product="Sơ đồ giải phẫu phần tử HTML, sơ đồ cây cấu trúc HTML5 chuẩn và tệp index.html chạy thành công trên máy tính cá nhân."
+>
 
-    Mỗi tệp HTML đều có cấu trúc cơ bản như sau:
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="KHÁM PHÁ NGÔN NGỮ HTML, THẺ ĐÁNH DẤU VÀ PHẦN TỬ HTML"
+    duration="15 phút"
+    objective="Hiểu khái niệm, chức năng của HTML; phân biệt được thẻ HTML (thẻ đôi, thẻ đơn) và phần tử HTML trong ví dụ cụ thể."
+    content="Học sinh phân tích đoạn mã mẫu trên màn chiếu để rút ra quy tắc viết thẻ và cấu tạo phần tử HTML."
+    product="Bảng phân loại thẻ đôi/thẻ đơn và sơ đồ giải phẫu một phần tử HTML hoàn chỉnh."
+  >
 
-    ```html
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Tiêu đề trang web</title>
-    </head>
-    <body>
-        <!-- Nội dung hiển thị cho người dùng -->
-        <h1>Tiêu đề chính</h1>
-        <p>Đây là đoạn văn bản đầu tiên.</p>
-    </body>
-    </html>
-    ```
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Giải mã cú pháp HTML"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <p className="font-bold text-slate-800 dark:text-slate-200">
+        Quan sát đoạn mã mẫu sau và kết quả hiển thị tương ứng trên trình duyệt:
+      </p>
 
-    **Phân tích cấu trúc:**
+      <HtmlLiveSandbox
+        preset="tags_demo"
+        title="Đoạn mã giải phẫu cú pháp: Thẻ h1, hr, p, br"
+      />
 
-    **1. `<!DOCTYPE html>`**
-    - Là khai báo đầu tiên của mọi tệp HTML
-    - Thông báo cho trình duyệt rằng đây là tài liệu HTML5
-    - Không phải là phần tử HTML
+      <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-sm text-slate-800 dark:text-slate-200 space-y-1">
+        <strong className="text-amber-800 dark:text-amber-300 font-bold block mb-1">
+          📋 Yêu cầu học sinh quan sát và trả lời trong 05 phút:
+        </strong>
+        <p>1. Tìm điểm khác biệt về cách viết giữa nhóm thẻ <code>&lt;h1&gt;...&lt;/h1&gt;</code>, <code>&lt;p&gt;...&lt;/p&gt;</code> và nhóm thẻ <code>&lt;hr&gt;</code>, <code>&lt;br&gt;</code>.</p>
+        <p>2. Chỉ ra đâu là <strong>Thẻ mở</strong>, đâu là <strong>Nội dung</strong>, và đâu là <strong>Thẻ đóng</strong> trong dòng lệnh số 1.</p>
+      </div>
+    </SlideStep>
 
-    **2. `<html>...</html>`**
-    - Là phần tử gốc (root element) của trang web
-    - Bao bọc tất cả các phần tử khác
-    - Có thể chứa thuộc tính `lang` để xác định ngôn ngữ:
-      ```html
-      <html lang="vi">
-      ```
-
-    **3. `<head>...</head>`**
-    - Chứa thông tin meta (metadata) về trang web
-    - Nội dung trong head không hiển thị trực tiếp cho người dùng
-    **Các phần tử phổ biến trong head:**
-    - `<title>`: Tiêu đề trang web (hiển thị trên tab trình duyệt)
-    - `<meta>`: Thông tin về ký tự, tác giả, mô tả...
-    - `<link>`: Liên kết đến file CSS
-    - `<script>`: Liên kết đến file JavaScript
-    - `<style>`: CSS nội tuyến
-
-    **Ví dụ về head:**
-    ```html
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Mô tả về trang web">
-        <meta name="author" content="Tên tác giả">
-        <title>Tên trang web</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    ```
-
-    **4. `<body>...</body>`**
-    - Chứa tất cả nội dung hiển thị cho người dùng
-    - Bao gồm văn bản, hình ảnh, video, liên kết, biểu mẫu...
-    - Là phần quan trọng nhất để xây dựng giao diện người dùng
-
-    **Các phần tử phổ biến trong body:**
-    - **Tiêu đề:** `<h1>` đến `<h6>`
-    - **Đoạn văn:** `<p>`
-    - **Liên kết:** `<a>`
-    - **Hình ảnh:** `<img>`
-    - **Danh sách:** `<ul>`, `<ol>`, `<li>`
-    - **Bảng:** `<table>`, `<tr>`, `<td>`
-    - **Biểu mẫu:** `<form>`, `<input>`, `<button>`
-    - **Phần tử khối:** `<div>`, `<section>`, `<article>`
-    - **Phần tử nội tuyến:** `<span>`, `<strong>`, `<em>`
-
-    **Thực hành tạo trang web đầu tiên:**
-
-    **Bài tập 1: Tạo trang giới thiệu cá nhân**
-
-    **Yêu cầu:** Tạo một tệp HTML với cấu trúc đầy đủ và nội dung sau:
-    - Tiêu đề trang: "Giới thiệu về tôi"
-    - Tiêu đề chính: Họ và tên của bạn
-    - Đoạn giới thiệu ngắn về bản thân
-    - Một danh sách các sở thích
-
-    **Mã nguồn tham khảo:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Giới thiệu về tôi</title>
-    </head>
-    <body>
-        <h1>Nguyễn Văn A</h1>
-        <p>Tôi là học sinh lớp 12, trường THPT ABC. Tôi yêu thích học lập trình và mong muốn trở thành một lập trình viên chuyên nghiệp.</p>
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Phân tích cấu trúc Thẻ và Phần tử"
+    >
+      <Alert type="tip" title="Gợi ý trực quan trên màn hình cho học sinh">
+        - Quan sát kĩ kí tự dấu gạch chéo <code>/</code> xuất hiện ở cuối dòng 1 (<code>&lt;/h1&gt;</code>) và cuối dòng 3 (<code>&lt;/p&gt;</code>).
         
-        <h2>Sở thích của tôi:</h2>
-        <ul>
-            <li>Đọc sách công nghệ</li>
-            <li>Chơi thể thao</li>
-            <li>Lập trình web</li>
-            <li>Nghe nhạc</li>
+        - Kiểm tra xem <code>&lt;hr&gt;</code> (tạo đường kẻ ngang) và <code>&lt;br&gt;</code> (ngắt xuống dòng) có chứa chữ nào được kẹp ở giữa chúng hay không?
+      </Alert>
+
+      <HtmlElementAnatomy />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Đối chiếu kết quả"
+    >
+      <div className="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border-2 border-indigo-200 dark:border-indigo-800">
+        <h5 className="font-black text-indigo-700 dark:text-indigo-300 text-base mb-2">
+          ❓ Câu hỏi kiểm tra nhanh trên lớp:
+        </h5>
+        <p className="text-base text-slate-900 dark:text-white leading-relaxed mb-4">
+          Trong câu lệnh: <code>&lt;p&gt;Xin chào &lt;b&gt;Việt Nam&lt;/b&gt;&lt;/p&gt;</code>:
+        </p>
+        <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+          <li><strong>a)</strong> Có tất cả mấy phần tử HTML trong đoạn mã trên?</li>
+          <li><strong>b)</strong> Các thẻ đang được sắp xếp theo quy tắc nào (lồng nhau hay nối tiếp nhau)? Thẻ nào phải đóng trước?</li>
         </ul>
-    </body>
-    </html>
-    ```
+        <div className="mt-4 pt-3 border-t border-indigo-200/60 dark:border-indigo-800 text-xs text-indigo-900 dark:text-indigo-200">
+          👉 <em>Đáp án:</em> Có 02 phần tử HTML (phần tử <code>&lt;b&gt;</code> lồng bên trong phần tử <code>&lt;p&gt;</code>). Quy tắc lồng thẻ: Thẻ nào mở sau thì phải đóng trước (thẻ <code>&lt;b&gt;</code> mở sau nên đóng <code>&lt;/b&gt;</code> trước rồi mới đóng <code>&lt;/p&gt;</code>).
+        </div>
+      </div>
+    </SlideStep>
 
-    **Bài tập 2: Tạo trang báo cáo học tập**
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Kiến thức cốt lõi cần ghi nhớ"
+    >
+      <div className="space-y-4">
+        <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <h5 className="font-black text-slate-900 dark:text-white text-base mb-2">
+            1. HTML (HyperText Markup Language)
+          </h5>
+          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Là <strong>ngôn ngữ đánh dấu siêu văn bản</strong>, dùng các thẻ (tag) để thiết lập bộ khung và cấu trúc hiển thị cho trang web. <em>Lưu ý quan trọng: HTML không phải là ngôn ngữ lập trình có cấu trúc rẽ nhánh (if/else) hay vòng lặp (for/while).</em>
+          </p>
+        </div>
 
-    **Yêu cầu:** Tạo trang web báo cáo kết quả học tập với:
-    - Tiêu đề trang: "Báo cáo kết quả học tập"
-    - Bảng điểm các môn học
-    - Một đoạn nhận xét về kết quả
+        <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <h5 className="font-black text-slate-900 dark:text-white text-base mb-2">
+            2. Thẻ đánh dấu (HTML Tag)
+          </h5>
+          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
+            Đặt trong cặp dấu <code>&lt; &gt;</code>, không phân biệt chữ hoa/thường (quy ước chuẩn: viết chữ thường). Gồm 2 loại chính:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs md:text-sm">
+            <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+              <strong className="text-sky-600 dark:text-sky-400 font-bold block mb-1">
+                📦 Thẻ đôi (Container tags):
+              </strong>
+              Có cả thẻ mở <code>&lt;tên_thẻ&gt;</code> và thẻ đóng <code>&lt;/tên_thẻ&gt;</code>. Kẹp nội dung ở giữa. Ví dụ: <code>&lt;h1&gt;...&lt;/h1&gt;</code>, <code>&lt;p&gt;...&lt;/p&gt;</code>, <code>&lt;a&gt;...&lt;/a&gt;</code>.
+            </div>
+            <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+              <strong className="text-amber-600 dark:text-amber-400 font-bold block mb-1">
+                ⚡ Thẻ đơn (Empty tags):
+              </strong>
+              Chỉ có thẻ mở, không chứa nội dung bên trong. Ví dụ: <code>&lt;br&gt;</code> (ngắt dòng), <code>&lt;hr&gt;</code> (kẻ ngang), <code>&lt;img&gt;</code> (chèn ảnh), <code>&lt;input&gt;</code> (ô nhập liệu).
+            </div>
+          </div>
+        </div>
 
-    **Mã nguồn tham khảo:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
+        <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <h5 className="font-black text-slate-900 dark:text-white text-base mb-2">
+            3. Phần tử HTML (HTML Element)
+          </h5>
+          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Là toàn bộ cấu trúc hoàn chỉnh bao gồm: <code>&lt;Thẻ_mở Thuộc_tính="Giá_trị"&gt; Nội dung &lt;/Thẻ_đóng&gt;</code> (hoặc bản thân một thẻ đơn).
+          </p>
+        </div>
+      </div>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="CẤU TRÚC CƠ BẢN CỦA MỘT TRANG WEB HTML (HTML5 SKELETON)"
+    duration="15 phút"
+    objective="Hiểu và giải thích được chức năng của từng thành phần trong cấu trúc chuẩn của một tệp HTML và mô hình cây thông tin (DOM)."
+    content="Học sinh đọc sơ đồ bộ khung HTML5 chuẩn và ghép nối chức năng của các phần tử <!DOCTYPE html>, <html>, <head>, <meta charset='utf-8'>, <title>, <body>."
+    product="Sơ đồ cây cấu trúc HTML và giải thích đúng vị trí hiển thị của <title> so với <body>."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Giải phẫu bộ khung trang Web"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <p className="font-bold text-slate-800 dark:text-slate-200">
+        Hiển thị trên màn chiếu bộ khung chuẩn của mọi trang web HTML5:
+      </p>
+
+      <CodeBlock language="html">
+{`<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="UTF-8">
-        <title>Báo cáo kết quả học tập</title>
+        <meta charset="utf-8">
+        <title>Trang web của tôi</title>
     </head>
     <body>
-        <h1>Báo cáo kết quả học tập</h1>
-        <p>Báo cáo kết quả học tập học kỳ I năm học 2023-2024</p>
-        
-        <h2>Bảng điểm</h2>
-        <table border="1">
-            <tr>
-                <th>Môn học</th>
-                <th>Điểm miệng</th>
-                <th>Điểm 15 phút</th>
-                <th>Điểm 1 tiết</th>
-                <th>Điểm thi</th>
-            </tr>
-            <tr>
-                <td>Toán</td>
-                <td>8</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>Vật lý</td>
-                <td>7</td>
-                <td>8</td>
-                <td>7</td>
-                <td>8</td>
-            </tr>
-        </table>
-        
-        <h2>Nhận xét</h2>
-        <p>Kết quả học tập học kỳ này khá tốt, đặc biệt môn Toán có tiến bộ rõ rệt. Cần cố gắng hơn nữa trong học kỳ tới.</p>
+        <h1>Tiêu đề chính trên trang</h1>
+        <p>Nội dung văn bản hiển thị cho người đọc.</p>
     </body>
-    </html>
-    ```
+</html>`}
+      </CodeBlock>
 
-    **Bài tập mở rộng:**
+      <div className="p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm text-slate-800 dark:text-slate-200 space-y-2">
+        <strong className="text-indigo-800 dark:text-indigo-300 font-bold block mb-1">
+          👥 Nhiệm vụ thảo luận theo cặp (05 phút):
+        </strong>
+        <p>Hãy xác định vai trò của 6 thành phần trong đoạn mã trên bằng cách trả lời 3 câu hỏi:</p>
+        <ol className="list-decimal pl-5 space-y-1">
+          <li>Dòng chữ <em>"Trang web của tôi"</em> trong thẻ <code>&lt;title&gt;</code> và dòng chữ <em>"Tiêu đề chính trên trang"</em> trong thẻ <code>&lt;h1&gt;</code> sẽ xuất hiện ở hai vị trí khác nhau nào trên cửa sổ trình duyệt?</li>
+          <li>Chuyện gì sẽ xảy ra với các chữ tiếng Việt có dấu nếu ta xóa bỏ dòng <code>&lt;meta charset="utf-8"&gt;</code>?</li>
+          <li>Vẽ nhanh sơ đồ cây thể hiện quan hệ cha – con giữa các thẻ: <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>.</li>
+        </ol>
+      </div>
+    </SlideStep>
 
-    1. **Tạo trang blog cá nhân:**
-       - Trang chủ với danh sách các bài viết
-       - Mỗi bài viết có tiêu đề, ngày đăng, nội dung ngắn
-       - Liên kết đến trang chi tiết từng bài
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Khảo sát và vẽ sơ đồ cây"
+    >
+      <Alert type="idea" title="Hướng dẫn hiển thị cho học sinh trên màn hình">
+        - **Quan sát mức độ thụt lề (indentation):** Các dòng mã thụt vào trong so với thẻ bao ngoài chính là biểu hiện của quan hệ cha – con trong cây tài liệu.
+        
+        - **Nhìn lên thanh Tab trên cùng:** Đối chiếu xem thẻ <code>&lt;title&gt;</code> có nằm trong vùng trắng nội dung của trang không, hay nằm ở vị trí nào khác?
+      </Alert>
+    </SlideStep>
 
-    2. **Tạo trang portfolio:**
-       - Giới thiệu các dự án đã làm
-       - Hình ảnh và mô tả từng dự án
-       - Thông tin liên hệ
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Kiểm chứng trực quan trên Mô hình DOM"
+    >
+      <p className="text-sm md:text-base text-slate-700 dark:text-slate-300">
+        Giáo viên tương tác trực tiếp với mô hình sơ đồ cây và màn hình mô phỏng trình duyệt bên dưới để kiểm chứng phát hiện của học sinh:
+      </p>
 
-    3. **Tạo trang đơn sản phẩm:**
-       - Tên sản phẩm, hình ảnh
-       - Mô tả tính năng
-       - Giá và thông tin đặt hàng
+      <HtmlTreeVisualizer />
+    </SlideStep>
 
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành vận dụng, học sinh sẽ tạo được các trang web đơn giản với cấu trúc HTML đúng chuẩn và nội dung có ý nghĩa.
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt cấu trúc chuẩn HTML5"
+    >
+      <div className="overflow-x-auto my-2">
+        <table className="w-full text-left border-collapse rounded-2xl overflow-hidden shadow-sm">
+          <thead>
+            <tr className="bg-slate-900 text-white text-xs font-black uppercase tracking-wider">
+              <th className="py-3 px-4 w-44">Thành phần mã nguồn</th>
+              <th className="py-3 px-4">Vai trò & Chức năng cốt lõi</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm bg-white dark:bg-slate-900">
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">
+                <code>&lt;!DOCTYPE html&gt;</code>
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Khai báo cho trình duyệt biết văn bản đang sử dụng phiên bản HTML5 (đây là dòng khai báo kiểu tài liệu, không phải là thẻ HTML và không có thẻ đóng).
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">
+                <code>&lt;html&gt; ... &lt;/html&gt;</code>
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                <strong>Phần tử gốc (Root element):</strong> Bao bọc toàn bộ trang web, chứa 2 phần tử con trực tiếp là <code>&lt;head&gt;</code> và <code>&lt;body&gt;</code>.
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">
+                <code>&lt;head&gt; ... &lt;/head&gt;</code>
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                <strong>Phần đầu trang web:</strong> Chứa các thông tin thiết lập ngầm (metadata) và tiêu đề tab; không hiển thị trực tiếp vào vùng nội dung trang.
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">
+                <code>&lt;meta charset="utf-8"&gt;</code>
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Khai báo bảng mã kí tự Unicode (UTF-8) giúp trình duyệt hiển thị đúng tiếng Việt có dấu và đa ngôn ngữ, tránh lỗi font hình vuông hay ký tự lạ.
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">
+                <code>&lt;title&gt; ... &lt;/title&gt;</code>
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Xác định tên tiêu đề của trang web hiển thị trên thanh Tab của trình duyệt web.
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">
+                <code>&lt;body&gt; ... &lt;/body&gt;</code>
+              </td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                <strong>Phần thân trang web:</strong> Chứa toàn bộ nội dung (văn bản, hình ảnh, video, âm thanh, liên kết) hiển thị trực tiếp cho người xem trong vùng Viewport.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-3"
+    number="2.3"
+    title="CÔNG CỤ SOẠN THẢO HTML VÀ QUY TRÌNH TẠO TRANG WEB"
+    duration="15 phút"
+    objective="Biết ưu, nhược điểm của các nhóm phần mềm soạn thảo HTML; thực hiện được quy trình soạn thảo, lưu tệp .html và mở xem trên trình duyệt (Đạt năng lực số 3.4.NC1.a)."
+    content="Học sinh so sánh 3 nhóm công cụ và thực hành gõ trang web đầu tiên trên máy tính cá nhân."
+    product="Tệp index.html lưu trên máy tính cá nhân, mở thành công trên trình duyệt web hiển thị đúng tiếng Việt."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Thực hành 'Hello World' phiên bản Web"
+      duration="08 phút"
+      showTimer={true}
+      timerSeconds={480}
+    >
+      <div className="p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-slate-800 dark:text-slate-200 space-y-3">
+        <div className="flex items-center gap-2 font-black text-emerald-800 dark:text-emerald-300 text-base">
+          <span>🚀 Nhiệm vụ thực hành cá nhân trên máy tính (08 phút):</span>
+        </div>
+        <p className="text-sm">
+          <strong>Bước A:</strong> Mở phần mềm soạn thảo văn bản trên máy tính của em (Notepad hoặc VS Code / Sublime Text).
+        </p>
+        <p className="text-sm">
+          <strong>Bước B:</strong> Gõ đoạn mã khung HTML5 hiển thị các thông tin:
+        </p>
+        <ul className="list-disc pl-6 text-xs md:text-sm space-y-1">
+          <li>Tiêu đề tab (<code>&lt;title&gt;</code>): <em>Hồ sơ cá nhân - [Họ tên của em]</em></li>
+          <li>Tiêu đề lớn (<code>&lt;h1&gt;</code>): <em>Xin chào! Tôi là [Họ tên của em]</em></li>
+          <li>Đoạn văn (<code>&lt;p&gt;</code>): <em>Học sinh lớp 12 - Đang chinh phục ngôn ngữ HTML.</em></li>
+        </ul>
+        <p className="text-sm">
+          <strong>Bước C:</strong> Lưu tệp với tên <code>index.html</code> (Encoding: UTF-8) và nháy đúp để mở tệp bằng trình duyệt web.
+        </p>
+      </div>
+
+      <HtmlLiveSandbox
+        preset="hello_world"
+        title="Mẫu thực hành: index.html (Học sinh đối chiếu mã nguồn)"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Hướng dẫn thao tác & Gỡ lỗi tại chỗ"
+    >
+      <Alert type="warning" title="Cảnh báo 02 lỗi thường gặp khi lưu tệp trên máy tính">
+        **⚠️ Lỗi 1: Nháy đúp vào tệp lại mở ra Notepad chứ không mở trình duyệt!**
+        - *Nguyên nhân:* Khi bấm lưu trong Notepad, mục *Save as type* đang để mặc định là `Text Documents (*.txt)` nên tên tệp thực tế bị biến thành `index.html.txt`.
+        - *Khắc phục:* Chọn *Save as type: All Files (*.*)*, Encoding: UTF-8 và gõ tên là `index.html`.
+
+        **⚠️ Lỗi 2: Sửa code xong nhưng trên trình duyệt không thay đổi!**
+        - *Khắc phục:* Nhấn tổ hợp phím **Ctrl + S** bên trình soạn thảo để lưu lại, sau đó chuyển sang trình duyệt bấm **F5** (hoặc Ctrl + R) để tải lại trang.
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – Đánh giá công cụ sau khi trải nghiệm"
+    >
+      <div className="p-5 rounded-2xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800">
+        <h5 className="font-black text-sky-800 dark:text-sky-300 text-sm uppercase mb-2">
+          💬 Câu hỏi thảo luận sau khi gõ thử:
+        </h5>
+        <p className="text-slate-800 dark:text-slate-200 text-sm md:text-base leading-relaxed">
+          Khi gõ code trên Notepad so với khi gõ trên VS Code / Sublime Text (hoặc W3Schools Tryit), công cụ nào giúp em phát hiện quên đóng thẻ nhanh hơn? Vì sao?
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Bảng so sánh lựa chọn công cụ phù hợp"
+    >
+      <ToolComparisonTable />
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'BÁC SĨ MÃ NGUỒN (DEBUGGER)'"
+  duration="20 phút"
+  objective="Củng cố kĩ năng nhận diện cấu trúc thẻ, phần tử HTML, quy tắc lồng thẻ và sửa lỗi mã nguồn thực tế (Đạt chuẩn 3.4.NC1.a, 5.3.NC1.b)."
+  content="Học sinh vượt qua 2 thử thách: Thử thách 1 (Trắc nghiệm tốc độ dạng đúng/sai và nhận diện) và Thử thách 2 (Thực hành bắt lỗi và nâng cấp trang web trên máy tính)."
+  product="Đáp án giải thích đúng các câu hỏi trắc nghiệm và tệp thuchanh_bai7.html đã được sửa sạch lỗi và chạy thành công trên máy tính."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <p className="font-bold text-slate-800 dark:text-slate-200 mb-4">
+      Học sinh lần lượt hoàn thành 02 Thử thách dưới đây:
+    </p>
+
+    {/* THỬ THÁCH 1 */}
+    <SpeedQuizExercise />
+
+    {/* THỬ THÁCH 2 */}
+    <HtmlDebuggerChallenge />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Gợi ý săn lỗi cho học sinh"
+  >
+    <Alert type="tip" title="Gợi ý truy vết lỗi cho Thử thách 2 (Bác sĩ mã nguồn)">
+      - **Kiểm tra cặp đôi thẻ:** Kiểm tra xem thẻ <code>&lt;title&gt;</code> và thẻ <code>&lt;h1&gt;</code> có đang bị đổi chỗ ngược cho nhau giữa <code>&lt;head&gt;</code> và <code>&lt;body&gt;</code> hay không?
+      
+      - **Kiểm tra thẻ đóng:** Kiểm tra xem thẻ <code>&lt;p&gt;</code> đầu tiên và thẻ <code>&lt;body&gt;</code> đã có thẻ đóng tương ứng với dấu <code>/</code> chưa?
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức HTML để tạo các trang web đơn giản với cấu trúc đúng chuẩn.
-    **Hoạt động:** HS thực hành tạo các trang web theo yêu cầu cụ thể.
-    **Sản phẩm:** Các tệp HTML hoàn chỉnh với nội dung đa dạng.
-  </TeacherNotes>
-</StepApplication>
+  </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **HTML:** Ngôn ngữ đánh dấu siêu văn bản, tạo cấu trúc trang web
-- ✅ **Thẻ (Tag):** Đánh dấu trong `<` `>`, có thẻ mở và thẻ đóng
-- ✅ **Phần tử (Element):** Thẻ + nội dung, đơn vị cơ bản của HTML
-- ✅ **Cấu trúc cơ bản:** `<!DOCTYPE>` → `<html>` → `<head>` + `<body>`
-- ✅ **`<head>`:** Chứa thông tin meta, không hiển thị cho người dùng
-- ✅ **`<body>`:** Chứa nội dung hiển thị cho người dùng
-- ✅ **Quy tắc:** Thẻ lồng nhau đúng thứ tự, tên thẻ không phân biệt hoa/thường
-</GlassCard>
-</div>
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Chữa bài trực tiếp trên lớp"
+  >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800">
+        <strong className="text-indigo-800 dark:text-indigo-300 font-bold block mb-2">
+          🙋 Thử thách 1 (Trắc nghiệm):
+        </strong>
+        <p className="text-sm text-slate-700 dark:text-slate-300">
+          Học sinh giơ thẻ đáp án A, B, C, D hoặc đứng tại chỗ trả lời nhanh giải thích vì sao chọn Đúng/Sai cho từng ý của Câu 3.
+        </p>
+      </div>
+
+      <div className="p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
+        <strong className="text-emerald-800 dark:text-emerald-300 font-bold block mb-2">
+          🖥️ Thử thách 2 (Bắt lỗi code):
+        </strong>
+        <p className="text-sm text-slate-700 dark:text-slate-300">
+          Giáo viên kết nối máy chiếu màn hình máy tính của 01 học sinh đã sửa xong tệp <code>thuchanh_bai7.html</code> để cả lớp cùng kiểm tra 4 vị trí đã chỉnh sửa.
+        </p>
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Đáp án chuẩn trên màn chiếu"
+  >
+    <div className="space-y-4">
+      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+        <h5 className="font-black text-slate-900 dark:text-white text-base mb-2">
+          🎯 Đáp án chuẩn Thử thách 1:
+        </h5>
+        <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
+          <li><strong>Câu 1:</strong> Đáp án <strong>C</strong> (<code>&lt;br&gt;</code> là thẻ đơn ngắt dòng).</li>
+          <li><strong>Câu 2:</strong> Đáp án <strong>B</strong> (Nằm bên trong <code>&lt;head&gt;</code> để khai báo bảng mã UTF-8).</li>
+          <li>
+            <strong>Câu 3:</strong>
+            <ul className="pl-4 mt-1 space-y-1">
+              <li>a) <strong>Đúng:</strong> <code>&lt;html&gt;</code> là Root Element chứa tất cả.</li>
+              <li>b) <strong>Sai:</strong> <code>&lt;h1&gt;</code> là phần tử con của <code>&lt;body&gt;</code>, không phải con của <code>&lt;head&gt;</code>.</li>
+              <li>c) <strong>Sai:</strong> Chữ "Bài 7" nằm trên thanh Tab trình duyệt, không nằm trong vùng nội dung chính.</li>
+              <li>d) <strong>Đúng:</strong> <code>&lt;body&gt;</code> chứa trực tiếp <code>&lt;h1&gt;</code> và <code>&lt;p&gt;</code>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div className="p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
+        <h5 className="font-black text-emerald-800 dark:text-emerald-300 text-base mb-2">
+          ✅ Mã nguồn hoàn chỉnh chuẩn của Thử thách 2:
+        </h5>
+        <CodeBlock language="html">
+{`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Giới thiệu lớp 12</title>
+</head>
+<body>
+    <h1>Trang thông tin lớp 12</h1>
+    <p>Chào mừng các bạn đến với trang web của lớp.</p>
+    <hr>
+    <p>Chúc các bạn một năm học rực rỡ!</p>
+</body>
+</html>`}
+        </CodeBlock>
+      </div>
+    </div>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – DỰ ÁN MINI 'DANH THIẾP SỐ CỦA TÔI'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng kiến thức về cấu trúc trang web và các thẻ HTML cơ bản (html, head, title, body, h1, h2, p, hr, br) để sáng tạo một trang giới thiệu bản thân hoặc câu lạc bộ yêu thích (Đạt chuẩn 3.4.NC1.a, 5.3.NC1.b)."
+  content="Học sinh tự thiết kế trang web tĩnh danhthiep_[TenHS].html có bố cục rõ ràng, chia tách các phần bằng đường kẻ ngang <hr> và ngắt dòng bằng <br>."
+  product="Tệp danhthiep_[TenHS].html kèm ảnh chụp màn hình kết quả hiển thị trên trình duyệt và sơ đồ cây các phần tử HTML đã sử dụng."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề bài Dự án Mini"
+  >
+    <Alert type="idea" title="Đề bài Dự án Sáng tạo trên màn chiếu">
+      Hãy tạo một tệp HTML có tên <code>danhthiep_[TenCuaEm].html</code> đóng vai trò là trang **"Danh thiếp số"** giới thiệu về bản thân em (hoặc Câu lạc bộ Thể thao / Âm nhạc / Tin học mà em yêu thích) với các yêu cầu kỹ thuật sau:
+      
+      1. **Đầy đủ bộ khung chuẩn HTML5:** `<!DOCTYPE html>`, `<html>`, `<head>`, `<meta charset="utf-8">`, `<body>`.
+      2. **Thanh tiêu đề trình duyệt (`<title>`):** Hiển thị *Danh thiếp số - [Họ và tên của em]*.
+      3. **Trong phần thân (`<body>`) sử dụng:**
+         - Thẻ `<h1>` cho Họ và tên (hoặc Tên Câu lạc bộ).
+         - Thẻ `<hr>` để tạo đường kẻ phân cách giữa phần Tiêu đề và phần Thông tin chi tiết.
+         - Ít nhất 2 cặp thẻ `<p>...</p>` giới thiệu về: *Sở thích, Định hướng nghề nghiệp tương lai và Châm ngôn sống* (có sử dụng thẻ `<br>` để ngắt dòng giữa các ý).
+    </Alert>
+
+    <HtmlLiveSandbox
+      preset="card_demo"
+      title="Giao diện Thử nghiệm Trực tiếp: Trang Danh thiếp số Cá nhân"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo khung sườn ngay tại lớp"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Hướng dẫn thực hiện trong 10 phút cuối giờ">
+      - Học sinh tạo khung sườn ngay trên máy tính phòng thực hành.
+      
+      - Khuyến khích học sinh thử nghiệm thêm các thẻ tiêu đề cấp nhỏ hơn như `<h2>`, `<h3>` để phân mục rõ ràng hơn và tự quan sát sự thay đổi kích thước chữ trên trình duyệt.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Tiêu chí chấm điểm (Rubric 5512) công khai"
+  >
+    <RubricCard />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Hướng dẫn nộp bài & Chuẩn bị bài tiếp theo"
+  >
+    <Alert type="success" title="Nội dung chốt cuối tiết học trên màn chiếu">
+      **1. Nộp sản phẩm:**
+      - Gửi tệp `.html` hoàn chỉnh lên thư mục nộp bài của lớp (Google Drive hoặc hệ thống LMS của trường) trước buổi học tiếp theo.
+
+      **2. Câu hỏi mở chuẩn bị cho Bài 8 (Định dạng văn bản):**
+      - Trang *Danh thiếp số* hôm nay mới chỉ có chữ đen nền trắng mặc định. Làm thế nào để in đậm, in nghiêng, tô màu chữ, đổi phông chữ hoặc đánh dấu nổi bật (*highlight*) các từ khóa quan trọng bằng HTML?
+      - 👉 *Hãy xem trước Bài 8: Định dạng văn bản!*
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>

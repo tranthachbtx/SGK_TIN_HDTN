@@ -485,16 +485,12 @@ export function Navigation({ lessons }: NavigationProps) {
   const isLessonPage =
     pathname.startsWith("/lessons/") && pathname.split("/").length >= 4;
 
-  const [sidebarState, setSidebarState] = useState<"full" | "hidden">("full");
+  const [sidebarState, setSidebarState] = useState<"full" | "hidden">("hidden");
 
-  // Initialize/sync sidebar state based on route
+  // Keep menu automatically closed by default for distraction-free teaching & full-width projection
   useEffect(() => {
-    if (!isLessonPage) {
-      setSidebarState("hidden");
-    } else {
-      setSidebarState("full");
-    }
-  }, [pathname, isLessonPage]);
+    setSidebarState("hidden");
+  }, [pathname]);
 
   useEffect(() => {
     let width = "300px";

@@ -1,0 +1,321 @@
+---
+title: "Bài 12: Thực hành tạo lập và quản trị CSDL quan hệ"
+description: "Thực hành thiết kế bảng, lựa chọn kiểu dữ liệu phù hợp (Text, Number, Date), chỉ định khóa chính trên phần mềm quản trị CSDL."
+order: 12
+---
+
+<LessonPlanHeader
+  title="BÀI 12: THỰC HÀNH TẠO LẬP VÀ QUẢN TRỊ CSDL QUAN HỆ"
+  subject="TIN HỌC 11 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  duration="02 TIẾT (90 PHÚT)"
+  topic="CHỦ ĐỀ 4: CƠ SỞ DỮ LIỆU – HỆ QUẢN TRỊ CSDL QUAN HỆ"
+/>
+
+<LearningObjectives
+  knowledge={[
+    "Nắm vững các khái niệm trọng tâm, nguyên lý cốt lõi và nội dung bài học quy định trong chương trình Tin học 11.",
+    "Hiểu được bản chất khoa học máy tính, cơ chế hoạt động của phần cứng, hệ điều hành và cơ sở dữ liệu quan hệ.",
+    "Vận dụng kiến thức để giải quyết trọn vẹn các câu hỏi, bài tập và thao tác thực hành kỹ năng số."
+  ]}
+  competencies={[
+    "Năng lực Tin học (NLa, NLc, NLd): Khai thác thành thạo hệ điều hành, dịch vụ mạng an toàn và truy vấn CSDL quan hệ.",
+    "Năng lực số tích hợp: Nâng cao ý thức bảo mật dữ liệu cá nhân, liêm chính học thuật và làm chủ công nghệ đám mây.",
+    "Năng lực chung: Tự chủ và tự học, giao tiếp và hợp tác nhóm hiệu quả trong các bài thực hành."
+  ]}
+  qualities={[
+    "Rèn luyện tư duy logic, tính chính xác, cẩn trọng khi làm việc với hệ thống máy tính và cơ sở dữ liệu.",
+    "Hình thành đạo đức số, tôn trọng bản quyền phần mềm và dữ liệu của người khác."
+  ]}
+/>
+
+<EquipmentChecklist
+  items={[
+    {
+      name: "Màn hình trình chiếu lớp học / Smart TV",
+      description: "Hiển thị slide bài giảng tương tác, sơ đồ kiến trúc và đồng hồ đếm ngược.",
+      status: "ready"
+    },
+    {
+      name: "Máy tính cá nhân học sinh / Phòng máy thực hành",
+      description: "Hệ điều hành Windows 10/11 kết nối mạng Internet, phần mềm quản trị CSDL hoặc trình duyệt web.",
+      status: "ready"
+    },
+    {
+      name: "Học liệu số & Bộ công cụ sư phạm tương tác",
+      description: "Bài tập trắc nghiệm nhanh, đồng hồ đếm ngược và phiếu đánh giá Rubric chuẩn 5512.",
+      status: "ready"
+    }
+  ]}
+/>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 1: KHỞI ĐỘNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-1"
+  number={1}
+  title="KHỞI ĐỘNG – TÌNH HUỐNG CÔNG NGHỆ THỰC TẾ"
+  time="10 phút"
+  objective="Khơi gợi trí tò mò, kết nối kinh nghiệm sử dụng máy tính của học sinh với vấn đề khoa học công nghệ mới."
+>
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đặt vấn đề vào bài"
+  >
+    <div className="space-y-3">
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Thực hành thiết kế bảng, lựa chọn kiểu dữ liệu phù hợp (Text, Number, Date), chỉ định khóa chính trên phần mềm quản trị CSDL.
+      </p>
+
+      <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm space-y-2">
+        <strong className="text-sky-800 dark:text-sky-300 block text-base font-bold">
+          ⚡ Thử thách khám phá (03 phút):
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Hãy suy nghĩ về một tình huống thực tế liên quan đến nội dung bài học mà em từng gặp phải khi sử dụng máy tính hoặc điện thoại thông minh hàng ngày!
+        </p>
+      </div>
+
+      <ClassTimer initialMinutes={3} />
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh thảo luận"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>• Học sinh quan sát tình huống thực tế, suy ngẫm độc lập hoặc trao đổi nhanh theo cặp bàn (2 học sinh/bàn).</p>
+      <p>• Vận dụng trải nghiệm đời sống và kiến thức đã có để tìm câu trả lời cho vấn đề đặt ra.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Lắng nghe chia sẻ"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>• Đại diện 2 học sinh xung phong trình bày quan điểm cá nhân.</p>
+      <p>• Cả lớp lắng nghe, nhận xét, bổ sung các góc nhìn khác nhau.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề vào bài"
+  >
+    <Alert type="info" title="Định hướng sư phạm">
+      Giáo viên nhận xét tinh thần thảo luận của học sinh, tổng hợp các ý kiến đúng đắn và chính thức dẫn dắt vào bài học mới.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI
+========================================================================= */}
+<PedagogyActivity
+  id="activity-2"
+  number={2}
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="50 phút"
+  objective="Làm chủ các tri thức cốt lõi, tiếp cận bản chất khoa học và phân tích sâu các ví dụ thực tiễn trong bài học."
+>
+  <SlideStep
+    slide="SLIDE 2.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Khám phá phần 1"
+  >
+
+<h4 className="text-base font-bold text-indigo-700 dark:text-indigo-300 mt-2 mb-1">1. Các kiểu dữ liệu cơ bản trong CSDL</h4>
+<p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Khi thiết kế bảng, người quản trị phải chọn kiểu dữ liệu tối ưu cho từng trường:</p>
+<ul className="list-disc pl-5 space-y-1 text-sm text-slate-700 dark:text-slate-300 my-2">
+<li><code>VARCHAR / Short Text</code>: Kiểu chuỗi ký tự độ dài thay đổi (Họ tên, Địa chỉ, Email).</li>
+<li><code>INT / Number</code>: Kiểu số nguyên (Mã số, Số lượng, Điểm số nguyên).</li>
+<li><code>FLOAT / Decimal</code>: Kiểu số thực dấu phẩy động (Điểm trung bình môn).</li>
+<li><code>DATE / DateTime</code>: Kiểu ngày tháng năm (Ngày sinh, Ngày mượn sách).</li>
+<li><code>BOOLEAN / YesNo</code>: Kiểu logic đúng/sai (Đoàn viên: Có/Không).</li>
+</ul>
+
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 2.2"
+    step={2}
+    title="Chuyển giao nhiệm vụ – Khám phá phần 2"
+  >
+
+<h4 className="text-base font-bold text-indigo-700 dark:text-indigo-300 mt-2 mb-1">2. Quy trình 3 bước tạo bảng CSDL</h4>
+<ol className="list-decimal pl-5 space-y-1 text-sm text-slate-700 dark:text-slate-300 my-2">
+<li><strong>Bước 1:</strong> Xác định tên bảng và danh sách các trường thuộc tính.</li>
+<li><strong>Bước 2:</strong> Chọn kiểu dữ liệu và độ rộng tối đa cho từng trường.</li>
+<li><strong>Bước 3:</strong> Đặt trường khóa chính (Primary Key) và lưu cấu trúc bảng.</li>
+</ol>
+
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 2.3"
+    step={3}
+    title="Báo cáo, thảo luận – Trình bày kết quả nghiên cứu"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>• Đại diện nhóm báo cáo kết quả thảo luận hoặc trả lời câu hỏi khám phá.</p>
+      <p>• Giáo viên tổ chức vấn đáp phản biện, làm rõ các điểm học sinh thường hay nhầm lẫn.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 2.4"
+    step={4}
+    title="Kết luận, nhận định – Chuẩn hóa kiến thức"
+  >
+    <Alert type="success" title="Tổng kết kiến thức cốt lõi">
+      Giáo viên chuẩn hóa kiến thức, nhấn mạnh các quy tắc, định luật hoặc kỹ năng trọng tâm mà học sinh bắt buộc phải ghi nhớ.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP
+========================================================================= */}
+<PedagogyActivity
+  id="activity-3"
+  number={3}
+  title="LUYỆN TẬP – CỦNG CỐ TRI THỨC VÀ KỸ NĂNG"
+  time="15 phút"
+  objective="Khắc sâu kiến thức vừa học, rèn luyện kỹ năng giải quyết bài tập và đánh giá mức độ tiếp thu của học sinh."
+>
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Bài tập rèn luyện"
+  >
+
+<ol className="list-decimal pl-5 space-y-1 text-sm text-slate-700 dark:text-slate-300 my-2">
+<li>Thực hành thiết kế bảng SACH gồm: MaSach (Khóa chính), TenSach, TacGia, NamXuatBan, GiaTien.</li>
+<li>Nhập ít nhất 5 bản ghi dữ liệu mẫu vào bảng vừa tạo.</li>
+</ol>
+
+    <ClassTimer initialMinutes={5} />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh giải bài tập"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>• Học sinh tự lực làm bài tập vào vở hoặc thao tác trên phần mềm máy tính cá nhân.</p>
+      <p>• Giáo viên quan sát, bao quát lớp và kịp thời hỗ trợ các học sinh còn gặp khó khăn.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Đối chiếu đáp án & Chữa bài"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>• Học sinh xung phong lên bảng chữa bài hoặc chia sẻ màn hình sản phẩm thực hành.</p>
+      <p>• Các bạn khác đối chiếu bài làm, nhận xét và đề xuất phương án giải tối ưu hơn nếu có.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Đánh giá năng lực"
+  >
+    <Alert type="success" title="Đánh giá kết quả luyện tập">
+      Giáo viên nhận xét mức độ nắm bài của lớp, tuyên dương các cá nhân/nhóm làm bài nhanh và chuẩn xác.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-4"
+  number={4}
+  title="VẬN DỤNG – MỞ RỘNG THỰC TIỄN"
+  time="15 phút"
+  objective="Ứng dụng kiến thức bài học vào thực tế đời sống, rèn luyện tư duy độc lập và năng lực tự học suốt đời."
+>
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Thử thách vận dụng thực tế"
+  >
+
+<p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Tạo bảng PHIEU_MUON liên kết với bảng SACH và bảng HOC_SINH.</p>
+
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thang đo đánh giá Rubric – Chuẩn Công văn 5512"
+  >
+    <RubricCard
+      title="Thang đo đánh giá Sản phẩm Vận dụng thực tế"
+      criteria={[
+        {
+          name: "Mức độ hiểu bài & Tính đúng đắn",
+          weight: "40%",
+          levels: {
+            good: "Vận dụng chuẩn xác lý thuyết vào giải quyết tình huống, lập luận sắc bén, logic.",
+            acceptable: "Nắm được yêu cầu cơ bản nhưng giải pháp còn đơn giản hoặc chưa thật tối ưu.",
+            poor: "Chưa hiểu đúng yêu cầu, nội dung giải quyết còn sơ sài hoặc sai lệch."
+          }
+        },
+        {
+          name: "Tính sáng tạo & Ứng dụng đời sống",
+          weight: "35%",
+          levels: {
+            good: "Đề xuất giải pháp sáng tạo, độc đáo, có tính khả thi cao trong thực tế học đường và gia đình.",
+            acceptable: "Giải pháp áp dụng được nhưng còn dập khuôn theo mẫu có sẵn.",
+            poor: "Thiếu tính khả thi trong thực tế."
+          }
+        },
+        {
+          name: "Hình thức trình bày & Tinh thần trách nhiệm",
+          weight: "25%",
+          levels: {
+            good: "Trình bày rõ ràng, thẩm mỹ, ngôn từ chuẩn mực, hoàn thành đúng hạn quy định.",
+            acceptable: "Trình bày đủ ý nhưng bố cục chưa thật đẹp mắt.",
+            poor: "Nộp bài muộn, trình bày cẩu thả."
+          }
+        }
+      ]}
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Hướng dẫn hoàn thiện tại nhà"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>• Học sinh ghi chép yêu cầu nhiệm vụ vận dụng vào sổ tay cá nhân.</p>
+      <p>• Nộp sản phẩm qua nhóm học tập trực tuyến (LMS / Google Classroom / Zalo lớp) trước tiết học sau.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Thông điệp bế mạc"
+  >
+    <div className="p-4 rounded-2xl bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 text-white space-y-2 shadow-lg">
+      <h5 className="font-bold text-base">🌟 THÔNG ĐIỆP BÀI HỌC</h5>
+      <p className="text-xs sm:text-sm text-sky-100 leading-relaxed">
+        Tri thức chỉ thực sự có ý nghĩa trọn vẹn khi được mang ra phục vụ cuộc sống và hoàn thiện nhân cách bản thân. Chúc các em luôn giữ vững ngọn lửa đam mê khám phá và không ngừng vươn lên!
+      </p>
+    </div>
+  </SlideStep>
+</PedagogyActivity>

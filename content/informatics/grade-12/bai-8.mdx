@@ -1,500 +1,736 @@
 ---
 title: "Bài 8: Định dạng văn bản và phông chữ"
-description: "Hô biến trang web đơn điệu trở nên rực rỡ và chuyên nghiệp với các thuộc tính định dạng HTML."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 8
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Chỉ với "bộ khung" HTML ở bài trước, trang web của chúng ta trông vẫn thật đơn điệu với những dòng chữ đen trên nền trắng khô khan. 📝🌑
-    
-    **💡 Hãy tưởng tượng:**
-    Nếu một cuốn sách giáo khoa không có đề mục lớn, không có chữ in đậm cho các từ khóa quan trọng và màu sắc nhạt nhẽo, liệu em có muốn đọc không?
-    
-    Hôm nay, chúng ta sẽ học cách làm cho văn bản trở nên lôi cuốn và chuyên nghiệp hơn bằng các kỹ thuật **Định dạng** và **Thay đổi phông chữ**. Hãy biến trang web của em thành một tác phẩm nghệ thuật! ✨✍️
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS nhận diện sự khác biệt giữa văn bản thô và văn bản đã qua định dạng.
-    - Hiểu vai trò của thẩm mỹ và phân cấp thông tin trong thiết kế web.
-    
-    **Tổ chức thực hiện:**
-    - GV trình chiếu 2 tệp HTML: Một tệp thô và một tệp có màu sắc, In đậm, In nghiêng.
-    - HS nhận xét về khả năng đọc và thu hút của tệp thứ hai.
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 8: ĐỊNH DẠNG VĂN BẢN VÀ PHÔNG CHỮ"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Cho hai đoạn văn bản như Hình 8.1. Cách trình bày đoạn văn bản nào có định dạng đẹp hơn? Tại sao?
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu cú pháp và vai trò của thuộc tính thẻ (HTML Attributes), đặc biệt là thuộc tính <code>style</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt và sử dụng đúng 6 cấp tiêu đề <code>&lt;h1&gt;</code> – <code>&lt;h6&gt;</code>, thẻ đoạn văn <code>&lt;p&gt;</code>, khối <code>&lt;div&gt;</code> và nội tuyến <code>&lt;span&gt;</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững các thẻ định dạng kiểu chữ (<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;mark&gt;</code>, <code>&lt;sup&gt;</code>, <code>&lt;sub&gt;</code>, <code>&lt;del&gt;</code>).</span>
+        </li>
+      </ul>
+    </div>
 
-    **Trả lời:** Đoạn văn bản có định dạng (có màu sắc, cỡ chữ, kiểu chữ khác nhau) sẽ đẹp hơn vì:
-    - Dễ đọc và dễ theo dõi hơn
-    - Phân cấp thông tin rõ ràng
-    - Thu hút người đọc hơn
-    - Chuyên nghiệp và thẩm mỹ hơn
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Tự tay áp dụng các thẻ và thuộc tính để trang trí, phân cấp văn bản đa tầng trên trang web cá nhân.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Viết mã lệnh HTML định dạng màu sắc, kích cỡ chữ chuẩn cú pháp.</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Tổ chức bố cục trực quan, phân cấp thông tin rõ ràng, nâng cao trải nghiệm người dùng (UX).</span>
+            </div>
+          </span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực chung:</strong> Tự chủ, hợp tác nhóm giải quyết bài toán định dạng công thức toán học/hóa học.</span>
+        </li>
+      </ul>
+    </div>
 
-    ### 1. Thuộc tính thẻ
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Tính cẩn thận, tỉ mỉ:</strong> Gõ chính xác từng dấu hai chấm <code>:</code> và dấu chấm phẩy <code>;</code> khi thiết lập thuộc tính <code>style</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Thẩm mỹ số:</strong> Có ý thức phối màu hài hòa, tránh lạm dụng quá nhiều màu sắc sặc sỡ gây mỏi mắt người đọc.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
 
-    #### Hoạt động 1: Nhận biết thuộc tính thẻ
+<EquipmentChecklist />
 
-    Hãy quan sát các thể trong tệp HTML ở Bài 7. Trong các thể đó có một thể có thêm thuộc tính. Theo em đó là thể nào? Em hãy đưa ra dự đoán về tác dụng của các thuộc tính thể.
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
 
-    Mọi phần tử HTML đều có thể có thuộc tính. Thuộc tính của thể có tác dụng bổ sung thông tin, làm rõ các điều khiển được thể chỉ định.
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'VẺ ĐẸP CỦA SỰ ĐỊNH DẠNG VĂN BẢN'"
+  duration="10 phút"
+  objective="Tạo mâu thuẫn nhận thức và khơi gợi nhu cầu định dạng văn bản khi so sánh giữa trang web chữ đen nền trắng thô sơ và trang web được trang trí thẩm mỹ."
+  content="Học sinh quan sát 2 phiên bản trình bày của cùng một văn bản trên màn chiếu và thảo luận chỉ ra các yếu tố tạo nên sự thu hút."
+  product="Câu trả lời của học sinh chỉ ra được các yếu tố: màu sắc, cỡ chữ, in đậm, gạch ngang, chỉ số trên/dưới."
+>
 
-    **Cú pháp để xác định thuộc tính:** `tên_thuộc_tính="giá trị"`, trừ các trường hợp đặc biệt chỉ cần tên thuộc tính để xác định giá trị Có hoặc Không.
-
-    **Quy tắc về thuộc tính:**
-    - Thuộc tính nằm trong thể bắt đầu (không nằm trong thể kết thúc), sau tên thể
-    - Trong trường hợp thể có nhiều hơn một thuộc tính thì các thuộc tính được ngăn cách bởi dấu cách
-
-    **Ví dụ:** Với thể có hai thuộc tính là thuộc_tính_1 nhận giá_trị_1 và thuộc_tính_2 nhận giá_trị_2, ta viết câu lệnh như sau:
-
-    ```html
-    <Tên_thể thuộc_tính_1="giá_trị_1" thuộc_tính_2="giá_trị_2"> Nội dung </Tên_thể>
-    ```
-
-    **Ví dụ thực tế:**
-    ```html
-    <p style="color: red; font-size: 16px;">Đoạn văn màu đỏ</p>
-    <div class="container" id="main">Nội dung trong div</div>
-    <a href="https://example.com" target="_blank">Link mở tab mới</a>
-    ```
-
-    **Thuộc tính style:**
-    Một trong những thuộc tính được sử dụng thường xuyên nhất là thuộc tính style, dùng để thiết lập định dạng văn bản như chọn màu sắc, phông chữ, cỡ chữ, kiểu chữ, căn lề, tạo khung,... cho một phần tử HTML ngay tại vị trí được viết.
-
-    **Thể có thể có hoặc không có thuộc tính.** Thuộc tính của thể có tác dụng bổ sung thông tin, làm rõ cách xử lí cho thể chứa nó.
-
-    **Các thuộc tính phổ biến:**
-    - `style`: Định dạng CSS nội tuyến
-    - `class`: Tên lớp CSS
-    - `id`: Định danh duy nhất
-    - `href`: Đường dẫn (cho thẻ a)
-    - `src`: Nguồn (cho thẻ img, script)
-    - `alt`: Text thay thế (cho thẻ img)
-    - `title`: Tiêu đề (hiển thị khi hover)
-    - `width`, `height`: Kích thước
-    - `target`: Cách mở link
-
-    <Quiz data={{
-      question: "Thuộc tính nào sau đây dùng để định dạng trực tiếp CSS cho một phần tử HTML?",
-      options: [
-        "A. class",
-        "B. id", 
-        "C. style",
-        "D. href"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! Thuộc tính style dùng để viết CSS nội tuyến trực tiếp cho phần tử."
-    }} />
-
-    ### 2. Các thẻ định dạng trình bày văn bản
-
-    #### Hoạt động 2: Xác định thành phần cấu thành một văn bản
-
-    Thảo luận: Khi trình bày một văn bản (bài thơ, đoạn văn, trang web,...) có thể có những thành phần nào? Hãy kể tên các thành phần đó.
-
-    **Các thành phần cấu thành văn bản:**
-    - Tiêu đề chính, tiêu đề phụ
-    - Đoạn văn bản
-    - Từ khóa, từ quan trọng
-    - Danh sách, gạch đầu dòng
-    - Trích dẫn
-    - Chữ in đậm, in nghiêng
-    - Hình ảnh, minh họa
-    - Liên kết
-    - Tác giả, ngày tháng
-
-    #### a) Định dạng tiêu đề
-
-    Để định dạng tiêu đề và các tiêu đề con xuất hiện trong văn bản, ta sử dụng các thẻ dạng `<hx>` trong đó x nhận một trong các giá trị từ 1 đến 6, thể hiện độ quan trọng giảm dần của nội dung. Thẻ `<h1>` nên được sử dụng cho tiêu đề chính hay tiêu đề chung của cả văn bản. Các tiêu đề ở mức thấp hơn dùng thẻ `<h2>` và tiếp tục với các mức tiếp theo,...
-
-    **Cấu trúc thẻ tiêu đề:**
-    ```html
-    <h1>Tiêu đề cấp 1 (quan trọng nhất)</h1>
-    <h2>Tiêu đề cấp 2</h2>
-    <h3>Tiêu đề cấp 3</h3>
-    <h4>Tiêu đề cấp 4</h4>
-    <h5>Tiêu đề cấp 5</h5>
-    <h6>Tiêu đề cấp 6 (ít quan trọng nhất)</h6>
-    ```
-
-    **Khi sử dụng thẻ `<hx>`, trình duyệt sẽ:**
-    - Sử dụng chúng để hiển thị trang web và định dạng văn bản giúp người dùng đọc lướt trang web theo tiêu đề
-    - Các công cụ tìm kiếm sử dụng thẻ này để xác định cấu trúc và nội dung trang web
-
-    **Quy tắc sử dụng thẻ tiêu đề:**
-    - Chỉ dùng một thẻ `<h1>` cho mỗi trang (tiêu đề chính)
-    - Không bỏ cấp tiêu đề (từ h1 nhảy h3)
-    - Sử dụng theo thứ tự phân cấp logic
-    - Nội dung tiêu đề phải phản ánh đúng nội dung bên dưới
-
-    **Ví dụ thực tế:**
-    ```html
-    <article>
-        <h1>Hướng dẫn học HTML</h1>
-        <h2>Chương 1: Giới thiệu HTML</h2>
-        <h3>1.1 HTML là gì?</h3>
-        <p>Nội dung giải thích...</p>
-        <h3>1.2 Lịch sử HTML</h3>
-        <p>Nội dung lịch sử...</p>
-        <h2>Chương 2: Cú pháp HTML cơ bản</h2>
-        <h3>2.1 Thẻ và phần tử</h3>
-        <p>Nội dung thẻ...</p>
-    </article>
-    ```
-
-    <Alert type="info">
-      **Lưu ý quan trọng:**
-      - Thẻ tiêu đề không chỉ để định dạng mà còn có ý nghĩa về cấu trúc và SEO
-      - Sử dụng đúng cấu trúc tiêu đề giúp công cụ tìm kiếm hiểu rõ nội dung trang web
-      - Người dùng có thể lướt trang web dễ dàng qua các tiêu đề
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Thử thách 'Đôi mắt Nhà thiết kế'"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Màn chiếu lớp học • So sánh trực quan hai cách trình bày văn bản">
+      Cùng một nội dung thông báo của trường, hãy so sánh hai cách hiển thị dưới đây trên trình duyệt:
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS hiểu được khái niệm thuộc tính trong HTML
-    - HS biết cách sử dụng thuộc tính style để định dạng
-    - HS nắm vững các thẻ tiêu đề và quy tắc sử dụng
 
-    **Hoạt động:**
-    - GV hướng dẫn HS viết các thẻ với thuộc tính
-    - HS thực hành định dạng văn bản với các thuộc tính khác nhau
-    - **Sản phẩm:** Bảng tổng kết các thuộc tính và thẻ định dạng
-  </TeacherNotes>
-</StepKnowledge>
-      <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 not-prose">
+      {/* Bản A: Thô */}
+      <div className="p-5 rounded-2xl bg-white border-2 border-slate-300 text-slate-800 shadow-sm">
+        <span className="px-2.5 py-0.5 rounded bg-slate-200 text-slate-700 text-xs font-black uppercase block mb-3 w-fit">
+          Bản A: Văn bản thô (Chưa định dạng)
+        </span>
+        <div className="font-serif text-sm leading-relaxed space-y-2">
+          <p>THÔNG BÁO NGHỈ LỄ QUỐC KHÁNH 2-9</p>
+          <p>Trường THPT thông báo toàn thể học sinh được nghỉ lễ từ ngày 01-09 đến hết ngày 04-09. Học sinh chú ý hoàn thành bài tập toán: giải phương trình ax2 + bx + c = 0 và phương trình hoá học tạo ra khí H2O. Chúc các em kì nghỉ vui vẻ!</p>
+        </div>
+      </div>
 
-    1. Tìm ví dụ về phần tử HTML không thể lồng, tức là không thể có quan hệ cha – con trong cây thông tin của trang web.
+      {/* Bản B: Đã định dạng */}
+      <div className="p-5 rounded-2xl bg-sky-50/60 border-2 border-sky-400 text-slate-900 shadow-md">
+        <span className="px-2.5 py-0.5 rounded bg-sky-500 text-white text-xs font-black uppercase block mb-3 w-fit">
+          Bản B: Đã định dạng HTML chuẩn
+        </span>
+        <div className="text-sm leading-relaxed space-y-2">
+          <h2 className="text-base font-black text-rose-600 uppercase border-b border-rose-200 pb-1">
+            📢 THÔNG BÁO NGHỈ LỄ QUỐC KHÁNH 2/9
+          </h2>
+          <p className="text-slate-800">
+            Trường THPT thông báo toàn thể học sinh được nghỉ lễ từ ngày <mark className="bg-yellow-200 px-1 font-bold">01/09 đến hết ngày 04/09</mark>.
+          </p>
+          <p className="text-xs text-indigo-700 bg-indigo-50 p-2 rounded-lg border border-indigo-200">
+            <strong>Nhiệm vụ:</strong> Hoàn thành bài tập toán: giải phương trình <em>ax<sup>2</sup> + bx + c = 0</em> và điều chế nước (<em>H<sub>2</sub>O</em>).
+          </p>
+          <p className="text-emerald-700 font-bold text-xs">🎉 Chúc các em kì nghỉ vui vẻ và an toàn!</p>
+        </div>
+      </div>
+    </div>
 
-    **Trả lời:**
-    Các phần tử HTML không thể lồng vào nhau là các phần tử khối (block-level elements) và một số phần tử đặc biệt. Ví dụ:
-
-    **a) Các phần tử không thể lồng vào nhau:**
-    - `<p>` không thể chứa `<p>` khác
-    - `<h1>` đến `<h6>` không thể chứa các thẻ tiêu đề khác
-    - `<div>` có thể chứa nhiều phần tử khác nhưng không nên lồng quá sâu
-
-    **Ví dụ sai (không hợp lệ):**
-    ```html
-    <p>
-        <p>Đoạn văn bên trong đoạn văn khác</p>
+    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+      ❓ <strong>Câu hỏi thảo luận (03 phút):</strong> Cách trình bày ở Bản B có những điểm gì vượt trội so với Bản A? Em nhận thấy những kỹ thuật định dạng nào đã được áp dụng?
     </p>
-    ```
+  </SlideStep>
 
-    **Ví dụ đúng (hợp lệ):**
-    ```html
-    <p>
-        <span>Đoạn văn có thể chứa span</span>
-        <strong>Và các thẻ nội tuyến khác</strong>
-    </p>
-    ```
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Thảo luận cặp đôi"
+  >
+    <Alert type="tip" title="Hướng dẫn học sinh thảo luận">
+      - Học sinh ngồi cùng bàn trao đổi nhanh trong 2 phút.
+      - Ghi chú ít nhất 3 điểm khác biệt nổi bật (Về: Kích thước tiêu đề, Màu sắc, Từ khóa nổi bật, Kí hiệu toán/hóa học số mũ 2 và chỉ số 2).
+    </Alert>
+  </SlideStep>
 
-    **b) Các phần tử có thể lồng:**
-    - `<div>` có thể chứa `<p>`, `<h1>`, `<ul>`, `<table>`,...
-    - `<li>` có thể chứa `<div>`, `<p>`, `<span>`,...
-    - `<td>` có thể chứa hầu hết các phần tử khác
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Phát biểu ý kiến"
+  >
+    <div className="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm leading-relaxed space-y-2">
+      <h5 className="font-black text-indigo-800 dark:text-indigo-300 text-base mb-1">
+        🎤 Đại diện học sinh chia sẻ:
+      </h5>
+      <p>1. Bản B dễ nhìn và nắm bắt thông tin quan trọng trong 3 giây nhờ tiêu đề lớn và ngày nghỉ được bôi vàng (highlight).</p>
+      <p>2. Công thức toán <code>ax²</code> và hóa <code>H₂O</code> viết đúng chuẩn khoa học nhờ số mũ trên và số chỉ dưới.</p>
+    </div>
+  </SlideStep>
 
-    **c) Quy tắc lồng nhau:**
-    - Phần tử khối (block) có thể chứa phần tử khối và phần tử nội tuyến (inline)
-    - Phần tử nội tuyến chỉ có thể chứa phần tử nội tuyến khác
-    - Không lồng phần tử khối bên trong phần tử nội tuyến
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề vào Bài 8"
+  >
+    <Alert type="success" title="Chốt kiến thức mở đầu trên màn chiếu">
+      Để văn bản trên trang web hấp dẫn, dễ đọc và truyền tải thông điệp hiệu quả, HTML cung cấp hai công cụ then chốt:
+      1. **Thuộc tính thẻ (Attributes)**: Bổ sung các thông số điều khiển (màu sắc, cỡ chữ, phông chữ).
+      2. **Hệ thống thẻ định dạng ngữ nghĩa**: Phân cấp tiêu đề (`<h1>` - `<h6>`), nhấn mạnh (`<strong>`, `<em>`), đánh dấu (`<mark>`), và viết chỉ số (`<sup>`, `<sub>`).
+    </Alert>
+  </SlideStep>
 
-    2. Chọn một văn bản đơn giản. Soạn thảo tệp HTML để hiển thị nội dung văn bản đó. Vẽ cây thông tin các phần tử HTML của trang web vừa soạn thảo.
+</PedagogyActivity>
 
-    **Ví dụ thực hiện:**
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
 
-    **Văn bản gốc:**
-    ```
-    BÀI THỌ LƯƠNG
-    Tác giả: Nguyễn Duy
-    
-    Bài thơ "Thơ Lương" là một trong những tác phẩm nổi tiếng của Nguyễn Duy, thể hiện sâu sắc tâm trạng của người lính trong chiến tranh.
-    
-    Nội dung chính:
-    - Sự đối lập giữa quá khứ và hiện tại
-    - Nỗi nhớ quê hương
-    - Khát vọng hòa bình
-    ```
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút (Gồm 3 nhiệm vụ trọng tâm)"
+  objective="Chiếm lĩnh kiến thức về thuộc tính thẻ (đặc biệt là style), hệ thống phân cấp tiêu đề và đoạn văn, cùng toàn bộ các thẻ định dạng kiểu chữ trong HTML5."
+  content="Khám phá cú pháp thuộc tính thẻ, so sánh thẻ khối div vs span, thực hành trực tiếp trên live sandbox và hệ thống bảng tổng kết chuẩn SGK."
+  product="Bảng tổng hợp cú pháp thuộc tính thẻ, quy tắc phân cấp tiêu đề và bảng mã kiểu chữ áp dụng thành công trên trình duyệt."
+>
 
-    **Tệp HTML tương ứng:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Bài Thơ Lương</title>
-    </head>
-    <body>
-        <h1>BÀI THỌ LƯƠNG</h1>
-        <p><strong>Tác giả:</strong> Nguyễn Duy</p>
-        <p>Bài thơ "Thơ Lương" là một trong những tác phẩm nổi tiếng của Nguyễn Duy, thể hiện sâu sắc tâm trạng của người lính trong chiến tranh.</p>
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: THUỘC TÍNH THẺ VÀ THUỘC TÍNH STYLE
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="TÌM HIỂU THUỘC TÍNH THẺ VÀ THUỘC TÍNH STYLE"
+    duration="15 phút"
+    objective="Nắm được khái niệm thuộc tính thẻ, vị trí khai báo thuộc tính và cách dùng thuộc tính style để định dạng màu sắc, kích thước văn bản."
+    content="Quan sát thẻ <meta charset='utf-8'> ở Bài 7, suy luận cú pháp thuộc tính tổng quát tên_thuộc_tính='giá_trị' và thực hành viết thuộc tính style."
+    product="Viết đúng cú pháp thẻ có thuộc tính style: màu sắc (color), cỡ chữ (font-size), phông chữ (font-family)."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Khám phá Thuộc tính Thẻ (Attributes)"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <div className="p-4 rounded-2xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-sm text-slate-800 dark:text-slate-200 mb-4">
+        <strong className="text-sky-800 dark:text-sky-300 block mb-1">
+          🔍 Nhớ lại Bài 7:
+        </strong>
+        Trong tệp <code>index.html</code> ở bài trước, ta có dòng: <code>&lt;meta charset="utf-8"&gt;</code>. Trong đó <code>charset</code> chính là một <strong>Thuộc tính</strong> và <code>utf-8</code> là <strong>Giá trị</strong> của thuộc tính.
+      </div>
+
+      <p className="font-bold text-slate-800 dark:text-slate-200">
+        Hãy thử nghiệm ngay thuộc tính <code>style</code> trong trình soạn thảo trực tiếp dưới đây:
+      </p>
+
+      <HtmlLiveSandbox
+        initialCode={`<p style="color: red; font-size: 20px;">Đoạn văn màu đỏ rực rỡ cỡ 20px</p>
+<p style="color: #0ea5e9; font-family: Tahoma; font-style: italic;">Đoạn văn màu xanh ngọc, phông chữ Tahoma nghiêng</p>
+<p style="background-color: yellow; color: black; text-align: center;">Đoạn văn có nền vàng căn giữa</p>`}
+        title="Thử nghiệm trực tiếp: Thuộc tính style trong HTML"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Phân tích Quy tắc viết Thuộc tính"
+    >
+      <Alert type="idea" title="Quy tắc vàng khi viết thuộc tính HTML">
+        1. **Vị trí:** Thuộc tính luôn nằm bên trong **Thẻ bắt đầu** (Opening Tag), ngay sau tên thẻ. *Tuyệt đối không viết thuộc tính vào thẻ đóng!*
         
-        <h2>Nội dung chính:</h2>
-        <ul>
-            <li>Sự đối lập giữa quá khứ và hiện tại</li>
-            <li>Nỗi nhớ quê hương</li>
-            <li>Khát vọng hòa bình</li>
-        </ul>
-    </body>
-    </html>
-    ```
+        2. **Cấu trúc:** `tên_thuộc_tính="giá_trị"`. Giá trị nên đặt trong cặp dấu ngoặc kép `" "`.
+        
+        3. **Nhiều thuộc tính:** Cách nhau bởi **dấu cách (space)**. Ví dụ: `<p id="intro" class="text-lead">`.
+        
+        4. **Nhiều giá trị trong style:** Cách nhau bởi **dấu chấm phẩy (`;`)**. Cú pháp: `style="thuoc_tinh_1: gia_tri_1; thuoc_tinh_2: gia_tri_2;"`.
+      </Alert>
+    </SlideStep>
 
-    **Cây thông tin các phần tử HTML:**
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Bắt lỗi cú pháp thuộc tính"
+    >
+      <div className="p-5 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-200 dark:border-rose-800 text-sm">
+        <h5 className="font-black text-rose-700 dark:text-rose-300 text-base mb-2">
+          🚨 Tìm điểm sai trong 3 câu lệnh sau:
+        </h5>
+        <div className="space-y-2 font-mono text-xs md:text-sm">
+          <p className="p-2 bg-white dark:bg-slate-900 rounded-lg">1. <code>&lt;p&gt;Chào bạn&lt;/p style="color:red"&gt;</code></p>
+          <p className="p-2 bg-white dark:bg-slate-900 rounded-lg">2. <code>&lt;p style="color=red font-size=20px"&gt;Nội dung&lt;/p&gt;</code></p>
+          <p className="p-2 bg-white dark:bg-slate-900 rounded-lg">3. <code>&lt;p style="color: blue; font-size: 18px"&gt;Đoạn văn đúng&lt;/p&gt;</code></p>
+        </div>
+        <div className="mt-3 pt-3 border-t border-rose-200 dark:border-rose-900 text-slate-700 dark:text-slate-300 text-xs">
+          👉 <em>Giải thích:</em> Câu 1 sai vì viết thuộc tính vào thẻ đóng; Câu 2 sai vì dùng dấu <code>=</code> thay vì <code>:</code> và thiếu dấu chấm phẩy <code>;</code> ngăn cách các thuộc tính CSS; Câu 3 đúng chuẩn!
+        </div>
+      </div>
+    </SlideStep>
 
-    ```
-    <!DOCTYPE html>
-    └── html
-        ├── head
-        │   ├── meta
-        │   └── title
-        └── body
-            ├── h1 (BÀI THỌ LƯƠNG)
-            ├── p
-            │   └── strong (Tác giả:)
-            ├── p (Bài thơ "Thơ Lương"...)
-            ├── h2 (Nội dung chính:)
-            └── ul
-                ├── li (Sự đối lập...)
-                ├── li (Nỗi nhớ quê hương)
-                └── li (Khát vọng hòa bình)
-    ```
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Thuộc tính thẻ"
+    >
+      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-slate-200 space-y-2">
+        <p><strong>Khái niệm:</strong> Thuộc tính bổ sung thông tin và điều khiển hành vi hiển thị của thẻ HTML.</p>
+        <p><strong>Cú pháp chuẩn:</strong> <code>&lt;Tên_thẻ thuộc_tính_1="giá_trị_1" thuộc_tính_2="giá_trị_2"&gt; Nội dung &lt;/Tên_thẻ&gt;</code></p>
+        <p><strong>Thuộc tính <code>style</code>:</strong> Cho phép định dạng CSS trực tiếp ngay tại phần tử (màu sắc <code>color</code>, phông chữ <code>font-family</code>, kích thước <code>font-size</code>, căn lề <code>text-align</code>).</p>
+      </div>
+    </SlideStep>
 
-    **Phân tích cây thông tin:**
-    - **Gốc:** `html` là phần tử gốc
-    - **Nhánh chính:** `head` và `body` là hai nhánh con trực tiếp
-    - **Cấu trúc phân cấp:** Các phần tử được sắp xếp theo thứ tự phân cấp rõ ràng
-    - **Mối quan hệ cha-con:** 
-      - `html` → `head`, `body`
-      - `body` → `h1`, `p`, `h2`, `ul`
-      - `p` → `strong`
-      - `ul` → `li`
+  </SubTask>
 
-    **Bài tập thực hành thêm:**
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: ĐỊNH DẠNG TIÊU ĐỀ VÀ PHÂN ĐOẠN VĂN BẢN
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="CÁC THẺ ĐỊNH DẠNG TIÊU ĐỀ VÀ ĐOẠN VĂN BẢN"
+    duration="15 phút"
+    objective="Sử dụng thành thạo 6 cấp tiêu đề h1 đến h6 theo đúng trật tự logic SEO và phân biệt phần tử khối div với phần tử nội tuyến span."
+    content="Khảo sát độ quan trọng giảm dần của h1-h6, vai trò của thẻ p trong việc tạo dòng mới kèm lề trên/dưới và ứng dụng thẻ hr, br."
+    product="Đoạn mã phân cấp tiêu đề mục lục môn Tin học 12 hoàn chỉnh."
+  >
 
-    **Bài 1: Xác định lỗi lồng nhau**
-    Tìm và sửa lỗi trong đoạn mã sau:
-    ```html
-    <div>
-        <p>Đoạn văn thứ nhất
-            <p>Đoạn văn thứ hai</p>
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Sáu cấp độ Tiêu đề (Headings)"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <p className="font-bold text-slate-800 dark:text-slate-200">
+        HTML cung cấp 6 thẻ tiêu đề từ <code>&lt;h1&gt;</code> đến <code>&lt;h6&gt;</code> tương ứng với độ quan trọng giảm dần:
+      </p>
+
+      <HtmlLiveSandbox
+        initialCode={`<h1>Tiêu đề cấp 1 (h1 - Quan trọng nhất)</h1>
+<h2>Tiêu đề cấp 2 (h2)</h2>
+<h3>Tiêu đề cấp 3 (h3)</h3>
+<h4>Tiêu đề cấp 4 (h4)</h4>
+<h5>Tiêu đề cấp 5 (h5)</h5>
+<h6>Tiêu đề cấp 6 (h6 - Nhỏ nhất)</h6>
+<hr>
+<p>Thẻ p tạo đoạn văn bản có khoảng đệm trên và dưới tự động.</p>`}
+        title="Minh họa 6 cấp độ Tiêu đề và Thẻ phân đoạn p, hr"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Quy tắc sư phạm về Tiêu đề & Khối"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-sky-600 dark:text-sky-400 font-bold block mb-2 text-base">
+            📌 Quy tắc chuẩn về Thẻ Tiêu đề:
+          </strong>
+          <ul className="space-y-1.5 list-disc pl-4 text-slate-700 dark:text-slate-300">
+            <li>Mỗi trang web thông thường chỉ nên có <strong>01 thẻ <code>&lt;h1&gt;</code> duy nhất</strong> làm tên chủ đề chính.</li>
+            <li>Không nhảy cóc cấp độ (ví dụ từ <code>&lt;h1&gt;</code> nhảy thẳng xuống <code>&lt;h3&gt;</code> mà bỏ quên <code>&lt;h2&gt;</code>).</li>
+            <li>Các máy tìm kiếm (Google, Bing) dựa vào thẻ <code>&lt;hx&gt;</code> để đánh chỉ mục nội dung trang.</li>
+          </ul>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-indigo-600 dark:text-indigo-400 font-bold block mb-2 text-base">
+            📦 Phân biệt Thẻ Khối và Thẻ Nội tuyến:
+          </strong>
+          <ul className="space-y-1.5 list-disc pl-4 text-slate-700 dark:text-slate-300">
+            <li><strong>Thẻ khối (Block-level):</strong> <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> luôn bắt đầu trên <em>dòng mới</em> và chiếm trọn chiều ngang màn hình.</li>
+            <li><strong>Thẻ nội tuyến (Inline):</strong> <code>&lt;span&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code> hiển thị ngay trên <em>cùng dòng đang viết</em> mà không ngắt dòng.</li>
+          </ul>
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Thử tài dự đoán số dòng hiển thị"
+    >
+      <div className="p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-sm">
+        <strong className="text-amber-800 dark:text-amber-300 text-base block mb-2">
+          ❓ Câu hỏi SGK: Đoạn mã sau hiển thị thành mấy dòng trên trình duyệt?
+        </strong>
+        <div className="p-3 bg-[#1e293b] text-sky-200 font-mono text-xs md:text-sm rounded-xl mb-3">
+          <code>&lt;p&gt; Thẻ p tạo đoạn nội dung, &lt;/p&gt;&lt;p&gt;thẻ div tạo khối chứa dữ liệu. &lt;/p&gt;&lt;p&gt;Thẻ này &lt;br&gt; không có hình thức trình bày riêng &lt;/p&gt;&lt;p&gt;mà được định dạng &lt;/p&gt;&lt;p&gt; bằng thuộc tính style. &lt;/p&gt;</code>
+        </div>
+        <p className="text-slate-700 dark:text-slate-300">
+          👉 <strong>Trả lời:</strong> Hiển thị thành <strong>6 dòng</strong> (có 5 thẻ <code>&lt;p&gt;</code> tạo 5 dòng, riêng đoạn thứ 3 có thêm thẻ <code>&lt;br&gt;</code> ngắt xuống thêm 1 dòng nữa). Khoảng cách giữa các đoạn <code>&lt;p&gt;</code> có khoảng trống nhỏ, còn dòng ngắt bởi <code>&lt;br&gt;</code> thì sát nhau.
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Tiêu đề & Đoạn"
+    >
+      <Alert type="success" title="Tổng kết cốt lõi">
+        Một văn bản chuẩn được tạo bởi hai thành phần nền tảng:
+        - **Tiêu đề (`<hx>`)**: 6 cấp độ định hình khung sườn tài liệu.
+        - **Đoạn văn (`<p>`)**: Chứa nội dung văn bản chi tiết; sử dụng `<br>` để ngắt dòng và `<hr>` để kẻ đường phân cách chuyên đề.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3: ĐỊNH DẠNG KIỂU CHỮ VÀ PHÔNG CHỮ NÂNG CAO
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-3"
+    number="2.3"
+    title="CÁC THẺ ĐỊNH DẠNG KIỂU CHỮ VÀ PHÔNG CHỮ"
+    duration="15 phút"
+    objective="Sử dụng thành thạo các thẻ kiểu chữ strong, em, mark, sup, sub, del và định dạng đa thuộc tính style (màu sắc, phông chữ, cỡ chữ, căn lề)."
+    content="Học sinh tra cứu Bảng 8.1 SGK, thực hành gõ các công thức toán học và khoa học, so sánh giá trị màu tiếng Anh và mã màu RGB."
+    product="Trang web hiển thị đúng các kiểu chữ: in đậm, nghiêng, gạch chân, bôi sáng, chỉ số trên sup, chỉ số dưới sub."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Bộ thẻ Kiểu chữ (Text Formatting Tags)"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <p className="font-bold text-slate-800 dark:text-slate-200">
+        Khám phá các thẻ định dạng kiểu chữ phong phú trong Bảng 8.1 của SGK Tin học 12:
+      </p>
+
+      <HtmlLiveSandbox
+        initialCode={`<p>Chữ thường: Đây là câu văn chuẩn.</p>
+<p>Chữ đậm: <strong>Đây là từ khóa quan trọng</strong> (hoặc dùng thẻ &lt;b&gt;).</p>
+<p>Chữ nghiêng: <em>Đây là từ cần nhấn mạnh</em> (hoặc dùng thẻ &lt;i&gt;).</p>
+<p>Gạch chân: <u>Văn bản có đường gạch dưới</u>.</p>
+<p>Đánh dấu: <mark>Từ khóa được bôi sáng vàng (Highlight)</mark>.</p>
+<p>Chữ nhỏ: <small>Dòng ghi chú bản quyền kích thước nhỏ</small>.</p>
+<p>Toán học (Chỉ số trên sup): ax<sup>2</sup> + bx + c = 0</p>
+<p>Hóa học (Chỉ số dưới sub): Phân tử nước H<sub>2</sub>O và axit H<sub>2</sub>SO<sub>4</sub></p>
+<p>Giá khuyến mãi (Gạch xóa del): Giá cũ <del>500.000đ</del> nay chỉ còn 299.000đ</p>`}
+        title="Thử nghiệm trực tiếp: Toàn bộ bảng thẻ Kiểu chữ HTML5"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Định dạng Phông chữ qua thuộc tính style"
+    >
+      <div className="overflow-x-auto my-2">
+        <table className="w-full text-left border-collapse rounded-2xl overflow-hidden shadow-sm">
+          <thead>
+            <tr className="bg-slate-900 text-white text-xs font-black uppercase tracking-wider">
+              <th className="py-3 px-4 w-40">Mục tiêu định dạng</th>
+              <th className="py-3 px-4 w-48">Thuộc tính CSS trong style</th>
+              <th className="py-3 px-4">Ví dụ cú pháp HTML</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-xs md:text-sm bg-white dark:bg-slate-900">
+            <tr>
+              <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">Màu chữ</td>
+              <td className="py-3 px-4 font-mono text-sky-600 dark:text-sky-400"><code>color: red;</code></td>
+              <td className="py-3 px-4 font-mono"><code>&lt;p style="color: blue;"&gt;Chữ màu xanh&lt;/p&gt;</code></td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">Cỡ chữ</td>
+              <td className="py-3 px-4 font-mono text-sky-600 dark:text-sky-400"><code>font-size: 20px;</code></td>
+              <td className="py-3 px-4 font-mono"><code>&lt;p style="font-size: 18px;"&gt;Cỡ 18 pixel&lt;/p&gt;</code></td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">Phông chữ</td>
+              <td className="py-3 px-4 font-mono text-sky-600 dark:text-sky-400"><code>font-family: Arial;</code></td>
+              <td className="py-3 px-4 font-mono"><code>&lt;p style="font-family: 'Times New Roman';"&gt;...&lt;/p&gt;</code></td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">Căn lề văn bản</td>
+              <td className="py-3 px-4 font-mono text-sky-600 dark:text-sky-400"><code>text-align: center;</code></td>
+              <td className="py-3 px-4 font-mono"><code>&lt;p style="text-align: justify;"&gt;Căn đều hai bên&lt;/p&gt;</code></td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">Kết hợp nhiều thuộc tính</td>
+              <td className="py-3 px-4 font-mono text-sky-600 dark:text-sky-400">Cách nhau bằng dấu <code>;</code></td>
+              <td className="py-3 px-4 font-mono"><code>&lt;p style="color:red; font-size:16px; font-weight:bold;"&gt;...&lt;/p&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – So sánh giá trị màu sắc"
+    >
+      <div className="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 text-base block mb-2">
+          💬 Câu hỏi thảo luận:
+        </strong>
+        <p className="text-slate-800 dark:text-slate-200 mb-2">
+          Hai cách viết màu sau đây cho kết quả hiển thị giống hay khác nhau?
+        </p>
+        <p className="font-mono text-xs bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-indigo-200">
+          Cách 1: <code>&lt;p style="color: red;"&gt;</code> &nbsp;|&nbsp; Cách 2: <code>&lt;p style="color: rgb(255, 0, 0);"&gt;</code>
+        </p>
+        <p className="text-xs text-indigo-900 dark:text-indigo-200 mt-2">
+          👉 <em>Kết luận:</em> Cho kết quả màu đỏ hoàn toàn giống nhau! Trong HTML, ta có thể chỉ định màu bằng tên tiếng Anh (red, green, blue) hoặc mã RGB (Red - Green - Blue từ 0 đến 255) hoặc mã Hex (ví dụ <code>#FF0000</code>).
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Định dạng Phông"
+    >
+      <Alert type="success" title="Nguyên tắc cốt lõi cần nhớ">
+        - Sử dụng thẻ `<sup>` cho số mũ toán học ($x^2$), thẻ `<sub>` cho công thức hóa học ($CO_2$).
+        - Thẻ `<strong>` và `<em>` mang ý nghĩa ngữ nghĩa (Semantic Web) nhấn mạnh độ quan trọng, được khuyến khích sử dụng hơn `<b>` và `<i>`.
+        - Khi kết hợp nhiều kiểu định dạng phông trong thuộc tính `style`, luôn kết thúc mỗi cặp `thuộc_tính: giá_trị` bằng dấu chấm phẩy `;`.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'THỬ THÁCH NHÀ SOẠN THẢO WEB'"
+  duration="20 phút"
+  objective="Củng cố toàn diện kĩ năng lồng ghép thẻ định dạng, sử dụng đúng thuộc tính style và trình bày thuật toán toán học chuẩn xác."
+  content="Học sinh giải quyết 2 thử thách: Trắc nghiệm củng cố tốc độ và Viết mã HTML trình bày thuật toán biện luận số nghiệm phương trình bậc 2."
+  product="Đáp án trắc nghiệm đúng và tệp bai8_luyentap.html chạy thành công hiển thị đúng công thức toán học."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    {/* THỬ THÁCH 1 */}
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Nhận diện Cú pháp (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Để hiển thị công thức hóa học của axit Sunfuric H₂SO₄, ta cần kẹp các số 2 và 4 vào cặp thẻ nào?",
+        options: [
+          "A. <sup>...</sup>",
+          "B. <sub>...</sub>",
+          "C. <small>...</small>",
+          "D. <mark>...</mark>"
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! Thẻ <sub> (subscript) dùng để tạo chỉ số dưới cho các công thức hóa học như H₂SO₄, H₂O."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Cách viết thuộc tính style nào sau đây là ĐÚNG CÚ PHÁP để vừa đổi màu chữ thành xanh lam vừa in đậm?",
+        options: [
+          'A. <p style="color: blue; font-weight: bold;">Văn bản</p>',
+          'B. <p style="color=blue, font-weight=bold">Văn bản</p>',
+          'C. <p color="blue" font-weight="bold">Văn bản</p>',
+          'D. <p style="color: blue" "font-weight: bold">Văn bản</p>'
+        ],
+        correctAnswer: 0,
+        explanation: "Chính xác! Các thuộc tính bên trong style phân tách nhau bằng dấu hai chấm ':' giữa tên và giá trị, và kết thúc bằng dấu chấm phẩy ';'."
+      }} />
+    </div>
+
+    {/* THỬ THÁCH 2 */}
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Trình bày Thuật toán Toán học trên Web (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Nhiệm vụ SGK: Hãy viết mã HTML hoàn chỉnh để trình bày đoạn văn bản sau:
+      </p>
+
+      <div className="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-700 text-sm space-y-1 mb-4">
+        <h3 className="font-bold text-base text-rose-600">1. Biện luận số nghiệm của phương trình bậc 2</h3>
+        <p><strong>Bài toán:</strong> Xác định số nghiệm của phương trình <em>ax<sup>2</sup> + bx + c = 0</em> (a ≠ 0)</p>
+        <p><strong>Cách làm:</strong></p>
+        <p>• <strong>B<sub>1</sub>:</strong> Xác định hệ số a, b và c</p>
+        <p>• <strong>B<sub>2</sub>:</strong> Tính delta = <em>b<sup>2</sup> - 4ac</em></p>
+        <p>• <strong>B<sub>3</sub>:</strong> Kết luận:</p>
+        <p className="pl-4">+ Nếu delta &lt; 0: Phương trình vô nghiệm</p>
+        <p className="pl-4">+ Nếu delta = 0: Phương trình có nghiệm duy nhất</p>
+        <p className="pl-4">+ Nếu delta &gt; 0: Phương trình có hai nghiệm phân biệt</p>
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn code trên máy tính"
+  >
+    <Alert type="tip" title="Gợi ý sư phạm cho học sinh thực hiện Thử thách 2">
+      - Dùng thẻ `<h2>` hoặc `<h3>` cho dòng tiêu đề chính bài toán.
+      - Dùng thẻ `<strong>` để in đậm các chữ **Bài toán**, **Cách làm**, **B<sub>1</sub>**, **B<sub>2</sub>**, **B<sub>3</sub>**.
+      - Dùng thẻ `<sup>2</sup>` cho số mũ bình phương $x^2$ và $b^2$.
+      - Dùng thẻ `<sub>1</sub>` cho chỉ số bước làm $B_1, B_2, B_3$.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Chữa bài và đối chiếu"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+      Học sinh gõ trực tiếp và đối chiếu mã nguồn chuẩn tại khung thử nghiệm:
+    </p>
+
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Biện luận phương trình bậc 2</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+    <h2 style="color: #0284c7;">1. Biện luận số nghiệm của phương trình bậc 2</h2>
+    <hr>
+    <p><strong>Bài toán:</strong> Xác định số nghiệm của phương trình <em>ax<sup>2</sup> + bx + c = 0</em> (a &ne; 0)</p>
+    <p><strong>Cách làm:</strong></p>
+    <p>&bull; <strong>B<sub>1</sub>:</strong> Xác định hệ số a, b và c</p>
+    <p>&bull; <strong>B<sub>2</sub>:</strong> Tính &Delta; = <em>b<sup>2</sup> - 4ac</em></p>
+    <p>&bull; <strong>B<sub>3</sub>:</strong> Kết luận</p>
+    <p style="margin-left: 20px; color: #dc2626;">+ Nếu &Delta; &lt; 0: Phương trình vô nghiệm</p>
+    <p style="margin-left: 20px; color: #d97706;">+ Nếu &Delta; = 0: Phương trình có nghiệm duy nhất</p>
+    <p style="margin-left: 20px; color: #16a34a;">+ Nếu &Delta; &gt; 0: Phương trình có hai nghiệm phân biệt</p>
+</body>
+</html>`}
+      title="Mã nguồn mẫu chuẩn: Biện luận phương trình bậc 2 (Thử thách 2)"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Đánh giá kết quả luyện tập"
+  >
+    <Alert type="success" title="Nhận xét của Giáo viên">
+      Học sinh đã xuất sắc kết hợp được cả: Thẻ tiêu đề (`<h2>`), Thẻ đường kẻ ngang (`<hr>`), Thẻ chỉ số trên (`<sup>`), Thẻ chỉ số dưới (`<sub>`), Thẻ in đậm (`<strong>`) và Thẻ in nghiêng (`<em>`) để tạo nên một tài liệu toán học trực quan chuẩn mực trên web!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'THIẾT KẾ TRANG THƠ HOẶC THIỆP CHÚC MỪNG NGHỆ THUẬT'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng sáng tạo các thẻ định dạng văn bản và thuộc tính style để thiết kế một trang thơ nghệ thuật hoặc một bức thiệp số tri ân thầy cô."
+  content="Học sinh tự chọn bài thơ yêu thích hoặc tự soạn lời chúc, sử dụng ít nhất 3 màu sắc, 2 phông chữ và căn lề giữa nghệ thuật."
+  product="Tệp thiepchucmung_[TenHS].html hiển thị đẹp mắt trên trình duyệt."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề bài Dự án Sáng tạo"
+  >
+    <Alert type="idea" title="Đề bài Dự án Vận dụng">
+      Hãy tạo một tệp HTML có tên <code>thiepchucmung_[TenEm].html</code> với các yêu cầu:
+      1. Tiêu đề tab: *Thiệp tri ân / Trang thơ nghệ thuật*.
+      2. Sử dụng tiêu đề `<h1>` hoặc `<h2>` căn giữa, màu sắc trang trọng.
+      3. Ít nhất một đoạn thơ hoặc lời chúc sử dụng phông chữ nghệ thuật (như *Georgia, Tahoma, 'Segoe UI'*).
+      4. Sử dụng ít nhất 3 thẻ định dạng kiểu chữ khác nhau (`<strong>`, `<em>`, `<mark>`, `<u>`).
+      5. Có sử dụng thuộc tính `style` để thiết lập màu nền (background-color) hoặc đường viền (border).
+    </Alert>
+
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thiệp Tri Ân Thầy Cô</title>
+</head>
+<body style="background-color: #fff7ed; padding: 30px; font-family: 'Segoe UI', Tahoma, sans-serif;">
+    <div style="max-width: 500px; margin: 0 auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px dashed #f97316; text-align: center;">
+        <h1 style="color: #ea580c; font-size: 24px; margin-bottom: 5px;">TRI ÂN THẦY CÔ</h1>
+        <hr style="border: 1px solid #fed7aa; width: 60%; margin: 10px auto;">
+        
+        <p style="font-style: italic; color: #7c2d12; line-height: 1.8;">
+            "Có một nghề bụi phấn bám đầy tay<br>
+            Người ta bảo đó là nghề trong sạch nhất<br>
+            Có một nghề không trồng cây vào đất<br>
+            Lại nở cho đời muôn vạn <strong>hoa thơm</strong>."
+        </p>
+        
+        <p style="margin-top: 20px; font-size: 14px; color: #431407;">
+            Kính chúc Quý Thầy Cô luôn dồi dào sức khỏe, <mark style="background-color: #fef08a;">hạnh phúc</mark> và thành công!
+        </p>
+        <p style="text-align: right; font-weight: bold; color: #c2410c; margin-top: 15px;">
+            — Học sinh: Lê Tuấn Khang (Lớp 12A)
         </p>
     </div>
-    ```
+</body>
+</html>`}
+      title="Gợi ý sản phẩm mẫu: Bức thiệp số Tri ân Thầy Cô"
+    />
+  </SlideStep>
 
-    **Sửa lại:**
-    ```html
-    <div>
-        <p>Đoạn văn thứ nhất</p>
-        <p>Đoạn văn thứ hai</p>
-    </div>
-    ```
-
-    **Bài 2: Vẽ cây thông tin**
-    Cho đoạn mã HTML sau, vẽ cây thông tin tương ứng:
-    ```html
-    <article>
-        <header>
-            <h1>Tiêu đề bài viết</h1>
-            <p>Tác giả: Nguyễn Văn A</p>
-        </header>
-        <section>
-            <h2>Mục 1</h2>
-            <p>Nội dung mục 1</p>
-        </section>
-        <section>
-            <h2>Mục 2</h2>
-            <p>Nội dung mục 2</p>
-        </section>
-    </article>
-    ```
-
-    <Alert type="tip">
-      **Mẹo phân tích cây thông tin:**
-      - Bắt đầu từ `<!DOCTYPE html>` và `html`
-      - Vẽ theo chiều dọc từ trên xuống dưới
-      - Dùng đường thẳng nối cha → con
-      - Thụt lề cho các cấp con
-      - Kiểm tra logic lồng nhau
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo ngay tại lớp"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Khởi tạo khung sườn tại phòng máy">
+      Học sinh tranh thủ 10 phút cuối giờ để viết khung `<!DOCTYPE html>`, `<html>`, `<body>` và định dạng khung chứa `<div>` với thuộc tính `style`. Hoàn thiện phần phối màu và lời chúc ở nhà.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS hiểu được cấu trúc cây thông tin của HTML và các quy tắc lồng phần tử.
-    **Hoạt động:** HS phân tích các ví dụ và thực hành vẽ cây thông tin.
-    **Sản phẩm:** Cây thông tin hoàn chỉnh và các đoạn mã HTML hợp lệ.
-  </TeacherNotes>
-</StepPractice>
-  <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+  </SlideStep>
 
-    1. Em hãy tìm trên mạng các trang web hỗ trợ soạn thảo HTML trực tuyến.
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Bảng tiêu chí chấm điểm (Rubric)"
+  >
+    <RubricCard />
+  </SlideStep>
 
-    **Các trang web hỗ trợ soạn thảo HTML trực tuyến phổ biến:**
-
-    **a) w3schools.com**
-    - **Địa chỉ:** https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default
-    - **Đặc điểm:**
-      - Giao diện soạn thảo trực quan với 2 khung: mã nguồn và kết quả
-      - Hỗ trợ nhiều ngôn ngữ lập trình khác (CSS, JavaScript)
-      - Có các ví dụ mẫu và hướng dẫn chi tiết
-      - Tự động hoàn thành cú pháp
-      - Có thể chia sẻ kết quả
-
-    **b) tutorialspoint.com**
-    - **Địa chỉ:** https://www.tutorialspoint.com/html_online_editor.php
-    - **Đặc điểm:**
-      - Giao diện đơn giản, dễ sử dụng
-      - Hỗ trợ nhiều công nghệ web
-      - Có thể lưu và tải về mã nguồn
-      - Tốc độ nhanh, ổn định
-
-    **c) codepen.io**
-    - **Địa chỉ:** https://codepen.io/pen/
-    - **Đặc điểm:**
-      - Nâng cao hơn, hỗ trợ CSS và JavaScript
-      - Giao diện chuyên nghiệp
-      - Có thể tạo và lưu các dự án
-      - Cộng đồng lớn để học hỏi
-
-    **d) jsfiddle.net**
-    - **Địa chỉ:** https://jsfiddle.net/
-    - **Đặc điểm:**
-      - Tập trung vào JavaScript nhưng cũng hỗ trợ HTML/CSS
-      - Có thể chia sẻ và nhúng kết quả
-      - Giao diện gọn gàng
-
-    **e) html-online-editor.com**
-    - **Địa chỉ:** https://html-online-editor.com/
-    - **Đặc điểm:**
-      - Chuyên về HTML
-      - Giao diện đơn giản
-      - Tập trung vào người mới bắt đầu
-
-    **Cách sử dụng các trình soạn thảo trực tuyến:**
-    1. Truy cập trang web
-    2. Nhập mã HTML vào khung soạn thảo
-    3. Nhấn nút "Run", "Execute" hoặc "Try it"
-    4. Xem kết quả ngay lập tức ở khung bên cạnh
-    5. Chỉnh sửa mã và chạy lại để kiểm tra
-
-    **Lợi ích của soạn thảo trực tuyến:**
-    - Không cần cài đặt phần mềm
-    - Kết quả hiển thị ngay lập tức
-    - Dễ dàng chia sẻ và học hỏi
-    - Truy cập từ bất kỳ thiết bị có Internet
-
-    2. Sử dụng phần mềm soạn thảo HTML và soạn thảo trang web có nội dung như Hình 7.7. Lưu ý rằng thể `<img>` với tính năng thể hiện ảnh trên trang web có cú pháp: `<img src="tên tệp ảnh">`, trong đó "tên tệp ảnh" chính là đường dẫn của tệp hình ảnh cần đưa lên trang.
-
-    **Bài tập thực hành: Soạn thảo trang web với hình ảnh**
-
-    **Yêu cầu:** Tạo một trang web giới thiệu về một địa điểm du lịch tại Việt Nam, bao gồm:
-    - Tiêu đề chính
-    - Tiêu đề phụ
-    - Đoạn giới thiệu ngắn
-    - Hình ảnh địa điểm
-    - Các thông tin nổi bật
-
-    **Mã nguồn tham khảo:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Vịnh Hạ Long - Kỳ quan thiên nhiên</title>
-    </head>
-    <body>
-        <h1>Vịnh Hạ Long</h1>
-        <h2>Kỳ quan thiên nhiên thế giới</h2>
-        
-        <p>Vịnh Hạ Long là một vịnh nhỏ trên vịnh Bắc Bộ với khu vực biển có diện tích khoảng 1.553 km², bao gồm 1.969 hòn đảo lớn nhỏ.</p>
-        
-        <img src="https://via.placeholder.com/600x400/4CAF50/FFFFFF?text=Vịnh+Hạ+Long" alt="Vịnh Hạ Long">
-        
-        <h3>Các thông tin nổi bật:</h3>
-        <ul>
-            <li>Được UNESCO công nhận là Di sản Thiên nhiên Thế giới</li>
-            <li>Có hơn 1.900 hòn đảo lớn nhỏ</li>
-            <li>Nơi có hệ thống hang động karst lớn và đẹp nhất thế giới</li>
-            <li>Thu hút hàng triệu du khách mỗi năm</li>
-        </ul>
-        
-        <p style="color: blue; font-style: italic;">
-            <strong>Lưu ý:</strong> Hình ảnh chỉ mang tính minh họa. Trong thực tế, bạn cần thay thế đường dẫn ảnh bằng ảnh thực tế.
-        </p>
-    </body>
-    </html>
-    ```
-
-    **Giải thích mã nguồn:**
-
-    **a) Thẻ hình ảnh `<img>`:**
-    ```html
-    <img src="đường_dẫn_ảnh" alt="mô tả ảnh">
-    ```
-    - `src`: Đường dẫn đến file hình ảnh
-    - `alt`: Text mô tả ảnh (hiển thị khi ảnh không tải được)
-    - **Lưu ý:** Thẻ `<img>` là thẻ đơn, không có thẻ đóng
-
-    **b) Các loại đường dẫn ảnh:**
-    - **Đường dẫn tuyệt đối:** `https://example.com/image.jpg`
-    - **Đường dẫn tương đối:** `images/photo.jpg`
-    - **Đường dẫn base64:** Dữ liệu ảnh được mã hóa trực tiếp trong HTML
-
-    **c) Các thuộc tính khác của thẻ img:**
-    ```html
-    <img src="photo.jpg" alt="Mô tả" width="300" height="200" title="Tiêu đề ảnh">
-    ```
-    - `width`: Chiều rộng ảnh (pixel)
-    - `height`: Chiều cao ảnh (pixel)
-    - `title`: Tiêu đề hiển thị khi hover chuột
-
-    **Bài tập mở rộng:**
-
-    **Bài 1: Tạo trang giới thiệu sản phẩm**
-    - Tên sản phẩm, hình ảnh sản phẩm
-    - Mô tả tính năng, lợi ích
-    - Giá sản phẩm
-    - Nút đặt hàng (sử dụng thẻ `<button>`)
-
-    **Bài 2: Tạo trang portfolio cá nhân**
-    - Ảnh cá nhân
-    - Giới thiệu ngắn về bản thân
-    - Các kỹ năng (dạng danh sách)
-    - Liên kết mạng xã hội
-
-    **Bài 3: Tạo trang công thức nấu ăn**
-    - Tên món ăn, hình ảnh
-    - Nguyên liệu (dạng danh sách)
-    - Các bước thực hiện (dạng danh sách có thứ tự)
-    - Mẹo nhỏ (in đậm, màu sắc)
-
-    **Thử nghiệm trên các nền tảng khác nhau:**
-    - **Trên w3schools:** Sao chép mã và dán vào khung soạn thảo
-    - **Trên VS Code:** Lưu file với đuôi .html và mở bằng trình duyệt
-    - **Trên Notepad:** Lưu file với encoding UTF-8 và đuôi .html
-
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành vận dụng, học sinh sẽ biết cách sử dụng các công cụ soạn thảo HTML trực tuyến và tạo được trang web có hình ảnh với cấu trúc hoàn chỉnh.
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết học & Chuẩn bị Bài 9"
+  >
+    <Alert type="success" title="Lời dặn dò cuối buổi học">
+      - **Nộp bài:** Gửi tệp `.html` lên hệ thống LMS của lớp trước tiết học sau.
+      - **Chuẩn bị Bài 9 (Tạo danh sách và bảng):** Xem trước cách tổ chức thời khóa biểu hoặc thực đơn bằng thẻ danh sách `<ul>`, `<ol>` và bảng biểu `<table>` trong HTML!
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS sử dụng được các công cụ soạn thảo HTML trực tuyến và tạo trang web có hình ảnh.
-    **Hoạt động:** HS thực hành trên các nền tảng khác nhau và tạo các trang web theo yêu cầu.
-    **Sản phẩm:** Các trang web hoàn chỉnh với hình ảnh và nội dung đa dạng.
-  </TeacherNotes>
-</StepApplication>
+  </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **Thuộc tính:** Bổ sung thông tin cho thẻ, cú pháp `tên="giá trị"`
-- ✅ **Thuộc tính style:** Định dạng CSS nội tuyến `style="property: value"`
-- ✅ **Thẻ tiêu đề:** `<h1>` đến `<h6>` theo thứ tự quan trọng giảm dần
-- ✅ **Quy tắc lồng:** Phần tử khối chứa phần tử khối và nội tuyến
-- ✅ **Thẻ img:** `<img src="đường dẫn" alt="mô tả">` (thẻ đơn)
-- ✅ **Công cụ online:** w3schools, tutorialspoint, codepen
-</GlassCard>
-</div>
+</PedagogyActivity>

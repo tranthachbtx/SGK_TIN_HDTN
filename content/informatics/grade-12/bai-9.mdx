@@ -1,833 +1,770 @@
 ---
 title: "Bài 9: Tạo danh sách và bảng"
-description: "Học cách tổ chức dữ liệu khoa học bằng danh sách và bảng biểu trong HTML."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 9
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Khi chúng ta lướt web, những thông tin dài dằng dặc sẽ rất khó theo dõi nếu không được tổ chức một cách ngăn nắp. 📊📑
-    
-    **💡 Thử so sánh:**
-    - Một đoạn văn miêu tả lịch thi đấu bóng đá: "Trận 1 diễn ra lúc 8h giữa đội A và B, trận 2 diễn ra lúc 10h giữa đội C và D...".
-    - Một bảng biểu (Table) chia cột rõ ràng: Giờ thi đấu, Đội nhà, Đội khách.
-    
-    Cách nào giúp em tìm thông tin nhanh hơn? Chắc chắn là Bảng và Danh sách. Hôm nay, chúng ta sẽ học cách mang sự ngăn nắp đó lên trang web của mình.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - Nhận biết giá trị của việc cấu trúc dữ liệu khoa học.
-    - Khởi động tư duy về thiết kế bố cục (Layout) cơ bản trong web.
-    
-    **Tổ chức thực hiện:**
-    - GV yêu cầu HS so sánh danh sách mua hàng viết dạng văn bản thô và dạng gạch đầu dòng.
-    - HS thảo luận về tính tiện dụng khi tra cứu thông tin trong bảng.
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 9: TẠO DANH SÁCH VÀ BẢNG"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Theo em, khi trang web chỉ toàn các đoạn văn bản thì cần trình bày thế nào cho dễ nhìn?
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt và sử dụng đúng các loại danh sách: Không thứ tự (<code>&lt;ul&gt;</code>), có thứ tự (<code>&lt;ol&gt;</code>) và mô tả (<code>&lt;dl&gt;</code>).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững cấu trúc tạo bảng với các thẻ <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code> và <code>&lt;caption&gt;</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Giải thích và thực hiện được kỹ thuật gộp ô theo chiều ngang (<code>colspan</code>) và theo chiều dọc (<code>rowspan</code>).</span>
+        </li>
+      </ul>
+    </div>
 
-    **Trả lời:** Khi trang web chỉ toàn các đoạn văn bản, cần trình bày theo các cách sau để dễ nhìn:
-    - Sử dụng các cấp tiêu đề (h1, h2, h3...) để phân cấp thông tin
-    - Sử dụng danh sách (gạch đầu dòng) để liệt kê các mục
-    - Sử dụng bảng để trình bày dữ liệu có cấu trúc
-    - Sử dụng màu sắc và định dạng để nhấn mạnh thông tin quan trọng
-    - Chia nhỏ các đoạn văn bản dài thành các đoạn ngắn hơn
-    - Sử dụng khoảng trắng và khoảng cách hợp lý
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Chuyển đổi dữ liệu dạng văn bản thông thường thành cấu trúc bảng biểu và danh sách trực quan trên trang web.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Viết mã HTML tạo bảng dữ liệu phức tạp có gộp cột, gộp hàng.</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Tổ chức thông tin khoa học, tạo menu danh mục phân nhánh logic.</span>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-    ### 1. Tạo danh sách trong HTML
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Tính kiên nhẫn & tư duy logic:</strong> Cẩn thận khi đếm số lượng ô <code>&lt;td&gt;</code> trong từng dòng <code>&lt;tr&gt;</code> khi gộp ô để bảng không bị xô lệch vỡ khung.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
 
-    HTML cung cấp các loại danh sách khác nhau để tổ chức thông tin một cách khoa học và dễ đọc.
+<EquipmentChecklist />
 
-    #### a) Danh sách không thứ tự (Unordered List)
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
 
-    Sử dụng thẻ `<ul>` (unordered list) để tạo danh sách không thứ tự, các mục sẽ được hiển thị với dấu chấm đầu dòng.
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'NGĂN NẮP HÓA THÔNG TIN TRÊN WEB'"
+  duration="10 phút"
+  objective="Khơi gợi nhận thức về tầm quan trọng của việc sắp xếp dữ liệu có cấu trúc khi đối chiếu dữ liệu văn bản hỗn độn với dạng danh sách và bảng biểu."
+  content="Học sinh quan sát tình huống thực tế về tra cứu lịch thi đấu bóng đá hoặc thực đơn, từ đó phát hiện vai trò của Table và List."
+  product="Phát biểu của học sinh nêu bật được ưu điểm: dễ tìm kiếm, so sánh trực quan, ngắn gọn."
+>
 
-    **Cấu trúc:**
-    ```html
-    <ul>
-        <li>Mục thứ nhất</li>
-        <li>Mục thứ hai</li>
-        <li>Mục thứ ba</li>
-    </ul>
-    ```
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Thử thách 'Truy tìm thông tin trong 5 giây'"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Tình huống trên màn chiếu">
+      Em hãy tìm xem **Đội Lớp 12A1 thi đấu vào lúc mấy giờ và tại sân nào** trong hai cách thể hiện sau:
+    </Alert>
 
-    **Ví dụ thực tế:**
-    ```html
-    <h3>Sở thích của tôi:</h3>
-    <ul>
-        <li>Đọc sách</li>
-        <li>Chơi thể thao</li>
-        <li>Lập trình</li>
-        <li>Nghe nhạc</li>
-    </ul>
-    ```
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 not-prose">
+      {/* Cách 1: Văn bản thô */}
+      <div className="p-5 rounded-2xl bg-white border-2 border-slate-300 text-slate-800 shadow-sm text-xs md:text-sm leading-relaxed">
+        <span className="px-2 py-0.5 rounded bg-slate-200 text-slate-700 text-xs font-bold uppercase block mb-2 w-fit">
+          Cách 1: Liệt kê đoạn văn thông thường
+        </span>
+        <p>Giải bóng đá trường THPT khai mạc tuần này. Trận 1 diễn ra vào 7h30 sáng thứ Hai giữa lớp 12A3 và 12A5 ở Sân số 1. Trận 2 diễn ra lúc 8h30 giữa lớp 12A2 và 12A4 ở Sân số 2. Đến chiều thứ Ba lúc 14h30 thì lớp 12A1 sẽ chạm trán lớp 12A6 tại Sân số 1. Còn trận cuối của vòng bảng diễn ra vào 16h00 cùng ngày...</p>
+      </div>
 
-    **Kết quả hiển thị:**
-    - Đọc sách
-    - Chơi thể thao  
-    - Lập trình
-    - Nghe nhạc
+      {/* Cách 2: Dạng bảng */}
+      <div className="p-5 rounded-2xl bg-sky-50/60 border-2 border-sky-400 text-slate-900 shadow-md text-xs md:text-sm">
+        <span className="px-2 py-0.5 rounded bg-sky-500 text-white text-xs font-bold uppercase block mb-2 w-fit">
+          Cách 2: Tổ chức Bảng dữ liệu (HTML Table)
+        </span>
+        <table className="w-full border-collapse border border-sky-300 text-left">
+          <thead>
+            <tr className="bg-sky-200 text-sky-900">
+              <th className="border border-sky-300 p-1.5">Thời gian</th>
+              <th className="border border-sky-300 p-1.5">Cặp đấu</th>
+              <th className="border border-sky-300 p-1.5">Địa điểm</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-sky-300 p-1.5">07:30 T2</td>
+              <td className="border border-sky-300 p-1.5">12A3 vs 12A5</td>
+              <td className="border border-sky-300 p-1.5">Sân số 1</td>
+            </tr>
+            <tr className="bg-yellow-100 font-bold">
+              <td className="border border-sky-300 p-1.5">14:30 T3</td>
+              <td className="border border-sky-300 p-1.5">12A1 vs 12A6</td>
+              <td className="border border-sky-300 p-1.5">Sân số 1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </SlideStep>
 
-    #### b) Danh sách có thứ tự (Ordered List)
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Thảo luận quan sát"
+  >
+    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+      Học sinh xác định: Cách 2 giúp tìm thấy thông tin lớp 12A1 chỉ trong chưa đầy 2 giây nhờ cấu trúc hàng và cột rõ ràng!
+    </p>
+  </SlideStep>
 
-    Sử dụng thẻ `<ol>` (ordered list) để tạo danh sách có thứ tự, các mục sẽ được đánh số tự động (1, 2, 3...).
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Nhận xét ưu thế"
+  >
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+      <p>Bảng và Danh sách giúp:</p>
+      <ul className="list-disc pl-5 mt-1 space-y-1 text-slate-700 dark:text-slate-300">
+        <li>Cấu trúc hóa thông tin đa chiều.</li>
+        <li>Tối ưu trải nghiệm đọc lướt trên màn hình máy tính và điện thoại.</li>
+        <li>Phân tách dữ liệu thành từng dòng, từng trường độc lập.</li>
+      </ul>
+    </div>
+  </SlideStep>
 
-    **Cấu trúc:**
-    ```html
-    <ol>
-        <li>Bước đầu tiên</li>
-        <li>Bước thứ hai</li>
-        <li>Bước thứ ba</li>
-    </ol>
-    ```
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Vào bài học"
+  >
+    <Alert type="success" title="Chốt nội dung">
+      Trong bài hôm nay, chúng ta sẽ làm chủ hai công cụ tổ chức dữ liệu mạnh mẽ nhất của HTML: **Danh sách (List: `<ul>`, `<ol>`)** và **Bảng biểu (Table: `<table>`, `<tr>`, `<th>`, `<td>`)**.
+    </Alert>
+  </SlideStep>
 
-    **Ví dụ thực tế:**
-    ```html
-    <h3>Các bước học lập trình:</h3>
-    <ol>
-        <li>Học ngôn ngữ cơ bản</li>
-        <li>Luyện tập các bài tập</li>
-        <li>Làm dự án thực tế</li>
-        <li>Cập nhật kiến thức mới</li>
-    </ol>
-    ```
+</PedagogyActivity>
 
-    **Các thuộc tính của thẻ `<ol>`:**
-    - `type="1"`: Số (1, 2, 3...)
-    - `type="A"`: Chữ hoa (A, B, C...)
-    - `type="a"`: Chữ thường (a, b, c...)
-    - `type="I"`: Số La Mã hoa (I, II, III...)
-    - `type="i"`: Số La Mã thường (i, ii, iii...)
-    - `start="5"`: Bắt đầu đánh số từ số 5
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
 
-    **Ví dụ với thuộc tính:**
-    ```html
-    <ol type="A" start="3">
-        <li>Lựa chọn C</li>
-        <li>Lựa chọn D</li>
-        <li>Lựa chọn E</li>
-    </ol>
-    ```
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút"
+  objective="Hiểu và xây dựng được các dạng danh sách (ul, ol, dl) và bảng dữ liệu chuẩn HTML5 có gộp cột (colspan) và gộp hàng (rowspan)."
+  content="Thực hành tạo danh sách có thứ tự/không thứ tự, giải phẫu bảng đa hàng đa cột và làm chủ kĩ thuật gộp ô."
+  product="Mã nguồn danh sách món ăn/mục lục và bảng điểm học tập hiển thị chuẩn xác trên sandbox."
+>
 
-    #### c) Danh sách mô tả (Description List)
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: TẠO DANH SÁCH TRONG HTML
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="TẠO DANH SÁCH TRONG HTML (LIST: UL, OL, DL)"
+    duration="15 phút"
+    objective="Phân biệt danh sách không thứ tự (ul) và có thứ tự (ol); sử dụng các thuộc tính type và start của thẻ ol."
+    content="Quan sát cấu tạo thẻ cha (ul/ol) và thẻ con li; thực hành lồng danh sách đa cấp."
+    product="Tạo được danh sách sở thích (ul) và quy trình các bước (ol) trên live sandbox."
+  >
 
-    Sử dụng thẻ `<dl>` (description list) để tạo danh sách thuật ngữ và giải thích, thường dùng trong từ điển hoặc glossary.
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Khám phá 3 Loại Danh sách"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<h3>1. Danh sách không thứ tự (Thẻ ul - li):</h3>
+<ul>
+    <li>HTML5 cơ bản</li>
+    <li>Định dạng CSS3</li>
+    <li>Lập trình JavaScript</li>
+</ul>
 
-    **Cấu trúc:**
-    ```html
-    <dl>
-        <dt>Thuật ngữ 1</dt>
-        <dd>Giải thích thuật ngữ 1</dd>
-        <dt>Thuật ngữ 2</dt>
-        <dd>Giải thích thuật ngữ 2</dd>
-    </dl>
-    ```
+<h3>2. Danh sách có thứ tự (Thẻ ol - li):</h3>
+<ol type="A" start="1">
+    <li>Phân tích bài toán</li>
+    <li>Thiết kế khung trang web</li>
+    <li>Kiểm thử và xuất bản</li>
+</ol>
 
-    **Ví dụ thực tế:**
-    ```html
-    <h3>Thuật ngữ lập trình:</h3>
-    <dl>
-        <dt>HTML</dt>
-        <dd>Ngôn ngữ đánh dấu siêu văn bản, dùng để tạo cấu trúc trang web</dd>
-        <dt>CSS</dt>
-        <dd>Ngôn ngữ định dạng kiểu, dùng để trang trí giao diện web</dd>
-        <dt>JavaScript</dt>
-        <dd>Ngôn ngữ lập trình, dùng để tạo tương tác trên trang web</dd>
-    </dl>
-    ```
+<h3>3. Danh sách mô tả thuật ngữ (Thẻ dl - dt - dd):</h3>
+<dl>
+    <dt><strong>HTML</strong></dt>
+    <dd>Ngôn ngữ đánh dấu siêu văn bản tạo bộ khung.</dd>
+    <dt><strong>CSS</strong></dt>
+    <dd>Ngôn ngữ định kiểu tạo màu sắc và bố cục.</dd>
+</dl>`}
+        title="Thử nghiệm trực tiếp: Ba loại danh sách trong HTML"
+      />
+    </SlideStep>
 
-    ### 2. Tạo bảng trong HTML
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Phân tích Cấu trúc & Thuộc tính"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-sky-600 dark:text-sky-400 font-bold block mb-1">
+            🔘 Danh sách Không thứ tự (`<ul>`):
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Dùng khi thứ tự các mục không quan trọng (như danh sách sở thích, danh mục mua sắm). Mỗi mục con được đặt trong cặp thẻ <code>&lt;li&gt;...&lt;/li&gt;</code> (List Item).
+          </p>
+        </div>
 
-    Bảng (table) là công cụ mạnh mẽ để trình bày dữ liệu có cấu trúc hàng và cột.
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-indigo-600 dark:text-indigo-400 font-bold block mb-1">
+            🔢 Danh sách Có thứ tự (`<ol>`):
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Tự động đánh số các bước. Các thuộc tính quan trọng:
+            <br/>• <code>type="1"</code> (số), <code>type="A"</code> (chữ hoa), <code>type="I"</code> (số La Mã).
+            <br/>• <code>start="5"</code>: Bắt đầu đánh số từ vị trí số 5.
+          </p>
+        </div>
+      </div>
+    </SlideStep>
 
-    #### a) Cấu trúc cơ bản của bảng
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Danh sách lồng nhau (Nested List)"
+    >
+      <div className="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💡 Câu hỏi tư duy: Làm thế nào để tạo Mục lục có mục con bên trong?
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300 mb-2">
+          👉 <em>Quy tắc:</em> Đặt một danh sách <code>&lt;ul&gt;</code> hoặc <code>&lt;ol&gt;</code> con <strong>nằm bên trong thẻ <code>&lt;li&gt;</code></strong> của mục cha!
+        </p>
+        <div className="p-2.5 bg-[#1e293b] text-sky-300 font-mono text-xs rounded-xl">
+          <code>&lt;ol&gt;&lt;li&gt;Chương 1 &lt;ul&gt;&lt;li&gt;Bài 1.1&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;</code>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Các thẻ chính:**
-    - `<table>`: Thẻ bao ngoài cùng của bảng
-    - `<tr>`: Table Row - Định nghĩa một hàng trong bảng
-    - `<th>`: Table Header - Ô tiêu đề (thường in đậm, căn giữa)
-    - `<td>`: Table Data - Ô chứa dữ liệu thông thường
-    - `<caption>`: Tiêu đề của bảng (hiển thị bên trên bảng)
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Danh sách"
+    >
+      <Alert type="success" title="Tổng kết về Thẻ Danh sách">
+        - `<ul>` = Unordered List (Dấu chấm tròn đầu dòng).
+        - `<ol>` = Ordered List (Đánh số tự động, hỗ trợ type và start).
+        - `<li>` = List Item (Phần tử mục con, bắt buộc nằm trong `<ul>` hoặc `<ol>`).
+      </Alert>
+    </SlideStep>
 
-    **Cấu trúc mẫu:**
-    ```html
-    <table>
-        <caption>Tiêu đề bảng</caption>
-        <tr>
-            <th>Tiêu đề cột 1</th>
-            <th>Tiêu đề cột 2</th>
-            <th>Tiêu đề cột 3</th>
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: TẠO BẢNG CƠ BẢN TRONG HTML
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="CẤU TRÚC TẠO BẢNG DỮ LIỆU (HTML TABLE)"
+    duration="15 phút"
+    objective="Nắm vững bộ 4 thẻ cốt lõi tạo bảng: table, tr, th, td và thẻ caption."
+    content="Giải phẫu sơ đồ ma trận hàng - cột, phân biệt ô tiêu đề th (in đậm, căn giữa) và ô dữ liệu td."
+    product="Tạo bảng điểm cá nhân gồm 3 hàng và 4 cột có đường viền rõ nét."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Cấu trúc Bảng chuẩn"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+    <caption style="font-weight: bold; margin-bottom: 10px; color: #0369a1;">
+        KẾT QUẢ HỌC TẬP HỌC KỲ I
+    </caption>
+    <tr style="bg-color: #f1f5f9; background: #e0f2fe;">
+        <th style="padding: 8px;">Môn học</th>
+        <th style="padding: 8px;">Điểm GK</th>
+        <th style="padding: 8px;">Điểm CK</th>
+        <th style="padding: 8px;">ĐTB Môn</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Tin học 12</td>
+      <td>9.0</td>
+      <td>9.5</td>
+      <td style="color: #16a34a; font-weight: bold;">9.3</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Toán học</td>
+      <td>8.5</td>
+      <td>9.0</td>
+      <td style="color: #16a34a; font-weight: bold;">8.8</td>
+    </tr>
+</table>`}
+        title="Thử nghiệm trực tiếp: Cấu trúc Table với tr, th, td"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Giải phẫu các Thẻ của Bảng"
+    >
+      <div className="overflow-x-auto my-2">
+        <table className="w-full text-left border-collapse rounded-2xl overflow-hidden shadow-sm">
+          <thead>
+            <tr className="bg-slate-900 text-white text-xs font-black uppercase tracking-wider">
+              <th className="py-3 px-4 w-32">Thẻ HTML</th>
+              <th className="py-3 px-4 w-44">Tên viết tắt & Ý nghĩa</th>
+              <th className="py-3 px-4">Đặc điểm hiển thị mặc định</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-xs md:text-sm bg-white dark:bg-slate-900">
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>&lt;table&gt;</code></td>
+              <td className="py-3 px-4 font-bold">Table</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">Bao bọc toàn bộ dữ liệu bảng.</td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>&lt;caption&gt;</code></td>
+              <td className="py-3 px-4 font-bold">Caption</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">Tiêu đề chú thích của bảng, tự động đặt ở đỉnh trên.</td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>&lt;tr&gt;</code></td>
+              <td className="py-3 px-4 font-bold">Table Row</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">Định nghĩa một <strong>Hàng ngang</strong> trong bảng.</td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>&lt;th&gt;</code></td>
+              <td className="py-3 px-4 font-bold">Table Header</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">Ô tiêu đề cột/hàng: Tự động <strong>In đậm</strong> và <strong>Căn giữa</strong>.</td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>&lt;td&gt;</code></td>
+              <td className="py-3 px-4 font-bold">Table Data</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">Ô dữ liệu thông thường: Chữ thường và Căn lề trái.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Mẹo làm viền bảng liền nét"
+    >
+      <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-xs md:text-sm">
+        <strong className="text-amber-800 dark:text-amber-300 block mb-1">
+          💡 Tại sao bảng mặc định có viền đôi (2 nét)?
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Khi chỉ đặt <code>border="1"</code>, trình duyệt tạo khoảng trống giữa các ô. Để viền nhập lại thành 1 đường thanh mảnh chuyên nghiệp, luôn thêm thuộc tính: <code>style="border-collapse: collapse;"</code> vào thẻ <code>&lt;table&gt;</code>!
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt quy tắc xây dựng Bảng"
+    >
+      <Alert type="success" title="Quy tắc dựng bảng bất biến">
+        Mỗi bảng là tập hợp các **Hàng (`<tr>`)**. Bên trong mỗi hàng mới được phép chứa các **Ô dữ liệu (`<td>`)** hoặc **Ô tiêu đề (`<th>`)**. Không bao giờ được đặt trực tiếp `<td>` bên ngoài `<tr>`.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3: KỸ THUẬT GỘP Ô NÂNG CAO (COLSPAN & ROWSPAN)
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-3"
+    number="2.3"
+    title="KỸ THUẬT GỘP Ô (COLSPAN VÀ ROWSPAN)"
+    duration="15 phút"
+    objective="Làm chủ 2 thuộc tính gộp ô: colspan (gộp theo cột) và rowspan (gộp theo hàng); tính toán đúng số ô bù trừ để tránh vỡ bảng."
+    content="Thực hành gộp ô cho bảng thời khóa biểu có các môn học 2 tiết liên tiếp hoặc tiêu đề chung."
+    product="Tạo được bảng thời khóa biểu có ô gộp hoàn chỉnh không bị thừa/thiếu cột."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Giải mã Colspan và Rowspan"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+    <caption>THỜI KHÓA BIỂU SÁNG THỨ HAI</caption>
+    <tr style="background: #fed7aa;">
+        <th>Tiết</th>
+        <th>Môn học</th>
+        <th>Phòng học</th>
+    </tr>
+    <tr>
+        <td>Tiết 1</td>
+        <!-- Gộp 2 hàng cho môn Tin học học 2 tiết liền -->
+        <td rowspan="2" style="background: #e0f2fe; font-weight: bold;">Tin học 12 (Thực hành)</td>
+        <td rowspan="2" style="background: #e0f2fe;">Phòng máy 1</td>
+    </tr>
+    <tr>
+        <td>Tiết 2</td>
+        <!-- Hàng này không cần viết thêm 2 ô td nữa vì đã bị rowspan chiếm -->
+    </tr>
+    <tr>
+        <td>Tiết 3</td>
+        <!-- Gộp 2 cột cho thông báo giải lao -->
+        <td colspan="2" style="background: #fef08a; font-style: italic;">Ra chơi tập thể (20 phút)</td>
+    </tr>
+</table>`}
+        title="Thử nghiệm trực tiếp: Gộp ô với Colspan và Rowspan"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Công thức vàng tránh vỡ cấu trúc Bảng"
+    >
+      <Alert type="danger" title="⚠️ Nguyên tắc bù trừ số lượng ô">
+        - **Khi dùng `colspan="N"`:** Ô hiện tại chiếm bằng $N$ ô thông thường. Vì vậy trong hàng đó em phải **bớt đi $N - 1$** thẻ `<td>` tiếp theo.
+        - **Khi dùng `rowspan="M"`:** Ô hiện tại chiếm xuống dưới $M$ hàng. Vì vậy ở các hàng `<tr>` phía dưới, em phải **bỏ bớt 1 thẻ `<td>`** tương ứng tại vị trí bị chiếm chỗ!
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – Tìm lỗi thừa ô trong Bảng"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          ❓ Câu hỏi tình huống:
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Một bạn học sinh viết: <code>&lt;tr&gt;&lt;td colspan="3"&gt;A&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;/tr&gt;</code>. Bảng trên có bao nhiêu cột?
+        </p>
+        <p className="text-xs text-indigo-900 dark:text-indigo-200 mt-2">
+          👉 <em>Đáp án:</em> Hàng này sẽ chiếm tổng cộng $3 + 1 + 1 = 5$ cột! Nếu các hàng khác chỉ có 3 cột thì bảng sẽ bị phình to bất thường ở hàng này.
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kỹ thuật gộp ô"
+    >
+      <Alert type="success" title="Chốt quy tắc">
+        - `colspan` = Column Span (Gộp theo chiều ngang - gộp cột).
+        - `rowspan` = Row Span (Gộp theo chiều dọc - gộp hàng).
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'THỬ THÁCH THIẾT KẾ BẢNG VÀ DANH SÁCH'"
+  duration="20 phút"
+  objective="Củng cố toàn diện kĩ năng viết mã tạo bảng thời khóa biểu chuẩn xác và danh sách lồng nhau."
+  content="Thực hiện 2 thử thách: Trắc nghiệm nhận diện thẻ bảng và Soạn thảo bảng Thời khóa biểu hoàn chỉnh."
+  product="Tệp thoikhoabieu.html chạy chuẩn xác trên máy tính."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Tốc độ (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Thuộc tính nào dùng để gộp 3 ô liên tiếp theo chiều ngang (trên cùng một hàng)?",
+        options: [
+          'A. rowspan="3"',
+          'B. colspan="3"',
+          'C. merge="3"',
+          'D. span="3"'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! colspan (Column Span) gộp các ô theo chiều ngang."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Cặp thẻ nào sau đây dùng để tạo tiêu đề của các cột trong bảng (có đặc tính in đậm và căn giữa tự động)?",
+        options: [
+          "A. <td>...</td>",
+          "B. <tr>...</tr>",
+          "C. <th>...</th>",
+          "D. <caption >...</caption>"
+        ],
+        correctAnswer: 2,
+        explanation: "Chính xác! Thẻ <th> (Table Header) dùng cho các ô tiêu đề cột hoặc hàng."
+      }} />
+    </div>
+
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Thực hành Soạn thảo Thời khóa biểu (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Hãy viết mã HTML tạo bảng Thời khóa biểu buổi sáng từ Thứ Hai đến Thứ Tư (gồm Tiết, Thứ 2, Thứ 3, Thứ 4) có sử dụng <code>&lt;caption&gt;</code> và ô gộp <code>colspan</code> cho giờ ra chơi.
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn thao tác trên máy"
+  >
+    <Alert type="tip" title="Gợi ý cấu trúc cho học sinh">
+      - Dòng 1 (`<tr>`): 4 thẻ `<th>` (Tiết, Thứ 2, Thứ 3, Thứ 4).
+      - Dòng 2, 3: Tiết 1, 2 với các môn học tương ứng.
+      - Dòng 4: 1 ô Tiết ra chơi + 1 ô `colspan="3"` ghi *Giải lao*.
+      - Dòng 5: Tiết 3 với các môn học tiếp theo.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Đối chiếu bài làm"
+  >
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thời khóa biểu Lớp 12</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+        <caption style="font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #1e3a8a;">
+            THỜI KHÓA BIỂU HỌC TẬP - LỚP 12A
+        </caption>
+        <tr style="background: #dbeafe; height: 40px;">
+            <th>Tiết</th>
+            <th>Thứ Hai</th>
+            <th>Thứ Ba</th>
+            <th>Thứ Tư</th>
         </tr>
         <tr>
-            <td>Dữ liệu hàng 2, cột 1</td>
-            <td>Dữ liệu hàng 2, cột 2</td>
-            <td>Dữ liệu hàng 2, cột 3</td>
-        </tr>
-        <tr>
-            <td>Dữ liệu hàng 3, cột 1</td>
-            <td>Dữ liệu hàng 3, cột 2</td>
-            <td>Dữ liệu hàng 3, cột 3</td>
-        </tr>
-    </table>
-    ```
-
-    **Ví dụ thực tế:**
-    ```html
-    <h3>Bảng điểm học tập</h3>
-    <table>
-        <caption>Kết quả học tập học kỳ I</caption>
-        <tr>
-            <th>Môn học</th>
-            <th>Điểm miệng</th>
-            <th>Điểm 15 phút</th>
-            <th>Điểm 1 tiết</th>
-            <th>Điểm thi</th>
-        </tr>
-        <tr>
+            <td><strong>1</strong></td>
+            <td>Chào cờ</td>
             <td>Toán</td>
-            <td>8</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-        </tr>
-        <tr>
-            <td>Vật lý</td>
-            <td>7</td>
-            <td>8</td>
-            <td>7</td>
-            <td>8</td>
-        </tr>
-        <tr>
             <td>Hóa học</td>
-            <td>9</td>
-            <td>8</td>
-            <td>9</td>
-            <td>8</td>
-        </tr>
-    </table>
-    ```
-
-    #### b) Thuộc tính của bảng
-
-    **Các thuộc tính phổ biến của thẻ `<table>`:**
-    - `border="1"`: Đường viền bảng
-    - `width="100%"`: Chiều rộng bảng
-    - `cellpadding="5"`: Khoảng cách trong ô
-    - `cellspacing="0"`: Khoảng cách giữa các ô
-
-    **Các thuộc tính của thẻ `<td>` và `<th>`:**
-    - `colspan="2"`: Gộp 2 ô theo chiều ngang
-    - `rowspan="2"`: Gộp 2 ô theo chiều dọc
-    - `align="center"`: Căn lề (left, center, right)
-    - `valign="top"`: Căn lề dọc (top, middle, bottom)
-
-    #### c) Gộp ô trong bảng
-
-    **Gộp ô theo chiều ngang (colspan):**
-    ```html
-    <tr>
-        <td colspan="2">Nội dung gộp 2 cột</td>
-        <td>Nội dung cột 3</td>
-    </tr>
-    ```
-
-    **Gộp ô theo chiều dọc (rowspan):**
-    ```html
-    <tr>
-        <td rowspan="2">Nội dung gộp 2 hàng</td>
-        <td>Nội dung hàng 1, cột 2</td>
-    </tr>
-    <tr>
-        <td>Nội dung hàng 2, cột 2</td>
-    </tr>
-    ```
-
-    **Ví dụ phức tạp với gộp ô:**
-    ```html
-    <table border="1">
-        <caption>Bảng lịch làm việc</caption>
-        <tr>
-            <th>Thời gian</th>
-            <th>Thứ 2</th>
-            <th>Thứ 3</th>
-            <th>Thứ 4</th>
         </tr>
         <tr>
-            <td>Sáng</td>
+            <td><strong>2</strong></td>
+            <td>Tin học 12</td>
             <td>Toán</td>
-            <td>Lý</td>
-            <td>Hóa</td>
+            <td>Sinh học</td>
+        </tr>
+        <tr style="background: #fef9c3; font-weight: bold;">
+            <td>Ra chơi</td>
+            <td colspan="3">Nghỉ giải lao & Thể dục giữa giờ (20 phút)</td>
         </tr>
         <tr>
-            <td>Chiều</td>
-            <td colspan="2">Ngoại ngữ</td>
-            <td>Tin học</td>
-        </tr>
-        <tr>
-            <td rowspan="2">Tối</td>
-            <td>Tự học</td>
-            <td>Thể thao</td>
-        </tr>
-        <tr>
-            <td>Đọc sách</td>
-            <td>Nghỉ ngơi</td>
+            <td><strong>3</strong></td>
+            <td>Ngữ văn</td>
+            <td>Tiếng Anh</td>
+            <td>Lịch sử</td>
         </tr>
     </table>
-    ```
+</body>
+</html>`}
+      title="Mã nguồn chuẩn: Thời khóa biểu Lớp 12 (Thử thách 2)"
+    />
+  </SlideStep>
 
-    <Quiz data={{
-      question: "Thẻ nào dùng để tạo danh sách có đánh số thứ tự 1, 2, 3...?",
-      options: [
-        "A. <ul>",
-        "B. <ol>", 
-        "C. <dl>",
-        "D. <li>"
-      ],
-      correctAnswer: 1,
-      explanation: "Đúng! Thẻ <ol> (ordered list) dùng để tạo danh sách có thứ tự tự động."
-    }} />
-
-    <Quiz data={{
-      question: "Trong bảng HTML, thẻ nào định nghĩa ô tiêu đề (header)?",
-      options: [
-        "A. <td>",
-        "B. <tr>",
-        "C. <th>",
-        "D. <table>"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! Thẻ <th> (table header) dùng để định nghĩa ô tiêu đề trong bảng."
-    }} />
-
-    <Alert type="info">
-      **Lưu ý quan trọng:**
-      - Luôn sử dụng `<caption>` cho bảng có ý nghĩa
-      - Gộp ô cần tính toán kỹ để không phá vỡ cấu trúc bảng
-      - Bảng phức tạp nên có đường viền để dễ đọc
-      - Sử dụng `<thead>`, `<tbody>`, `<tfoot>` cho bảng lớn
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt kết quả luyện tập"
+  >
+    <Alert type="success" title="Đánh giá của Giáo viên">
+      Học sinh nắm vững cách phân chia hàng `<tr>`, cột `<td>`, ô tiêu đề `<th>` và sử dụng `colspan` chính xác không làm lệch cấu trúc bảng.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS hiểu và sử dụng được các loại danh sách trong HTML
-    - HS biết cách tạo bảng cơ bản và gộp ô
-    - HS áp dụng được danh sách và bảng vào thực tế
+  </SlideStep>
 
-    **Hoạt động:**
-    - GV hướng dẫn HS viết các loại danh sách và bảng
-    - HS thực hành tạo bảng điểm, lịch học tập
-    - **Sản phẩm:** Các trang web có danh sách và bảng hoàn chỉnh
-  </TeacherNotes>
-</StepKnowledge>
+</PedagogyActivity>
 
-    <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
 
-    1. Hãy sửa lại phần tử sau để làm nổi bật ý chính của câu:
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'THIẾT KẾ THỰC ĐƠN QUÁN ĂN HOẶC BẢNG GIÁ DỊCH VỤ'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng phối hợp cả Thẻ danh sách (ul/ol) và Bảng biểu (table) có gộp ô để thiết kế một trang Thực đơn quán ăn (Menu) hoặc Bảng giá sản phẩm chuyên nghiệp."
+  content="Học sinh thiết kế tệp menu_[TenHS].html có phân nhóm món ăn (Khai vị, Món chính, Đồ uống) và bảng giá chi tiết."
+  product="Tệp menu_[TenHS].html có cấu trúc ngăn nắp và màu sắc bắt mắt."
+>
 
-    `<p>Thẻ strong và thẻ em được sử dụng để nhấn mạnh vào nội dung trong phần tử. Thẻ b chỉ có tác dụng in đậm văn bản</p>`
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề bài Dự án Thực đơn Số"
+  >
+    <Alert type="idea" title="Yêu cầu Dự án Thực đơn Quán ăn / Bảng giá">
+      Hãy tạo một tệp HTML có tên <code>menu_[TenEm].html</code>:
+      1. Tiêu đề chính `<h1>`: Tên Quán ăn / Dịch vụ của em.
+      2. Sử dụng thẻ danh sách `<ul>` để liệt kê các cam kết chất lượng của quán.
+      3. Sử dụng bảng `<table>` có viền liền khối, phân chia rõ: Tên món, Kích cỡ (Nhỏ/Vừa/Lớn), Đơn giá.
+      4. Trong bảng có ít nhất một ô sử dụng `rowspan` hoặc `colspan` (ví dụ gộp nhóm món hoặc món đặc biệt).
+    </Alert>
 
-    **Trả lời:**
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thực Đơn Quán Trà Sữa & Ăn Vặt Gen Z</title>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #fafaf9; padding: 25px;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+        <h1 style="color: #d97706; text-align: center; margin-bottom: 5px;">🥤 QUÁN TRÀ SỮA GEN Z</h1>
+        <p style="text-align: center; font-style: italic; color: #78716c;">Thơm ngon chuẩn vị - Giá hạt dẻ học sinh</p>
+        <hr style="border: 1px dashed #f59e0b; margin: 15px 0;">
 
-    Để làm nổi bật ý chính của câu, chúng ta cần nhấn mạnh vào sự khác biệt giữa các thẻ và mục đích sử dụng chúng:
-
-    **Cách sửa 1 - Nhấn mạnh sự khác biệt:**
-    ```html
-    <p><strong>Thẻ strong và thẻ em</strong> được sử dụng để nhấn mạnh vào nội dung trong phần tử, trong khi <em>thẻ b chỉ có tác dụng in đậm văn bản</em> mà không có ý nghĩa ngữ nghĩa.</p>
-    ```
-
-    **Cách sửa 2 - Tách thành các ý rõ ràng:**
-    ```html
-    <p><strong>Thẻ strong và thẻ em</strong> được sử dụng để nhấn mạnh vào nội dung trong phần tử.</p>
-    <p><strong>Lưu ý:</strong> Thẻ b chỉ có tác dụng in đậm văn bản mà không có ý nghĩa ngữ nghĩa như strong.</p>
-    ```
-
-    **Cách sửa 3 - Sử dụng danh sách để làm rõ:**
-    ```html
-    <p>Các thẻ nhấn mạnh trong HTML:</p>
-    <ul>
-        <li><strong>Thẻ strong</strong> - nhấn mạnh nội dung quan trọng (có ý nghĩa ngữ nghĩa)</li>
-        <li><strong>Thẻ em</strong> - nhấn mạnh với sắc thái nhấn nhá</li>
-        <li><em>Thẻ b</em> - chỉ in đậm văn bản (không có ý nghĩa ngữ nghĩa)</li>
-    </ul>
-    ```
-
-    **Giải thích:**
-    - **Thẻ `<strong>`**: Nhấn mạnh nội dung quan trọng, có ý nghĩa ngữ nghĩa, tốt cho SEO
-    - **Thẻ `<em>`**: Nhấn mạnh với sắc thái nhấn nhá, nhấn về mặt cảm xúc
-    - **Thẻ `<b>`**: Chỉ in đậm văn bản, không có ý nghĩa ngữ nghĩa
-    - **Thẻ `<i>`**: Chỉ in nghiêng văn bản, không có ý nghĩa ngữ nghĩa
-
-    2. Trình bày đoạn văn bản sau bằng mã HTML:
-
-    ```
-    INTERNET TỐC ĐỘ CAO
-
-    Dịch vụ Internet tốc độ cao là dịch vụ Internet cáp quang chất lượng cao, ổn định, giá cả hợp lí.
-
-    Các tính năng nổi bật:
-
-    Tốc độ siêu cao từ 150 MBps trở lên
-
-    Lắp đặt nhanh chóng trong 24 h
-
-    Phù hợp với cá nhân/Hộ gia đình
-
-    Tặng Modem 2 băng tần
-
-    Miễn phí lắp đặt
-
-    Hỗ trợ 24/7
-    ```
-
-    **Trả lời:**
-
-    **Cách trình bày 1 - Sử dụng cấu trúc tiêu đề và danh sách:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Internet Tốc Độ Cao</title>
-    </head>
-    <body>
-        <h1>INTERNET TỐC ĐỘ CAO</h1>
-        
-        <p>Dịch vụ Internet tốc độ cao là dịch vụ Internet cáp quang chất lượng cao, ổn định, giá cả hợp lí.</p>
-        
-        <h2>Các tính năng nổi bật:</h2>
+        <h3>Ưu đãi đặc biệt hôm nay:</h3>
         <ul>
-            <li>Tốc độ siêu cao từ 150 MBps trở lên</li>
-            <li>Lắp đặt nhanh chóng trong 24 h</li>
-            <li>Phù hợp với cá nhân/Hộ gia đình</li>
-            <li>Tặng Modem 2 băng tần</li>
-            <li>Miễn phí lắp đặt</li>
-            <li>Hỗ trợ 24/7</li>
+            <li>Giảm 10% cho học sinh có thẻ học sinh THPT.</li>
+            <li>Miễn phí thêm trân châu trắng cho ly size L.</li>
         </ul>
-    </body>
-    </html>
-    ```
 
-    **Cách trình bày 2 - Sử dụng bảng để so sánh:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Internet Tốc Độ Cao</title>
-    </head>
-    <body>
-        <h1>INTERNET TỐC ĐỘ CAO</h1>
-        
-        <p><strong>Dịch vụ Internet tốc độ cao</strong> là dịch vụ Internet cáp quang chất lượng cao, ổn định, giá cả hợp lí.</p>
-        
-        <h2>Các tính năng nổi bật:</h2>
-        <table border="1">
-            <caption>Bảng so sánh tính năng</caption>
-            <tr>
-                <th>Tính năng</th>
-                <th>Chi tiết</th>
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: center; margin-top: 20px;">
+            <tr style="background: #fef3c7; color: #92400e;">
+                <th style="padding: 10px;">Nhóm món</th>
+                <th style="padding: 10px;">Tên đồ uống</th>
+                <th style="padding: 10px;">Size M</th>
+                <th style="padding: 10px;">Size L</th>
             </tr>
             <tr>
-                <td>Tốc độ</td>
-                <td>Siêu cao từ 150 MBps trở lên</td>
+                <td rowspan="2" style="font-weight: bold; background: #fffbeb;">Trà sữa</td>
+                <td>Trà sữa truyền thống</td>
+                <td>25.000đ</td>
+                <td>30.000đ</td>
             </tr>
             <tr>
-                <td>Thời gian lắp đặt</td>
-                <td>Nhanh chóng trong 24 h</td>
+                <td>Trà sữa Ô long nướng</td>
+                <td>28.000đ</td>
+                <td>33.000đ</td>
             </tr>
             <tr>
-                <td>Đối tượng</td>
-                <td>Cá nhân/Hộ gia đình</td>
+                <td rowspan="2" style="font-weight: bold; background: #fffbeb;">Trà trái cây</td>
+                <td>Trà đào cam sả</td>
+                <td>28.000đ</td>
+                <td>35.000đ</td>
             </tr>
             <tr>
-                <td>Thiết bị</td>
-                <td>Tặng Modem 2 băng tần</td>
+                <td>Trà vải hoa hồng</td>
+                <td>30.000đ</td>
+                <td>35.000đ</td>
             </tr>
-            <tr>
-                <td>Chi phí</td>
-                <td>Miễn phí lắp đặt</td>
-            </tr>
-            <tr>
-                <td>Hỗ trợ</td>
-                <td>24/7</td>
+            <tr style="background: #ecfdf5; font-weight: bold; color: #047857;">
+                <td colspan="4" style="padding: 8px;">🔥 Mua 5 ly tặng ngay 1 phần bánh tráng phơi sương!</td>
             </tr>
         </table>
-    </body>
-    </html>
-    ```
+    </div>
+</body>
+</html>`}
+      title="Sản phẩm mẫu tham khảo: Thực đơn quán ăn số"
+    />
+  </SlideStep>
 
-    **Cách trình bày 3 - Sử dụng danh sách mô tả:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Internet Tốc Độ Cao</title>
-    </head>
-    <body>
-        <h1>INTERNET TỐC ĐỘ CAO</h1>
-        
-        <p>Dịch vụ Internet tốc độ cao là dịch vụ Internet cáp quang chất lượng cao, ổn định, giá cả hợp lí.</p>
-        
-        <h2>Các tính năng nổi bật:</h2>
-        <dl>
-            <dt>Tốc độ</dt>
-            <dd>Siêu cao từ 150 MBps trở lên</dd>
-            
-            <dt>Thời gian lắp đặt</dt>
-            <dd>Nhanh chóng trong 24 h</dd>
-            
-            <dt>Đối tượng phù hợp</dt>
-            <dd>Cá nhân/Hộ gia đình</dd>
-            
-            <dt>Thiết bị tặng kèm</dt>
-            <dd>Modem 2 băng tần</dd>
-            
-            <dt>Chi phí</dt>
-            <dd>Miễn phí lắp đặt</dd>
-            
-            <dt>Hỗ trợ kỹ thuật</dt>
-            <dd>24/7</dd>
-        </dl>
-    </body>
-    </html>
-    ```
-
-    **Bài tập mở rộng:**
-
-    **Bài 1: Tạo danh sách đa cấp**
-    Tạo danh sách các môn học với các chủ đề con:
-    ```html
-    <ul>
-        <li>Khoa học tự nhiên
-            <ul>
-                <li>Toán học</li>
-                <li>Vật lý
-                    <ul>
-                        <li>Cơ học</li>
-                        <li>Điện học</li>
-                        <li>Quang học</li>
-                    </ul>
-                </li>
-                <li>Hóa học</li>
-            </ul>
-        </li>
-        <li>Khoa học xã hội
-            <ul>
-                <li>Lịch sử</li>
-                <li>Địa lý</li>
-            </ul>
-        </li>
-    </ul>
-    ```
-
-    **Bài 2: Tạo bảng phức tạp**
-    Tạo bảng thời khóa biểu với gộp ô:
-    ```html
-    <table border="1">
-        <caption>Thời khóa biểu lớp 12A1</caption>
-        <tr>
-            <th>Thời gian</th>
-            <th>Thứ 2</th>
-            <th>Thứ 3</th>
-            <th>Thứ 4</th>
-            <th>Thứ 5</th>
-            <th>Thứ 6</th>
-        </tr>
-        <tr>
-            <td>Sáng (7:30-11:30)</td>
-            <td>Toán</td>
-            <td>Lý</td>
-            <td>Hóa</td>
-            <td>Sinh</td>
-            <td>Văn</td>
-        </tr>
-        <tr>
-            <td>Chiều (13:30-17:30)</td>
-            <td>Ngoại ngữ</td>
-            <td colspan="2">Tin học (2 tiết)</td>
-            <td>Công nghệ</td>
-            <td>GDCD</td>
-        </tr>
-    </table>
-    ```
-
-    <Alert type="tip">
-      **Mẹo trình bày văn bản:**
-      - Sử dụng cấu trúc phân cấp rõ ràng
-      - Chọn loại danh sách phù hợp với nội dung
-      - Bảng phù hợp cho dữ liệu có cấu trúc hàng cột
-      - Luôn thêm caption cho bảng có ý nghĩa
-      - Sử dụng màu sắc và định dạng để nhấn mạnh
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo khung tại phòng máy"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Khởi tạo khung sườn">
+      Học sinh phác thảo bảng giá với ít nhất 4 dòng dữ liệu và nộp tệp lên hệ thống lớp học.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức về danh sách và bảng để trình bày văn bản hiệu quả.
-    **Hoạt động:** HS thực hành với các loại văn bản khác nhau và chọn cách trình bày phù hợp.
-    **Sản phẩm:** Các trang web có văn bản được trình bày khoa học, dễ đọc.
-  </TeacherNotes>
-</StepPractice>
-      <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+  </SlideStep>
 
-    1. Hãy chỉ ra các bước cần thực hiện để sử dụng một màu cụ thể trong bức ảnh làm màu cho tiêu đề một bài thơ.
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Tiêu chí chấm điểm (Rubric 5512)"
+  >
+    <RubricCard />
+  </SlideStep>
 
-    **Trả lời:**
-
-    **Các bước thực hiện để lấy màu từ ảnh và áp dụng cho tiêu đề:**
-
-    **Bước 1: Chuẩn bị bức ảnh**
-    - Chọn bức ảnh có màu sắc phù hợp với bài thơ
-    - Lưu ảnh vào cùng thư mục với file HTML hoặc có đường dẫn rõ ràng
-
-    **Bước 2: Lấy mã màu từ ảnh**
-    **Cách 1: Sử dụng công cụ online**
-    - Truy cập các trang web như: colorpicker.com, html-color-codes.com
-    - Upload ảnh lên trang web
-    - Click vào vị trí màu muốn lấy trên ảnh
-    - Sao chép mã màu (hex code) được hiển thị
-
-    **Cách 2: Sử dụng phần mềm đồ họa**
-    - Mở ảnh bằng Paint, Photoshop, GIMP
-    - Sử dụng công cụ Eyedropper (Pipette)
-    - Click vào vị trí màu muốn lấy
-    - Xem giá trị màu RGB hoặc Hex
-
-    **Cách 3: Sử dụng công cụ của trình duyệt**
-    - Mục tiêu: Sử dụng Developer Tools của trình duyệt
-    - Mở ảnh trong trình duyệt
-    - Nhấn F12 → chọn công cụ Eyedropper
-    - Click vào màu trên ảnh để lấy mã
-
-    **Bước 3: Áp dụng màu cho tiêu đề**
-    **Cách 1: Sử dụng mã Hex**
-    ```html
-    <h1 style="color: #FF6B6B;">Tiêu đề bài thơ</h1>
-    ```
-
-    **Cách 2: Sử dụng mã RGB**
-    ```html
-    <h1 style="color: rgb(255, 107, 107);">Tiêu đề bài thơ</h1>
-    ```
-
-    **Cách 3: Sử dụng tên màu (nếu có)**
-    ```html
-    <h1 style="color: coral;">Tiêu đề bài thơ</h1>
-    ```
-
-    **Bước 4: Kiểm tra và tinh chỉnh**
-    - Mở file HTML trong trình duyệt
-    - Kiểm tra màu hiển thị có phù hợp không
-    - Tinh chỉnh lại màu nếu cần (thêm/từ độ sáng, độ bão hòa)
-
-    **Ví dụ thực tế:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sóng</title>
-        <style>
-            .poem-title {
-                color: #2E86AB; /* Màu xanh biển từ ảnh biển */
-                font-size: 36px;
-                text-align: center;
-                font-family: 'Times New Roman', serif;
-            }
-        </style>
-    </head>
-    <body>
-        <h1 class="poem-title">SÓNG</h1>
-        <h2 style="color: #A23B72; color: rgb(162, 59, 114);">Xuân Quỳnh</h2>
-        
-        <p>Sóng có bao giờ nghỉ chơi</p>
-        <p>Bờ có bao giờ đứng yên</p>
-        <p>Em không đứng yên một giờ</p>
-        <p>Nước động làn tóc xanh rì...</p>
-    </body>
-    </html>
-    ```
-
-    **Lưu ý quan trọng:**
-    - Màu lấy từ ảnh nên phù hợp với nội dung bài thơ
-    - Đảm bảo độ tương phản đủ để dễ đọc
-    - Có thể tạo nhiều biến thể màu (sáng hơn, tối hơn) từ màu gốc
-
-    2. Hãy đưa ra cách định dạng một đoạn văn bản để được kết quả như sau:
-
-    **Yêu cầu định dạng:**
-    - Tiêu đề chính: In đậm, màu xanh, kích thước lớn
-    - Tiêu đề phụ: In nghiêng, màu đỏ
-    - Đoạn văn: Font Arial, cỡ 14px, màu đen
-    - Từ khóa: In đậm, gạch chân
-
-    **Cách thực hiện:**
-
-    **Cách 1: Sử dụng style nội tuyến**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Ví dụ định dạng</title>
-    </head>
-    <body>
-        <h1 style="color: blue; font-weight: bold; font-size: 24px;">
-            TIÊU ĐỀ CHÍNH
-        </h1>
-        
-        <h2 style="color: red; font-style: italic;">
-            Tiêu đề phụ
-        </h2>
-        
-        <p style="font-family: Arial, sans-serif; font-size: 14px; color: black;">
-            Đây là đoạn văn bản được định dạng theo yêu cầu. 
-            <strong style="text-decoration: underline;">Từ khóa quan trọng</strong> 
-            được in đậm và gạch chân để nhấn mạnh.
-        </p>
-    </body>
-    </html>
-    ```
-
-    **Cách 2: Sử dụng CSS nội bộ**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Ví dụ định dạng</title>
-        <style>
-            .main-title {
-                color: blue;
-                font-weight: bold;
-                font-size: 24px;
-            }
-            .sub-title {
-                color: red;
-                font-style: italic;
-            }
-            .paragraph {
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                color: black;
-            }
-            .keyword {
-                font-weight: bold;
-                text-decoration: underline;
-            }
-        </style>
-    </head>
-    <body>
-        <h1 class="main-title">TIÊU ĐỀ CHÍNH</h1>
-        <h2 class="sub-title">Tiêu đề phụ</h2>
-        <p class="paragraph">
-            Đây là đoạn văn bản được định dạng theo yêu cầu. 
-            <span class="keyword">Từ khóa quan trọng</span> 
-            được in đậm và gạch chân để nhấn mạnh.
-        </p>
-    </body>
-    </html>
-    ```
-
-    **Cách 3: Kết hợp danh sách và bảng**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Báo cáo định dạng</title>
-    </head>
-    <body>
-        <h1 style="color: #0066CC; font-weight: bold; font-size: 28px;">
-            BÁO CÁO KẾT QUẢ HỌC TẬP
-        </h1>
-        
-        <h2 style="color: #FF0000; font-style: italic;">
-            Học kỳ I năm học 2023-2024
-        </h2>
-        
-        <p style="font-family: Arial; font-size: 14px;">
-            Dưới đây là <strong style="text-decoration: underline;">bảng điểm chi tiết</strong> 
-            của các môn học chính:
-        </p>
-        
-        <table border="1" style="width: 100%; border-collapse: collapse;">
-            <caption style="font-weight: bold; margin-bottom: 10px;">
-                Bảng điểm tổng hợp
-            </caption>
-            <tr style="background-color: #f0f0f0;">
-                <th style="padding: 8px; text-align: center;">Môn học</th>
-                <th style="padding: 8px; text-align: center;">Điểm</th>
-                <th style="padding: 8px; text-align: center;">Xếp loại</th>
-            </tr>
-            <tr>
-                <td style="padding: 8px;">Toán</td>
-                <td style="padding: 8px; text-align: center;">8.5</td>
-                <td style="padding: 8px; text-align: center; color: green;">Giỏi</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px;">Vật lý</td>
-                <td style="padding: 8px; text-align: center;">7.8</td>
-                <td style="padding: 8px; text-align: center; color: blue;">Khá</td>
-            </tr>
-        </table>
-        
-        <h3 style="color: #0066CC; margin-top: 20px;">
-            <strong style="text-decoration: underline;">Nhận xét:</strong>
-        </h3>
-        <ul style="font-family: Arial; font-size: 14px;">
-            <li>Kết quả học tập <strong style="color: green;">tốt</strong></li>
-            <li>Cần cố gắng hơn ở môn <strong style="color: red;">Hóa học</strong></li>
-            <li>Tổng thể xếp loại <strong style="text-decoration: underline;">Khá</strong></li>
-        </ul>
-    </body>
-    </html>
-    ```
-
-    **Bài tập mở rộng:**
-
-    **Bài 1: Tạo trang thơ với màu từ ảnh**
-    - Chọn một bài thơ Việt Nam
-    - Tìm ảnh phù hợp với nội dung
-    - Lấy màu từ ảnh để định dạng tiêu đề
-    - Tạo bố cục đẹp mắt
-
-    **Bài 2: Tạo trang báo cáo phức tạp**
-    - Sử dụng cả danh sách và bảng
-    - Áp dụng nhiều kiểu định dạng khác nhau
-    - Tạo màu sắc thống nhất và hài hòa
-
-    **Bài 3: Tạo trang portfolio**
-    - Sử dụng bảng để trình bày kỹ năng
-    - Sử dụng danh sách cho dự án
-    - Áp dụng màu sắc cá nhân hóa
-
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành vận dụng, học sinh sẽ biết cách lấy màu từ ảnh và áp dụng các kỹ thuật định dạng văn bản phức tạp vào thực tế.
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết học & Chuẩn bị Bài 10"
+  >
+    <Alert type="success" title="Lời dặn chuẩn bị Bài 10">
+      - **Nộp bài:** Gửi tệp `.html` lên kho bài tập của lớp.
+      - **Chuẩn bị Bài 10 (Tạo liên kết):** Tìm hiểu xem khi nhấp chuột vào một dòng chữ trên web, làm thế nào để trình duyệt nhảy sang một trang web khác hoặc nhảy đến vị trí khác trong cùng một trang bằng thẻ `<a>`!
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng các kỹ thuật định dạng nâng cao và lấy màu từ ảnh.
-    **Hoạt động:** HS thực hành tạo các trang web với định dạng phức tạp và màu sắc tùy chỉnh.
-    **Sản phẩm:** Các trang web hoàn chỉnh với định dạng chuyên nghiệp và màu sắc hài hòa.
-  </TeacherNotes>
-</StepApplication>
+  </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **Danh sách không thứ tự:** `<ul>` với `<li>` (dấu chấm)
-- ✅ **Danh sách có thứ tự:** `<ol>` với `<li>` (số thứ tự)
-- ✅ **Danh sách mô tả:** `<dl>` với `<dt>` (thuật ngữ) và `<dd>` (giải thích)
-- ✅ **Bảng cơ bản:** `<table>` → `<tr>` → `<th>`/`<td>`
-- ✅ **Gộp ô ngang:** `colspan="số"`
-- ✅ **Gộp ô dọc:** `rowspan="số"`
-- ✅ **Lấy màu từ ảnh:** Dùng công cụ color picker online
-- ✅ **Định dạng nâng cao:** Kết hợp style, class, và các thuộc tính
-</GlassCard>
-</div>
+</PedagogyActivity>

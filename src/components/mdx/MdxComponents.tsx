@@ -27,14 +27,27 @@ import {
     RawContent
 } from "./LessonSteps";
 
-
-/**
- * 🛠️ DEEP SYSTEM AUDIT FIX (FINAL STAGE): Ultra-Stable Registry
- * To eliminate 'ReferenceError: k is not defined', we have:
- * 1. Moved all component logic into standalone files.
- * 2. Replaced all arrow functions with named 'export function' declarations.
- * 3. Simplified the registry to a direct mapping of stable imports.
- */
+// Specialized 5512 Pedagogical & Presentation System
+import {
+    LessonPlanHeader,
+    LearningObjectives,
+    EquipmentChecklist,
+    PedagogyActivity,
+    SubTask,
+    SlideStep,
+} from "./PedagogyComponents";
+import { ClassTimer } from "./ClassTimer";
+import { HtmlLiveSandbox } from "./HtmlLiveSandbox";
+import { HtmlTreeVisualizer } from "./HtmlTreeVisualizer";
+import { HtmlDebuggerChallenge } from "./HtmlDebuggerChallenge";
+import { SpeedQuizExercise } from "./InteractiveExercise";
+import { RubricCard } from "./RubricCard";
+import { ToolComparisonTable } from "./ToolComparison";
+import { HtmlElementAnatomy } from "./HtmlElementAnatomy";
+import { AiFacultiesVisualizer } from "./AiFacultiesVisualizer";
+import { NetworkTopologyVisualizer } from "./NetworkTopologyVisualizer";
+import { LanConfiguratorSimulator } from "./LanConfiguratorSimulator";
+import { CyberSafetyScenario } from "./CyberSafetyScenario";
 
 export const MdxComponents = {
     // Custom Scientific Components
@@ -61,12 +74,31 @@ export const MdxComponents = {
     pre: MDXPre,
     code: MDXCode,
 
-    // Lesson Steps (5512)
+    // Lesson Steps (5512 Legacy)
     StepEngagement: StepEngagement,
     StepKnowledge: StepKnowledge,
     StepPractice: StepPractice,
     StepApplication: StepApplication,
     TeacherNotes: TeacherNotes,
     RawContent: RawContent,
-};
 
+    // Upgraded 5512 Deep Pedagogical System
+    LessonPlanHeader: LessonPlanHeader,
+    LearningObjectives: LearningObjectives,
+    EquipmentChecklist: EquipmentChecklist,
+    PedagogyActivity: PedagogyActivity,
+    SubTask: SubTask,
+    SlideStep: SlideStep,
+    ClassTimer: ClassTimer,
+    HtmlLiveSandbox: HtmlLiveSandbox,
+    HtmlTreeVisualizer: HtmlTreeVisualizer,
+    HtmlDebuggerChallenge: HtmlDebuggerChallenge,
+    SpeedQuizExercise: SpeedQuizExercise,
+    RubricCard: RubricCard,
+    ToolComparisonTable: ToolComparisonTable,
+    HtmlElementAnatomy: HtmlElementAnatomy,
+    AiFacultiesVisualizer: AiFacultiesVisualizer,
+    NetworkTopologyVisualizer: NetworkTopologyVisualizer,
+    LanConfiguratorSimulator: LanConfiguratorSimulator,
+    CyberSafetyScenario: CyberSafetyScenario,
+};

@@ -4,9 +4,67 @@ description: "Biết cách duyệt danh sách bằng toán tử in, biết và t
 order: 23
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Trong bài trước chúng ta đã biết cách dùng lệnh append để thêm phần tử vào cuối một danh sách. Vậy Python có lệnh nào dùng để:
+<LessonPlanHeader
+  title="BÀI 23: MỘT SỐ LỆNH LÀM VIỆC VỚI DỮ LIỆU DANH SÁCH"
+  subject="TIN HỌC 10 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  duration="02 TIẾT (90 PHÚT)"
+  topic="CHỦ ĐỀ 4: ỨNG DỤNG TIN HỌC – LẬP TRÌNH CĂN BẢN VỚI PYTHON"
+/>
+
+<LearningObjectives
+  knowledge={[
+    "Nắm vững các khái niệm trọng tâm, nguyên lý cốt lõi và nội dung bài học quy định trong chương trình môn học.",
+    "Giải thích được bản chất các hiện tượng, ứng dụng thực tiễn và liên hệ mật thiết với đời sống học đường, xã hội.",
+    "Vận dụng kiến thức để giải quyết trọn vẹn các câu hỏi, bài tập và tình huống thực tiễn đặt ra trong SGK."
+  ]}
+  competencies={[
+    "Năng lực chuyên môn: Hình thành và phát triển năng lực tự học, thực hành giải quyết vấn đề và tư duy sáng tạo.",
+    "Năng lực số / thực hành: Sử dụng thành thạo các công cụ học tập số, tra cứu và xử lý thông tin hiệu quả.",
+    "Năng lực chung: Giao tiếp, hợp tác nhóm tích cực, chủ động trao đổi và phản biện khoa học."
+  ]}
+  qualities={[
+    "Rèn luyện tính trung thực, cẩn thận, kỷ luật và tinh thần trách nhiệm trong học tập và rèn luyện.",
+    "Hình thành ý thức chủ động thích ứng, bảo vệ môi trường và giữ gìn các giá trị nhân văn cao đẹp."
+  ]}
+/>
+
+<EquipmentChecklist
+  items={[
+    {
+      name: "Màn hình trình chiếu lớp học / Smart TV",
+      description: "Hiển thị slide bài giảng tương tác, đồng hồ đếm ngược và câu hỏi thảo luận trực quan.",
+      status: "ready"
+    },
+    {
+      name: "Tài liệu học tập cá nhân của học sinh",
+      description: "Sách giáo khoa, vở ghi bài, phiếu học tập hoặc thiết bị số phục vụ thực hành.",
+      status: "ready"
+    },
+    {
+      name: "Học liệu số & Bộ công cụ sư phạm tương tác",
+      description: "Hệ thống trắc nghiệm nhanh, đồng hồ đếm ngược và phiếu đánh giá Rubric chuẩn 5512.",
+      status: "ready"
+    }
+  ]}
+/>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 1: KHỞI ĐỘNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-1"
+  number={1}
+  title="KHỞI ĐỘNG – TÌNH HUỐNG THỰC TẾ"
+  time="10 phút"
+  objective="Huy động kiến thức nền, tạo tâm thế tích cực và kích thích sự tò mò của học sinh bước vào bài học mới."
+>
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Tình huống khởi động"
+  >
+    <div className="space-y-3">
+Trong bài trước chúng ta đã biết cách dùng lệnh append để thêm phần tử vào cuối một danh sách. Vậy Python có lệnh nào dùng để:
     - Xóa nhanh một danh sách?
     - Chèn thêm phần tử vào đầu hay giữa danh sách?
     - Kiểm tra một phần tử có nằm trong một danh sách không?
@@ -18,21 +76,61 @@ order: 23
     - Xóa toàn bộ danh sách sau khi đã xử lý xong
     
     Bài học hôm nay sẽ cung cấp cho em các công cụ mạnh mẽ để làm việc hiệu quả với danh sách.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS nhận diện nhu cầu xử lý danh sách linh hoạt (chèn ở giữa, lấy một đoạn).
-    - Tạo sự tò mò về các phương thức (methods) mở rộng của đối tượng List.
-    
-    **Tổ chức thực hiện:**
-    - GV thực thi lệnh `A.append(x)` để HS thấy nó chỉ thêm vào cuối.
-    - GV đặt câu hỏi: "Làm sao để thêm vào vị trí số 1?". Dẫn dắt sang `insert()`.
-  </TeacherNotes>
-</StepEngagement>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    ### 1. Duyệt danh sách với toán tử in
+      <ClassTimer initialMinutes={3} />
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh thảo luận"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh quan sát tình huống thực tế, suy ngẫm độc lập hoặc trao đổi nhanh theo cặp bàn (2 học sinh/bàn).</p>
+      <p>- Vận dụng trải nghiệm đời sống và kiến thức đã có để tìm câu trả lời cho vấn đề đặt ra.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Lắng nghe chia sẻ"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Đại diện 2 học sinh xung phong trình bày quan điểm cá nhân.</p>
+      <p>- Cả lớp lắng nghe, nhận xét, bổ sung các góc nhìn khác nhau.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề vào bài"
+  >
+    <Alert type="info" title="Định hướng sư phạm">
+      Giáo viên nhận xét tinh thần thảo luận của học sinh, tổng hợp các ý kiến đúng đắn và chính thức dẫn dắt vào bài học mới.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI
+========================================================================= */}
+<PedagogyActivity
+  id="activity-2"
+  number={2}
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="50 phút"
+  objective="Làm chủ các tri thức cốt lõi, tiếp cận bản chất khoa học và phân tích sâu các ví dụ thực tiễn trong bài học."
+>
+  <SlideStep
+    slide="SLIDE 2.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Khám phá kiến thức cốt lõi"
+  >
+    <div className="space-y-4">
+### 1. Duyệt danh sách với toán tử in
     
     #### a) Kiểm tra phần tử trong danh sách
     Toán tử in dùng để kiểm tra một phần tử có nằm trong danh sách đã cho không. Kết quả trả lại True (Đúng) hoặc False (Sai).
@@ -131,21 +229,59 @@ order: 23
       correctAnswer: 1,
       explanation: "Đúng! insert(1, 10) chèn vào chỉ số 1 (vị trí thứ 2 vì đếm từ 0)"
     }} />
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS biết cách dùng toán tử in để kiểm tra và duyệt danh sách.
-    - Hiểu và sử dụng được các phương thức: clear, remove, insert.
-    - Biết cách áp dụng các phương thức vào giải bài toán thực tế.
-    
-    **Hoạt động:**
-    - GV thực hành demo các ví dụ trên máy chiếu.
-    - HS thực hành viết các chương trình xử lý danh sách.
-  </TeacherNotes>
-</StepKnowledge>
-<StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Bài tập thực hành
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 2.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Nghiên cứu & Phân tích chuyên sâu"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh đọc kỹ nội dung bài học, kết hợp quan sát sơ đồ, bảng biểu hoặc đoạn mã minh họa.</p>
+      <p>- Làm việc nhóm thảo luận để trả lời các câu hỏi khám phá, giải mã các khái niệm trọng tâm.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 2.3"
+    step={3}
+    title="Báo cáo, thảo luận – Trình bày kết quả nghiên cứu"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Đại diện nhóm báo cáo kết quả thảo luận hoặc chữa bài tập trắc nghiệm tương tác.</p>
+      <p>- Giáo viên tổ chức vấn đáp phản biện, làm rõ các điểm học sinh thường hay nhầm lẫn.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 2.4"
+    step={4}
+    title="Kết luận, nhận định – Chuẩn hóa kiến thức"
+  >
+    <Alert type="success" title="Tổng kết kiến thức cốt lõi">
+      Giáo viên chuẩn hóa kiến thức, nhấn mạnh các quy tắc, định luật hoặc kỹ năng trọng tâm mà học sinh bắt buộc phải ghi nhớ.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP
+========================================================================= */}
+<PedagogyActivity
+  id="activity-3"
+  number={3}
+  title="LUYỆN TẬP – CỦNG CỐ TRI THỨC VÀ KỸ NĂNG"
+  time="15 phút"
+  objective="Khắc sâu kiến thức vừa học, rèn luyện kỹ năng giải quyết bài tập và đánh giá mức độ tiếp thu của học sinh."
+>
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Bài tập rèn luyện"
+  >
+    <div className="space-y-3">
+### Bài tập thực hành
     
     #### Bài tập 1:
     Giả sử A = ["0", "1", "01", "10"]. Các biểu thức sau trả về giá trị đúng hay sai?
@@ -179,16 +315,61 @@ order: 23
     for name in dsLop:
         print(name)
     ```
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS thực hành sử dụng toán tử in và các phương thức danh sách.
-    **Sản phẩm:** HS viết được chương trình nhập và in danh sách theo thứ tự ngược.
-  </TeacherNotes>
-</StepPractice>
 
-<StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Bài tập vận dụng
+      <ClassTimer initialMinutes={5} />
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh giải bài tập"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh tự lực làm bài tập vào vở hoặc thao tác trên phần mềm máy tính cá nhân.</p>
+      <p>- Giáo viên quan sát, bao quát lớp và kịp thời hỗ trợ các học sinh còn gặp khó khăn.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Đối chiếu đáp án & Chữa bài"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh xung phong lên bảng chữa bài hoặc chia sẻ màn hình sản phẩm thực hành.</p>
+      <p>- Các bạn khác đối chiếu bài làm, nhận xét và đề xuất phương án giải tối ưu hơn nếu có.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Đánh giá năng lực"
+  >
+    <Alert type="success" title="Đánh giá kết quả luyện tập">
+      Giáo viên nhận xét mức độ nắm bài của lớp, tuyên dương các cá nhân/nhóm làm bài nhanh và chuẩn xác.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-4"
+  number={4}
+  title="VẬN DỤNG – MỞ RỘNG THỰC TIỄN"
+  time="15 phút"
+  objective="Ứng dụng kiến thức bài học vào thực tế đời sống, rèn luyện tư duy độc lập và năng lực tự học suốt đời."
+>
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Thử thách vận dụng thực tế"
+  >
+    <div className="space-y-3">
+### Bài tập vận dụng
     
     #### Bài tập 1: Xóa các số âm
     Cho trước dãy số A. Viết chương trình xóa đi các phần tử có giá trị nhỏ hơn 0 từ A.
@@ -237,20 +418,69 @@ order: 23
     - Khi nào nên dùng for...in thay vì for range(len())?
     - Lỗi nào thường gặp khi dùng remove() trong vòng lặp?
     - Tại sao cần dùng while thay vì for khi xóa phần tử trong danh sách?
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức về danh sách để giải các bài toán phức tạp.
-    **Gợi ý:** GV hướng dẫn HS phân tích bài toán và chọn phương thức phù hợp.
-  </TeacherNotes>
-</StepApplication>
+    </div>
+  </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **toán tử in** kiểm tra phần tử trong danh sách, trả về True/False.
-- ✅ **for...in** duyệt nhanh từng phần tử của danh sách.
-- ✅ **insert(k, x)** chèn x vào vị trí k, đẩy các phần tử khác sang phải.
-- ✅ **remove(x)** xóa phần tử đầu tiên có giá trị x.
-- ✅ **clear()** xóa toàn bộ danh sách.
-- ✅ **append(x)** thêm x vào cuối danh sách.
-</GlassCard>
-</div>
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thang đo đánh giá Rubric – Chuẩn Công văn 5512"
+  >
+    <RubricCard
+      title="Thang đo đánh giá Sản phẩm Vận dụng thực tế"
+      criteria={[
+        {
+          name: "Mức độ hiểu bài & Tính đúng đắn",
+          weight: "40%",
+          levels: {
+            good: "Vận dụng chuẩn xác lý thuyết vào giải quyết tình huống, lập luận sắc bén, logic.",
+            acceptable: "Nắm được yêu cầu cơ bản nhưng giải pháp còn đơn giản hoặc chưa thật tối ưu.",
+            poor: "Chưa hiểu đúng yêu cầu, nội dung giải quyết còn sơ sài hoặc sai lệch."
+          }
+        },
+        {
+          name: "Tính sáng tạo & Ứng dụng đời sống",
+          weight: "35%",
+          levels: {
+            good: "Đề xuất giải pháp sáng tạo, độc đáo, có tính khả thi cao trong thực tế học đường và gia đình.",
+            acceptable: "Giải pháp áp dụng được nhưng còn dập khuôn theo mẫu có sẵn.",
+            poor: "Thiếu tính khả thi trong thực tế."
+          }
+        },
+        {
+          name: "Hình thức trình bày & Tinh thần trách nhiệm",
+          weight: "25%",
+          levels: {
+            good: "Trình bày rõ ràng, thẩm mỹ, ngôn từ chuẩn mực, hoàn thành đúng hạn quy định.",
+            acceptable: "Trình bày đủ ý nhưng bố cục chưa thật đẹp mắt.",
+            poor: "Nộp bài muộn, trình bày cẩu thả."
+          }
+        }
+      ]}
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Hướng dẫn hoàn thiện tại nhà"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh ghi chép yêu cầu nhiệm vụ vận dụng vào sổ tay cá nhân.</p>
+      <p>- Nộp sản phẩm qua nhóm học tập trực tuyến (LMS / Google Classroom / Zalo lớp) trước tiết học sau.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Thông điệp bế mạc"
+  >
+    <div className="p-4 rounded-2xl bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 text-white space-y-2 shadow-lg">
+      <h5 className="font-bold text-base">🌟 THÔNG ĐIỆP BÀI HỌC</h5>
+      <p className="text-xs sm:text-sm text-sky-100 leading-relaxed">
+        Tri thức chỉ thực sự có ý nghĩa trọn vẹn khi được mang ra phục vụ cuộc sống và hoàn thiện nhân cách bản thân. Chúc các em luôn giữ vững ngọn lửa đam mê khám phá và không ngừng vươn lên!
+      </p>
+    </div>
+  </SlideStep>
+</PedagogyActivity>

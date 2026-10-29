@@ -1,370 +1,604 @@
 ---
 title: "Bài 3: Một số thiết bị mạng thông dụng"
-description: "Khám phá 'bộ não' và 'đường dẫn' của mạng máy tính: từ Hub, Switch đến Router và Modem."
+description: "Khám phá nguyên lý hoạt động, sự khác biệt và sơ đồ ghép nối của Hub, Switch, Access Point, Router và Modem theo chuẩn Công văn 5512."
 order: 3
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Trong thời đại 4.0, "mất mạng" (Internet) dường như là một trong những nỗi sợ lớn nhất của chúng ta. 😅 
-    
-    Nhưng đã bao giờ em tò mò:
-    - Tại sao chỉ với một sợi dây cáp quang từ ngõ vào nhà, mà cả gia đình đều có Wi-Fi cho điện thoại, laptop, TV?
-    - Những chiếc hộp có râu nhấp nháy đèn xanh đỏ ở góc nhà thực chất là gì và chúng làm nhiệm vụ gì?
-    
-    Hôm nay, chúng ta sẽ cùng "giải phẫu" hệ thống mạng để làm quen với những người hùng thầm lặng: **Switch, Router và Modem.**
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - Nhận diện các thiết bị phần cứng mạng cơ bản trong thực tế gia đình và trường học.
-    - Khởi động tư duy về quy trình truyền dữ liệu giữa các máy tính.
-    
-    **Tổ chức thực hiện:**
-    - GV đưa ra các thiết bị thực tế (hoặc ảnh chụp) và yêu cầu HS gọi tên.
-    - Đặt câu hỏi: "Nếu không có chiếc hộp này, máy tính có vào được mạng không?".
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  title="BÀI 3: MỘT SỐ THIẾT BỊ MẠNG THÔNG DỤNG"
+  subject="TIN HỌC 12 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  duration="02 TIẾT (90 PHÚT)"
+  topic="CHỦ ĐỀ 2: MẠNG MÁY TÍNH VÀ INTERNET"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Dữ liệu trên đường truyền mạng được mang bởi các tín hiệu vật lí như dao động điện trong mạng cục bộ (Local area network – LAN), sóng vô tuyến điện trong mạng không dây, tín hiệu ảnh sáng trong cáp quang,...
+<LearningObjectives
+  knowledge={[
+    "Nêu được chức năng chính và cơ chế hoạt động của các thiết bị mạng cốt lõi: Bộ chia tín hiệu (Hub), Bộ chuyển mạch (Switch), Điểm truy cập không dây (Access Point), Bộ định tuyến (Router) và Bộ điều chế giải điều chế (Modem).",
+    "Phân biệt được sự khác biệt bản chất giữa Hub và Switch (hiện tượng xung đột tín hiệu collision, hiệu năng chuyển tiếp gói tin theo bảng địa chỉ MAC).",
+    "Giải thích được vai trò của Router trong việc liên kết các mạng LAN khác nhau qua Internet, phân biệt cổng LAN và cổng WAN.",
+    "Trình bày được lý do bắt buộc phải có Modem khi kết nối máy tính vào mạng viễn thông (chuyển đổi tín hiệu số Digital ↔ tín hiệu tương tự Analog).",
+    "Hiểu được cấu trúc và vai trò của thiết bị mạng tích hợp đa năng (All-in-one) trong mạng gia đình hiện nay."
+  ]}
+  competencies={[
+    "Năng lực Tin học (NLa, NLc): Nhận dạng được các cổng kết nối (RJ45, cổng quang, ăng-ten Wi-Fi) trên thiết bị thật; vẽ và phân tích được sơ đồ kết nối mạng LAN gia đình và trường học.",
+    "Năng lực số: Có kỹ năng chẩn đoán sự cố mạng cơ bản (quan sát đèn tín hiệu cổng LAN/WAN/Internet trên router, xác định điểm nghẽn).",
+    "Năng lực chung: Giao tiếp, hợp tác nhóm trong các hoạt động phân tích sơ đồ mạng."
+  ]}
+  qualities={[
+    "Rèn luyện tính cẩn thận, an toàn khi tiếp xúc với thiết bị điện tử, dây cáp mạng và nguồn điện.",
+    "Có ý thức bảo quản hạ tầng mạng công cộng tại trường học và nơi sinh hoạt."
+  ]}
+/>
 
-    Ngoài cáp mạng, còn có các thiết bị mạng khác gọi là thiết bị kết nối như bộ chia tín hiệu (hub), bộ chuyển mạch (switch), bộ định tuyến (router), bộ thu phát không dây (Wi-Fi),... Mỗi thiết bị đó đều có những chức năng riêng. Hãy cùng tìm hiểu chức năng và cách sử dụng chúng.
+<EquipmentChecklist
+  items={[
+    {
+      name: "Màn hình trình chiếu lớp học / Smart TV",
+      description: "Hiển thị slide bài giảng tương tác và bộ mô phỏng luồng truyền gói tin.",
+      status: "ready"
+    },
+    {
+      name: "Thiết bị mạng trực quan (Vật mẫu giáo cụ)",
+      description: "01 Switch 8 cổng, 01 Router Wi-Fi gia đình, các đoạn dây cáp mạng RJ45 chuẩn Cat5e/Cat6.",
+      status: "ready"
+    },
+    {
+      name: "Bộ công cụ mô phỏng số",
+      description: "NetworkTopologyVisualizer tích hợp sẵn trên hệ thống trình chiếu KHBD.",
+      status: "ready"
+    }
+  ]}
+/>
 
-    ### 1. Thiết bị mạng thông dụng
+{/* =========================================================================
+    HOẠT ĐỘNG 1: KHỞI ĐỘNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-1"
+  number={1}
+  title="KHỞI ĐỘNG – 'GIẢI MÃ CHIẾC HỘP PHÁT WI-FI'"
+  time="10 phút"
+  objective="Kết nối trải nghiệm thực tế về hiện tượng 'mất mạng Internet' với sự hiện diện của các thiết bị phần cứng mạng trong cuộc sống."
+>
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đố vui thiết bị mạng"
+  >
+    <div className="space-y-3">
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Trong gia đình hoặc phòng máy trường học, chúng ta thường nhìn thấy một chiếc hộp nhựa có từ 2 đến 4 ăng-ten, mặt trước nhấp nháy đèn xanh/vàng, phía sau cắm nhiều sợi dây mạng màu xanh.
+      </p>
 
-    #### a) Hub và Switch
+      <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm space-y-2">
+        <strong className="text-sky-800 dark:text-sky-300 block text-base font-bold">
+          ❓ Câu hỏi quan sát nhanh (Thời gian: 03 phút):
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          1. Chiếc hộp đó thường được mọi người gọi chung bằng tên gì?
+        </p>
+        <p className="text-slate-700 dark:text-slate-300">
+          2. Tại sao chỉ với 01 sợi dây cáp quang nhỏ bằng đầu que tăm kéo từ cột điện vào, chiếc hộp này có thể cấp Internet cùng lúc cho cả chục điện thoại, máy tính, smart TV trong nhà?
+        </p>
+      </div>
 
-    Hình 3.1 gồm một switch, một hub và cáp mạng để kết nối các cổng của chúng và máy tính. Nhìn bên ngoài, rất khó phân biệt được switch và hub. Điểm khác nhau của chúng nằm ở cách thức hoạt động. Khi máy tính gửi dữ liệu qua một cổng của hub, tín hiệu sẽ được gửi đến tất cả các cổng còn lại. Trong khi đó, switch xác định cổng kết nối giữa thiết bị gửi và thiết bị nhận, sau đó thiết lập tạm thời kênh truyền giữa hai cổng kết nối để truyền dữ liệu và huỷ kết nối sau khi hoàn thành việc truyền.
+      <ClassTimer initialMinutes={3} />
+    </div>
+  </SlideStep>
 
-    **Hub:** Thiết bị gửi tín hiệu đến tất cả các cổng. Khi một máy tính gửi dữ liệu, tất cả các máy tính khác trong mạng đều nhận được tín hiệu đó.
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Học sinh thảo luận"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh trao đổi theo cặp bàn, liệt kê các tên gọi mình từng nghe: Cục Wi-Fi, Modem, Router, Bộ phát sóng...</p>
+      <p>- Giáo viên mang vật mẫu Router Wi-Fi ra trước lớp để học sinh quan sát các cổng cắm phía sau.</p>
+    </div>
+  </SlideStep>
 
-    **Switch:** Thiết bị chỉ gửi tín hiệu đến đúng máy tính nhận. Switch xác định chính xác máy nào cần nhận dữ liệu và chỉ gửi đến máy đó.
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Bộc lộ quan niệm ban đầu"
+  >
+    <div className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Đại diện học sinh: <em>&quot;Nhà em gọi là Cục phát Wi-Fi hoặc Modem nhà mạng Viettel/VNPT/FPT cung cấp.&quot;</em></p>
+      <p>- Giáo viên đặt vấn đề: <em>&quot;Thực ra chiếc hộp đó không chỉ là 1 thiết bị đơn thuần, mà là sự tích hợp của 4 thiết bị mạng riêng biệt. Hôm nay chúng ta sẽ cùng bóc tách từng thiết bị để hiểu rõ bản chất!&quot;</em></p>
+    </div>
+  </SlideStep>
 
-    #### Hoạt động 1: Hub hay Switch?
-
-    Em đã bao giờ tham dự một buổi gặp gỡ mà nhiều người nói cùng một lúc, gây ồn đến mức không thể nghe được ai nói gì chưa? Điều tương tự cũng có thể xảy ra trong LAN. Khi nhiều máy đồng thời gửi dữ liệu lên đường truyền chung, tín hiệu sẽ bị hỏng khiến các máy tính không thể nhận biết được dữ liệu. Hiện tượng này gọi là xung đột (collision) tín hiệu dẫn đến phải truyền lại làm giảm hiệu quả của mạng. Hãy thảo luận để trả lời các câu hỏi sau: hub hay switch, thiết bị nào để gây ra xung đột tín hiệu hơn? Khi nào nên dùng hub, khi nào nên dùng switch?
-
-    **Phân tích:**
-
-    Khi dùng switch thì tín hiệu đi từ máy gửi đến máy nhận sẽ không gây xung đột với tín hiệu của các cuộc truyền ở cổng khác. Khi dùng hub, tín hiệu phát tán ra tất cả các cổng nên càng nhiều máy trong mạng, nguy cơ xung đột tín hiệu càng cao.
-
-    Vì thế với các mạng có ít thiết bị đầu cuối, chẳng hạn như mạng gia đình thì có thể dùng hub vì chi phí rẻ hơn rất nhiều so với một switch có cùng số cổng. LAN có từ vài chục đến hàng trăm máy tính thì nên dùng switch, thậm chí dùng nhiều switch kết nối thành nhiều tầng, kết hợp với hub ở tầng cuối cùng.
-
-    <Quiz data={{
-      question: "Khi nào nên sử dụng Hub thay vì Switch?",
-      options: [
-        "A. Khi mạng có hàng trăm máy tính",
-        "B. Khi mạng gia đình có ít thiết bị và muốn tiết kiệm chi phí",
-        "C. Khi cần tốc độ truyền dữ liệu cao nhất",
-        "D. Khi cần bảo mật tối đa cho dữ liệu"
-      ],
-      correctAnswer: 1,
-      explanation: "Đúng! Hub phù hợp cho mạng nhỏ có ít thiết bị vì chi phí rẻ hơn, mặc dù có thể gây xung đột tín hiệu."
-    }} />
-
-    #### b) Wireless Access Point
-
-    Wi-Fi là chữ viết tắt của cụm từ Wireless Fidelity. Người ta thường hiểu "Wi-Fi" là thiết bị kết nối không dây trong mạng cục bộ. Thực ra Wi-Fi là một bộ tiêu chuẩn kĩ thuật truyền dữ liệu bằng sóng vô tuyến điện được sử dụng rộng rãi trong các mạng cục bộ.
-
-    Cách đơn giản nhất để thiết lập một LAN là dùng một bộ thu phát Wi-Fi để kết nối tất cả các thiết bị đầu cuối trong một khu vực mà không phải mua sắm, lắp đặt hub, switch hay cáp mạng. Yêu cầu đối với các thiết bị đầu cuối trong trường hợp này là phải hỗ trợ truy cập Wi-Fi. Chính vì cách kết nối này mà bộ (thiết bị, trạm) thu phát Wi-Fi còn được gọi là "điểm truy cập không dây" (Wireless Access Point – WAP, hay Access Point – AP).
-
-    Thông thường LAN kết nối có dây các máy tính qua các thiết bị như switch hay hub trong một phạm vi địa lí nhất định. Khi nối thêm một WAP vào LAN, ta có thể kết nối không dây các thiết bị di động giúp mở rộng phạm vi địa lí của LAN.
-
-    #### Hoạt động 2: Điểm truy cập không dây là gì?
-
-    Có thể em đã từng nghe nói đến điểm truy cập không dây (Wireless Access Point). Ý nghĩa của nó là gì?
-
-    **Trả lời:** Điểm truy cập không dây là thiết bị cho phép các thiết bị di động (laptop, điện thoại, máy tính bảng) kết nối vào mạng có dây thông qua sóng Wi-Fi, giúp mở rộng phạm vi phủ sóng của mạng.
-
-    <Quiz data={{
-      question: "Thiết bị nào được gọi là 'điểm truy cập không dây' (Wireless Access Point)?",
-      options: [
-        "A. Modem",
-        "B. Router",
-        "C. Bộ thu phát Wi-Fi",
-        "D. Switch"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! Bộ thu phát Wi-Fi chính là điểm truy cập không dây, cho phép các thiết bị kết nối vào mạng qua sóng Wi-Fi."
-    }} />
-
-    #### c) Router
-
-    Khi kết nối hai máy tính (có thể cách xa hàng nghìn kilômét) qua Internet, người ta không thể dùng cáp mạng nối qua hub hay switch mà cần sử dụng dịch vụ truyền dữ liệu của các nhà cung cấp dịch vụ viễn thông để kết nối các LAN với nhau. Mạng viễn thông sử dụng các bộ định tuyến (router) để chuyển tiếp dữ liệu.
-
-    Mỗi router có một số cổng có thể kết nối trực tiếp vào LAN gọi là cổng LAN và một số cổng để kết nối với các router khác gọi là cổng WAN. Dữ liệu chuyển từ một máy tính ở LAN này đến một máy tính ở LAN khác trên Internet trước hết phải chuyển đến router của LAN qua cổng LAN, sau đó chuyển ra ngoài qua cổng WAN. Khi router có nhiều cổng WAN thì cần chọn cổng thích hợp để chuyển dữ liệu đi tới đích.
-
-    Thuật ngữ định tuyến hay chọn đường (routing) hàm ý router phải chọn một cổng thích hợp để gửi dữ liệu đi sao cho tới được LAN của máy nhận. Dữ liệu có thể phải trung chuyển qua nhiều router. Khi đến router cuối cùng, dữ liệu được chuyển qua cổng LAN để tới máy nhận.
-
-    Thông thường router của các nhà cung cấp dịch vụ Internet hay của các tổ chức lớn mới có nhiều cổng WAN, còn router của các mạng gia đình chỉ có một cổng WAN kết nối đến nhà cung cấp dịch vụ Internet mà không cần phải định tuyến. Các router này thường được tích hợp cả bộ thu phát Wi-Fi. Chính vì thế chúng được gọi là router Wi-Fi.
-
-    #### Hoạt động 3: Kết nối máy tính thuộc các LAN khác nhau
-
-    Có thể sử dụng hub hay switch để kết nối hai máy tính thuộc hai LAN khác nhau qua Internet được không?
-
-    **Trả lời:** Không thể. Hub và switch chỉ dùng để kết nối các máy tính trong cùng một LAN. Để kết nối máy tính thuộc các LAN khác nhau qua Internet, cần sử dụng Router.
-
-    <Quiz data={{
-      question: "Router có bao nhiêu loại cổng chính?",
-      options: [
-        "A. Chỉ có cổng LAN",
-        "B. Chỉ có cổng WAN",
-        "C. Có cả cổng LAN và cổng WAN",
-        "D. Không có cổng nào"
-      ],
-      correctAnswer: 2,
-      explanation: "Đúng! Router có cả cổng LAN để kết nối với mạng cục bộ và cổng WAN để kết nối với các router khác."
-    }} />
-
-    #### d) Modem
-
-    Trong trường hợp truy cập Internet, tín hiệu trong LAN là tín hiệu số (digital) thể hiện các giá trị logic 0 hay 1 dùng cho máy tính. Trong khi đó, để truyền dữ liệu bên ngoài LAN người ta có thể dùng tín hiệu tương tự (analog) như tín hiệu quang, sóng điện từ trong môi trường có dây hoặc không dây như sóng mang của điện thoại công cộng hoặc sóng mang của hệ thống thông tin di động 3G, 4G, 5G,...
-
-    Vì router chỉ hướng luồng dữ liệu tới đích nhưng không chuyển đổi tín hiệu nên cần có thiết bị chuyển đổi tín hiệu hai chiều đặt giữa router và nhà cung cấp dịch vụ Internet, gọi là modem để chuyển tín hiệu số thành tín hiệu tương tự và ngược lại.
-
-    **Modem là thiết bị có chức năng chuyển đổi tín hiệu số thành tín hiệu tương tự và ngược lại.** Modem chỉ thay đổi tín hiệu mà không làm thay đổi dữ liệu được mang bởi tín hiệu.
-
-    **Các loại modem phổ biến:**
-
-    - **Modem quay số:** Cho phép nối hai máy tính qua hệ thống chuyển mạch của mạng điện thoại công cộng. Dữ liệu được mã hoá qua tín hiệu thoại, được chuyển qua đường dây chung với điện thoại.
-
-    - **Modem ADSL:** Dùng cáp điện thoại nhưng sử dụng riêng cho thuê bao số, không dùng chung tần số với đường thoại. Modem ADSL rất phổ biến để kết nối Internet tốc độ cao trước khi cáp quang được dùng rộng rãi.
-
-    - **Modem quang:** Chuyển đổi tín hiệu số sang tín hiệu quang và ngược lại.
-
-    - **Modem GSM 3G, 4G, 5G:** Có khe SIM để truy cập Internet qua hệ thống điện thoại di động và phát lại qua sóng Wi-Fi hoặc nối vào mạng có dây.
-
-    Thời kì đầu, modem thường tách rời khỏi router, nhưng sau này, chức năng modem được tích hợp ngay vào router nên chúng ta ít thấy hình ảnh các modem độc lập.
-
-    #### Hoạt động 4: Máy tính có thể sử dụng trực tiếp mọi loại tín hiệu được không?
-
-    Tín hiệu truyền trên mạng điện thoại là sóng điện áp thể hiện dao động âm thanh. Trước khi cáp quang được sử dụng rộng rãi, người ta dùng chính đường dây điện thoại để truyền dữ liệu Internet. Máy tính có thể sử dụng trực tiếp tín hiệu điện thoại hay không?
-
-    **Trả lời:** Không thể. Máy tính chỉ hiểu tín hiệu số (digital), trong khi các đường truyền khác (điện thoại, cáp quang) sử dụng tín hiệu tương tự (analog). Cần có Modem để chuyển đổi giữa hai loại tín hiệu này.
-
-    <Alert type="info">
-      **Thiết bị tất cả trong một:**
-      Trong các gia đình hiện nay, chiếc hộp Wi-Fi thường tích hợp cả 4 chức năng: Modem, Router, Switch và Access Point.
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề vào bài"
+  >
+    <Alert type="info" title="Mục tiêu bài học">
+      Dữ liệu trên mạng di chuyển dưới dạng các tín hiệu vật lý (điện, ánh sáng cáp quang, sóng vô tuyến). Các thiết bị mạng đóng vai trò như các trạm trung chuyển, phân luồng và phiên dịch tín hiệu để đảm bảo dữ liệu đến đúng đích.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS nêu được chức năng chính của một số thiết bị mạng thông dụng
-    - HS biết cách kết nối máy tính với thiết bị mạng
-    - HS phân biệt được các loại thiết bị mạng và công dụng của chúng
+  </SlideStep>
+</PedagogyActivity>
 
-    **Hoạt động:**
-    - GV sử dụng phương pháp thuyết trình kết hợp với hình ảnh minh họa
-    - HS quan sát các thiết bị thực tế và thảo luận về chức năng
-    - **Sản phẩm:** Bảng tổng kết chức năng các thiết bị mạng
-  </TeacherNotes>
-</StepKnowledge>
-      <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI
+========================================================================= */}
+<PedagogyActivity
+  id="activity-2"
+  number={2}
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="50 phút"
+  objective="Làm chủ nguyên lý hoạt động của 5 thiết bị mạng: Hub, Switch, Access Point, Router, Modem; sử dụng bộ mô phỏng luồng truyền gói tin tương tác trực tiếp."
+>
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: HUB VÀ SWITCH
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.1"
+    title="BỘ CHIA TÍN HIỆU (HUB) VÀ BỘ CHUYỂN MẠCH (SWITCH)"
+    time="15 phút"
+    target="Phân biệt được cơ chế phát tán broadcast của Hub và chuyển tiếp đích danh của Switch; giải thích hiện tượng xung đột tín hiệu (collision)."
+  >
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Khám phá cơ chế truyền tin nội bộ LAN"
+    >
+      <p className="text-slate-700 dark:text-slate-300 text-sm mb-3">
+        Hình dáng bên ngoài của Hub và Switch rất giống nhau với các cổng RJ45. Hãy quan sát bảng so sánh cơ chế hoạt động:
+      </p>
 
-    1. Hãy nêu chức năng chính của các thiết bị mạng sau: Hub, Switch, Router, Modem.
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+        <div className="p-4 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/30 space-y-2">
+          <strong className="text-amber-800 dark:text-amber-300 block text-base font-bold">
+            📢 BỘ CHIA TÍN HIỆU (HUB)
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            - <strong>Cách thức hoạt động:</strong> Nhân bản và gửi tín hiệu đến <strong>TẤT CẢ</strong> các cổng còn lại (Cơ chế phát tán / Broadcast).
+          </p>
+          <p className="text-rose-600 dark:text-rose-400 font-semibold">
+            - <strong>Nhược điểm chí tử:</strong> Gây <strong>xung đột tín hiệu (Collision)</strong> khi nhiều máy cùng gửi tin một lúc; tính bảo mật kém vì máy nào cũng bắt được gói tin.
+          </p>
+          <span className="inline-block px-2.5 py-1 rounded bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200 text-xs font-bold">
+            Thích hợp: Mạng nhỏ vài máy, chi phí thấp (nay hầu như đã bị khai tử).
+          </span>
+        </div>
 
-    **Trả lời:**
+        <div className="p-4 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/30 space-y-2">
+          <strong className="text-blue-800 dark:text-blue-300 block text-base font-bold">
+            ⚡ BỘ CHUYỂN MẠCH (SWITCH)
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            - <strong>Cách thức hoạt động:</strong> Đọc địa chỉ vật lý (MAC Address), thiết lập tạm thời kênh truyền riêng giữa cổng gửi và cổng nhận (Chuyển mạch Unicast).
+          </p>
+          <p className="text-emerald-600 dark:text-emerald-400 font-semibold">
+            - <strong>Ưu điểm vượt trội:</strong> Không gây xung đột tín hiệu; băng thông đường truyền tối đa độc lập cho từng máy; an toàn dữ liệu cao.
+          </p>
+          <span className="inline-block px-2.5 py-1 rounded bg-blue-200 dark:bg-blue-900 text-blue-900 dark:text-blue-200 text-xs font-bold">
+            Thực tế: Chuẩn mực bắt buộc cho mọi phòng máy tính hiện đại!
+          </span>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Hub:**
-    - Chức năng chính: Kết nối nhiều máy tính trong mạng LAN
-    - Cách hoạt động: Gửi tín hiệu đến tất cả các cổng
-    - Ưu điểm: Chi phí rẻ
-    - Nhược điểm: Gây xung đột tín hiệu, hiệu suất thấp
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Thao tác mô phỏng gửi gói tin"
+    >
+      <p className="text-slate-700 dark:text-slate-300 text-sm mb-2">
+        Sử dụng bộ mô phỏng trực quan dưới đây để quan sát luồng gói tin đi qua Switch trong mạng LAN:
+      </p>
 
-    **Switch:**
-    - Chức năng chính: Kết nối nhiều máy tính trong mạng LAN
-    - Cách hoạt động: Chỉ gửi tín hiệu đến đúng máy tính nhận
-    - Ưu điểm: Hiệu suất cao, không gây xung đột, bảo mật tốt
-    - Nhược điểm: Chi phí cao hơn Hub
+      {/* Interactive Network Topology Component */}
+      <NetworkTopologyVisualizer />
+    </SlideStep>
 
-    **Router:**
-    - Chức năng chính: Kết nối các mạng khác nhau (LAN với Internet)
-    - Cách hoạt động: Định tuyến (tìm đường) cho dữ liệu đi đúng đích
-    - Ưu điểm: Cho phép kết nối Internet, quản lý traffic
-    - Nhược điểm: Cấu hình phức tạp hơn
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Hiện tượng va chạm dữ liệu"
+    >
+      <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs sm:text-sm space-y-1">
+        <strong>Tình huống ẩn dụ:</strong>
+        <p className="text-slate-600 dark:text-slate-300">
+          - Hub giống như một cái loa phát thanh: một người nói thì cả phòng đều phải nghe. Nếu 3 người cùng nói một lúc thì thành mớ âm thanh hỗn độn (xung đột tín hiệu).
+          <br/>- Switch giống như nhân viên tổng đài bưu điện thông minh: bấm nối dây riêng biệt giữa người gọi và người nhận, những người khác vẫn gọi điện bình thường mà không bị ảnh hưởng.
+        </p>
+      </div>
+    </SlideStep>
 
-    **Modem:**
-    - Chức năng chính: Chuyển đổi tín hiệu số ↔ tín hiệu tương tự
-    - Cách hoạt động: Bi đổi tín hiệu từ máy tính sang tín hiệu đường truyền và ngược lại
-    - Ưu điểm: Cho phép kết nối với các loại đường truyền khác nhau
-    - Nhược điểm: Giới hạn bởi loại đường truyền sử dụng
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Switch"
+    >
+      <Alert type="success" title="Quy tắc lựa chọn thiết bị">
+        Trong mọi mạng LAN có từ vài máy trở lên (trường học, văn phòng), luôn luôn sử dụng <strong>Switch</strong> để đảm bảo tốc độ và triệt tiêu hoàn toàn xung đột đường truyền.
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    2. Em có thể kết nối máy tính với Internet bằng những cách nào? Hãy mô tả sơ đồ kết nối cho từng cách.
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: ACCESS POINT VÀ ROUTER
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.2"
+    title="ĐIỂM TRUY CẬP KHÔNG DÂY (AP) VÀ BỘ ĐỊNH TUYẾN (ROUTER)"
+    time="20 phút"
+    target="Giải thích được vai trò của Access Point; phân biệt cổng LAN và cổng WAN; hiểu cơ chế chọn đường (routing) của Router."
+  >
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Vươn ra thế giới Internet"
+    >
+      <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <p>
+          Switch chỉ có thể chuyển tiếp gói tin <strong>trong cùng một mạng LAN nội bộ</strong>. Khi một máy tính ở trường muốn gửi email tới một máy chủ đặt tại Mỹ, thiết bị nào sẽ đảm nhận nhiệm vụ này?
+        </p>
 
-    **Trả lời:**
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl border border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-950/30 space-y-1.5">
+            <strong className="text-teal-800 dark:text-teal-300 block text-base font-bold">
+              📶 ĐIỂM TRUY CẬP KHÔNG DÂY (WAP / ACCESS POINT)
+            </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              - <strong>Chức năng:</strong> Chuyển đổi giữa tín hiệu sóng vô tuyến Wi-Fi và tín hiệu cáp mạng có dây.
+            </p>
+            <p className="text-slate-600 dark:text-slate-400">
+              - <strong>Vai trò:</strong> Cho phép điện thoại, laptop, máy tính bảng kết nối vào mạng LAN mà không cần cắm dây rườm rà; mở rộng vùng phủ sóng Wi-Fi của các tòa nhà.
+            </p>
+          </div>
 
-    **Cách 1: Kết nối qua cáp quang (phổ biến nhất hiện nay)**
-    **Sơ đồ kết nối:**
-    ```
-    Cáp quang từ nhà cung cấp → Modem quang → Router Wi-Fi → 
-    ├── Cáp mạng đến máy tính bàn
-    ├── Wi-Fi đến laptop, điện thoại
-    └── Switch (nếu cần kết nối thêm thiết bị có dây)
-    ```
+          <div className="p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/30 space-y-1.5">
+            <strong className="text-indigo-800 dark:text-indigo-300 block text-base font-bold">
+              🧭 BỘ ĐỊNH TUYẾN (ROUTER)
+            </strong>
+            <p className="text-slate-700 dark:text-slate-300">
+              - <strong>Chức năng cốt lõi:</strong> Kết nối hai hay nhiều mạng LAN khác nhau qua mạng diện rộng Internet.
+            </p>
+            <p className="text-slate-600 dark:text-slate-400">
+              - <strong>Thuật toán định tuyến (Routing):</strong> Dựa vào địa chỉ IP đích để tìm con đường ngắn nhất, thông thoáng nhất chuyển gói tin qua hàng loạt router trung gian trên toàn cầu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Cách 2: Kết nối qua ADSL (điện thoại)**
-    **Sơ đồ kết nối:**
-    ```
-    Đường dây điện thoại → Modem ADSL → Router Wi-Fi → 
-    ├── Cáp mạng đến máy tính
-    └── Wi-Fi đến các thiết bị không dây
-    ```
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Phân biệt cổng LAN và cổng WAN trên Router"
+    >
+      <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-xs space-y-2 border border-slate-700">
+        <span className="text-yellow-400 font-bold block text-sm">🔍 GIẢI MÃ CÁC CỔNG PHÍA SAU ROUTER:</span>
+        <div className="space-y-1 text-slate-300">
+          <p>
+            🔵 <strong>Cổng WAN (Wide Area Network - thường màu xanh dương hoặc vàng):</strong> Chỉ có 01 cổng duy nhất. Dùng để cắm dây cáp nối ra thế giới Internet bên ngoài (nối với Modem nhà mạng).
+          </p>
+          <p>
+            🟡 <strong>Cổng LAN (Local Area Network - thường màu vàng hoặc đen, gồm 4 cổng số 1, 2, 3, 4):</strong> Dùng để cắm dây nối tới các máy tính trong nhà hoặc nối xuống Switch.
+          </p>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Cách 3: Kết nối qua 4G/5G di động**
-    **Sơ đồ kết nối:**
-    ```
-    Sóng 4G/5G → Modem GSM (có SIM) → Router Wi-Fi → 
-    ├── Cáp mạng đến máy tính
-    └── Wi-Fi đến các thiết bị không dây
-    ```
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Thử nghiệm gửi gói tin ra Internet"
+    >
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Học sinh bấm nút <strong>&quot;Gửi ra Internet (Web Server)&quot;</strong> trên bộ mô phỏng <code>NetworkTopologyVisualizer</code> và đối chiếu: Gói tin phải đi qua cổng LAN của Router, qua cổng WAN, rồi mới tới Modem để ra sợi quang Internet.
+      </p>
+    </SlideStep>
 
-    **Cách 4: Kết nối trực tiếp qua Modem Wi-Fi (tích hợp)**
-    **Sơ đồ kết nối:**
-    ```
-    Cáp quang/ADSL → Modem Wi-Fi tích hợp → 
-    ├── Cáp mạng đến máy tính (cổng LAN)
-    └── Wi-Fi đến laptop, điện thoại
-    ```
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Router"
+    >
+      <Alert type="success" title="Khẳng định cốt lõi">
+        Không thể kết nối hai máy tính thuộc hai mạng LAN khác nhau qua Internet nếu không có <strong>Router</strong> làm nhiệm vụ chuyển giao và định tuyến dữ liệu!
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    **Cách 5: Kết nối qua mạng di động (tethering)**
-    **Sơ đồ kết nối:**
-    ```
-    Điện thoại 4G/5G → 
-    ├── Wi-Fi Hotspot đến laptop, máy tính bảng
-    ├── USB đến máy tính
-    └── Bluetooth đến thiết bị gần
-    ```
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3: MODEM VÀ THIẾT BỊ TÍCH HỢP GIA ĐÌNH
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.3"
+    title="BỘ ĐIỀU CHẾ TÍN HIỆU (MODEM) VÀ HỘP WI-FI ALL-IN-ONE GIA ĐÌNH"
+    time="15 phút"
+    target="Giải thích sự cần thiết của việc chuyển đổi tín hiệu số (Digital) và tương tự (Analog); nhận diện 4 chức năng trong hộp Wi-Fi gia đình."
+  >
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Tại sao bắt buộc phải có Modem?"
+    >
+      <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <p>
+          Máy tính chỉ hiểu <strong>tín hiệu số (Digital)</strong> gồm các bit 0 và 1 dưới dạng xung điện áp cao/thấp. Tuy nhiên, đường truyền viễn thông đường dài (cáp quang, sóng điện thoại) lại sử dụng <strong>tín hiệu tương tự (Analog)</strong> như ánh sáng quang hoặc sóng vô tuyến biến thiên liên tục.
+        </p>
 
-    **Cách 6: Kết nối qua mạng vệ tinh**
-    **Sơ đồ kết nối:**
-    ```
-    Ăng-ten vệ tinh → Modem vệ tinh → Router → 
-    ├── Cáp mạng đến máy tính
-    └── Wi-Fi đến các thiết bị không dây
-    ```
+        <div className="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 space-y-1.5">
+          <strong className="text-purple-800 dark:text-purple-300 block text-base font-bold">
+            📡 MODEM (MOdulator - DEModulator)
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            - <strong>Chức năng:</strong> Chuyển đổi 2 chiều: <em>Điều chế (Modulation)</em> từ tín hiệu số sang tương tự; và <em>Giải điều chế (Demodulation)</em> từ tín hiệu tương tự sang số cho máy tính đọc.
+          </p>
+        </div>
+      </div>
+    </SlideStep>
 
-    <Alert type="tip">
-      **Lưu ý thực tế:**
-      - Hiện nay hầu hết các gia đình sử dụng cách 1 hoặc 4 (modem tích hợp)
-      - Cách 5 phù hợp khi di chuyển hoặc khi mạng có dây bị sự cố
-      - Cách 6 dùng ở vùng nông thôn, hải đảo không có cáp quang
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Khám phá thiết bị tích hợp (All-in-One)"
+    >
+      <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-xs sm:text-sm space-y-2">
+        <strong className="text-emerald-800 dark:text-emerald-300 block font-bold text-sm">
+          💡 BÍ MẬT CỦA CHIẾC HỘP WI-FI GIA ĐÌNH:
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Chiếc hộp mạng mà nhà mạng (Viettel, VNPT, FPT) lắp đặt tại nhà thực chất là <strong>thiết bị tích hợp 4 trong 1</strong>:
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-bold pt-1">
+          <span className="p-2 rounded bg-white dark:bg-slate-900 border text-purple-600">1. Modem quang</span>
+          <span className="p-2 rounded bg-white dark:bg-slate-900 border text-indigo-600">2. Router định tuyến</span>
+          <span className="p-2 rounded bg-white dark:bg-slate-900 border text-blue-600">3. Switch 4 cổng</span>
+          <span className="p-2 rounded bg-white dark:bg-slate-900 border text-teal-600">4. Access Point Wi-Fi</span>
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – Các loại Modem khác"
+    >
+      <div className="space-y-1 text-xs text-slate-600 dark:text-slate-400">
+        <p>- <strong>Modem quang (Optical):</strong> Dùng cho Internet cáp quang tốc độ cao (phổ biến nhất hiện nay).</p>
+        <p>- <strong>Modem GSM 4G/5G:</strong> Dùng khe cắm SIM điện thoại, tiện lợi khi đi du lịch hoặc trên xe ô tô khách.</p>
+        <p>- <strong>Modem ADSL / Quay số (Dial-up):</strong> Sử dụng đường dây điện thoại bàn (thế hệ cũ trước đây).</p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức thiết bị"
+    >
+      <Alert type="success" title="Ghi nhớ chìa khóa">
+        Tất cả các thiết bị mạng phối hợp nhịp nhàng: <strong>Modem</strong> tiếp nhận và phiên dịch tín hiệu; <strong>Router</strong> chỉ đường xuyên biên giới; <strong>Switch</strong> phân phối gói tin tới đúng máy; và <strong>Access Point</strong> giải phóng máy tính khỏi dây cáp vật lý.
+      </Alert>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP
+========================================================================= */}
+<PedagogyActivity
+  id="activity-3"
+  number={3}
+  title="LUYỆN TẬP – ĐẤU TRƯỜNG THIẾT BỊ MẠNG"
+  time="15 phút"
+  objective="Củng cố chức năng của từng thiết bị mạng qua bài tập trắc nghiệm và ma trận Đúng/Sai chuẩn BGDĐT."
+>
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đấu trường Tri thức Thiết bị mạng"
+  >
+    <p className="text-slate-700 dark:text-slate-300 text-sm mb-2">
+      Học sinh làm bài tập kiểm tra trong 05 phút:
+    </p>
+
+    <ClassTimer initialMinutes={5} />
+
+    <SpeedQuizExercise
+      multipleChoice={[
+        {
+          id: 1,
+          question: "Thiết bị mạng nào sau đây có chức năng chuyển đổi qua lại giữa tín hiệu số (Digital) và tín hiệu tương tự (Analog)?",
+          options: [
+            "A. Bộ chuyển mạch (Switch)",
+            "B. Bộ chia tín hiệu (Hub)",
+            "C. Bộ điều chế và giải điều chế (Modem)",
+            "D. Điểm truy cập không dây (Access Point)"
+          ],
+          correctAnswer: 2,
+          explanation: "Modem (Modulator/Demodulator) có chức năng duy nhất là chuyển đổi giữa tín hiệu số của máy tính và tín hiệu tương tự trên đường truyền viễn thông."
+        },
+        {
+          id: 2,
+          question: "Khi kết nối hai máy tính thuộc hai mạng LAN khác nhau qua Internet, thiết bị nào bắt buộc phải có để thực hiện chọn đường đi?",
+          options: [
+            "A. Bộ định tuyến (Router)",
+            "B. Bộ chia tín hiệu (Hub)",
+            "C. Bộ lặp tín hiệu (Repeater)",
+            "D. Card mạng (NIC)"
+          ],
+          correctAnswer: 0,
+          explanation: "Router là thiết bị định tuyến dữ liệu giữa các mạng khác nhau dựa trên địa chỉ IP."
+        },
+        {
+          id: 3,
+          question: "Điểm vượt trội nhất của Switch so với Hub là gì?",
+          options: [
+            "A. Giá thành rẻ hơn rất nhiều",
+            "B. Gửi tín hiệu đến tất cả các cổng cùng một lúc",
+            "C. Chỉ gửi gói tin đến đúng máy tính đích, không gây xung đột tín hiệu (Collision)",
+            "D. Không cần cắm nguồn điện vẫn hoạt động được"
+          ],
+          correctAnswer: 2,
+          explanation: "Switch chỉ tạo kênh truyền riêng giữa máy gửi và máy nhận, giải quyết triệt để bài toán xung đột tín hiệu."
+        }
+      ]}
+      trueFalseMatrix={[
+        {
+          id: 1,
+          statement: "Trên Router gia đình, sợi dây cáp mạng nối từ Modem vào Router phải được cắm vào cổng WAN.",
+          isTrue: true,
+          explanation: "Đúng. Cổng WAN là cổng tiếp nhận tín hiệu từ mạng ngoài (Internet/Modem), còn các cổng LAN dùng để chia sẻ xuống thiết bị nội bộ."
+        },
+        {
+          id: 2,
+          statement: "Hub chỉ gửi dữ liệu đến đúng máy tính nhận dựa vào địa chỉ MAC của thiết bị.",
+          isTrue: false,
+          explanation: "Sai. Hub nhân bản tín hiệu gửi đến tất cả các cổng (Broadcast). Thiết bị làm việc dựa vào địa chỉ MAC là Switch."
+        },
+        {
+          id: 3,
+          statement: "Điểm truy cập không dây (Access Point) giúp các thiết bị như điện thoại, laptop kết nối vào mạng LAN thông qua sóng Wi-Fi.",
+          isTrue: true,
+          explanation: "Đúng. Access Point đóng vai trò cầu nối không dây mở rộng phạm vi mạng LAN."
+        }
+      ]}
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Chấm điểm tự động"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Học sinh tự rà soát câu trả lời và xem giải thích chi tiết.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Rút kinh nghiệm"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Giáo viên lưu ý học sinh không cắm nhầm dây từ máy tính vào cổng WAN của router vì sẽ không vào được mạng nội bộ.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt phần luyện tập"
+  >
+    <Alert type="success" title="Tổng kết">
+      Học sinh đã phân biệt thành thạo 5 thiết bị mạng cốt lõi và sẵn sàng vận dụng vẽ sơ đồ thiết kế mạng.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS củng cố kiến thức về chức năng các thiết bị mạng và biết cách kết nối thực tế.
-    **Hoạt động:** GV đặt câu hỏi, HS trả lời và vẽ sơ đồ kết nối.
-    **Sản phẩm:** Bảng tổng kết chức năng và các sơ đồ kết nối Internet.
-  </TeacherNotes>
-</StepPractice>
-  <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+  </SlideStep>
+</PedagogyActivity>
 
-    Hãy tìm hiểu và thực hành kết nối máy tính với Internet bằng cách sử dụng các thiết bị mạng.
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-4"
+  number={4}
+  title="VẬN DỤNG – 'THIẾT KẾ MẠNG CHO NGÔI NHÀ 3 TẦNG'"
+  time="15 phút"
+  objective="Vận dụng kiến thức về Switch, Router, Modem, Access Point để thiết kế sơ đồ mạng phủ sóng toàn diện cho gia đình hoặc phòng máy trường học."
+>
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Bài toán Kỹ sư Mạng tương lai"
+  >
+    <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+      <p>
+        <strong>Đề bài thực tiễn:</strong> Gia đình bạn An có một ngôi nhà 3 tầng xây bằng bê tông kiên cố. Nhà mạng kéo 01 đường cáp quang vào tầng 1. An phàn nàn rằng lên tầng 3 thì sóng Wi-Fi rất yếu, chập chờn, trong khi anh trai An ở tầng 2 cần cắm dây mạng trực tiếp vào máy tính bàn để làm đồ họa.
+      </p>
+      <p>
+        <strong>Nhiệm vụ:</strong> Em hãy tư vấn và vẽ sơ đồ lắp đặt các thiết bị mạng (Modem, Switch, Router/Access Point) để giải quyết triệt để vấn đề mạng cho nhà bạn An với chi phí tiết kiệm nhất.
+      </p>
+    </div>
+  </SlideStep>
 
-    **Thực hành 1: Xác định các thiết bị mạng trong phòng thực hành hoặc tại nhà**
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thang đo đánh giá Rubric – Chuẩn Công văn 5512"
+  >
+    <RubricCard
+      title="Thang đo đánh giá Sơ đồ Thiết kế Mạng gia đình"
+      criteria={[
+        {
+          name: "Lựa chọn và phối ghép thiết bị mạng",
+          weight: "40%",
+          levels: {
+            good: "Lựa chọn đúng Modem ở tầng 1, kéo dây cáp LAN lên tầng 2-3 cắm vào Switch hoặc Access Point phụ (Wi-Fi Mesh), đảm bảo sóng khỏe toàn diện.",
+            acceptable: "Chọn được thiết bị nhưng bố trí chưa hợp lý (để Wi-Fi tầng 1 phát xuyên 2 tầng bê tông).",
+            poor: "Chọn sai thiết bị (nhầm lẫn giữa Hub và Router)."
+          }
+        },
+        {
+          name: "Tính khoa học & Chi phí",
+          weight: "35%",
+          levels: {
+            good: "Giải pháp tiết kiệm chi phí, tận dụng được thiết bị nhà mạng và có tính dự phòng mở rộng thiết bị tương lai.",
+            acceptable: "Giải pháp hoạt động được nhưng chi phí quá đắt đỏ hoặc lãng phí cổng kết nối.",
+            poor: "Giải pháp không khả thi trong thực tế xây dựng."
+          }
+        },
+        {
+          name: "Sơ đồ trực quan & Thuyết trình",
+          weight: "25%",
+          levels: {
+            good: "Vẽ sơ đồ mạng chuẩn ký hiệu tin học, chú thích rõ tên cổng LAN/WAN và loại dây truyền dẫn.",
+            acceptable: "Sơ đồ vẽ tay dễ hiểu nhưng chưa chuẩn quy ước ký hiệu.",
+            poor: "Không có sơ đồ hoặc sơ đồ vẽ sai luồng tín hiệu."
+          }
+        }
+      ]}
+      sampleProject={{
+        title: "Giải pháp mẫu cho ngôi nhà 3 tầng của bạn An",
+        description: "Phương án tối ưu kỹ thuật và chi phí sử dụng hệ thống cáp LAN xương sống kết hợp Access Point phụ.",
+        code: `[SƠ ĐỒ PHÂN BỐ THIẾT BỊ THEO TẦNG]:
 
-    **Bước 1: Quan sát và nhận diện**
-    - Tìm các thiết bị mạng có trong phòng/thiết lập
-    - Ghi tên và số lượng các thiết bị:
-      - Modem: ______ thiết bị
-      - Router: ______ thiết bị
-      - Switch: ______ thiết bị
-      - Hub: ______ thiết bị
-      - Access Point: ______ thiết bị
+[TẦNG 1 (Cửa vào)]:
+- Cáp quang nhà mạng ➔ Cắm vào Hộp Modem Wi-Fi chính (nhà mạng cấp)
+- Phát Wi-Fi cho phòng khách và bếp ăn tầng 1
+- Từ cổng LAN của Modem chính ➔ Kéo 01 dây cáp mạng Cat6 theo ống gen ngầm lên Tầng 2
 
-    **Bước 2: Phân tích sơ đồ mạng hiện tại**
-    - Vẽ sơ đồ kết nối thực tế
-    - Chỉ ra luồng dữ liệu từ máy tính đến Internet
+[TẦNG 2 (Phòng anh trai & phòng ngủ)]:
+- Dây cáp từ Tầng 1 ➔ Cắm vào 01 chiếc Switch 5 cổng Gigabit
+- Cổng 1 của Switch: Cắm dây mạng trực tiếp vào PC bàn làm đồ họa của anh trai (Tốc độ tối đa 1000Mbps)
+- Cổng 2 của Switch: Kéo tiếp 01 dây mạng lên Tầng 3
 
-    **Thực hành 2: Lắp đặt và cấu hình mạng cơ bản**
+[TẦNG 3 (Phòng bạn An)]:
+- Dây cáp từ Tầng 2 ➔ Cắm vào cổng WAN của 01 Access Point Wi-Fi phụ (hoặc Node Wi-Fi Mesh)
+- Phát sóng Wi-Fi căng sóng full vạch cho cả tầng 3!
 
-    **Bước 1: Chuẩn bị thiết bị**
-    - Kiểm tra cáp mạng (RJ45) có bị hỏng không
-    - Đảm bảo các thiết bị có nguồn điện
-    - Chuẩn bị tài khoản Internet (nếu cần)
+✓ ƯU ĐIỂM: Khắc phục triệt để vật cản bê tông, chi phí chỉ mất thêm 1 Switch (150k) và 1 Access Point (350k)!`
+      }}
+    />
+  </SlideStep>
 
-    **Bước 2: Kết nối vật lý**
-    - Nối cáp mạng từ cổng LAN của Router/Modem vào máy tính
-    - Kiểm tra đèn báo tín hiệu trên các thiết bị
-    - Đảm bảo kết nối chắc chắn
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Lắng nghe phản biện"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Các nhóm nộp sơ đồ thiết kế mạng.</p>
+      <p>- Giáo viên gọi đại diện 1 nhóm lên bảng vẽ lại sơ đồ và giải thích lý do tại sao không nên dùng thiết bị kích sóng (Wi-Fi Repeater) khi khoảng cách quá xa và qua nhiều lớp tường bê tông.</p>
+    </div>
+  </SlideStep>
 
-    **Bước 3: Cấu hình mạng trên máy tính**
-    - Mở Control Panel → Network and Sharing Center
-    - Chọn "Set up a new connection or network"
-    - Chọn "Connect to the Internet"
-    - Theo các bước hướng dẫn tự động
-
-    **Bước 4: Kiểm tra kết nối**
-    - Mở Command Prompt (cmd)
-    - Gõ lệnh: `ping google.com`
-    - Nếu nhận được reply → Kết nối thành công
-    - Nếu timeout → Kiểm tra lại kết nối
-
-    **Thực hành 3: Cấu hình Wi-Fi cơ bản**
-
-    **Bước 1: Truy cập Router**
-    - Mở trình duyệt web
-    - Gõ địa chỉ IP của Router (thường là 192.168.1.1 hoặc 192.168.0.1)
-    - Đăng nhập với tài khoản admin/mật khẩu mặc định
-
-    **Bước 2: Cấu hình Wi-Fi**
-    - Vào mục Wireless Settings
-    - Đặt tên mạng (SSID)
-    - Thiết lập mật khẩu Wi-Fi (WPA2/WPA3)
-    - Lưu cấu hình
-
-    **Bước 3: Kết nối thiết bị Wi-Fi**
-    - Tìm tên mạng Wi-Fi vừa đặt
-    - Nhập mật khẩu
-    - Kiểm tra kết nối Internet
-
-    **Thực hành 4: Xử lý sự cố mạng cơ bản**
-
-    **Vấn đề 1: Không có Internet**
-    - Kiểm tra cáp mạng có kết nối không
-    - Khởi động lại Modem và Router
-    - Kiểm tra đèn báo tín hiệu
-    - Liên hệ nhà cung cấp dịch vụ
-
-    **Vấn đề 2: Wi-Fi không kết nối được**
-    - Kiểm tra mật khẩu Wi-Fi
-    - Đặt lại Router về chế độ mặc định
-    - Cập nhật driver Wi-Fi trên máy tính
-    - Kiểm tra khoảng cách đến Router
-
-    **Vấn đề 3: Tốc độ mạng chậm**
-    - Kiểm tra số thiết bị kết nối
-    - Thay đổi kênh Wi-Fi
-    - Kiểm tra xem có thiết bị nào đang dùng băng thông lớn không
-    - Nâng cấp gói cước Internet
-
-    **Bài tập mở rộng:**
-    1. Thiết kế sơ đồ mạng cho một lớp học có 20 máy tính
-    2. Lập kế hoạch mua sắm thiết bị mạng cho văn phòng nhỏ
-    3. Tìm hiểu về các tiêu chuẩn Wi-Fi mới nhất (Wi-Fi 6, Wi-Fi 7)
-
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành thực hành, học sinh sẽ biết cách kết nối và cấu hình mạng cơ bản, cũng như xử lý các sự cố mạng thông thường.
-    </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức đã học để thực hành kết nối mạng thực tế.
-    **Hoạt động:** HS thực hành dưới sự hướng dẫn của GV.
-    **Sản phẩm:** Báo cáo thực hành kết nối mạng và xử lý sự cố.
-  </TeacherNotes>
-</StepApplication>
-
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **Hub:** Gửi tín hiệu đến tất cả cổng (dễ xung đột)
-- ✅ **Switch:** Gửi tín hiệu đến đúng máy nhận (hiệu quả cao)
-- ✅ **Access Point:** Cho phép kết nối Wi-Fi vào mạng có dây
-- ✅ **Router:** Kết nối các mạng khác nhau, định tuyến dữ liệu
-- ✅ **Modem:** Chuyển đổi tín hiệu số ↔ tương tự
-- ✅ **Thiết bị gia đình:** Thường tích hợp cả 4 chức năng trong 1 thiết bị
-</GlassCard>
-</div>
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt bài giảng"
+  >
+    <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-600 to-teal-600 text-white space-y-2 shadow-lg">
+      <h5 className="font-bold text-base">🌐 THÔNG ĐIỆP BÀI HỌC</h5>
+      <p className="text-xs sm:text-sm text-blue-100 leading-relaxed">
+        Làm chủ kiến thức về các thiết bị mạng giúp các em không còn lúng túng khi gặp sự cố mạng, có thể tự tin tự lắp đặt, tối ưu hóa và quản trị hệ thống mạng trong gia đình và cơ quan sau này!
+      </p>
+    </div>
+  </SlideStep>
+</PedagogyActivity>

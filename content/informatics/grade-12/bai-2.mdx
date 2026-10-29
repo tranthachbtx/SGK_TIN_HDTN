@@ -1,355 +1,623 @@
 ---
 title: "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống"
-description: "Khám phá cách AI đang phủ sóng mọi lĩnh vực và hiểu về những cảnh báo trong tương lai."
+description: "Phân tích tác động mang tính cách mạng của AI trong y tế, giao thông, tài chính, giáo dục, AI tạo sinh ChatGPT và các cảnh báo đạo đức công nghệ theo chuẩn Công văn 5512."
 order: 2
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    AI không còn là một khái niệm viễn tưởng trong phim ảnh, nó đang hiện diện trong từng bữa ăn, giấc ngủ và công việc của chúng ta. 
-    
-    **💡 Một vài con số ấn tượng:**
-    - AI có thể chẩn đoán ung thư sớm hơn bác sĩ đến 2 năm.
-    - Xe tự lái có thể giảm thiểu 90% số vụ tai nạn do lỗi con người.
-    - ChatGPT đạt 100 triệu người dùng chỉ sau 2 tháng ra mắt.
-    
-    Tuy nhiên, quyền năng càng lớn, trách nhiệm càng cao. Liệu AI sẽ là "người giúp việc" trung thành hay hành động như một "kẻ nổi loạn" ngoài tầm kiểm soát? Chúng ta cùng tìm lời giải trong bài học này.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - Kết nối kiến thức lý thuyết về AI với các ứng dụng thực tế.
-    - Đặt vấn đề về đạo đức và rủi ro khi sử dụng AI.
-    
-    **Tổ chức thực hiện:**
-    - GV đưa ra tình huống: "Một chiếc xe tự lái gặp sự cố và phải lựa chọn giữa việc đâm vào một con vật hay một đồ vật để cứu người trong xe".
-    - HS thảo luận về trách nhiệm của lập trình viên và của AI.
-  </TeacherNotes>
-</StepEngagement>
+<LessonPlanHeader
+  title="BÀI 2: TRÍ TUỆ NHÂN TẠO TRONG KHOA HỌC VÀ ĐỜI SỐNG"
+  subject="TIN HỌC 12 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  duration="02 TIẾT (90 PHÚT)"
+  topic="CHỦ ĐỀ 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC – GIỚI THIỆU TRÍ TUỆ NHÂN TẠO"
+/>
 
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    Trong các cuộc tranh luận về AI thường có hai quan điểm sau:
+<LearningObjectives
+  knowledge={[
+    "Trình bày và giải thích được các ứng dụng đột phá của AI trong các lĩnh vực then chốt: Y tế và chăm sóc sức khỏe, Giao thông vận tải, Tài chính ngân hàng, Sản xuất công nông nghiệp thông minh, Giáo dục và Sáng tạo nghệ thuật.",
+    "Hiểu được bản chất của AI tạo sinh (Generative AI) và phân tích trường hợp điển hình của ChatGPT (cơ chế huấn luyện trên tập dữ liệu khổng lồ, năng lực ngôn ngữ và các giới hạn về độ tin cậy).",
+    "Chỉ ra và đánh giá được các cảnh báo, rủi ro xã hội tiềm ẩn của AI: Tác động tiêu cực đến việc làm, thiên vị thuật toán (Algorithmic Bias), xâm phạm quyền riêng tư dữ liệu cá nhân, tin giả và lừa đảo Deepfake, vấn đề đạo đức của vũ khí tự hành.",
+    "Nêu được các nguyên tắc cốt lõi về việc sử dụng và phát triển AI có trách nhiệm (Responsible AI)."
+  ]}
+  competencies={[
+    "Năng lực Tin học (NLb, NLd): Có khả năng tra cứu, thẩm định và đánh giá tính chính xác của các câu trả lời do AI tạo sinh cung cấp; nhận biết được nguy cơ sai lệch dữ liệu và ảo giác của mô hình ngôn ngữ lớn (Hallucination).",
+    "Năng lực số tích hợp: Khai thác AI an toàn, liêm chính học thuật, không sao chép nguyên văn sản phẩm của AI trong quá trình làm bài tập.",
+    "Năng lực chung: Năng lực phản biện, tranh biện xã hội về các vấn đề đạo đức công nghệ."
+  ]}
+  qualities={[
+    "Xây dựng ý thức công dân số có trách nhiệm, tôn trọng bản quyền sở hữu trí tuệ và sự thật khách quan.",
+    "Có thái độ chủ động nâng cao năng lực bản thân, thích ứng tích cực với sự chuyển đổi của thị trường lao động thời đại AI."
+  ]}
+/>
 
-    - Trong tương lai, AI sẽ có thể thông minh hơn nhiều và thay thế hoàn toàn con người.
+<EquipmentChecklist
+  items={[
+    {
+      name: "Màn hình tương tác / Máy chiếu lớp học",
+      description: "Trình chiếu slide tương tác, video ca nghiên cứu thực tế và bảng đối chiếu tác động của AI.",
+      status: "ready"
+    },
+    {
+      name: "Máy tính cá nhân học sinh / Phòng máy trường",
+      description: "Truy cập các công cụ AI tạo sinh (ChatGPT, Copilot, Canva Magic Studio) để kiểm chứng khả năng và giới hạn.",
+      status: "ready"
+    },
+    {
+      name: "Tài liệu học tập số",
+      description: "Hệ thống câu hỏi tình huống đạo đức AI và phiếu đánh giá Rubric chuẩn 5512.",
+      status: "ready"
+    }
+  ]}
+/>
 
-    - AI có thể làm được nhiều việc nhưng không thể thay thế con người.
+{/* =========================================================================
+    HOẠT ĐỘNG 1: KHỞI ĐỘNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-1"
+  number={1}
+  title="KHỞI ĐỘNG – 'AI: TRỢ THỦ ĐẮC LỰC HAY KẺ NỔI LOẠN?'"
+  time="10 phút"
+  objective="Khơi dậy nhận thức đa chiều của học sinh về tương lai của AI thông qua hai quan điểm trái ngược nhau được nêu trong SGK."
+>
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Tọa đàm 2 quan điểm tranh luận"
+  >
+    <div className="space-y-3">
+      <p className="text-slate-700 dark:text-slate-300 text-sm">
+        Trong các hội thảo quốc tế về tương lai nhân loại, các chuyên gia công nghệ đang chia thành 2 luồng quan điểm lớn:
+      </p>
 
-    Em ủng hộ quan điểm nào trong hai quan điểm trên? Vì sao?
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-2 text-sm">
+        <div className="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 space-y-1">
+          <strong className="text-purple-800 dark:text-purple-300 block text-base font-bold">
+            🔵 QUAN ĐIỂM A: AI SẼ THAY THẾ TOÀN DIỆN CON NGƯỜI
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300 text-xs">
+            Trong tương lai không xa, AI sẽ vượt trội con người về mọi mặt (tính toán, tư duy logic, sáng tạo, quản lý). Hàng triệu công việc truyền thống sẽ biến mất hoàn toàn và con người có nguy cơ mất quyền kiểm soát hành tinh.
+          </p>
+        </div>
 
-    ### 1. Trí tuệ nhân tạo và sự phát triển của một số lĩnh vực
+        <div className="p-4 rounded-xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800 space-y-1">
+          <strong className="text-teal-800 dark:text-teal-300 block text-base font-bold">
+            🟢 QUAN ĐIỂM B: AI CHỈ LÀ CÔNG CỤ TRỢ THỦ KHÔNG THỂ THAY THẾ CON NGƯỜI
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300 text-xs">
+            AI dù thông minh đến đâu cũng chỉ là mô hình toán học trên dữ liệu quá khứ. AI không có ý thức, không có cảm xúc, không có đạo đức, tình yêu thương hay lương tâm – những giá trị duy nhất định hình nên phẩm giá con người.
+          </p>
+        </div>
+      </div>
 
-    #### Hoạt động 1: Tìm hiểu một số lĩnh vực phát triển mạnh mẽ nhờ ứng dụng của AI
+      <div className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-xl border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 font-semibold">
+        ⏱️ Thử thách lớp học (03 phút): Em nghiêng về quan điểm nào hơn? Hãy chuẩn bị 01 luận điểm thực tế để thuyết phục bạn bên cạnh!
+      </div>
 
-    Ngày nay, nhiều lĩnh vực đang có thay đổi lớn lao nhờ ứng dụng AI. Hãy chỉ ra một vài lĩnh vực mà em tìm hiểu được qua các phương tiện thông tin đại chúng và Internet.
+      <ClassTimer initialMinutes={3} />
+    </div>
+  </SlideStep>
 
-    Nhiều lĩnh vực khoa học, công nghệ và đời sống đã và đang nhận được rất nhiều lợi ích từ sự phát triển của AI. Dưới đây là một vài lĩnh vực tiêu biểu:
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Bỏ phiếu tranh luận lớp học"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Học sinh giơ tay biểu quyết: Ai chọn Quan điểm A? Ai chọn Quan điểm B?</p>
+      <p>- Từng dãy bàn cử 1 đại diện phát biểu lý do ủng hộ góc nhìn của mình.</p>
+    </div>
+  </SlideStep>
 
-    **Hệ chuyên gia:** Nhờ những thành tựu của AI, lĩnh vực này đã phát triển đáng kể. Ban đầu, hệ chuyên gia là chương trình máy tính được thiết kế dựa trên các luật suy diễn và tri thức của chuyên gia trong từng lĩnh vực cụ thể. Với sự phát triển của AI, đặc biệt là Học máy, nhiều hệ chuyên gia đã có khả năng tự học từ dữ liệu để tự hình thành các luật và tri thức dựa trên dữ liệu.
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Lắng nghe các góc nhìn đa chiều"
+  >
+    <div className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Đại diện nhóm A: Dẫn chứng xe tự lái, chẩn đoán ung thư chính xác hơn bác sĩ, robot phẫu thuật tinh vi.</p>
+      <p>- Đại diện nhóm B: Dẫn chứng AI không thể thấu cảm nỗi đau người bệnh, không thể chịu trách nhiệm pháp lý trước tòa.</p>
+    </div>
+  </SlideStep>
 
-    **Y học và chăm sóc sức khoẻ:** AI được sử dụng để cải thiện chất lượng hình ảnh y tế, làm nổi bật những cấu trúc bất thường bên trong cơ thể, thực hiện đo đạc các chỉ số lâm sàng, hỗ trợ đưa ra các chẩn đoán và hướng điều trị chính xác, kịp thời. Ví dụ, các chuyên gia y tế khẳng định phần mềm IBM Watson for Oncology đã góp phần nâng cao hiệu quả điều trị ung thư.
-
-    **Giao thông vận tải:** AI đã được sử dụng để phát triển các phương tiện tự lái, quản lí giao thông thông minh và định tuyến phương tiện vận tải. Sự phát triển mạnh mẽ của ô tô tự lái, máy bay không người lái,... trong những năm gần đây không thể có được nếu không có AI.
-
-    **Tài chính, ngân hàng:** AI không chỉ hỗ trợ tự động hoá cập nhật chứng từ, hoá đơn vào cơ sở dữ liệu, mà còn giúp phân tích, xử lí dữ liệu một cách hiệu quả để hỗ trợ quyết định đầu tư, phát hiện và ngăn chặn gian lận, nâng cao trải nghiệm khách hàng.
-
-    **Sản xuất:** AI được sử dụng để cải thiện hiệu suất, hiệu quả và sự phát triển bền vững của các lĩnh vực sản xuất. Trong công nghiệp, AI giúp tự động hoá nhiều quá trình, từ chế tạo, lắp ráp, kiểm tra chất lượng đến quản lí chuỗi cung ứng. Các robot và hệ thống tự động hoá được tích hợp AI có khả năng thực hiện nhiều công việc lập đi lập lại một cách hiệu quả. Trong nông nghiệp, AI được sử dụng trong các trang trại thông minh để theo dõi những yếu tố có ảnh hưởng trực tiếp tới hiệu quả nuôi trồng như điều kiện thời tiết, đất đai, sức đề kháng với dịch bệnh và thời tiết của vật nuôi, cây trồng. AI có thể giúp người nông dân tối ưu hoá quy trình chăm sóc vật nuôi và cây trồng; hợp lí hoá tưới tiêu, dự đoán mùa vụ, xác định thời điểm thu hoạch tối ưu dựa trên dữ liệu về điều kiện chăm sóc, thời tiết, đất đai và cây giống,...
-
-    **Giáo dục:** AI được sử dụng để phát triển các nền tảng học tập được cá nhân hoá và hỗ trợ đánh giá kết quả học tập. Ví dụ, AI được sử dụng để phát triển các nền tảng học trực tuyến thông minh, có khả năng theo dõi tiến trình học tập, đề xuất nội dung học tập phù hợp và cung cấp phản hồi tức thì cho từng cá nhân người học. Các trợ lí học tập ảo dựa trên AI có thể hỗ trợ học sinh và giáo viên bằng cách trả lời câu hỏi, cung cấp hướng dẫn và tài liệu học tập,...
-
-    **Các lĩnh vực khác:**
-    Có thể chỉ ra những ảnh hưởng của AI tới nhiều lĩnh vực khoa học và đời sống khác. Chẳng hạn, trong lĩnh vực khoa học xã hội và nhân văn, AI được sử dụng không chỉ để thu thập và phân tích tự động quan điểm xã hội, mà còn để mô phỏng và mô hình hoá nhiều hiện tượng xã hội và nhân học. Một số ứng dụng AI có khả năng sáng tạo các tác phẩm âm nhạc, hội hoạ, văn học theo nhiều phong cách khác nhau. Sự kết hợp IoT và AI (AIoT) cho phép các nhà khoa học giám sát môi trường tự nhiên và theo dõi tình hình biến đổi khí hậu. Những thành tựu của xử lí ngôn ngữ tự nhiên và thị giác máy tính trong AI đã góp phần phát triển hàng loạt các ứng dụng thiết thực cho đời sống như dịch thuật tự động, hỗ trợ khách hàng bằng ngôn ngữ tự nhiên, các hệ thống nhận dạng hình ảnh và video đa dạng,... Ngày nay, trong nhiều lĩnh vực như công nghiệp trò chơi điện tử hay thám hiểm không gian vũ trụ,... việc ứng dụng AI đã thật sự trở thành một phần không thể thiếu.
-
-    Ngày nay, nhiều lĩnh vực của khoa học công nghệ và đời sống đã và đang phát triển mạnh mẽ dựa trên những thành tựu to lớn của AI. Có thể nói AI đã trở thành một phần không thể thiếu của cuộc sống hiện đại.
-
-    <Quiz data={{
-      question: "Trong các lĩnh vực sau đây, lĩnh vực nào AI đã tạo ra sự thay đổi đột phá nhất trong những năm gần đây?",
-      options: [
-        "A. Sản xuất công nghiệp với robot tự động",
-        "B. Y tế với chẩn đoán ung thư sớm",
-        "C. Giao thông với xe tự lái",
-        "D. Tất cả các lĩnh vực trên đều có sự thay đổi đột phá"
-      ],
-      correctAnswer: 3,
-      explanation: "Đúng! AI đã tạo ra sự thay đổi đột phá trong tất cả các lĩnh vực được liệt kê, từ sản xuất, y tế đến giao thông."
-    }} />
-
-    ### 2. Trí tuệ nhân tạo và một vài cảnh báo
-
-    #### Hoạt động 2: Những hình dung của em về tương lai của AI
-
-    Trên cơ sở những thông tin về sự phát triển của AI ngày nay, hãy cho biết những suy nghĩ của em về tương lai của AI.
-
-    Sự phát triển của AI đã và đang diễn ra với tốc độ nhanh chóng, có tiềm năng cách mạng hoá nhiều lĩnh vực khoa học và đời sống. Những ứng dụng hết sức đa dạng của AI đã cho ta thấy rõ điều đó. Tuy nhiên, các thành tựu hiện tại của AI vẫn chỉ hạn chế trong phạm vi Trí tuệ nhân tạo hẹp/Trí tuệ nhân tạo yếu. Trong tương lai, nhiều chuyên gia kì vọng sẽ phát triển thành công Trí tuệ nhân tạo tổng quát/ Trí tuệ nhân tạo mạnh, có năng lực trí tuệ như con người, bao gồm cả khả năng áp dụng tri thức từ lĩnh vực này sang lĩnh vực khác. Có thể nói đây là mục tiêu dài hạn và hết sức phức tạp trong nghiên cứu và phát triển AI.
-
-    Tuy vậy, triển vọng thực tế không phải là không có nhiều hứa hẹn. Sự phát triển mạnh mẽ trong những năm gần đây của AI tạo sinh (Generative AI) là một minh chứng. AI tạo sinh tập trung vào việc xây dựng các thuật toán và mô hình có thể tạo nội dung (hình ảnh, âm thanh, văn bản) một cách tự động, được sử dụng trong nhiều lĩnh vực, bao gồm nghệ thuật, giải trí, quảng cáo và trò chơi.
-
-    #### ChatGPT - Một ví dụ điển hình của AI hiện đại
-
-    Một ví dụ điển hình có thể nêu ở đây là ChatGPT, một hệ thống xử lí ngôn ngữ tiên tiến do OpenAI phát triển. Nó là một hệ thống có tri thức, có khả năng suy luận và khả năng học,... Cụ thể:
-
-    **ChatGPT được huấn luyện trên một lượng lớn dữ liệu văn bản,** ví dụ, phiên bản GPT-3 được huấn luyện trên hàng vạn văn bản thuộc nhiều lĩnh vực khác nhau trên Internet, bao gồm sách, bài báo, trang web và nhiều nguồn khác.
-
-    **Một trong những khả năng được đánh giá cao của ChatGPT đó là khả năng hiểu và tạo văn bản ngôn ngữ tự nhiên.** Nó có thể đọc hiểu các câu hỏi và yêu cầu của người dùng, sau đó trả lời một cách hợp lí và thông minh. Đây chính là thể hiện khả năng suy luận và tri thức về ngôn ngữ của ChatGPT.
-
-    **Hơn thế nữa, ChatGPT không chỉ cung cấp những câu trả lời cố định mà còn có khả năng đưa ra các câu trả lời đa dạng dựa trên ngữ cảnh và yêu cầu cụ thể của người dùng.** Điều này cho thấy sự linh hoạt trong suy nghĩ và khả năng suy luận của nó.
-
-    **ChatGPT có khả năng xử lí thông tin phức tạp để trả lời các câu hỏi mang tính phân tích và tổng hợp.** Nó có thể xử lí dữ liệu từ nhiều nguồn để cung cấp các giải pháp dựa trên khả năng suy luận và tổng hợp tri thức.
-
-    **Việc có thể tương tác một cách liên tục và cải thiện nội dung trả lời dựa trên phản hồi của người dùng cho thấy ChatGPT có khả năng nắm bắt và thích nghi với ngữ cảnh cụ thể.**
-
-    **ChatGPT có khả năng làm việc với nhiều thứ tiếng khác nhau,** tuy nhiên, mức độ hiểu và khả năng trả lời có thể khác nhau tuy thuộc vào mức độ phát triển và tập trung của nó cho từng ngôn ngữ cụ thể. Nói chung, ChatGPT hoạt động tốt nhất trong các ngôn ngữ phổ biến và có nhiều dữ liệu huấn luyện, chẳng hạn như tiếng Anh, Tây Ban Nha, Pháp, Đức, Ý và một số ngôn ngữ khác. Đối với các ngôn ngữ còn lại, đặc biệt là các ngôn ngữ ít phổ biến hoặc không có nhiều dữ liệu huấn luyện, ChatGPT có thể có khả năng hạn chế hơn.
-
-    Tóm lại, ChatGPT được coi là một hệ thống AI có hiểu biết sâu rộng, có khả năng tương tác với người dùng giống như một cuộc hội thoại giữa người với người. Nó có thể trích rút thông tin từ nhiều nguồn khác nhau và tạo ra văn bản chi tiết, mang tính tương tác, giống như cách con người trả lời các câu hỏi trong mọi lĩnh vực. Bên cạnh đó, ChatGPT còn có thể làm thơ, soạn nhạc, viết thư, thiết kế và thậm chí là cả sửa lỗi trong lập trình. Mặc dù còn nhiều hạn chế, song nhiều chuyên gia đánh giá ChatGPT là minh chứng cho sức mạnh của AI, coi ChatGPT là bước đột phá trong lĩnh vực AI của năm 2022, có thể dẫn tới những thay đổi lớn về cách làm việc, cách suy nghĩ, cách dạy và học trong nhà trường.
-
-    <Quiz data={{
-      question: "ChatGPT thể hiện những đặc trưng AI nào sau đây?",
-      options: [
-        "A. Chỉ có khả năng hiểu ngôn ngữ",
-        "B. Có tri thức, khả năng suy luận và khả năng học",
-        "C. Chỉ có khả năng học từ dữ liệu",
-        "D. Chỉ có khả năng suy luận logic"
-      ],
-      correctAnswer: 1,
-      explanation: "Đúng! ChatGPT là hệ thống AI có cả ba đặc trưng quan trọng: tri thức (được huấn luyện trên dữ liệu lớn), khả năng suy luận (hiểu và trả lời câu hỏi) và khả năng học (cải thiện từ phản hồi)."
-    }} />
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS chỉ ra được một số lĩnh vực của khoa học công nghệ và đời sống đã và đang phát triển mạnh mẽ dựa trên những thành tựu to lớn của Trí tuệ nhân tạo
-    - HS nêu được ví dụ để thấy một hệ thống Trí tuệ nhân tạo có tri thức, có khả năng suy luận và khả năng học
-    - HS hiểu được về AI tạo sinh và ChatGPT
-
-    **Hoạt động:**
-    - GV sử dụng phương pháp thuyết trình kết hợp với video minh họa
-    - HS thảo luận về các ứng dụng AI trong thực tế
-    - **Sản phẩm:** Bảng tổng kết các lĩnh vực ứng dụng AI và phân tích ChatGPT
-  </TeacherNotes>
-</StepKnowledge>
-
-    <StepKnowledge title="2. Hình thành kiến thức (Knowledge) - Tiếp theo">
-  <RawContent>
-    ### 3. Những cảnh báo về sự phát triển của AI
-
-    Bên cạnh những lợi ích to lớn, sự phát triển của AI còn kéo theo những nguy cơ cần được cảnh báo, chẳng hạn:
-
-    **Áp lực thất nghiệp:** AI có khả năng tự động hoá nhiều công việc, dẫn đến tình trạng thất nghiệp và tạo nên nhiều nguy cơ cho sự phát triển xã hội.
-
-    **Ảnh hưởng quyền riêng tư:** Nhiều ứng dụng AI hoạt động dựa vào việc thu thập một lượng lớn dữ liệu cá nhân, điều này làm tăng mối lo ngại về quyền riêng tư có khả năng bị lạm dụng.
-
-    **Khả năng thiếu minh bạch:** Phần lớn các ứng dụng AI hiện nay đều là các "hộp đen", gây khó khăn cho việc hiểu các quyết định được đưa ra như thế nào, dẫn đến việc thiếu trách nhiệm giải trình để đảm bảo tính minh bạch.
-
-    **Rủi ro về an ninh, an toàn:** Nhiều ứng dụng AI được xây dựng và triển khai trực tuyến. Điều này có thể bị lợi dụng để xâm nhập hoặc tấn công thay đổi dữ liệu và mô hình, có thể dẫn đến những quyết định không chính xác do AI đưa ra. Các quyết định sai lầm đó có thể gây nguy hại trực tiếp cho con người, ví dụ chẩn đoán sai về tình trạng bệnh tật hay ra quyết định tấn công các mục tiêu dân sự trong xung đột vũ trang,...
-
-    **Các cảnh báo trên cũng đặt ra một số khía cạnh đạo đức cần được xem xét** để đảm bảo AI phải được xây dựng và sử dụng một cách minh bạch và có trách nhiệm. Thực tế đang đòi hỏi phải có những ràng buộc mang tính pháp lí đối với việc phát triển và ứng dụng AI trong một số lĩnh vực có khả năng ảnh hưởng trực tiếp tới sinh mạng con người. Ví dụ, ngăn cấm việc giao toàn quyền quyết định cho AI điều khiển vũ khí sát thương. Những thử nghiệm liên kết sinh học và công nghệ với nhau theo cách kết hợp bộ não con người và "bộ não" robot trong một chỉnh thể hợp nhất cũng đang là vấn đề gây nhiều tranh cãi. Ngoài khía cạnh đạo đức, những thử nghiệm này mang tính rủi ro cao. Bởi lẽ, trong trường hợp "bộ não" robot được phát triển tới mức thông minh hơn con người, việc công nghệ có thể được sử dụng để kiểm soát hoặc thay đổi ý thức, hành vi của con người theo một cách không mong muốn là nguy cơ hoàn toàn có thực.
-
-    Vì vậy, cần phải có các giải pháp đảm bảo an toàn và giám sát chặt chẽ quá trình phát triển AI, cũng như đảm bảo sao cho AI có thể mang lại nhiều cơ hội cho sự tiến bộ, nâng cao chất lượng cuộc sống, phục vụ lợi ích cộng đồng, không gây hậu quả xấu cho xã hội. Đây đang là mối quan tâm lớn lao của các chuyên gia, các nhà khoa học, các chính trị gia, các nhà hoạt động xã hội cho tới người dân trên toàn thế giới.
-
-    Các thành tựu hiện tại của AI nói chung đều thuộc phạm vi Trí tuệ nhân tạo hẹp/ Trí tuệ nhân tạo yếu. Tuy nhiên, những hệ thống như ChatGPT cũng cho thấy những khả năng không nhỏ của AI. Việc phát triển Trí tuệ nhân tạo tổng quát/ Trí tuệ nhân tạo mạnh, có năng lực trí tuệ như con người, bao gồm cả khả năng áp dụng tri thức từ lĩnh vực này sang lĩnh vực khác vẫn đang trong quá trình nghiên cứu và phát triển. Bên cạnh đó, sự phát triển của AI cũng đặt ra nhiều cảnh báo về những nguy cơ liên quan tới các khía cạnh đạo đức và xã hội cần phải được giải quyết.
-
-    <Quiz data={{
-      question: "Nguy cơ nào sau đây được coi là đáng lo ngại nhất khi phát triển AI?",
-      options: [
-        "A. AI tiêu tốn quá nhiều điện năng",
-        "B. AI có thể gây mất việc làm và xâm phạm quyền riêng tư",
-        "C. AI không thể hiểu được cảm xúc con người",
-        "D. AI chỉ hoạt động được trên các máy tính đắt tiền"
-      ],
-      correctAnswer: 1,
-      explanation: "Đúng! Áp lực thất nghiệp và xâm phạm quyền riêng tư là hai nguy cơ lớn nhất cần được quan tâm khi phát triển AI."
-    }} />
-
-    <Alert type="warning">
-      **Cảnh báo quan trọng về AI:**
-      - AI có thể thay thế nhiều công việc của con người → Cần chuẩn bị kỹ năng mới
-      - AI thu thập dữ liệu cá nhân → Cần bảo vệ thông tin cá nhân
-      - AI hoạt động như "hộp đen" → Cần tăng cường tính minh bạch
-      - AI có thể bị tấn công → Cần đảm bảo an ninh hệ thống
-      - AI cần quy định pháp lý → Cần có luật lệ kiểm soát
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Dẫn dắt vào bài học"
+  >
+    <Alert type="info" title="Định hướng sư phạm">
+      Cả hai góc nhìn đều chứa đựng những hạt nhân chân lý. Để có câu trả lời khoa học, bài học hôm nay sẽ giúp các em khám phá bức tranh toàn cảnh: <strong>AI đang thay đổi những ngành nghề nào?</strong> và <strong>Những rủi ro, cảnh báo nào nhân loại đang phải đối mặt?</strong>
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** 
-    - HS nêu được cảnh báo về sự phát triển của Trí tuệ nhân tạo trong tương lai
-    - HS hiểu được các rủi ro và thách thức khi phát triển AI
-    - HS nhận thức được tầm quan trọng của việc phát triển AI có trách nhiệm
+  </SlideStep>
+</PedagogyActivity>
 
-    **Hoạt động:**
-    - GV tổ chức thảo luận về các rủi ro của AI
-    - HS phân tích các tình huống thực tế về tác động của AI
-    - **Sản phẩm:** Bảng tổng kết các cảnh báo và giải pháp đề xuất
-  </TeacherNotes>
-</StepKnowledge>
-      <StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Luyện tập
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI
+========================================================================= */}
+<PedagogyActivity
+  id="activity-2"
+  number={2}
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="50 phút"
+  objective="Làm chủ tri thức về ứng dụng AI trong 5 ngành trọng điểm; phân tích mô hình AI tạo sinh ChatGPT; nhận thức sâu sắc 5 nguy cơ cảnh báo và các nguyên tắc đạo đức công nghệ."
+>
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: AI VÀ SỰ PHÁT TRIỂN CÁC LĨNH VỰC
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.1"
+    title="SỰ PHÁT TRIỂN MẠNH MẼ CỦA CÁC LĨNH VỰC NHỜ ỨNG DỤNG AI"
+    time="15 phút"
+    target="Trình bày được vai trò của AI trong Y tế, Giao thông, Tài chính, Sản xuất công - nông nghiệp và Giáo dục."
+  >
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Bản đồ ứng dụng AI toàn cầu"
+    >
+      <p className="text-slate-700 dark:text-slate-300 text-sm mb-3">
+        Quan sát 5 lĩnh vực mũi nhọn đang được AI tái định hình sâu sắc theo sách giáo khoa Tin học 12:
+      </p>
 
-    1. ChatGPT là hệ thống AI sử dụng ngôn ngữ để tương tác với con người. Hãy nêu một vài ứng dụng AI sử dụng hình ảnh để tương tác.
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+        <div className="p-4 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/30 space-y-1.5">
+          <div className="flex items-center gap-2 font-bold text-blue-700 dark:text-blue-300 text-sm">
+            <span>🏥</span> <span>1. Y tế & Chăm sóc sức khỏe</span>
+          </div>
+          <p className="text-slate-600 dark:text-slate-300">
+            - Nâng cao chất lượng ảnh X-quang, MRI, phát hiện khối u siêu nhỏ trước 1-2 năm.
+            <br/>- Phần mềm <em>IBM Watson for Oncology</em> hỗ trợ bác sĩ xây dựng phác đồ điều trị ung thư chuẩn hóa.
+          </p>
+        </div>
 
-    **Trả lời:**
-    Các ứng dụng AI sử dụng hình ảnh để tương tác bao gồm:
+        <div className="p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/30 space-y-1.5">
+          <div className="flex items-center gap-2 font-bold text-emerald-700 dark:text-emerald-300 text-sm">
+            <span>🚗</span> <span>2. Giao thông vận tải</span>
+          </div>
+          <p className="text-slate-600 dark:text-slate-300">
+            - Xe tự hành (Tesla, Waymo) tự nhận diện vạch đường, xử lý điểm mù và phản xạ nhanh gấp 10 lần người.
+            <br/>- Hệ thống đèn giao thông thích ứng AI tự động điều phối giảm 30% tình trạng ùn tắc giờ cao điểm.
+          </p>
+        </div>
 
-    **Nhận dạng khuôn mặt:**
-    - **Mở khoá điện thoại:** Face ID trên iPhone, nhận dạng khuôn mặt trên Android
-    - **Check-in tự động:** Sân bay, nhà ga sử dụng nhận dạng khuôn mặt để kiểm tra vé
-    - **An ninh giám sát:** Camera nhận dạng khuôn mặt để phát hiện người lạ
+        <div className="p-4 rounded-xl border border-purple-200 dark:border-purple-800 bg-purple-50/50 dark:bg-purple-950/30 space-y-1.5">
+          <div className="flex items-center gap-2 font-bold text-purple-700 dark:text-purple-300 text-sm">
+            <span>💳</span> <span>3. Tài chính & Ngân hàng</span>
+          </div>
+          <p className="text-slate-600 dark:text-slate-300">
+            - Phát hiện gian lận giao dịch thẻ (Fraud Detection) trong vài phần nghìn giây.
+            <br/>- Xử lý và tự động hóa trích xuất dữ liệu hóa đơn, chứng từ số lượng khổng lồ vào cơ sở dữ liệu.
+          </p>
+        </div>
 
-    **Nhận dạng vật thể:**
-    - **Google Lens:** Chụp ảnh và nhận dạng các vật thể, cây cối, động vật
-    - **Ứng dụng mua sắm:** Chụp ảnh sản phẩm và tìm kiếm nơi bán
-    - **Quét mã QR:** Camera nhận dạng và xử lý mã QR
+        <div className="p-4 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/30 space-y-1.5">
+          <div className="flex items-center gap-2 font-bold text-amber-700 dark:text-amber-300 text-sm">
+            <span>🌾</span> <span>4. Nông nghiệp thông minh (Smart Farm)</span>
+          </div>
+          <p className="text-slate-600 dark:text-slate-300">
+            - Flycam quét đồng ruộng, AI phân tích ảnh lá cây để phát hiện sớm sâu bệnh và nấm hại.
+            <br/>- Tối ưu hóa lượng phân bón, nước tưới tự động theo cảm biến độ ẩm đất và dự báo thời tiết.
+          </p>
+        </div>
 
-    **Phân tích hình ảnh y tế:**
-    - **Chẩn đoán ung thư:** AI phân tích X-quang, MRI để phát hiện khối u
-    - **Nhận dạng bệnh da liễu:** AI phân tích ảnh da để chẩn đoán bệnh
-    - **Đo lường chỉ số:** AI đếm tế bào, phân tích mẫu máu qua hình ảnh
+        <div className="p-4 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/30 space-y-1.5 md:col-span-2">
+          <div className="flex items-center gap-2 font-bold text-indigo-700 dark:text-indigo-300 text-sm">
+            <span>🎓</span> <span>5. Giáo dục & Học tập thích ứng (Adaptive Learning)</span>
+          </div>
+          <p className="text-slate-600 dark:text-slate-300">
+            - Hệ thống tự động phân tích điểm mạnh, điểm yếu của từng học sinh để tạo lộ trình bài tập riêng biệt (cá nhân hóa việc học).
+            <br/>- Trợ lý gia sư ảo hỗ trợ giải đáp thắc mắc bài tập 24/7 và sửa lỗi phát âm ngoại ngữ tức thì.
+          </p>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Xe tự lái:**
-    - **Nhận dạng biển báo:** Camera nhận dạng biển báo giao thông
-    - **Phát hiện chướng ngại vật:** AI phân tích hình ảnh từ camera để phát hiện xe, người đi bộ
-    - **Định vị làn đường:** AI phân tích vạch kẻ đường để giữ làn
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Khám phá trường hợp thực tế"
+    >
+      <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <p>- Học sinh làm việc theo nhóm 4 em: Mỗi nhóm chọn 1 lĩnh vực yêu thích và tìm kiếm thêm 1 ví dụ thực tế đang diễn ra tại Việt Nam (Ví dụ: Ứng dụng AI phân tích ảnh cây lúa ở Đồng bằng Sông Cửu Long, hay AI trong định danh eKYC mở tài khoản ngân hàng).</p>
+      </div>
+    </SlideStep>
 
-    **Sáng tạo hình ảnh:**
-    - **AI tạo ảnh:** DALL-E, Midjourney tạo ảnh từ văn bản
-    - **Chỉnh sửa ảnh:** AI xóa đối tượng, cải thiện chất lượng ảnh
-    - **Thiết kế thời trang:** AI tạo mẫu thiết kế từ ảnh
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Chia sẻ nhanh"
+    >
+      <p className="text-sm text-slate-700 dark:text-slate-300">
+        Các nhóm chia sẻ ví dụ của mình. Giáo viên nhấn mạnh: Điểm chung của tất cả các ứng dụng trên là <strong>xử lý khối lượng dữ liệu khổng lồ (Big Data) mà con người không thể xử lý thủ công kịp thời</strong>.
+      </p>
+    </SlideStep>
 
-    2. Vì sao cần ngăn cấm việc giao toàn quyền quyết định cho AI điều khiển vũ khí sát thương?
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức lĩnh vực"
+    >
+      <Alert type="success" title="Đánh giá tổng quát">
+        AI đã chuyển từ giai đoạn thử nghiệm lý thuyết sang giai đoạn ứng dụng thực tiễn đại trà, trở thành động lực phát triển kinh tế xã hội cốt lõi của cuộc Cách mạng công nghiệp lần thứ tư (Cách mạng 4.0).
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    **Trả lời:**
-    Cần ngăn cấm việc giao toàn quyền quyết định cho AI điều khiển vũ khí sát thương vì những lý do sau:
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: AI TẠO SINH & HIỆN TƯỢNG CHATGPT
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.2"
+    title="AI TẠO SINH (GENERATIVE AI) VÀ HIỆN TƯỢNG CHATGPT"
+    time="15 phút"
+    target="Phân tích bản chất AI tạo sinh; mô tả kiến trúc huấn luyện và năng lực của ChatGPT theo SGK."
+  >
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Sự bùng nổ của AI tạo sinh"
+    >
+      <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+        <p>
+          Trước đây, AI chủ yếu dùng để <strong>phân tích và dự đoán</strong> (nhận diện ảnh, dự báo thời tiết). Nhưng từ năm 2022, nhân loại chứng kiến bước ngoặt mang tên <strong>AI tạo sinh (Generative AI)</strong> - AI có khả năng tự sáng tạo ra văn bản, bài thơ, tranh vẽ, bản nhạc và mã lập trình mới hoàn toàn!
+        </p>
 
-    **Rủi ro về đạo đức và nhân văn:**
-    - AI không có khả năng đánh giá đúng sai về mặt đạo đức
-    - Không thể đảm bảo AI sẽ tuân thủ các quy tắc chiến tranh quốc tế
-    - Việc giết người không nên được tự động hóa bởi máy móc
+        <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-xs space-y-2 border border-slate-700 shadow-lg">
+          <div className="flex items-center justify-between border-b border-slate-700 pb-2">
+            <span className="text-emerald-400 font-bold">🤖 Phân tích kỹ thuật: Mô hình ChatGPT (OpenAI)</span>
+            <span className="text-slate-400">GPT-3.5 / GPT-4</span>
+          </div>
+          <div className="space-y-1.5 text-slate-300">
+            <p>1. <strong>Tập dữ liệu huấn luyện:</strong> Hàng trăm tỷ từ ngữ thu thập từ sách, bách khoa toàn thư Wikipedia, báo chí và kho lưu trữ mã nguồn Internet.</p>
+            <p>2. <strong>Cơ chế tự hồi quy:</strong> Dự đoán từ tiếp theo có xác suất phù hợp nhất trong ngữ cảnh của câu.</p>
+            <p>3. <strong>Học từ phản hồi của con người (RLHF):</strong> Con người đóng vai trò chuyên gia đánh giá và tinh chỉnh giúp câu trả lời của AI lịch sự, hữu ích và an toàn hơn.</p>
+          </div>
+        </div>
+      </div>
+    </SlideStep>
 
-    **Rủi ro về an ninh và sai sót kỹ thuật:**
-    - AI có thể đưa ra quyết định sai do lỗi nhận dạng hoặc xử lý
-    - Hacker có thể tấn công và kiểm soát vũ khí AI
-    - Lỗi hệ thống có thể gây ra thảm kịch không thể cứu vãn
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Thử thách kiểm chứng độ trung thực"
+    >
+      <div className="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 space-y-1">
+        <strong>⚠️ Hiện tượng Ảo giác AI (AI Hallucination):</strong>
+        <p>
+          AI tạo sinh hoạt động dựa trên xác suất từ ngữ chứ không thực sự &quot;hiểu biết sự thật khách quan&quot;. Khi gặp câu hỏi về sự kiện chưa biết, nó có thể tự tin bịa đặt ra những thông tin nghe rất thuyết phục nhưng sai sự thật hoàn toàn!
+        </p>
+      </div>
+    </SlideStep>
 
-    **Rủi ro về leo thang xung đột:**
-    - Vũ khí AI có thể phản ứng quá nhanh, không có thời gian cho ngoại giao
-    - Có thể gây ra cuộc chạy đua vũ khí AI tự động
-    - Mất kiểm soát con người đối với các quyết định sống còn
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Năng lực ngôn ngữ của ChatGPT"
+    >
+      <div className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <p>- <em>ChatGPT hoạt động tốt nhất ở ngôn ngữ nào?</em> → Tiếng Anh và các ngôn ngữ phổ biến có kho dữ liệu dồi dào trên Internet.</p>
+        <p>- <em>Đối với các ngôn ngữ ít phổ biến hơn:</em> Khả năng hiểu ngữ nghĩa sâu sắc hoặc thành ngữ dân gian có thể còn bị hạn chế.</p>
+      </div>
+    </SlideStep>
 
-    **Vấn đề trách nhiệm pháp lý:**
-    - Không thể xác định ai chịu trách nhiệm khi AI gây ra thảm họa
-    - Vi phạm các nguyên tắc cơ bản về quyền con người
-    - Chống lại tinh thần của các công ước quốc tế về vũ khí
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Nguyên tắc làm chủ AI tạo sinh"
+    >
+      <Alert type="warning" title="Quy tắc vàng cho học sinh khi dùng ChatGPT">
+        <strong>&quot;Tin tưởng nhưng phải luôn kiểm chứng (Trust, but Verify)&quot;</strong>. Không bao giờ lấy câu trả lời của AI làm chân lý duy nhất mà phải luôn đối chiếu lại với sách giáo khoa, tài liệu học thuật chính thống!
+      </Alert>
+    </SlideStep>
+  </SubTask>
 
-    **Thực tế đã chứng minh:**
-    - Nhiều tổ chức quốc tế đã kêu gọi cấm vũ khí tự hành
-    - Các chuyên gia AI hàng đầu như Elon Musk, Stephen Hawking đã cảnh báo về rủi ro
-    - Liên Hợp Quốc đang thảo luận về các quy định pháp lý cho vũ khí AI
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3: CẢNH BÁO & ĐẠO ĐỨC AI CÓ TRÁCH NHIỆM
+  ----------------------------------------------------------------------- */}
+  <SubTask
+    number="2.3"
+    title="NHỮNG CẢNH BÁO RỦI RO & PHÁT TRIỂN AI CÓ TRÁCH NHIỆM"
+    time="20 phút"
+    target="Phân tích 5 nguy cơ cảnh báo của AI; xây dựng thái độ công dân số có trách nhiệm."
+  >
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – 5 Hồi chuông cảnh báo từ công nghệ"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs">
+        <div className="p-3.5 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/50 dark:bg-rose-950/20 space-y-1">
+          <strong className="text-rose-700 dark:text-rose-300 block text-sm">1. Thất nghiệp công nghệ & Thay đổi việc làm</strong>
+          <p className="text-slate-600 dark:text-slate-300">
+            Nhiều công việc văn phòng, dịch thuật cơ bản, nhập liệu, đồ họa đơn giản đang bị AI tự động hóa, đòi hỏi người lao động phải không ngừng nâng cấp kỹ năng mới.
+          </p>
+        </div>
 
-    <Alert type="warning">
-      **Lưu ý quan trọng:**
-      - AI có nhiều ứng dụng hình ảnh trong đời sống hàng ngày
-      - Vũ khí AI là một trong những rủi ro lớn nhất cần được kiểm soát
-      - Cần có luật pháp quốc tế để quản lý phát triển và sử dụng AI quân sự
+        <div className="p-3.5 rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/50 dark:bg-amber-950/20 space-y-1">
+          <strong className="text-amber-700 dark:text-amber-300 block text-sm">2. Thiên vị thuật toán (Algorithmic Bias)</strong>
+          <p className="text-slate-600 dark:text-slate-300">
+            Nếu dữ liệu huấn luyện trong quá khứ có chứa định kiến (về giới tính, chủng tộc, xuất thân), AI sẽ vô tình học theo và đưa ra các quyết định tuyển dụng hay chấm điểm bất công.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl border border-purple-200 dark:border-purple-900/60 bg-purple-50/50 dark:bg-purple-950/20 space-y-1">
+          <strong className="text-purple-700 dark:text-purple-300 block text-sm">3. Xâm phạm dữ liệu cá nhân & Quyền riêng tư</strong>
+          <p className="text-slate-600 dark:text-slate-300">
+            Các hệ thống AI thu thập lượng dữ liệu khổng lồ (vị trí GPS, lịch sử tìm kiếm, giọng nói). Nếu bị rò rỉ sẽ gây nguy hiểm nghiêm trọng đến quyền riêng tư của người dùng.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 space-y-1">
+          <strong className="text-red-700 dark:text-red-300 block text-sm">4. Công nghệ Deepfake & Lừa đảo mạo danh</strong>
+          <p className="text-slate-600 dark:text-slate-300">
+            Kẻ xấu dùng AI giả mạo gương mặt, giọng nói của người thân qua video call để thực hiện các cuộc gọi lừa đảo chuyển tiền khẩn cấp hoặc bôi nhọ danh dự người khác.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 md:col-span-2 space-y-1">
+          <strong className="text-slate-900 dark:text-white block text-sm">5. Vũ khí tự hành quân sự & Mất kiểm soát</strong>
+          <p className="text-slate-600 dark:text-slate-300">
+            Vũ khí tự động đưa ra quyết định khai hỏa tiêu diệt mục tiêu mà không cần sự can thiệp của con người đặt ra bài toán đạo đức và pháp lý sinh tử toàn cầu.
+          </p>
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Xử lý tình huống đạo đức"
+    >
+      <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <p>- <strong>Tình huống:</strong> Một học sinh dùng ChatGPT viết toàn bộ bài văn phân tích tác phẩm văn học rồi nộp cho giáo viên, đạt điểm tối đa.</p>
+        <p>- Học sinh thảo luận: <em>Hành vi này có vi phạm liêm chính học thuật không? Tại sao?</em></p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – Thảo luận giá trị tự thân"
+    >
+      <div className="p-3 bg-indigo-50 dark:bg-indigo-950/40 rounded-xl border border-indigo-200 dark:border-indigo-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        Giáo viên chốt: <em>&quot;Nếu em để AI suy nghĩ thay mình, cơ bắp trí tuệ của em sẽ dần teo tóp. Hãy dùng AI như một người bạn cùng thảo luận ý tưởng, nhưng ngòi bút và tư duy cuối cùng phải là của chính em!&quot;</em>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Bộ nguyên tắc AI có trách nhiệm"
+    >
+      <Alert type="success" title="Khung tiêu chuẩn AI có trách nhiệm (Responsible AI)">
+        - <strong>Minh bạch (Transparency):</strong> Người dùng phải được biết nội dung nào do AI tạo ra.
+        <br/>- <strong>Công bằng (Fairness):</strong> Thuật toán không được phân biệt đối xử.
+        <br/>- <strong>An toàn & Bảo mật (Safety & Privacy):</strong> Bảo vệ tuyệt đối bí mật đời tư công dân.
+        <br/>- <strong>Trách nhiệm giải trình (Accountability):</strong> Con người phải luôn nắm quyền kiểm soát và chịu trách nhiệm tối thượng.
+      </Alert>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP
+========================================================================= */}
+<PedagogyActivity
+  id="activity-3"
+  number={3}
+  title="LUYỆN TẬP – CỦNG CỐ TRI THỨC VÀ ĐÁNH GIÁ ĐỊNH KỲ"
+  time="15 phút"
+  objective="Kiểm tra mức độ lĩnh hội kiến thức về ứng dụng AI, Generative AI và các bài toán cảnh báo xã hội theo ma trận trắc nghiệm."
+>
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Bài kiểm tra trắc nghiệm số"
+  >
+    <p className="text-slate-700 dark:text-slate-300 text-sm mb-2">
+      Thực hiện bài kiểm tra trắc nghiệm 3 câu và ma trận Đúng/Sai trong 05 phút:
+    </p>
+
+    <ClassTimer initialMinutes={5} />
+
+    <SpeedQuizExercise
+      multipleChoice={[
+        {
+          id: 1,
+          question: "Ứng dụng nào sau đây của AI thể hiện rõ rệt nhất trong lĩnh vực Y học và chăm sóc sức khỏe?",
+          options: [
+            "A. Điều phối luồng đèn tín hiệu giao thông thông minh",
+            "B. IBM Watson for Oncology hỗ trợ bác sĩ xây dựng phác đồ điều trị ung thư",
+            "C. Tự động hóa cập nhật chứng từ và hóa đơn ngân hàng",
+            "D. Điều khiển máy bay không người lái chụp ảnh địa hình"
+          ],
+          correctAnswer: 1,
+          explanation: "IBM Watson for Oncology là ví dụ tiêu biểu trong SGK Tin học 12 về việc AI hỗ trợ bác sĩ nâng cao hiệu quả điều trị ung thư."
+        },
+        {
+          id: 2,
+          question: "AI tạo sinh (Generative AI) có khả năng cốt lõi nào sau đây khác biệt so với AI truyền thống?",
+          options: [
+            "A. Chỉ có thể phân loại dữ liệu có sẵn thành các nhóm cố định",
+            "B. Tự động sáng tạo ra nội dung mới như văn bản, hình ảnh, âm thanh, mã nguồn",
+            "C. Chỉ chạy được trên các máy tính bỏ túi cơ học",
+            "D. Luôn đưa ra kết quả chính xác 100% không bao giờ mắc lỗi"
+          ],
+          correctAnswer: 1,
+          explanation: "AI tạo sinh tập trung vào việc tự động tạo ra nội dung hoàn toàn mới (ảnh, âm thanh, văn bản) dựa trên các mô hình huấn luyện."
+        },
+        {
+          id: 3,
+          question: "Hiện tượng nào sau đây phản ánh mặt trái của AI khi mô hình đưa ra thông tin bịa đặt sai sự thật một cách tự tin?",
+          options: [
+            "A. Hiện tượng tràn bộ nhớ đệm (Buffer Overflow)",
+            "B. Hiện tượng ảo giác của mô hình ngôn ngữ lớn (AI Hallucination)",
+            "C. Hiện tượng xung đột địa chỉ IP mạng",
+            "D. Hiện tượng nghẽn mạch băng thông"
+          ],
+          correctAnswer: 1,
+          explanation: "AI Hallucination (Ảo giác AI) là hiện tượng mô hình ngôn ngữ lớn sinh ra thông tin sai sự thật hoặc không có thật nhưng được viết với giọng văn rất tự tin."
+        }
+      ]}
+      trueFalseMatrix={[
+        {
+          id: 1,
+          statement: "Hệ thống AI trên xe tự lái xử lý thông tin từ cảm biến camera và radar giúp phản xạ nhanh hơn và giảm thiểu tai nạn do lỗi con người.",
+          isTrue: true,
+          explanation: "Đúng. Xe tự lái phản xạ trong vài phần trăm giây và không bị phân tâm bởi buồn ngủ hay say rượu như con người."
+        },
+        {
+          id: 2,
+          statement: "ChatGPT hoạt động tốt đồng đều ở tất cả mọi ngôn ngữ trên thế giới với chất lượng và độ sâu như nhau.",
+          isTrue: false,
+          explanation: "Sai. Theo SGK, ChatGPT hoạt động tốt nhất ở các ngôn ngữ có dữ liệu huấn luyện dồi dào (như tiếng Anh); với ngôn ngữ ít phổ biến thì khả năng còn hạn chế."
+        },
+        {
+          id: 3,
+          statement: "Công nghệ Deepfake chỉ mang tính giải trí vô hại và không thể bị kẻ xấu lợi dụng để lừa đảo hay bôi nhọ danh dự.",
+          isTrue: false,
+          explanation: "Sai. Deepfake là nguy cơ an ninh nghiêm trọng, đang bị tội phạm công nghệ cao lợi dụng để giả mạo video call mượn tiền và tạo tin giả bôi nhọ."
+        }
+      ]}
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Chấm điểm tự động"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Học sinh rà soát các câu trả lời sai và đọc kỹ phần giải thích chi tiết hiển thị trên màn hình.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Tuyên dương cá nhân xuất sắc"
+  >
+    <p className="text-slate-600 dark:text-slate-400 text-sm">
+      Giáo viên tổng kết điểm số lớp học và giải đáp câu hỏi về hiện tượng ảo giác (Hallucination) của AI tạo sinh.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Hoàn tất mục tiêu luyện tập"
+  >
+    <Alert type="success" title="Đánh giá kết quả">
+      100% học sinh nắm vững các lĩnh vực ứng dụng mũi nhọn của AI và hình thành được phản xạ cảnh giác trước các rủi ro tin giả Deepfake.
     </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS củng cố kiến thức về các ứng dụng AI hình ảnh và hiểu rõ rủi ro của vũ khí AI.
-    **Hoạt động:** GV đặt câu hỏi, HS trả lời và thảo luận mở rộng.
-    **Sản phẩm:** Bài trả lời chi tiết với các ví dụ thực tế và phân tích sâu.
-  </TeacherNotes>
-</StepPractice>
-    <StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng
+  </SlideStep>
+</PedagogyActivity>
 
-    Hãy tìm hiểu cách thức hoạt động của ứng dụng tìm đường trên Google Maps để nhận biết các biểu hiện "thông minh" của ứng dụng này.
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG
+========================================================================= */}
+<PedagogyActivity
+  id="activity-4"
+  number={4}
+  title="VẬN DỤNG – 'CẨM NANG SỬ DỤNG AI THÔNG MINH CHO HỌC SINH PHỔ THÔNG'"
+  time="15 phút"
+  objective="Vận dụng các nguyên tắc đạo đức công nghệ để xây dựng bản cam kết sử dụng AI có trách nhiệm phục vụ học tập tại trường THPT."
+>
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Thiết kế Bộ quy tắc ứng xử AI"
+  >
+    <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+      <p>
+        <strong>Nhiệm vụ dự án nhóm:</strong> Mỗi nhóm 4 học sinh hãy xây dựng một <strong>Poster Infographic hoặc Bản cam kết gồm 5 điều NÊN và 5 điều KHÔNG NÊN</strong> khi sử dụng các công cụ AI (ChatGPT, Canva AI, Copilot...) trong môi trường học đường.
+      </p>
+      <div className="p-3 bg-sky-50 dark:bg-sky-950/40 rounded-xl border border-sky-200 dark:border-sky-800 text-xs text-sky-800 dark:text-sky-300">
+        💡 <strong>Gợi ý định hướng:</strong>
+        <ul className="list-disc pl-5 mt-1 space-y-0.5">
+          <li>Khi nào được phép tham khảo AI? Cách trích dẫn nguồn khi có sử dụng nội dung do AI gợi ý.</li>
+          <li>Làm thế nào để bảo vệ dữ liệu cá nhân (không đưa ảnh thẻ căn cước, mật khẩu lên chatbot).</li>
+          <li>Cách nhận diện và phòng ngừa các cuộc gọi lừa đảo mạo danh Deepfake người thân.</li>
+        </ul>
+      </div>
+    </div>
+  </SlideStep>
 
-    **Phân tích Google Maps - Một ứng dụng AI tiêu biểu:**
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thang đo đánh giá Rubric – Chuẩn 5512"
+  >
+    <RubricCard
+      title="Thang đo đánh giá Dự án 'Bộ quy tắc sử dụng AI văn minh'"
+      criteria={[
+        {
+          name: "Tính thực tiễn và tính đạo đức",
+          weight: "40%",
+          levels: {
+            good: "Nêu bật được tính liêm chính học thuật, bảo vệ dữ liệu cá nhân và phòng tránh lừa đảo Deepfake rất sát với thực tế học sinh THPT.",
+            acceptable: "Nêu được các quy tắc nhưng còn mang tính lý thuyết chung chung, chưa cụ thể cho môi trường học đường.",
+            poor: "Quy tắc thiếu căn cứ khoa học, cổ xúy cho việc sao chép lười suy nghĩ."
+          }
+        },
+        {
+          name: "Giải pháp phòng ngừa rủi ro",
+          weight: "35%",
+          levels: {
+            good: "Đưa ra quy trình kiểm chứng thông tin (Fact-checking) rõ ràng khi gặp nội dung nghi ngờ ảo giác AI.",
+            acceptable: "Có nhắc đến rủi ro sai sót nhưng chưa có biện pháp đối chiếu thẩm định cụ thể.",
+            poor: "Hoàn toàn tin tưởng tuyệt đối vào kết quả của AI."
+          }
+        },
+        {
+          name: "Hình thức thể hiện & Trực quan",
+          weight: "25%",
+          levels: {
+            good: "Poster/Infographic thiết kế thẩm mỹ, ngắn gọn, dễ nhớ, khẩu hiệu ấn tượng.",
+            acceptable: "Trình bày đủ nội dung nhưng còn nhiều chữ, ít hình ảnh trực quan.",
+            poor: "Trình bày cẩu thả, định dạng lộn xộn."
+          }
+        }
+      ]}
+      sampleProject={{
+        title: "Bản quy tắc mẫu: 5 NÊN & 5 KHÔNG KHI DÙNG AI",
+        description: "Bản cam kết mẫu ứng xử AI của Chi đoàn 12A1.",
+        code: `[5 ĐIỀU NÊN LÀM]:
+1. NÊN dùng AI như một 'trợ lý gợi ý ý tưởng' để mở rộng góc nhìn tư duy.
+2. NÊN luôn kiểm chứng lại sự thật lịch sử và số liệu từ sách giáo khoa chính thống.
+3. NÊN ghi chú rõ: 'Đoạn mã/dàn ý này có tham khảo gợi ý từ ChatGPT' để giữ liêm chính học thuật.
+4. NÊN đặt mật khẩu mạnh và bật xác thực 2 lớp (2FA) cho tất cả tài khoản số.
+5. NÊN gọi điện thoại xác minh ngay khi có tin nhắn người thân mượn tiền gấp.
 
-    **1. Chức năng chính của Google Maps:**
-    - Tìm đường đi ngắn nhất và nhanh nhất
-    - Dự báo thời gian đến đích chính xác
-    - Cảnh báo kẹt xe và đề xuất lộ trình thay thế
-    - Tìm kiếm địa điểm và dịch vụ xung quanh
-    - Hướng dẫn từng bước khi đi bộ hoặc lái xe
+[5 ĐIỀU TUYỆT ĐỐI TRÁNH]:
+1. KHÔNG copy - paste nguyên văn bài làm của AI nộp cho thầy cô giáo.
+2. KHÔNG tải lên chatbot các thông tin bí mật cá nhân (CCCD, tài khoản ngân hàng, ảnh nhạy cảm).
+3. KHÔNG sử dụng công nghệ Deepfake để ghép mặt, nhại giọng chế giễu bạn bè.
+4. KHÔNG chia sẻ các video giật gân, nghi vấn cắt ghép giả mạo lên mạng xã hội.
+5. KHÔNG để máy móc thay thế hoàn toàn cảm xúc, sự sẻ chia giữa con người với con người!`
+      }}
+    />
+  </SlideStep>
 
-    **2. Các đặc trưng AI thể hiện trong Google Maps:**
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Trình bày sản phẩm"
+  >
+    <div className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+      <p>- Mỗi lớp bình chọn 01 Poster xuất sắc nhất để in và dán tại bảng tin lớp học hoặc góc học tập phòng máy tính.</p>
+    </div>
+  </SlideStep>
 
-    **Khả năng nhận thức:**
-    - **Nhận dạng hình ảnh vệ tinh:** AI phân tích ảnh vệ tinh để xác định đường sá, tòa nhà
-    - **Nhận dạng biển báo:** Camera xe đọc biển báo giao thông để cập nhật lộ trình
-    - **Nhận dạng giao lộ:** AI nhận dạng các loại giao lộ, vòng xuyến, đèn tín hiệu
-
-    **Khả năng học:**
-    - **Học từ dữ liệu giao thông:** AI học từ hàng triệu người dùng để dự báo kẹt xe
-    - **Học thói quen người dùng:** Google Maps học lộ trình thường đi của bạn để gợi ý tốt hơn
-    - **Học từ sự kiện:** AI học từ các sự kiện (đám cưới, trận đấu) để dự báo giao thông
-
-    **Khả năng suy luận:**
-    - **Tối ưu hóa lộ trình:** AI cân bằng giữa khoảng cách, thời gian, và điều kiện giao thông
-    - **Ra quyết định khi có sự cố:** Tự động tìm đường thay thế khi có tai nạn hoặc đóng đường
-    - **Dự báo thời gian:** AI tính toán thời gian dựa trên nhiều yếu tố (kẹt xe, thời tiết, loại đường)
-
-    **Khả năng giải quyết vấn đề:**
-    - **Giải quyết vấn đề kẹt xe:** Tìm các đường ngách, đường nhỏ để tránh kẹt
-    - **Giải quyết vấn đề đỗ xe:** Gợi ý các bãi đỗ xe gần điểm đến
-    - **Giải quyết vấn đề giao thông công cộng:** Tích hợp lịch trình xe buýt, tàu điện
-
-    **3. Cách hoạt động (đơn giản hóa):**
-
-    **Bước 1: Thu thập dữ liệu**
-    - Dữ liệu vệ tinh và ảnh đường phố
-    - Dữ liệu giao thông thời gian thực từ người dùng
-    - Dữ liệu lịch sử giao thông theo giờ, ngày, mùa
-    - Dữ liệu về sự kiện, thời tiết, ngày lễ
-
-    **Bước 2: Phân tích và xử lý**
-    - AI phân tích tất cả dữ liệu để hiểu tình hình giao thông hiện tại
-    - Nhận dạng các khu vực đang kẹt xe hoặc có sự cố
-    - Đánh giá chất lượng đường sá và điều kiện di chuyển
-
-    **Bước 3: Tính toán lộ trình**
-    - AI tính toán nhiều lộ trình khả năng
-    - Đánh giá mỗi lộ trình theo các tiêu chí: thời gian, khoảng cách, mức độ kẹt xe
-    - Chọn lộ trình tối ưu nhất
-
-    **Bước 4: Cập nhật và điều chỉnh**
-    - Liên tục cập nhật dữ liệu giao thông thời gian thực
-    - Tự động điều chỉnh lộ trình nếu có thay đổi
-    - Học từ kết quả để cải thiện cho lần sau
-
-    **4. Ví dụ thực tế:**
-    **Tình huống:** Bạn muốn đi từ nhà đến trường, Google Maps hoạt động như sau:
-
-    - **Nhận thức:** AI biết vị trí hiện tại, vị trí đích, các đường có thể đi
-    - **Học:** AI biết giờ cao điểm thường kẹt ở哪些 đường
-    - **Suy luận:** AI quyết định đi đường vòng nhưng nhanh hơn đường thẳng
-    - **Giải quyết vấn đề:** AI gợi ý thời gian xuất phát phù hợp để không đến muộn
-
-    **5. Các biểu hiện "thông minh" khác:**
-    - **Dự báo thời gian đến:** "Bạn sẽ đến lúc 8:15 sáng"
-    - **Cảnh báo kẹt xe:** "Có kẹt xe phía trước, đang tìm đường khác"
-    - **Gợi ý thời gian xuất phát:** "Nên xuất phát lúc 7:30 để đến đúng 8:00"
-    - **Tìm địa điểm gần nhất:** "Quán cà phê gần nhất cách 500m"
-
-    **Bài tập mở rộng:**
-    Hãy chọn một ứng dụng AI khác mà em thường sử dụng (YouTube, Spotify, Shopee, Grab) và phân tích các đặc trưng AI của nó tương tự như trên.
-
-    <Alert type="success">
-      **Kết quả học tập:** Sau khi hoàn thành bài tập, học sinh sẽ hiểu sâu cách AI hoạt động trong các ứng dụng thực tế và nhận diện được các đặc trưng trí tuệ trong đời sống hàng ngày.
-    </Alert>
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu:** HS vận dụng kiến thức đã học để phân tích một ứng dụng AI thực tế.
-    **Hoạt động:** HS chọn ứng dụng, phân tích và trình bày trước lớp.
-    **Sản phẩm:** Bài phân tích chi tiết về cách hoạt động của Google Maps hoặc ứng dụng AI khác.
-  </TeacherNotes>
-</StepApplication>
-
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức 🎯">
-- ✅ **AI trong nhiều lĩnh vực:** Y tế, giao thông, tài chính, sản xuất, giáo dục,...
-- ✅ **ChatGPT:** AI có tri thức, suy luận, học hỏi - đại diện AI tạo sinh
-- ✅ **Cảnh báo AI:** Thất nghiệp, quyền riêng tư, thiếu minh bạch, an ninh
-- ✅ **AI có trách nhiệm:** Cần pháp lý, đạo đức và giám sát chặt chẽ
-- ✅ **Ứng dụng thực tế:** Google Maps, YouTube, Spotify đều sử dụng AI
-</GlassCard>
-</div>
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt lại thông điệp Chủ đề 1"
+  >
+    <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-sky-600 text-white space-y-2 shadow-lg">
+      <h5 className="font-bold text-base">🚀 TỔNG KẾT CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO</h5>
+      <p className="text-xs sm:text-sm text-purple-100 leading-relaxed">
+        AI là công cụ vĩ đại nhất mà loài người từng tạo ra, nhưng đích đến cuối cùng của công nghệ phải luôn phụng sự sự tiến bộ và tính nhân văn của con người. Hãy làm chủ công nghệ thay vì để công nghệ làm chủ chính mình!
+      </p>
+    </div>
+  </SlideStep>
+</PedagogyActivity>

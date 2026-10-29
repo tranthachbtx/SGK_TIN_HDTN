@@ -1,366 +1,642 @@
 ---
 title: "Bài 11: Chèn tệp tin đa phương tiện và khung nội tuyến vào trang web"
-description: "Sử dụng thẻ img, video, audio để làm phong phú trang web với hình ảnh, âm thanh, video và nhúng tài nguyên bằng khung nội tuyến iframe."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 11
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Hãy thử tưởng tượng một trang tin tức công nghệ hay một trang web giới thiệu các địa danh du lịch nổi tiếng:
-    - Nếu trang web chỉ toàn những con chữ đen trắng đơn điệu, liệu em có đủ kiên nhẫn để đọc hết bài viết không? 📄😴
-    - Nhưng nếu trang web đó có những bức ảnh phong cảnh rực rỡ, một đoạn nhạc nền du dương, hay một video ngắn quay toàn cảnh 4K từ flycam, cảm xúc của em sẽ thay đổi như thế nào? 🌄🎬🎵
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 11: CHÈN TỆP TIN ĐA PHƯƠNG TIỆN VÀ KHUNG NỘI TUYẾN"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-    **💡 Thảo luận mở đầu:**  
-    *Có những điểm gì khiến em thấy hứng thú hơn khi xem các trang web so với đọc sách truyền thống?*
-
-    **Trả lời gợi ý:**
-    1. **Khả năng truyền tải đa phương tiện (Multimedia):** Trang web có thể tích hợp hài hòa cả văn bản, hình ảnh độ phân giải cao, video sống động và âm thanh chân thực.
-    2. **Khung nội tuyến (Iframe) tương tác:** Cho phép xem trực tiếp bản đồ định vị Google Maps, xem video YouTube, hay đọc tài liệu PDF mà không cần phải rời khỏi trang web đang xem.
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu bài dạy:**
-    - Sử dụng thành thạo thẻ `<img>` và các thuộc tính `src`, `alt`, `width`, `height` để chèn ảnh và giữ đúng tỉ lệ khung hình.
-    - Biết cách chèn video và âm thanh bằng thẻ `<video>`, `<audio>` với các thuộc tính điều khiển `controls`, `autoplay`, `poster`.
-    - Hiểu bản chất và ứng dụng của khung nội tuyến `<iframe>`, biết cách phối hợp `<iframe>` với thẻ `<a>` để tạo giao diện hiển thị linh hoạt.
-
-    **Định hướng sư phạm:**
-    - Cho học sinh quan sát trang chia sẻ video như YouTube để nhận biết các thành phần điều khiển phát video (play, pause, thanh âm lượng).
-    - Giải thích khái niệm đa phương tiện (multimedia) trong kỷ nguyên số.
-  </TeacherNotes>
-</StepEngagement>
-
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    ### 1. Chèn tệp ảnh vào trang web
-
-    #### a) Các định dạng ảnh phổ biến trên Web
-    Hình ảnh giúp trang web sinh động, hấp dẫn và truyền tải thông điệp nhanh gấp nhiều lần so với chữ viết. Các định dạng ảnh thường gặp gồm:
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-4">
-      <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-        <h5 className="font-bold text-sky-600 mb-1">📸 JPEG / JPG</h5>
-        <p className="text-xs text-slate-600 dark:text-slate-300">
-          Nén có mất dữ liệu (lossy), màu sắc phong phú. Phù hợp nhất cho ảnh chụp phong cảnh, chân dung, đời thực.
-        </p>
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
       </div>
-      <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-        <h5 className="font-bold text-emerald-600 mb-1">🎨 PNG</h5>
-        <p className="text-xs text-slate-600 dark:text-slate-300">
-          Nén không mất dữ liệu (lossless), hỗ trợ <strong>nền trong suốt (transparent)</strong>. Phù hợp cho logo, icon, biểu tượng đồ họa.
-        </p>
-      </div>
-      <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-        <h5 className="font-bold text-rose-600 mb-1">✨ GIF & WebP</h5>
-        <p className="text-xs text-slate-600 dark:text-slate-300">
-          GIF hỗ trợ ảnh động ngắn. <strong>WebP</strong> là định dạng hiện đại của Google, nén siêu nhẹ giúp tải trang nhanh vượt trội.
-        </p>
-      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững cú pháp thẻ đơn <code>&lt;img&gt;</code> và các thuộc tính <code>src</code>, <code>alt</code>, <code>width</code>, <code>height</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Biết cách nhúng âm thanh (<code>&lt;audio&gt;</code>) và video (<code>&lt;video&gt;</code>) với thanh điều khiển <code>controls</code>, ảnh đại diện <code>poster</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu bản chất khung nội tuyến <code>&lt;iframe&gt;</code> để nhúng bản đồ, video YouTube hoặc trang web con.</span>
+        </li>
+      </ul>
     </div>
 
-    #### b) Thẻ `<img>` và các thuộc tính cơ bản
-    - Thẻ `<img>` là **thẻ đơn** (không có thẻ đóng `</img>`).
-    - Khi gặp thẻ `<img>`, trình duyệt sẽ hiểu là cần chèn một hình ảnh ngay tại vị trí đó và hiển thị nội tuyến (inline) cùng dòng văn bản (không tự ngắt dòng).
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Tích hợp các tệp đa phương tiện vào trang web với kích thước phù hợp, giữ nguyên tỉ lệ khung hình.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Viết đúng thẻ nhúng iframe và thiết lập thuộc tính alt hỗ trợ khả năng tiếp cận (Accessibility).</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Sáng tạo trang web giới thiệu giàu tương tác đa giác quan (Hình ảnh - Âm thanh - Video).</span>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-    **Cấu trúc chuẩn:**
-    ```html
-    <img src="đường dẫn tới tệp tin ảnh" alt="đoạn văn bản thay thế">
-    ```
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Ý thức bản quyền số:</strong> Tôn trọng quyền tác giả khi sử dụng hình ảnh, âm thanh trên mạng; ưu tiên các nguồn miễn phí (Unsplash, Pixabay, Wikimedia).</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
 
-    - **Thuộc tính `src` (Source):** Là thuộc tính **bắt buộc**, xác định đường dẫn (tuyệt đối hoặc tương đối) đến tệp hình ảnh.
-    - **Thuộc tính `alt` (Alternative text):** Cung cấp mô tả bằng văn bản thay thế khi ảnh bị lỗi không tải được, đồng thời giúp công cụ tìm kiếm (SEO) và người khiếm thị sử dụng phần mềm đọc màn hình nhận biết nội dung bức ảnh.
+<EquipmentChecklist />
 
-    ```html
-    <p>
-      Tôi muốn uống một cốc 
-      <img src="images/coffee.png" alt="Tách cà phê nóng"> 
-      ngay bây giờ.
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'SỨC MẠNH CỦA ĐA PHƯƠNG TIỆN (MULTIMEDIA)'"
+  duration="10 phút"
+  objective="Khơi gợi hứng thú và cảm xúc khi tiếp nhận thông tin đa phương tiện (Hình ảnh - Âm thanh - Video) so với văn bản thuần túy."
+  content="Học sinh quan sát một bài viết du lịch chỉ có chữ và bài viết có ảnh 4K cùng video flycam nhúng trực tiếp."
+  product="Nhận xét của học sinh về tính hấp dẫn, độ chân thực và khả năng ghi nhớ thông tin khi có media."
+>
+
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 'Một bức ảnh đáng giá ngàn lời nói'"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Tình huống trên màn chiếu">
+      Hãy tưởng tượng một trang web giới thiệu về **Vịnh Hạ Long**:
+      - Nếu trang chỉ có 5 dòng chữ mô tả: *'Vịnh có 1.969 hòn đảo đá vôi nhô lên từ làn nước xanh ngắt...'*
+      - Và một trang có kèm bức ảnh chụp hoàng hôn trên biển, có video flycam 360 độ và bản đồ chỉ đường Google Maps nhúng bên cạnh!
+    </Alert>
+
+    <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mt-3">
+      ❓ <strong>Câu hỏi:</strong> Yếu tố nào đã biến các website hiện đại thành cổng thông tin sống động cuốn hút hàng triệu người mỗi ngày?
     </p>
-    ```
+  </SlideStep>
 
-    #### c) Điều chỉnh kích thước ảnh (`width` và `height`)
-    - Để quy định kích thước hiển thị của ảnh, sử dụng hai thuộc tính `width` (chiều rộng) và `height` (chiều cao), đơn vị mặc định là pixel (px):
-      ```html
-      <img src="images/heart.png" alt="Trái tim" width="200" height="120">
-      ```
-    - **⚠️ Quy tắc tỉ lệ vàng (Aspect Ratio):**
-      - Nếu em đặt cả `width` và `height` không đúng tỉ lệ ban đầu, hình ảnh sẽ bị **méo mó, co cụm hoặc kéo giãn** biến dạng!
-      - Nếu em **chỉ thiết lập một thuộc tính** (chỉ `width` hoặc chỉ `height`), trình duyệt sẽ **tự động tính toán chiều còn lại** theo đúng tỉ lệ ảnh gốc, giúp bức ảnh giữ nguyên vẻ tự nhiên:
-      ```html
-      <!-- Chiều cao sẽ tự động tính theo tỉ lệ của chiều rộng 150px -->
-      <img src="images/heart.png" alt="Trái tim đẹp" width="150">
-      ```
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Chia sẻ cảm nhận"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Học sinh thảo luận: Đa phương tiện giúp người xem cảm nhận như đang trực tiếp có mặt tại địa danh du lịch, tăng độ tin cậy và hứng thú khám phá.
+    </p>
+  </SlideStep>
 
-    **❓ Câu hỏi củng cố (Trang 63 SGK):**  
-    1. *Thẻ `<img>` chỉ dùng khi chèn ảnh jpg vào trang web có đúng không?*  
-       👉 **Sai.** Thẻ `<img>` hỗ trợ hầu hết các định dạng ảnh phổ biến trên web như PNG, GIF, WebP, SVG, JPEG/JPG, BMP...
-    2. *Hãy nêu một số trường hợp có thể xảy ra lỗi khi hiển thị ảnh.*  
-       👉 **Các nguyên nhân phổ biến:**
-       - Sai đường dẫn (sai chính tả tên tệp, sai đuôi mở rộng `.jpg` thành `.png`, sai cấu trúc thư mục).
-       - Tệp ảnh bị xóa hoặc di chuyển sang thư mục khác.
-       - Tệp ảnh từ liên kết ngoài (URL tuyệt đối) bị máy chủ gốc chặn tải (Hotlink protection) hoặc mất kết nối mạng Internet.
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Kể tên các định dạng Media"
+  >
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+      <p>Các dạng tài nguyên số thường gặp trên web: Ảnh (JPEG, PNG, WebP), Âm thanh (MP3, WAV), Video (MP4, WebM) và Nhúng trang ngoài (YouTube, Bản đồ).</p>
+    </div>
+  </SlideStep>
 
-    ---
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề"
+  >
+    <Alert type="success" title="Chốt nội dung vào bài">
+      HTML5 mang đến các thẻ bản địa (`<img>`, `<video>`, `<audio>`, `<iframe>`) cho phép trình duyệt trực tiếp phát đa phương tiện mượt mà mà không cần cài thêm bất kỳ phần mềm plugin bên ngoài nào!
+    </Alert>
+  </SlideStep>
 
-    ### 2. Chèn âm thanh và video vào trang web
+</PedagogyActivity>
 
-    Trước HTML5, việc phát video trên web rất phức tạp và phải cài đặt các phần mềm bổ trợ (như Adobe Flash Player). Hiện nay, HTML cung cấp sẵn hai thẻ chuẩn là `<video>` và `<audio>`.
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
 
-    #### a) Chèn Video bằng thẻ `<video>`
-    - **Định dạng phổ biến:** `mp4` (chuẩn quốc tế tốt nhất hiện nay) và `webm`.
-    - **Cú pháp cơ bản:**
-      ```html
-      <video src="videos/gioi_thieu.mp4" width="640" height="360" controls>
-        Trình duyệt của bạn không hỗ trợ thẻ video.
-      </video>
-      ```
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút"
+  objective="Làm chủ kỹ thuật chèn hình ảnh (img), nhúng âm thanh (audio), video (video) và nhúng khung nội tuyến (iframe)."
+  content="Thực hành cú pháp thẻ img với thuộc tính alt, điều khiển video bằng controls và nhúng bản đồ iframe."
+  product="Mã nguồn trang web tích hợp đầy đủ ảnh, video mẫu và khung iframe hiển thị mượt mà."
+>
 
-    **Các thuộc tính quan trọng của thẻ `<video>`:**
-    - `controls`: Thuộc tính boolean (không cần giá trị). Kích hoạt thanh điều khiển phát/dừng, tua thời gian, phóng to toàn màn hình và chỉnh âm lượng.
-    - `autoplay`: Tự động phát video ngay khi tải xong trang.  
-      *(Lưu ý: Các trình duyệt hiện đại chặn tự phát âm thanh làm phiền người dùng; do đó `autoplay` chỉ hoạt động khi đi kèm với thuộc tính `muted` - tắt tiếng).*
-    - `loop`: Lặp lại video vô tận sau khi phát hết.
-    - `poster="images/cover.jpg"`: Đặt ảnh bìa hiển thị trước khi người dùng nhấn nút phát video.
-    - `width`, `height`: Kích thước khung hình video.
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: CHÈN HÌNH ẢNH VÀO TRANG WEB
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="CHÈN HÌNH ẢNH BẰNG THẺ <IMG> VÀ CÁC THUỘC TÍNH"
+    duration="15 phút"
+    objective="Sử dụng thành thạo thẻ đơn <img>; hiểu vai trò sống còn của thuộc tính alt trong SEO và hỗ trợ người khiếm thị."
+    content="Phân tích thuộc tính src (đường dẫn), alt (văn bản thay thế), width và height (kiểm soát kích thước)."
+    product="Chèn ảnh thành công có đầy đủ chú thích alt và kích thước chuẩn không bị méo hình."
+  >
 
-    #### b) Chèn Âm thanh bằng thẻ `<audio>`
-    - **Định dạng phổ biến:** `mp3`, `wav`, `ogg`.
-    - **Cú pháp:**
-      ```html
-      <audio src="audio/quoc_ca.mp3" controls>
-        Trình duyệt không hỗ trợ phát âm thanh.
-      </audio>
-      ```
-    - Thẻ `<audio>` không có thuộc tính `width`, `height` và `poster` vì âm thanh không có khung hình hiển thị.
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Cú pháp Thẻ Chèn Ảnh <img>"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<h3>1. Chèn ảnh từ đường dẫn Internet (Tuyệt đối):</h3>
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500" 
+     alt="Bãi biển cát trắng nắng vàng mùa hè" 
+     width="400" 
+     style="border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
 
-    #### c) Sử dụng thẻ `<source>` để hỗ trợ đa định dạng
-    Mỗi trình duyệt có thể tối ưu cho một định dạng khác nhau. Để đảm bảo mọi học sinh trên mọi thiết bị đều xem được, ta cung cấp nhiều nguồn dự phòng:
-    ```html
-    <video width="640" height="360" controls poster="images/poster.png">
-      <source src="videos/bai_giang.mp4" type="video/mp4">
-      <source src="videos/bai_giang.webm" type="video/webm">
-      Trình duyệt của bạn không hỗ trợ thẻ video HTML5.
-    </video>
-    ```
+<p><em>Ảnh: Bãi biển nhiệt đới (Nguồn: Unsplash)</em></p>
 
-    **❓ Câu hỏi củng cố (Trang 64 SGK):**  
-    *Thuộc tính `src` có tác dụng gì với thẻ `<audio>`?*  
-    👉 **Trả lời:** Thuộc tính `src` dùng để xác định đường dẫn tệp âm thanh (ví dụ tệp `.mp3`) mà trình duyệt cần tải và phát cho người dùng nghe.
+<h3>2. Khi ảnh bị lỗi đường dẫn (Hiển thị thuộc tính alt):</h3>
+<img src="anh_khong_ton_tai.jpg" 
+     alt="Logo Trường THPT (Ảnh đang cập nhật)" 
+     width="200" 
+     style="border: 2px dashed #ef4444; padding: 10px;">`}
+        title="Thử nghiệm trực tiếp: Thẻ chèn ảnh <img> và thuộc tính alt"
+      />
+    </SlideStep>
 
-    ---
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Giải phẫu 4 Thuộc tính Cốt lõi của <img>"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-sky-600 dark:text-sky-400 font-bold block mb-1">
+            📍 1. Thuộc tính `src` (Source):
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Đường dẫn tới tệp ảnh (tuyệt đối hoặc tương đối). Nếu đường dẫn sai, ảnh sẽ bị vỡ (biểu tượng icon lỗi).
+          </p>
+        </div>
 
-    ### 3. Tạo khung nội tuyến trong trang web (Inline Frame - `<iframe>`)
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">
+            📝 2. Thuộc tính `alt` (Alternative Text):
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Dòng chữ mô tả ảnh khi mạng yếu không tải được ảnh. Đây là tiêu chuẩn bắt buộc của W3C giúp máy đọc màn hình đọc to nội dung ảnh cho <strong>người khiếm thị</strong>.
+          </p>
+        </div>
 
-    #### a) Khái niệm và cú pháp
-    - **Khung nội tuyến (`<iframe>`):** Cho phép nhúng một trang web khác, một tài liệu (PDF), một video YouTube hoặc bản đồ Google Maps vào ngay trong một khung cửa sổ của trang web hiện tại.
-    - **Cú pháp:**
-      ```html
-      <iframe src="URL" width="chiều_rộng" height="chiều_cao"></iframe>
-      ```
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-amber-600 dark:text-amber-400 font-bold block mb-1">
+            📏 3. Thuộc tính `width` & `height`:
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            Xác định bề rộng và chiều cao (đơn vị pixel). <em>Mẹo tránh méo ảnh:</em> Chỉ nên chỉ định một chiều <code>width="400"</code>, chiều còn lại để trình duyệt tự co giãn theo tỉ lệ gốc!
+          </p>
+        </div>
 
-    **Ví dụ nhúng trang web câu lạc bộ:**
-    ```html
-    <iframe src="CLB.html" width="600" height="400"></iframe>
-    ```
-
-    #### b) Kỹ thuật mở liên kết vào trong khung nội tuyến
-    Đây là kỹ thuật giao diện rất thông minh: khi nhấp vào menu các mục bên ngoài, trang web đích không mở ra toàn màn hình mà xuất hiện ngay bên trong khung `<iframe>`!
-
-    ```mermaid
-    graph TD
-        Menu1["Link 1: CLB Thể thao"] -->|"target='khung_xem'"| Frame["Khung iframe (name='khung_xem')"]
-        Menu2["Link 2: CLB Nghệ thuật"] -->|"target='khung_xem'"| Frame
-        style Frame fill:#f0fdf4,stroke:#16a34a,stroke-width:2px
-    ```
-
-    **Cách thực hiện:**
-    1. Đặt thuộc tính `name="ten_khung"` cho thẻ `<iframe>`:
-       ```html
-       <iframe name="khung_hien_thi" width="800" height="500"></iframe>
-       ```
-    2. Đặt thuộc tính `target="khung_hien_thi"` cho thẻ liên kết `<a>`:
-       ```html
-       <a href="the_thao.html" target="khung_hien_thi">CLB Thể thao</a> | 
-       <a href="nghe_thuat.html" target="khung_hien_thi">CLB Nghệ thuật</a>
-       ```
-
-    **❓ Câu hỏi củng cố (Trang 65 SGK):**  
-    *Viết các câu lệnh để tạo hai khung nội tuyến có kích thước bằng nhau, hiển thị song song (theo phương ngang) trên trang web.*
-
-    **Lời giải mẫu:**  
-    Vì thẻ `<iframe>` mặc định là phần tử hiển thị nội tuyến (inline), ta chỉ cần đặt hai thẻ liên tiếp mà không có thẻ ngắt dòng `<br>` hay thẻ đoạn văn `<p>`:
-    ```html
-    <iframe src="trang1.html" width="45%" height="350"></iframe>
-    <iframe src="trang2.html" width="45%" height="350"></iframe>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    - Nhắc học sinh chú ý về chính sách an toàn thông tin của các website lớn (X-Frame-Options): một số trang như Facebook hoặc Google Search chặn không cho nhúng trong iframe vì lý do bảo mật. Muốn nhúng YouTube, phải dùng URL dạng Embed (`https://www.youtube.com/embed/VIDEO_ID`).
-  </TeacherNotes>
-</StepKnowledge>
-
-<StepPractice title="3. Luyện tập (Practice)">
-  <RawContent>
-    ### Nhiệm vụ 1: Chèn tệp ảnh vào các trang câu lạc bộ (Trang 65 SGK)
-    
-    **Yêu cầu:**  
-    Tạo hai trang `the_thao.html` và `nghe_thuat.html`, chuẩn bị thư mục `images/` chứa ảnh hoạt động và chèn ảnh minh họa vào từng trang bằng thẻ `<img>`.
-
-    **Mã nguồn `the_thao.html`:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Câu lạc bộ Thể thao</title>
-    </head>
-    <body>
-      <h2>CÂU LẠC BỘ THỂ THAO TRƯỜNG NGUYỄN BỈNH KHIÊM</h2>
-      <p>Nơi rèn luyện thể lực và tinh thần đồng đội cho học sinh.</p>
-      
-      <p>
-        <img src="images/thethao.png" alt="Hoạt động của các CLB Thể thao" width="500">
-      </p>
-    </body>
-    </html>
-    ```
-
-    ---
-
-    ### Nhiệm vụ 2: Chèn tệp âm thanh vào trang web (Trang 66 SGK)
-
-    **Yêu cầu:**  
-    Chèn tệp bài hát "Quốc ca" vào trang web bằng thẻ thích hợp và thiết lập tự động phát (`autoplay`) kèm thanh điều khiển.
-
-    ```html
-    <h3>Giai điệu truyền thống:</h3>
-    <audio controls autoplay muted>
-      <source src="audio/quoc_ca.mp3" type="audio/mpeg">
-      <source src="audio/quoc_ca.ogg" type="audio/ogg">
-      Trình duyệt của em không hỗ trợ phát âm thanh.
-    </audio>
-    <p><small>(Lưu ý: Thêm thuộc tính muted để trình duyệt cho phép tự động phát)</small></p>
-    ```
-
-    ---
-
-    ### Nhiệm vụ 3: Chèn khung nội tuyến vào `CLB.html` (Trang 66 SGK)
-
-    **Yêu cầu:**  
-    Trong trang `CLB.html`, hiển thị nội dung của hai trang `the_thao.html` hoặc `nghe_thuat.html` thông qua một khung nội tuyến `<iframe>` duy nhất tuỳ theo lựa chọn của người dùng.
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Hệ thống hoạt động ngoại khóa</title>
-    </head>
-    <body>
-      <h2>Câu lạc bộ ngoại khóa Trường THPT Nguyễn Bỉnh Khiêm</h2>
-      
-      <!-- Thanh điều hướng liên kết trỏ vào iframe -->
-      <p>
-        [ <a href="the_thao.html" target="khung_clb">Câu lạc bộ Thể thao</a> ]
-        [ <a href="nghe_thuat.html" target="khung_clb">Câu lạc bộ Nghệ thuật</a> ]
-      </p>
-
-      <!-- Khung nội tuyến nhận hiển thị trang được chọn -->
-      <iframe name="khung_clb" src="the_thao.html" width="100%" height="550" style="border: 2px solid #cbd5e1; border-radius: 12px;">
-      </iframe>
-    </body>
-    </html>
-    ```
-
-    ---
-
-    ### Luyện tập SGK (Trang 66)
-
-    #### Bài 1: Tính kích thước hiển thị của ảnh theo tỉ lệ
-    **Đề bài:**  
-    *Cho ảnh có kích thước gốc là 720 × 450 pixel. Chèn ảnh vào trang web bằng câu lệnh:*  
-    `<img src="images/1.png" alt="chiếc lá" width="600">`  
-    *Hỏi ảnh trong trang web có kích thước bao nhiêu?*
-
-    **Lời giải chi tiết:**
-    - Do câu lệnh chỉ thiết lập thuộc tính `width="600"` mà không đặt `height`, trình duyệt sẽ tự động điều chỉnh chiều cao theo đúng tỉ lệ ảnh gốc để tránh méo ảnh.
-    - Gọi H là chiều cao mới theo tỉ lệ:
-      `	ext
-      (Chiều rộng mới / Chiều rộng gốc) = (Chiều cao mới / Chiều cao gốc)
-      => 600 / 720 = H / 450
-      => H = (450 * 600) / 720 = 375 (pixel)
-      `
-    - 👉 **Đáp án:** Ảnh trong trang web sẽ có kích thước là **600 × 375 pixel**.
-
-    #### Bài 2: Chèn ảnh vào trang giới thiệu bản thân
-    *Chèn thêm một số ảnh của mình vào trang web giới thiệu bản thân (đã tạo ở phần Luyện tập, Bài 10).*
-  </RawContent>
-  <TeacherNotes>
-    - Cho học sinh thực hiện bài toán tính tỉ lệ ảnh để rèn luyện tư duy tính toán và hiểu rõ cơ chế co giãn tự nhiên của trình duyệt.
-  </TeacherNotes>
-</StepPractice>
-
-<StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng thực tế (Trang 66 SGK)
-
-    **Yêu cầu:**  
-    *Tạo một khung nội tuyến và liên kết đến bài hát hoặc video em yêu thích (ví dụ trên YouTube) vào trang web giới thiệu bản thân.*
-
-    **Mã nguồn hoàn chỉnh gợi ý:**
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Trang cá nhân & Góc sở thích của em</title>
-      <style>
-        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .video-box { border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-      </style>
-    </head>
-    <body>
-      <div class="card">
-        <h1>👋 Xin chào, tôi là Nguyễn Văn An!</h1>
-        <p>Học sinh lớp 12A1 - Trường THPT Nguyễn Bỉnh Khiêm.</p>
-
-        <!-- Ảnh đại diện -->
-        <p>
-          <img src="images/avatar.jpg" alt="Ảnh đại diện của An" width="220" style="border-radius: 50%; border: 4px solid #38bdf8;">
-        </p>
-
-        <h3>🎵 Bài hát em yêu thích:</h3>
-        <p>Mời thầy cô và các bạn cùng thưởng thức giai điệu truyền cảm hứng này nhé:</p>
-
-        <!-- Nhúng video YouTube qua iframe chuẩn -->
-        <div class="video-box">
-          <iframe 
-            width="100%" 
-            height="400" 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-          </iframe>
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-indigo-600 dark:text-indigo-400 font-bold block mb-1">
+            ⚡ Thẻ đơn không thẻ đóng:
+          </strong>
+          <p className="text-slate-700 dark:text-slate-300">
+            <code>&lt;img&gt;</code> là thẻ đơn, không có nội dung kẹp ở giữa nên không có <code>&lt;/img&gt;</code>!
+          </p>
         </div>
       </div>
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Gợi ý kỹ thuật khi lấy mã nhúng YouTube:**
-    - Mở video trên YouTube -> Nhấn nút **Share (Chia sẻ)** -> Chọn **Embed (Nhúng)** -> Sao chép toàn bộ mã thẻ `<iframe>` có sẵn do YouTube sinh ra.
-  </TeacherNotes>
-</StepApplication>
+    </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức cốt lõi 🎯">
-- 🖼 **Thẻ `<img>`:** Thẻ đơn dùng chèn ảnh với thuộc tính `src` (đường dẫn), `alt` (mô tả thay thế) và `width`/`height`. Nếu chỉ chỉ định một chiều, chiều kia tự động điều chỉnh theo đúng tỉ lệ ảnh gốc.
-- 🎬 **Thẻ `<video>`:** Chèn tệp video (`.mp4`, `.webm`) với các thuộc tính `controls` (thanh điều khiển), `autoplay muted` (tự phát khi tắt tiếng), `poster` (ảnh bìa).
-- 🎧 **Thẻ `<audio>`:** Chèn âm thanh (`.mp3`, `.wav`) với thuộc tính `controls`.
-- 🪟 **Thẻ `<iframe>`:** Khung nội tuyến nhúng một trang web, bản đồ hoặc video YouTube vào trong trang hiện tại.
-- 🎯 **Điều hướng vào khung:** Đặt `name="ten_khung"` cho `<iframe>` và liên kết với thuộc tính `target="ten_khung"` trong thẻ `<a>`.
-</GlassCard>
-</div>
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – Định dạng ảnh nào cho trường hợp nào?"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💬 Câu hỏi thảo luận: Khi làm Logo cho trường học, ta nên chọn ảnh đuôi JPG hay PNG?
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          👉 <em>Đáp án:</em> Chọn <strong>PNG</strong> vì PNG hỗ trợ nền trong suốt (không bị vệt trắng bao quanh khi đặt lên nền màu khác) và giữ nguyên độ sắc nét của các đường nét logo.
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Thẻ <img>"
+    >
+      <Alert type="success" title="Quy tắc">
+        Cú pháp chuẩn: `<img src="duong_dan_anh" alt="mo_ta_anh" width="chieu_rong">`.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: CHÈN ÂM THANH VÀ VIDEO
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="CHÈN ÂM THANH VÀ VIDEO TRỰC TIẾP BẰNG HTML5"
+    duration="15 phút"
+    objective="Sử dụng thẻ <audio> và <video> với thuộc tính controls để cung cấp nút play/pause, âm lượng cho người dùng."
+    content="Thực hành cú pháp thẻ video kèm poster (ảnh bìa), loop (lặp lại) và audio."
+    product="Đoạn mã trình phát video và âm thanh hoạt động trực tiếp trên trình duyệt."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Thẻ <video> và <audio>"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<h3>1. Chèn Video có thanh điều khiển (controls):</h3>
+<video width="100%" height="240" controls poster="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Trình duyệt của bạn không hỗ trợ phát thẻ video.
+</video>
+
+<h3>2. Chèn Âm thanh / Bài hát (audio):</h3>
+<audio controls style="width: 100%; margin-top: 10px;">
+    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ thẻ audio.
+</audio>`}
+        title="Thử nghiệm trực tiếp: Thẻ <video> và <audio> trong HTML5"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Các Thuộc tính Điều khiển Quan trọng"
+    >
+      <div className="overflow-x-auto my-2">
+        <table className="w-full text-left border-collapse rounded-2xl overflow-hidden shadow-sm">
+          <thead>
+            <tr className="bg-slate-900 text-white text-xs font-black uppercase tracking-wider">
+              <th className="py-3 px-4 w-36">Thuộc tính</th>
+              <th className="py-3 px-4 w-32">Áp dụng cho</th>
+              <th className="py-3 px-4">Tác dụng & Ý nghĩa</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-xs md:text-sm bg-white dark:bg-slate-900">
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>controls</code></td>
+              <td className="py-3 px-4 font-bold">video, audio</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                <strong>Bắt buộc:</strong> Hiển thị thanh điều khiển (nút Play/Pause, chỉnh âm lượng, tua thời gian, phóng to toàn màn hình).
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>poster="..."</code></td>
+              <td className="py-3 px-4 font-bold">video</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Ảnh đại diện (Thumbnail bìa video) hiển thị trước khi người dùng bấm nút Play.
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>autoplay</code></td>
+              <td className="py-3 px-4 font-bold">video, audio</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Tự động phát khi tải trang (Trình duyệt thường yêu cầu kèm thuộc tính <code>muted</code> để tránh làm giật mình người dùng).
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-mono font-bold text-sky-600 dark:text-sky-400"><code>loop</code></td>
+              <td className="py-3 px-4 font-bold">video, audio</td>
+              <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
+                Tự động phát lặp lại vô tận khi kết thúc video/âm thanh.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Vì sao quên 'controls' thì video không chạy?"
+    >
+      <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 text-xs md:text-sm">
+        <strong className="text-rose-800 dark:text-rose-300 block mb-1">
+          🚨 Lưu ý quan trọng:
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Nếu viết <code>&lt;video src="clip.mp4"&gt;&lt;/video&gt;</code> mà không có thuộc tính <code>controls</code>, trình duyệt sẽ chỉ hiển thị một khung ảnh đứng im và người xem <strong>không có nút Play để bấm phát!</strong> Luôn nhớ thêm chữ <code>controls</code> vào thẻ video và audio.
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Video/Audio"
+    >
+      <Alert type="success" title="Quy tắc">
+        Thẻ `<video>` và `<audio>` là thẻ đôi (có thẻ đóng). Sử dụng thẻ con `<source src="..." type="...">` bên trong để cung cấp các định dạng dự phòng cho trình duyệt.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.3: KHUNG NỘI TUYẾN IFRAME
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-3"
+    number="2.3"
+    title="KHUNG NỘI TUYẾN <iframe> (INLINE FRAME)"
+    duration="15 phút"
+    objective="Hiểu khái niệm nhúng cửa sổ web con bằng iframe; biết cách lấy mã nhúng từ YouTube hoặc Google Maps đưa vào trang web."
+    content="Thực hành cú pháp <iframe src='...'></iframe> và kết hợp liên kết thẻ a mở nội dung vào bên trong iframe qua thuộc tính target và name."
+    product="Trang web nhúng thành công khung xem video hoặc bản đồ địa chỉ trường học."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.3.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Khám phá Cửa sổ Con <iframe>"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<h3>1. Khung nội tuyến nhúng trang con (iframe):</h3>
+<iframe src="https://example.com" 
+        width="100%" 
+        height="180" 
+        style="border: 2px solid #0284c7; border-radius: 12px;">
+</iframe>
+
+<h3>2. Điều khiển Iframe từ thẻ &lt;a&gt; (target = name):</h3>
+<p>
+    Bấm để đổi nội dung trong khung dưới: 
+    <a href="https://example.com" target="my-frame" style="color: blue; font-weight: bold;">[Trang 1]</a> | 
+    <a href="https://w3schools.com" target="my-frame" style="color: green; font-weight: bold;">[Trang 2]</a>
+</p>
+<iframe name="my-frame" width="100%" height="160" style="border: 1px dashed #64748b; border-radius: 10px;"></iframe>`}
+        title="Thử nghiệm trực tiếp: Khung nội tuyến <iframe>"
+      />
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Cách lấy Mã Nhúng YouTube & Google Maps"
+    >
+      <Alert type="idea" title="Quy trình 3 bước nhúng nội dung từ các nền tảng lớn">
+        1. **Trên YouTube:** Bấm vào nút *Chia sẻ (Share)* $\rightarrow$ Chọn *Nhúng (Embed)* $\rightarrow$ Sao chép toàn bộ đoạn mã `<iframe>`.
+        
+        2. **Trên Google Maps:** Tìm kiếm địa chỉ trường học $\rightarrow$ Bấm nút *Chia sẻ* $\rightarrow$ Chọn tab *Nhúng bản đồ (Embed a map)* $\rightarrow$ Sao chép mã HTML.
+        
+        3. Dán đoạn mã sao chép được vào phần thân `<body>` của tệp HTML!
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.3"
+      step={3}
+      title="Báo cáo, thảo luận – Phối hợp Thẻ <a> với <iframe>"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💡 Kỹ thuật liên kết mở trong khung con:
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Đặt thuộc tính <code>name="khung_chieu"</code> cho thẻ <code>&lt;iframe&gt;</code>. Sau đó ở thẻ <code>&lt;a&gt;</code>, đặt <code>target="khung_chieu"</code>. Khi người dùng nhấp vào link, trang đích sẽ được mở ngay bên trong khung iframe đó mà không chuyển trang!
+        </p>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.3.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Iframe"
+    >
+      <Alert type="success" title="Tổng kết">
+        `<iframe>` (Inline Frame) là công cụ tuyệt vời để tích hợp các dịch vụ bên thứ ba (Video, Bản đồ chỉ đường, Chatbot, Tài liệu PDF) vào website mà không tốn dung lượng máy chủ lưu trữ.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'TÍCH HỢP ĐA PHƯƠNG TIỆN TRÊN TRANG WEB'"
+  duration="20 phút"
+  objective="Củng cố toàn diện kĩ năng chèn ảnh, nhúng video và iframe; xử lý lỗi không hiển thị được tệp đa phương tiện."
+  content="Thực hiện 2 thử thách: Trắc nghiệm nhận diện thuộc tính media và Viết mã hoàn chỉnh một đoạn giới thiệu danh lam thắng cảnh."
+  product="Tệp thuchanh_media.html chạy chuẩn hiển thị ảnh và trình phát video."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Nhanh (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Thuộc tính nào của thẻ <img> đóng vai trò cung cấp văn bản thay thế khi hình ảnh bị lỗi hoặc phục vụ máy đọc cho người khiếm thị?",
+        options: [
+          'A. title',
+          'B. alt',
+          'C. name',
+          'D. desc'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! Thuộc tính alt (Alternative Text) là tiêu chuẩn bắt buộc của W3C."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Để hiển thị thanh điều khiển (Play, Pause, Âm lượng) cho thẻ <video>, ta bắt buộc phải thêm thuộc tính nào?",
+        options: [
+          'A. play',
+          'B. controls',
+          'C. panel',
+          'D. display'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! controls là thuộc tính hiển thị thanh điều khiển người dùng cho video và audio."
+      }} />
+    </div>
+
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Thực hành Soạn thảo Trang Giới thiệu Du lịch (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Hãy viết mã HTML hoàn chỉnh tạo trang giới thiệu <strong>Vịnh Hạ Long</strong> gồm: Tiêu đề lớn <code>&lt;h1&gt;</code>, một bức ảnh có <code>width="450"</code> kèm chú thích <code>alt</code>, và một khung video mẫu có <code>controls</code>.
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn code trên máy"
+  >
+    <Alert type="tip" title="Gợi ý sư phạm">
+      Sử dụng link ảnh và video mẫu trực tuyến có sẵn trong live sandbox bên dưới để kiểm tra tính năng hiển thị trực tiếp.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Đối chiếu bài làm"
+  >
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Khám phá Vịnh Hạ Long</title>
+</head>
+<body style="font-family: Arial; padding: 25px; line-height: 1.6;">
+    <h1 style="color: #0369a1;">VỊNH HẠ LONG - KỲ QUAN THIÊN NHIÊN THẾ GIỚI</h1>
+    <hr>
+    
+    <p>
+        Vịnh Hạ Long nổi tiếng với hàng nghìn hòn đảo đá vôi kỳ vĩ và làn nước trong xanh như ngọc bích.
+    </p>
+
+    <!-- Hình ảnh -->
+    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=500" 
+         alt="Thuyền buồm lướt trên vịnh Hạ Long" 
+         width="450" 
+         style="border-radius: 12px;">
+
+    <h3>Xem video giới thiệu vẻ đẹp Hạ Long:</h3>
+    <!-- Video -->
+    <video width="450" height="260" controls poster="https://images.unsplash.com/photo-1528127269322-539801943592?w=500" style="border-radius: 12px;">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Trình duyệt không hỗ trợ thẻ video.
+    </video>
+</body>
+</html>`}
+      title="Mã nguồn mẫu: Trang du lịch Vịnh Hạ Long (Thử thách 2)"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết thực hành"
+  >
+    <Alert type="success" title="Đánh giá kết quả">
+      Học sinh thực hành thành thạo cách liên kết tệp media, kiểm soát kích thước chiều rộng hợp lý và đảm bảo tính dễ tiếp cận của website.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'TRANG GIỚI THIỆU TRƯỜNG THPT CỦA EM'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng tích hợp tất cả các thành phần: Hình ảnh (img), Video hoạt động (video) và Khung bản đồ (iframe Google Maps) để xây dựng trang giới thiệu ngôi trường của em."
+  content="Học sinh thiết kế tệp truong_cua_em.html có ảnh cổng trường, video hoạt động ngoại khóa và bản đồ vị trí trường học."
+  product="Tệp truong_cua_em.html hoàn chỉnh, hiển thị sinh động và hài hòa."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề bài Dự án Giới thiệu Trường"
+  >
+    <Alert type="idea" title="Yêu cầu Dự án Website Giới thiệu Trường THPT">
+      Tạo tệp HTML có tên <code>truong_cua_em.html</code>:
+      1. Tiêu đề `<h1>`: Tên trường THPT của em.
+      2. Ít nhất 01 bức ảnh đẹp về trường (cổng trường hoặc sân trường).
+      3. Nhúng 01 video clip hoạt động văn nghệ / thể thao của trường (hoặc video mẫu).
+      4. Nhúng 01 khung `<iframe>` hiển thị bản đồ định vị vị trí trường hoặc trang web tin tức.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo khung tại phòng máy"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Khởi tạo khung sườn">
+      Học sinh tạo khung bố cục 3 phần (Thông tin chung $\rightarrow$ Hình ảnh & Video $\rightarrow$ Bản đồ liên hệ) trong 10 phút cuối giờ.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Tiêu chí chấm điểm (Rubric 5512)"
+  >
+    <RubricCard />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết học & Chuẩn bị Bài 12"
+  >
+    <Alert type="success" title="Lời dặn chuẩn bị Bài 12">
+      - **Nộp bài:** Gửi tệp `.html` lên kho học liệu của lớp.
+      - **Chuẩn bị Bài 12 (Tạo biểu mẫu - Form):** Tìm hiểu cách các website tạo ô nhập họ tên, mật khẩu, nút gửi dữ liệu đăng ký dự thi hoặc phiếu khảo sát trực tuyến bằng thẻ `<form>` và `<input>`!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>

@@ -1,341 +1,597 @@
 ---
 title: "Bài 13: Khái niệm, vai trò của CSS"
-description: "Tìm hiểu ngôn ngữ định dạng CSS, cú pháp bộ chọn và vùng khai báo, 3 phương thức thiết lập CSS (nội tuyến, trong, ngoài) và vai trò tách biệt nội dung với giao diện web."
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
 order: 13
 ---
 
-<StepEngagement title="1. Khởi động (Engagement)">
-  <RawContent>
-    Hãy quan sát một trang web tin tức hoặc một bài viết trên mạng:
-    - Tiêu đề chính luôn có kích thước lớn, màu sắc nổi bật và có thể có đường viền chân trang trí.
-    - Hàng chục đoạn văn bản đều tự động có phông chữ đồng nhất, lùi đầu dòng và khoảng cách dòng thoáng đãng, dễ đọc.
-    - Toàn bộ hàng trăm trang con trong website đều có cùng một kiểu giao diện, màu sắc và bố cục nhất quán. 🌐✨
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH"
+  title="BÀI 13: KHÁI NIỆM, VAI TRÒ CỦA CSS"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
 
-    **💡 Thảo luận mở đầu:**  
-    *Nếu một website có 100 trang và muốn đổi màu toàn bộ tiêu đề từ màu đỏ sang màu xanh dương, liệu người lập trình có phải mở từng thẻ HTML trên cả 100 trang đó để sửa thủ công không? Ngôn ngữ nào giúp chúng ta định nghĩa mẫu một lần nhưng áp dụng được cho toàn bộ website?*
-
-    **Trả lời gợi ý:**
-    - Nếu chỉ dùng HTML thuần, chúng ta sẽ phải tốn vô số công sức chỉnh sửa từng thuộc tính trên từng phần tử của cả 100 trang.
-    - Giải pháp hoàn hảo là sử dụng **CSS (Cascading Style Sheets)**. CSS cho phép định nghĩa các quy tắc định dạng một lần duy nhất, sau đó tự động áp dụng đồng bộ cho tất cả các phần tử trên toàn bộ hệ thống website!
-  </RawContent>
-  <TeacherNotes>
-    **Mục tiêu bài dạy:**
-    - Hiểu rõ khái niệm, bản chất độc lập của CSS đối với chuẩn HTML.
-    - Nắm vững cú pháp chuẩn của CSS: Bộ chọn (Selector), Thuộc tính (Property) và Giá trị (Value).
-    - Phân biệt và vận dụng thành thạo 3 cách chèn CSS vào trang web: CSS nội tuyến (Inline), CSS trong (Internal), và CSS ngoài (External).
-    - Nhận thức sâu sắc vai trò của CSS trong việc tách biệt nội dung (Content) khỏi hình thức trình bày (Presentation).
-
-    **Định hướng sư phạm:**
-    - Cho học sinh xem trực quan một trang web khi bật CSS và khi tắt CSS (dùng tiện ích Web Developer hoặc Inspect Element) để các em thấy "phép thuật" của CSS.
-    - Giới thiệu ngắn gọn câu chuyện ra đời của CSS bởi nhà khoa học Håkon Wium Lie tại CERN (1994) và tổ chức W3C.
-  </TeacherNotes>
-</StepEngagement>
-
-<StepKnowledge title="2. Hình thành kiến thức (Knowledge)">
-  <RawContent>
-    ### 1. Khái niệm mẫu định dạng CSS
-
-    #### a) CSS là gì?
-    **CSS (Cascading Style Sheets - Bảng kiểu xếp tầng)** là một ngôn ngữ đặc biệt được thiết kế để thiết lập các mẫu định dạng trình bày (màu sắc, phông chữ, khoảng cách, kích thước, bố cục) cho các tài liệu viết bằng HTML.
-
-    > [!IMPORTANT]
-    > **CSS hoàn toàn độc lập với chuẩn HTML!**  
-    > - **HTML** đóng vai trò là "bộ khung xương" và "vật liệu xây dựng", xác định ý nghĩa ngữ nghĩa và cấu trúc nội dung trang web.  
-    > - **CSS** đóng vai trò là "lớp sơn", "nội thất" và "trang trí", quyết định cách nội dung đó xuất hiện đẹp mắt trước mắt người dùng.
-
-    #### b) Nguyên lý "Định nghĩa một lần - Dùng nhiều nơi"
-    Thay vì phải lặp lại việc định dạng trên từng phần tử, CSS cho phép định nghĩa một quy tắc chung. Ví dụ, chỉ một dòng lệnh CSS sau đây:
-    ```css
-    p {
-      text-indent: 15px;
-      line-height: 1.6;
-    }
-    ```
-    Sẽ tự động áp dụng quy tắc thụt đầu dòng 15px và giãn dòng 1.6 cho **tất cả các đoạn văn `<p>`** có mặt trên trang web!
-
-    ---
-
-    ### 2. Cấu trúc tổng quát của mẫu định dạng CSS
-
-    Một quy tắc CSS hoàn chỉnh gồm hai thành phần cơ bản:
-    1. **Bộ chọn (Selector):** Chỉ định phần tử HTML nào sẽ được áp dụng định dạng.
-    2. **Khối khai báo (Declaration block):** Nằm bên trong cặp ngoặc nhọn `{...}`, chứa một hoặc nhiều khai báo định dạng. Mỗi khai báo gồm **Thuộc tính (Property)** và **Giá trị (Value)**, ngăn cách bởi dấu hai chấm `:` và kết thúc bằng dấu chấm phẩy `;`.
-
-    ```text
-    bo_chon {
-      thuoc_tinh_1: gia_tri_1;
-      thuoc_tinh_2: gia_tri_2;
-    }
-    ```
-
-    *Ví dụ 1: Định dạng chữ đỏ cho tất cả tiêu đề `<h1>`:*
-    ```css
-    h1 {
-      color: red;
-    }
-    ```
-
-    *Ví dụ 2: Nhóm nhiều bộ chọn lại với nhau (ngăn cách bởi dấu phẩy `,`):*
-    ```css
-    h1, h2, h3 {
-      border: 2px solid red;
-      font-family: Arial, sans-serif;
-    }
-    ```
-
-    ---
-
-    ### 3. Ba phương thức thiết lập CSS vào trang web
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-      <div className="p-4 rounded-xl bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-sky-800">
-        <h4 className="font-bold text-sky-700 dark:text-sky-300 mb-2">1. CSS nội tuyến (Inline)</h4>
-        <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">
-          Viết trực tiếp vào thuộc tính <code>style</code> của thẻ HTML.
-        </p>
-        <code className="text-xs bg-white dark:bg-slate-900 p-2 rounded block">
-          &lt;h1 style="color: blue;"&gt;
-        </code>
-        <p className="text-xs text-amber-600 mt-2 font-medium">
-          ⚠️ Chỉ tác động lên đúng một phần tử đó. Khó bảo trì, tránh lạm dụng.
-        </p>
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
       </div>
-
-      <div className="p-4 rounded-xl bg-emerald-50 dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800">
-        <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">2. CSS trong (Internal)</h4>
-        <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">
-          Đặt trong cặp thẻ <code>&lt;style&gt;</code> nằm bên trong phần tử <code>&lt;head&gt;</code>.
-        </p>
-        <code className="text-xs bg-white dark:bg-slate-900 p-2 rounded block whitespace-pre">
-          &lt;head&gt;{"\n"}  &lt;style&gt;{"\n"}    p &#123; color: green; &#125;{"\n"}  &lt;/style&gt;{"\n"}&lt;/head&gt;
-        </code>
-        <p className="text-xs text-emerald-600 mt-2 font-medium">
-          ✅ Áp dụng cho toàn bộ các phần tử trong tệp HTML hiện tại.
-        </p>
-      </div>
-
-      <div className="p-4 rounded-xl bg-purple-50 dark:bg-slate-800 border border-purple-200 dark:border-purple-800">
-        <h4 className="font-bold text-purple-700 dark:text-purple-300 mb-2">3. CSS ngoài (External)</h4>
-        <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">
-          Viết tách biệt trong tệp <code>.css</code> độc lập, liên kết qua thẻ <code>&lt;link&gt;</code>.
-        </p>
-        <code className="text-xs bg-white dark:bg-slate-900 p-2 rounded block">
-          &lt;link rel="stylesheet" href="styles.css"&gt;
-        </code>
-        <p className="text-xs text-purple-600 mt-2 font-medium">
-          🌟 Cách tiếp cận chuyên nghiệp nhất! Áp dụng cho hàng trăm trang web.
-        </p>
-      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu khái niệm và vai trò độc lập của CSS trong việc tách biệt nội dung (Content) khỏi hình thức trình bày (Presentation).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững cú pháp quy tắc CSS: Bộ chọn (Selector), Thuộc tính (Property) và Giá trị (Value).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt và áp dụng đúng 3 phương thức thiết lập CSS: Nội tuyến (Inline), Trong trang (Internal) và Tệp ngoài (External).</span>
+        </li>
+      </ul>
     </div>
 
-    > [!TIP]
-    > Trong tệp CSS ngoài (ví dụ `styles.css`), chúng ta **không** dùng thẻ `<style>` mà viết trực tiếp các bộ chọn và khối khai báo. Bạn cũng có thể dùng cú pháp chú thích `/* nội dung chú thích */` để ghi chú giải thích mã.
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>🚀 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học:</strong> Viết được mã CSS để thay đổi đồng loạt giao diện hàng loạt trang web từ một tệp kiểu mẫu duy nhất.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span>
+            <strong>Năng lực số tích hợp (NC1):</strong>
+            <div className="mt-1 space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">3.4.NC1.a</span>
+              <span>Viết đúng thẻ link liên kết tệp style.css và sử dụng bộ chọn class, id chính xác.</span>
+              <br/>
+              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mr-1">5.3.NC1.b</span>
+              <span>Tạo phong cách thiết kế giao diện (Theme) đồng bộ và chuyên nghiệp.</span>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-    ---
+    <div className="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40">
+      <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base">
+        <span>🌟 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-rose-500 font-bold">•</span>
+          <span><strong>Tư duy tối ưu & khoa học:</strong> Nhận thức được lợi ích của việc viết mã ngắn gọn, tái sử dụng cao và dễ bảo trì trong ngành công nghiệp phần mềm.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
 
-    ### 4. Ý nghĩa và vai trò then chốt của CSS
+<EquipmentChecklist />
 
-    1. **Tách biệt nội dung và hình thức:** Giúp người lập trình tập trung vào cấu trúc nội dung khi viết HTML, sau đó chuyên tâm tinh chỉnh mỹ thuật bằng CSS mà không làm xáo trộn dữ liệu.
-    2. **Tiết kiệm thời gian và tài nguyên:** Tệp CSS ngoài được trình duyệt tải về và lưu vào bộ nhớ đệm (Cache). Khi người dùng chuyển qua các trang tiếp theo trong website, trình duyệt không cần tải lại kiểu dáng nữa, giúp trang web mở nhanh tức thì.
-    3. **Tính nhất quán cao:** Đảm bảo toàn bộ hệ sinh thái website có cùng một bộ nhận diện thương hiệu về màu sắc, phông chữ và bố cục.
-    4. **Dễ bảo trì và nâng cấp:** Khi muốn "thay áo mới" cho toàn bộ website, lập trình viên chỉ cần chỉnh sửa một tệp CSS duy nhất.
+{/* =========================================================================
+    HOẠT ĐỘNG 1: MỞ ĐẦU (10 PHÚT)
+    ========================================================================= */}
 
-    ---
+<PedagogyActivity
+  id="hoat-dong-1-mo-dau"
+  number="1"
+  title="HOẠT ĐỘNG 1: MỞ ĐẦU – 'BÀI TOÁN SỬA GIAO DIỆN 100 TRANG WEB'"
+  duration="10 phút"
+  objective="Tạo tình huống có vấn đề để học sinh nhận thấy sự bất tiện và giới hạn của việc định dạng thủ công bằng thuộc tính style trong HTML."
+  content="Tình huống: Giả sử một trang web trường học có 100 bài viết con, nếu Ban giám hiệu yêu cầu đổi màu toàn bộ tiêu đề từ Đỏ sang Xanh dương, ta phải làm thế nào?"
+  product="Học sinh nhận thức được nhu cầu cần một công cụ quản lý kiểu dáng tập trung, đó là CSS."
+>
 
-    ### 5. Câu hỏi củng cố (Trang 74–75 SGK)
+  <SlideStep
+    slide="SLIDE 1.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Tình huống 'Nâng cấp Giao diện'"
+    duration="03 phút"
+    showTimer={true}
+    timerSeconds={180}
+  >
+    <Alert type="idea" title="Tình huống thực tế">
+      Trường THPT vừa đổi màu cờ truyền thống sang màu **Xanh lam (Blue)**. Website của trường hiện có **100 trang bài viết**, mỗi trang đều có các tiêu đề `<h1 style="color: red;">`.
+      - Nếu dùng kiến thức HTML ở các bài trước, em sẽ phải làm gì để đổi màu cho cả 100 trang?
+      - Việc đó mất bao nhiêu thời gian và tiềm ẩn rủi ro sai sót gì?
+    </Alert>
 
-    **Câu 1:** *Nếu muốn tất cả các đoạn văn bản của trang web có màu xanh (blue) thì cần thiết lập định dạng CSS như thế nào?*
-    ```css
+    <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mt-3">
+      ❓ <strong>Câu hỏi:</strong> Có cách nào chỉ cần sửa đúng **1 dòng lệnh duy nhất** ở 1 nơi mà cả 100 trang web đều tự động đổi màu theo không?
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Thảo luận bàn tròn"
+  >
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Học sinh thảo luận: Nếu sửa thủ công bằng tay sẽ mất cả ngày và rất dễ quên sót vài trang. Cần có một tệp mẫu quy định chung cho toàn bộ website.
+    </p>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.3"
+    step={3}
+    title="Báo cáo, thảo luận – Giới thiệu 'Phép thuật' CSS"
+  >
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+      <p>Công cụ giải quyết triệt để bài toán này chính là **CSS (Cascading Style Sheets)**. Khi tách phần trang trí ra một tệp riêng `style.css`, ta chỉ cần đổi chữ <code>red</code> thành <code>blue</code> trong 1 giây là toàn bộ hệ thống web 100 trang lập tức đổi màu đồng loạt!</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 1.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt vấn đề"
+  >
+    <Alert type="success" title="Chốt ý nghĩa của CSS">
+      - **HTML** = Khung xương, gạch đá xây nhà.
+      - **CSS** = Màu sơn tường, rèm cửa, ánh sáng, phong cách nội thất.
+      Sự phân chia này là tiêu chuẩn vàng của toàn bộ ngành công nghệ Web hiện đại!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI (45 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-2-hinh-thanh-kien-thuc"
+  number="2"
+  title="HOẠT ĐỘNG 2: HÌNH THÀNH KIẾN THỨC MỚI"
+  duration="45 phút"
+  objective="Nắm vững cấu trúc một quy tắc CSS, phân biệt 3 bộ chọn (tag, class, id) và so sánh 3 phương thức nhúng CSS (Inline, Internal, External)."
+  content="Thực hành cú pháp Selector { Property: Value; }, áp dụng bộ chọn class bằng dấu chấm, id bằng dấu thăng và liên kết tệp style.css ngoài."
+  product="Trang web được định kiểu bằng CSS nội bộ và CSS tệp ngoài hoạt động chuẩn xác."
+>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.1: CẤU TRÚC QUY TẮC CSS VÀ BỘ CHỌN
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-1"
+    number="2.1"
+    title="CẤU TRÚC QUY TẮC CSS VÀ CÁC LOẠI BỘ CHỌN (SELECTORS)"
+    duration="15 phút"
+    objective="Viết đúng cú pháp một quy tắc CSS; phân biệt bộ chọn theo thẻ (h1, p), theo lớp (.class) và theo định danh (#id)."
+    content="Giải phẫu Selector, dấu ngoặc nhọn {}, dấu hai chấm :, dấu chấm phẩy ; và thực hành phân biệt Class (dùng nhiều lần) vs ID (duy nhất)."
+    product="Viết đúng các quy tắc CSS cho thẻ, class và id trên live sandbox."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.1.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – Cú pháp Quy tắc CSS"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <HtmlLiveSandbox
+        initialCode={`<style>
+    /* 1. Bộ chọn theo tên thẻ (Type Selector) - áp dụng cho mọi thẻ p */
     p {
-      color: blue;
-    }
-    ```
-
-    **Câu 2:** *Giải thích ý nghĩa của mẫu định dạng CSS sau: `h1, h2, h3 { border: 2px solid red; }`*
-    - Mẫu CSS này áp dụng đồng thời cho cả ba loại thẻ tiêu đề: `<h1>`, `<h2>`, và `<h3>`.
-    - Thiết lập đường viền (`border`) bao quanh các phần tử này là **nét liền (`solid`)**, có **độ dày 2 pixel (`2px`)** và có **màu đỏ (`red`)**.
-  </RawContent>
-  <TeacherNotes>
-    **Gợi ý sư phạm:**
-    - So sánh với tính năng **Styles** trong Microsoft Word (Heading 1, Heading 2, Normal): Khi sửa định dạng của một Style trong Word, mọi đoạn văn bản gắn với Style đó lập tức đổi theo. CSS hoạt động với tư duy tương tự nhưng mạnh mẽ và linh hoạt hơn nhiều.
-  </TeacherNotes>
-</StepKnowledge>
-
-<StepPractice title="3. Luyện tập thực hành (Practice)">
-  <RawContent>
-    ### Luyện tập 1 & 2 (Trang 75 SGK)
-
-    **Câu 1:** *Ngôn ngữ định dạng CSS chính là ngôn ngữ HTML, đúng hay sai?*  
-    👉 **Sai.** CSS và HTML là hai ngôn ngữ độc lập với cú pháp, vai trò và chuẩn kỹ thuật hoàn toàn khác nhau. HTML là ngôn ngữ đánh dấu siêu văn bản, còn CSS là ngôn ngữ quy định bảng kiểu trình bày.
-
-    **Câu 2:** *Khẳng định sau là đúng hay sai: "Có thể chỉ cần thay đổi thông tin của một tệp CSS sẽ làm thay đổi định dạng của nhiều trang web, thậm chí cả một website"?*  
-    👉 **Đúng.** Đây chính là sức mạnh vượt trội của phương pháp **CSS ngoài (External CSS)** khi nhiều tệp HTML cùng liên kết đến một tệp `.css` duy nhất.
-
-    ---
-
-    ### Thực hành mẫu: Thiết lập trang web tích hợp CSS 3 cấp độ
-
-    Tạo thư mục dự án gồm 2 tệp:
-    1. Tệp kiểu dáng ngoài `mystyle.css`:
-    ```css
-    /* Tệp định dạng CSS dùng chung */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8fafc;
-      margin: 20px;
+        color: #334155;
+        font-family: Arial;
+        line-height: 1.6;
     }
 
-    h1 {
-      color: #0284c7;
-      border-bottom: 2px solid #0284c7;
-      padding-bottom: 6px;
+    /* 2. Bộ chọn theo Lớp (Class Selector) - bắt đầu bằng dấu chấm . */
+    .noi-bat {
+        color: #e11d48;
+        font-weight: bold;
+        background-color: #ffe4e6;
+        padding: 4px 8px;
+        border-radius: 6px;
     }
 
-    p {
-      color: #334155;
-      line-height: 1.6;
-      text-indent: 20px;
+    /* 3. Bộ chọn theo Định danh (ID Selector) - bắt đầu bằng dấu thăng # */
+    #tieu-de-chinh {
+        color: #0284c7;
+        text-align: center;
+        border-bottom: 2px solid #0284c7;
+        padding-bottom: 8px;
     }
-    ```
+</style>
 
-    2. Tệp trang web `index.html`:
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Minh họa 3 phương pháp nhúng CSS</title>
-      <!-- 1. CSS ngoài -->
-      <link rel="stylesheet" href="mystyle.css">
+<h1 id="tieu-de-chinh">TIN HỌC 12 VÀ KỶ NGUYÊN CSS</h1>
+<p>Đoạn văn thứ nhất có màu chữ và giãn dòng tự động theo quy tắc thẻ p.</p>
+<p>Đoạn văn thứ hai chứa một cụm từ <span class="noi-bat">rất quan trọng</span> được áp dụng bộ chọn class.</p>
+<p class="noi-bat">Cả đoạn văn này cũng có thể mang class noi-bat!</p>`}
+        title="Thử nghiệm trực tiếp: Quy tắc CSS và 3 loại Bộ chọn"
+      />
+    </SlideStep>
 
-      <!-- 2. CSS trong -->
-      <style>
-        .highlight {
-          background-color: #fef08a;
-          padding: 8px 12px;
-          border-radius: 6px;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Khái niệm và vai trò của CSS</h1>
-      <p>
-        CSS giúp định nghĩa phong cách trình bày cho các phần tử trên trang web.
-      </p>
-      
-      <!-- 3. CSS nội tuyến -->
-      <p class="highlight" style="color: #b91c1c; font-weight: bold;">
-        Đoạn văn này vừa nhận kiểu từ CSS ngoài, vừa có nền vàng từ CSS trong, và chữ đỏ từ CSS nội tuyến!
-      </p>
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Hướng dẫn học sinh:**
-    - Chú ý quan sát sự kết hợp xếp tầng (Cascading) của CSS: Một phần tử có thể nhận đồng thời các thuộc tính từ CSS ngoài, CSS trong và CSS nội tuyến.
-  </TeacherNotes>
-</StepPractice>
-
-<StepApplication title="4. Vận dụng (Application)">
-  <RawContent>
-    ### Vận dụng 1 (Trang 75 SGK): So sánh Style Sheet trong xử lý văn bản với CSS Web
-
-    | Tiêu chí | Style trong Word / Google Docs | CSS trong Thiết kế Web |
-    | :--- | :--- | :--- |
-    | **Mục đích** | Định dạng đồng bộ các đoạn (Heading, Normal, Quote) trong văn bản. | Định dạng đồng bộ các phần tử giao diện trên trang web và website. |
-    | **Cơ chế tái sử dụng** | Lưu khuôn mẫu trong mẫu template `.dotx` hoặc tài liệu hiện tại. | Lưu trong tệp kiểu dáng `.css` dùng chung cho toàn bộ các trang web. |
-    | **Khả năng cập nhật** | Sửa Style một lần, mọi đoạn văn gắn Style đó tự động thay đổi. | Sửa tệp CSS một lần, mọi trang web liên kết lập tức đổi diện mạo. |
-
-    ---
-
-    ### Vận dụng 2 (Trang 75 SGK): Xây dựng trang web "Lịch sử CSS"
-
-    Tạo tệp `lich_su_css.html` với nội dung bài đọc SGK và định dạng hoàn chỉnh bằng CSS:
-    ```html
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-      <meta charset="UTF-8">
-      <title>Lịch sử phát triển của CSS</title>
-      <style>
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          max-width: 750px;
-          margin: 30px auto;
-          padding: 24px;
-          background: #f1f5f9;
-          color: #1e293b;
-          line-height: 1.7;
-        }
-        .container {
-          background: #ffffff;
-          padding: 30px;
-          border-radius: 12px;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-          color: #1e40af;
-          border-bottom: 3px solid #3b82f6;
-          padding-bottom: 8px;
-        }
-        h2 {
-          color: #0369a1;
-          margin-top: 24px;
-        }
-        p {
-          text-align: justify;
-          text-indent: 18px;
-        }
-        .highlight-box {
-          background: #eff6ff;
-          border-left: 4px solid #3b82f6;
-          padding: 12px 16px;
-          border-radius: 0 8px 8px 0;
-          font-style: italic;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>Lịch sử phát triển CSS</h1>
-        
-        <p>
-          Ý tưởng của CSS do kĩ sư Håkon Wium Lie, người Na Uy, thiết lập năm 1994 trong khi làm việc với Tim Berners-Lee tại viện hạt nhân CERN.
+    <SlideStep
+      slide="SLIDE 2.1.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Giải phẫu Cấu trúc Quy tắc CSS"
+    >
+      <div className="p-5 rounded-2xl bg-slate-900 text-white font-mono text-sm leading-relaxed shadow-inner my-2">
+        <p className="text-yellow-400 font-bold mb-1">// Sơ đồ giải phẫu cú pháp CSS:</p>
+        <p className="text-sky-300">
+          <span className="text-amber-400">h1</span> &#123;
         </p>
-        
-        <p class="highlight-box">
-          Ý tưởng chính của CSS là tạo ra các mẫu định dạng riêng, độc lập cho các phần tử HTML của trang web. Cách tạo ngôn ngữ định dạng riêng này sẽ giúp ích rất nhiều nếu so sánh với việc định dạng theo từng thẻ HTML.
+        <p className="pl-6">
+          <span className="text-emerald-400">color</span>: <span className="text-rose-300">blue</span>;
         </p>
-
-        <h2>Lịch sử các phiên bản CSS đầu tiên</h2>
-        <p>
-          Các ý tưởng ban đầu được Håkon Wium Lie đưa ra năm 1994 nhưng phiên bản CSS1 chính thức ra đời năm 1996. Phiên bản tiếp theo CSS2 được khởi động ngay sau đó nhưng mãi đến năm 1998 mới hoàn thiện. Phiên bản chính thức hoàn thiện nhất của CSS2 là CSS2.1 ra đời năm 2011, bản CSS2.1 nâng cấp được hoàn thiện năm 2016.
+        <p className="pl-6">
+          <span className="text-emerald-400">font-size</span>: <span className="text-rose-300">24px</span>;
         </p>
+        <p className="text-sky-300">&#125;</p>
+      </div>
 
-        <h2>Các phiên bản CSS tiếp theo</h2>
-        <p>
-          Từ bản CSS3 trở đi, CSS được phát triển theo từng gói riêng biệt (modules). Hiện nay các gói của CSS3 vẫn đang được phát triển và hoàn thiện. Đồng thời một số chuẩn của CSS4 và CSS5 vẫn đang được tiếp tục thiết lập mới bởi tổ chức W3C (World Wide Web Consortium).
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm mt-3">
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-amber-600 block mb-1">1. Bộ chọn (Selector):</strong>
+          Chỉ định phần tử HTML nào sẽ chịu tác động định dạng (ví dụ <code>h1</code>, <code>p</code>, <code>.class</code>, <code>#id</code>).
+        </div>
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-emerald-600 block mb-1">2. Thuộc tính (Property):</strong>
+          Đặc tính thẩm mỹ cần thay đổi (như <code>color</code>, <code>font-size</code>, <code>text-align</code>).
+        </div>
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <strong className="text-rose-600 block mb-1">3. Giá trị (Value):</strong>
+          Thông số cụ thể gán cho thuộc tính (như <code>red</code>, <code>16px</code>, <code>center</code>).
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.3"
+      step={3}
+      title="Báo cáo, thảo luận – So sánh Bộ chọn Class (.) và ID (#)"
+    >
+      <div className="overflow-x-auto my-2">
+        <table className="w-full text-left border-collapse rounded-2xl overflow-hidden shadow-sm">
+          <thead>
+            <tr className="bg-slate-900 text-white text-xs font-black uppercase tracking-wider">
+              <th className="py-3 px-4 w-36">Tiêu chí</th>
+              <th className="py-3 px-4">Bộ chọn Lớp (Class Selector)</th>
+              <th className="py-3 px-4">Bộ chọn Định danh (ID Selector)</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-xs md:text-sm bg-white dark:bg-slate-900">
+            <tr>
+              <td className="py-3 px-4 font-bold">Ký hiệu mở đầu trong CSS</td>
+              <td className="py-3 px-4 font-mono text-emerald-600 font-bold">Dấu chấm: <code>.ten_lop</code></td>
+              <td className="py-3 px-4 font-mono text-sky-600 font-bold">Dấu thăng: <code>#ten_id</code></td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold">Số lần xuất hiện trên trang</td>
+              <td className="py-3 px-4 text-emerald-700 font-bold">ĐƯỢC DÙNG NHIỀU LẦN cho nhiều phần tử</td>
+              <td className="py-3 px-4 text-rose-700 font-bold">DUY NHẤT 1 LẦN cho 1 phần tử trên mỗi trang</td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 font-bold">Mục đích sử dụng</td>
+              <td className="py-3 px-4">Nhóm các phần tử có chung kiểu cách trang trí (nút bấm, nhãn cảnh báo).</td>
+              <td className="py-3 px-4">Định danh một phần tử đặc biệt, duy nhất (thanh header, thanh menu chính, chân trang).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.1.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt kiến thức Bộ chọn"
+    >
+      <Alert type="success" title="Quy tắc">
+        - Cặp dấu ngoặc nhọn `{}` bao bọc các khai báo.
+        - Dấu hai chấm `:` ngăn cách giữa Thuộc tính và Giá trị.
+        - Dấu chấm phẩy `;` kết thúc mỗi dòng khai báo.
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+  {/* -----------------------------------------------------------------------
+      NHIỆM VỤ 2.2: 03 PHƯƠNG THỨC THIẾT LẬP CSS
+      ----------------------------------------------------------------------- */}
+  <SubTask
+    id="nhiem-vu-2-2"
+    number="2.2"
+    title="03 PHƯƠNG THỨC THIẾT LẬP CSS VÀO TRANG WEB"
+    duration="15 phút"
+    objective="Phân biệt và áp dụng đúng: CSS nội tuyến (Inline), CSS trong (Internal) và CSS ngoài (External)."
+    content="So sánh ưu nhược điểm của 3 cách viết CSS; làm chủ thẻ <link rel='stylesheet' href='style.css'>."
+    product="Tạo tệp style.css độc lập và liên kết thành công vào tài liệu HTML."
+  >
+
+    <SlideStep
+      slide="SLIDE 2.2.1"
+      step={1}
+      title="Chuyển giao nhiệm vụ – So sánh 3 Cách viết CSS"
+      duration="05 phút"
+      showTimer={true}
+      timerSeconds={300}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm my-2">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700">
+          <span className="px-2 py-0.5 rounded bg-slate-200 text-slate-800 text-xs font-black block mb-2 w-fit">
+            Cách 1: CSS Nội tuyến (Inline)
+          </span>
+          <p className="text-slate-600 dark:text-slate-300 mb-2">Viết trực tiếp trong thẻ bằng thuộc tính <code>style</code>:</p>
+          <div className="p-2 bg-[#1e293b] text-sky-300 font-mono text-xs rounded">
+            <code>&lt;h1 style="color: red;"&gt;</code>
+          </div>
+          <p className="text-[11px] text-rose-600 mt-2 font-bold">⚠️ Nhược điểm: Phải gõ lặp lại, khó bảo trì khi trang dài.</p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700">
+          <span className="px-2 py-0.5 rounded bg-sky-200 text-sky-800 text-xs font-black block mb-2 w-fit">
+            Cách 2: CSS Trong trang (Internal)
+          </span>
+          <p className="text-slate-600 dark:text-slate-300 mb-2">Viết trong cặp thẻ <code>&lt;style&gt;</code> đặt tại phần <code>&lt;head&gt;</code>:</p>
+          <div className="p-2 bg-[#1e293b] text-sky-300 font-mono text-xs rounded">
+            <code>&lt;head&gt;&lt;style&gt;h1 &#123; color: red; &#125;&lt;/style&gt;&lt;/head&gt;</code>
+          </div>
+          <p className="text-[11px] text-amber-600 mt-2 font-bold">💡 Tác dụng cho toàn bộ các thẻ trong 1 trang duy nhất.</p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-emerald-400 dark:border-emerald-600 shadow-md">
+          <span className="px-2 py-0.5 rounded bg-emerald-500 text-white text-xs font-black block mb-2 w-fit">
+            Cách 3: CSS Tệp Ngoài (External) ⭐
+          </span>
+          <p className="text-slate-600 dark:text-slate-300 mb-2">Viết trong tệp <code>style.css</code> riêng và nhúng bằng thẻ <code>&lt;link&gt;</code>:</p>
+          <div className="p-2 bg-[#1e293b] text-emerald-300 font-mono text-xs rounded">
+            <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>
+          </div>
+          <p className="text-[11px] text-emerald-600 mt-2 font-bold">🏆 TỐI ƯU NHẤT: Một tệp CSS dùng chung cho 1000 trang web!</p>
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.2"
+      step={2}
+      title="Thực hiện nhiệm vụ – Thứ tự Ưu tiên (Cascade)"
+    >
+      <Alert type="idea" title="Nguyên tắc xếp tầng (Cascade) - Ai mạnh hơn ai?">
+        Khi cùng một phần tử bị nhiều nguồn CSS tác động, trình duyệt sẽ ưu tiên theo thứ tự độ ưu tiên từ cao xuống thấp:
+        1. **Mạnh nhất:** CSS Nội tuyến (Inline style trực tiếp trên thẻ).
+        2. **Thứ nhì:** CSS Trong trang (Internal `<style>`) và CSS tệp ngoài (External `<link>`) - quy tắc nào viết sau sẽ ghi đè lên quy tắc trước.
+        3. **Thấp nhất:** Kiểu mặc định của trình duyệt (User Agent Stylesheet).
+      </Alert>
+    </SlideStep>
+
+    <SlideStep
+      slide="SLIDE 2.2.3"
+      step={3}
+      title="Báo cáo, thảo luận – Trải nghiệm thực tế"
+    >
+      <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm">
+        <strong className="text-indigo-800 dark:text-indigo-300 block mb-1">
+          💬 Khi nào nên dùng CSS ngoài?
+        </strong>
+        <p className="text-slate-700 dark:text-slate-300">
+          Trong các dự án thực tế, <strong>100% lập trình viên chuyên nghiệp đều dùng CSS tệp ngoài (External CSS)</strong>. Nó giúp mã HTML sạch sẽ, giảm dung lượng tải trang vì trình duyệt lưu tệp CSS vào bộ nhớ đệm (Cache), và cho phép cả nhóm thiết kế cùng làm việc mà không làm xáo trộn mã HTML của nhau.
         </p>
       </div>
-    </body>
-    </html>
-    ```
-  </RawContent>
-  <TeacherNotes>
-    **Gợi ý đánh giá:**
-    - Khuyến khích học sinh phân tách mã trên thành 2 tệp: `lich_su_css.html` và `lich_su_css.css` để thuần thục kỹ năng dùng CSS ngoài.
-  </TeacherNotes>
-</StepApplication>
+    </SlideStep>
 
-<div className="mt-12">
-<GlassCard title="Ghi nhớ kiến thức cốt lõi 🎯">
-- 🎨 **Bản chất của CSS:** Ngôn ngữ định dạng bảng kiểu độc lập với HTML, dùng để thiết lập phong cách trình bày thẩm mỹ cho trang web theo nguyên tắc "định nghĩa một lần, sử dụng nhiều lần".
-- 🧩 **Cú pháp CSS chuẩn:** `bo_chon { thuoc_tinh: gia_tri; }`. Nhiều bộ chọn có thể gộp chung bằng dấu phẩy `,`.
-- 🔌 **3 cách thiết lập CSS:**
-  1. *CSS nội tuyến (Inline):* Đặt trong thuộc tính `style` của thẻ.
-  2. *CSS trong (Internal):* Đặt trong thẻ `<style>` ở phần `<head>`.
-  3. *CSS ngoài (External):* Đặt trong tệp `.css` riêng và nhúng bằng thẻ `<link rel="stylesheet" href="...">`.
-- 🚀 **Ưu điểm vượt trội:** Tách bạch nội dung (HTML) khỏi hình thức (CSS), giúp mã nguồn tinh gọn, trang web tải nhanh và dễ dàng đổi diện mạo hàng loạt trang cùng lúc.
-</GlassCard>
-</div>
+    <SlideStep
+      slide="SLIDE 2.2.4"
+      step={4}
+      title="Kết luận, nhận định – Chốt 3 phương thức"
+    >
+      <Alert type="success" title="Chốt cú pháp nhúng tệp ngoài">
+        Đặt thẻ sau vào trong cặp thẻ `<head>...</head>` của mọi trang web:
+        `<link rel="stylesheet" href="style.css">`
+      </Alert>
+    </SlideStep>
+
+  </SubTask>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 3: LUYỆN TẬP (20 PHÚT)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-3-luyen-tap"
+  number="3"
+  title="HOẠT ĐỘNG 3: LUYỆN TẬP – 'THỬ TÀI THIẾT KẾ BẰNG CSS'"
+  duration="20 phút"
+  objective="Củng cố kĩ năng viết quy tắc CSS, sử dụng bộ chọn thẻ, class, id và nhúng thẻ style nội bộ chuẩn xác."
+  content="Thực hiện 2 thử thách: Trắc nghiệm cú pháp CSS và Viết khối <style> trang trí một đoạn văn bản mẫu."
+  product="Trang web được trang trí hoàn chỉnh bằng thẻ <style> tại phần <head>."
+>
+
+  <SlideStep
+    slide="SLIDE 3.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – 02 Thử thách Luyện tập"
+  >
+    <div className="space-y-4 mb-6">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider">
+        Thử thách 1: Trắc nghiệm Nhận diện Cú pháp CSS (05 phút)
+      </span>
+
+      <Quiz data={{
+        question: "Câu 1: Để định dạng CSS cho một phần tử có class='tieude', bộ chọn trong CSS được viết như thế nào?",
+        options: [
+          'A. #tieude { ... }',
+          'B. .tieude { ... }',
+          'C. tieude { ... }',
+          'D. *tieude { ... }'
+        ],
+        correctAnswer: 1,
+        explanation: "Chính xác! Dấu chấm '.' là ký hiệu đại diện cho bộ chọn Class trong CSS."
+      }} />
+
+      <Quiz data={{
+        question: "Câu 2: Thẻ nào dùng để liên kết tệp tin CSS bên ngoài (style.css) vào trong trang web HTML?",
+        options: [
+          'A. <style src="style.css">',
+          'B. <css href="style.css">',
+          'C. <link rel="stylesheet" href="style.css">',
+          'D. <script href="style.css">'
+        ],
+        correctAnswer: 2,
+        explanation: "Chính xác! Thẻ <link rel='stylesheet' href='...'> đặt trong phần <head> là cú pháp chuẩn của HTML."
+      }} />
+    </div>
+
+    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-2 border-indigo-200 dark:border-indigo-900/60">
+      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider block w-fit mb-3">
+        Thử thách 2: Thực hành Định kiểu Toàn diện cho Trang Tin (10 phút)
+      </span>
+      <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+        Viết mã HTML và khối <code>&lt;style&gt;</code> để:
+        <br/>1. Định dạng tất cả thẻ <code>&lt;h2&gt;</code> có màu xanh dương và căn lề giữa.
+        <br/>2. Định dạng tất cả thẻ <code>&lt;p&gt;</code> có phông chữ <code>Tahoma</code>, cỡ <code>15px</code>, giãn dòng <code>1.6</code>.
+        <br/>3. Tạo một lớp <code>.tac-gia</code> có chữ nghiêng và màu xám.
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Hướng dẫn code trên máy"
+  >
+    <Alert type="tip" title="Gợi ý cấu trúc cho học sinh">
+      Đặt khối `<style>...</style>` trong phần `<head>` của trang web. Dùng các thuộc tính: `color`, `text-align`, `font-family`, `font-size`, `line-height`, `font-style`.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.3"
+    step={3}
+    title="Báo cáo, thảo luận – Thử nghiệm mã nguồn"
+  >
+    <HtmlLiveSandbox
+      initialCode={`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bài Báo Công Nghệ</title>
+    <style>
+        /* 1. Định dạng tiêu đề h2 */
+        h2 {
+            color: #0369a1;
+            text-align: center;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 10px;
+        }
+
+        /* 2. Định dạng chung cho mọi đoạn văn p */
+        p {
+            font-family: Tahoma, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #334155;
+            text-align: justify;
+        }
+
+        /* 3. Lớp định dạng tác giả */
+        .tac-gia {
+            font-style: italic;
+            color: #64748b;
+            text-align: right;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body style="padding: 25px; max-width: 600px; margin: 0 auto;">
+    <h2>BƯỚC ĐỘT PHÁ CỦA CÔNG NGHỆ WEB VỚI CSS</h2>
+    <p class="tac-gia">Tác giả: Ban Biên tập Khoa học — 2026</p>
+    <p>
+        Kể từ khi ra đời, CSS đã thay đổi hoàn toàn cách các lập trình viên xây dựng giao diện số. Giờ đây, chỉ cần thay đổi một tệp tin kiểu mẫu duy nhất, toàn bộ diện mạo của trang web có thể chuyển mình sang một phong cách hoàn toàn mới mẻ.
+    </p>
+    <p>
+        Sự tách biệt giữa nội dung và cách trình bày không chỉ giúp tối ưu hóa hiệu suất tải trang mà còn mang lại khả năng tùy biến vô hạn cho người dùng.
+    </p>
+</body>
+</html>`}
+      title="Mã nguồn mẫu: Trang bài báo định kiểu bằng CSS (Thử thách 2)"
+    />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 3.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết thực hành"
+  >
+    <Alert type="success" title="Đánh giá kết quả">
+      Học sinh nắm vững cách viết quy tắc CSS đúng cú pháp, biết sử dụng bộ chọn thẻ để tạo kiểu nhất quán và dùng bộ chọn class để linh hoạt trang trí các thành phần riêng lẻ.
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
+
+{/* =========================================================================
+    HOẠT ĐỘNG 4: VẬN DỤNG (15 PHÚT & Ở NHÀ)
+    ========================================================================= */}
+
+<PedagogyActivity
+  id="hoat-dong-4-van-dung"
+  number="4"
+  title="HOẠT ĐỘNG 4: VẬN DỤNG – 'TÁCH BIỆT TỆP STYLE.CSS CHO WEBSITE CÁ NHÂN'"
+  duration="15 phút & Hoàn thiện ở nhà"
+  objective="Vận dụng phương thức CSS ngoài (External CSS) để tách toàn bộ mã trang trí sang một tệp style.css riêng biệt, liên kết vào cả 2 trang index.html và gioithieu.html đã làm ở Bài 10."
+  content="Tạo tệp style.css và áp dụng đồng bộ giao diện cho cả 2 trang của website mini cá nhân."
+  product="Thư mục website gồm 2 tệp HTML và 1 tệp style.css có giao diện thống nhất."
+>
+
+  <SlideStep
+    slide="SLIDE 4.1"
+    step={1}
+    title="Chuyển giao nhiệm vụ – Đề tài Dự án Tách tệp CSS Ngoài"
+  >
+    <Alert type="idea" title="Yêu cầu Dự án Chuyên nghiệp hóa Website">
+      1. Mở lại thư mục website cá nhân ở Bài 10 (gồm `index.html` và `gioithieu.html`).
+      2. Tạo một tệp mới tên là `style.css`.
+      3. Chuyển toàn bộ các quy tắc định dạng phông chữ, màu sắc, thanh menu vào trong tệp `style.css`.
+      4. Thêm dòng `<link rel="stylesheet" href="style.css">` vào phần `<head>` của cả 2 tệp HTML.
+      5. Kiểm tra: Khi sửa màu thanh menu trong `style.css`, cả 2 trang web đều đổi màu theo!
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.2"
+    step={2}
+    title="Thực hiện nhiệm vụ – Khởi tạo tại phòng máy"
+    duration="10 phút"
+    showTimer={true}
+    timerSeconds={600}
+  >
+    <Alert type="tip" title="Khởi tạo tệp style.css">
+      Học sinh tạo tệp `.css` bằng Notepad hoặc VS Code trong 10 phút cuối giờ và kiểm tra đường dẫn liên kết.
+    </Alert>
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.3"
+    step={3}
+    title="Báo cáo, thảo luận – Bảng tiêu chí chấm điểm (Rubric 5512)"
+  >
+    <RubricCard />
+  </SlideStep>
+
+  <SlideStep
+    slide="SLIDE 4.4"
+    step={4}
+    title="Kết luận, nhận định – Chốt tiết học & Chuẩn bị Bài 14"
+  >
+    <Alert type="success" title="Lời dặn chuẩn bị Bài 14 (Định dạng nâng cao bằng CSS)">
+      - **Nộp bài:** Nén thư mục website hoàn chỉnh nộp lên kho học liệu.
+      - **Chuẩn bị Bài 14 (Định dạng văn bản bằng CSS):** Khám phá sâu hơn các thuộc tính CSS cao cấp: khoảng đệm (padding), lề ngoài (margin), đường viền (border), đổ bóng (box-shadow) và mô hình hộp (Box Model)!
+    </Alert>
+  </SlideStep>
+
+</PedagogyActivity>
