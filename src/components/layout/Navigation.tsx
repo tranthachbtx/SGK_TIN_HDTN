@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, BookOpen, Settings } from "lucide-react";
+import { Home } from "lucide-react";
 import { TeacherToggle } from "@/components/ui/TeacherToggle";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 interface Lesson {
   slug: string;
@@ -34,8 +35,10 @@ export function BottomNavItem({
     <Link
       href={href}
       className={cn(
-        "flex flex-col items-center gap-1 p-2 transition-all min-h-[44px] min-w-[44px] justify-center",
-        active ? "text-primary scale-105 font-black" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+        "flex flex-col items-center gap-1 p-2 transition-all min-h-[44px] min-w-[44px] justify-center rounded-2xl",
+        active
+          ? "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed text-sky-600 dark:text-sky-400 font-black border border-sky-400/30"
+          : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
       )}
     >
       <div className="shrink-0">{icon}</div>
@@ -48,7 +51,7 @@ export function BottomNavItem({
 
 export function BottomNav({ pathname }: { pathname: string }) {
   return (
-    <div className="md:hidden fixed bottom-3 left-4 right-4 glass dark:bg-slate-900/90 border border-white/60 dark:border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.15)] z-40 px-6 py-2 flex justify-around items-center rounded-[2rem] backdrop-blur-2xl">
+    <div className="md:hidden fixed bottom-3 left-4 right-4 bg-[#e0e0e0]/90 dark:bg-[#212121]/90 backdrop-blur-2xl border border-white/60 dark:border-white/10 shadow-neu z-40 px-4 py-2 flex justify-between items-center rounded-3xl">
       <BottomNavItem
         href="/"
         icon={<Home size={20} />}
@@ -56,8 +59,9 @@ export function BottomNav({ pathname }: { pathname: string }) {
         active={pathname === "/"}
       />
 
-      <div className="px-2">
-        <TeacherToggle className="!py-1.5 !px-3 !rounded-xl !text-xs !w-auto !border-slate-200 dark:!border-slate-700 bg-white/80 dark:bg-slate-800/80 text-slate-800 dark:text-white" />
+      <div className="flex items-center gap-2">
+        <TeacherToggle showLabel={false} className="!py-1.5 !px-2.5 !rounded-xl !min-h-[40px]" />
+        <ThemeToggle showLabel={false} className="!py-1.5 !px-2.5 !rounded-xl !min-h-[40px]" />
       </div>
     </div>
   );

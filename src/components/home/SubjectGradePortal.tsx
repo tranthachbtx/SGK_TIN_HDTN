@@ -14,20 +14,18 @@ const subjects = [
   {
     id: "informatics",
     title: "Tin học",
-    description: "Khám phá lập trình Python, cấu trúc dữ liệu, thuật toán và thiết kế web HTML.",
+    description: "Khám phá lập trình Python, thuật toán, cơ sở dữ liệu và thiết kế web HTML/CSS chuẩn GDPT 2018.",
     icon: Code,
-    color: "from-blue-500 to-cyan-400",
-    bgLight: "bg-blue-50 dark:bg-blue-950/40",
-    textLight: "text-blue-600 dark:text-blue-400",
+    color: "from-sky-500 to-cyan-400",
+    badgeColor: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-400/30",
   },
   {
     id: "experiential",
     title: "HĐ Trải nghiệm",
-    description: "Phát triển kỹ năng sống, hướng nghiệp và kết nối phục vụ cộng đồng.",
+    description: "Phát triển kỹ năng sống, năng lực thích ứng, định hướng nghề nghiệp và phục vụ cộng đồng.",
     icon: Users,
-    color: "from-orange-500 to-rose-400",
-    bgLight: "bg-orange-50 dark:bg-orange-950/40",
-    textLight: "text-orange-600 dark:text-orange-400",
+    color: "from-rose-500 to-amber-400",
+    badgeColor: "bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-400/30",
   },
 ];
 
@@ -51,7 +49,7 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
 
   return (
     <div className="space-y-12">
-      {/* Subject Picker */}
+      {/* Subject Picker - Pure Neumorphic Dual-Card Selection */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {subjects.map((subject) => {
           const isActive = selectedSubject === subject.id;
@@ -61,47 +59,35 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
             <motion.button
               key={subject.id}
               onClick={() => setSelectedSubject(subject.id)}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
-              className={`relative overflow-hidden p-6 md:p-8 rounded-3xl text-left transition-all duration-300 focus-ring-hover cursor-pointer ${
+              className={`relative overflow-hidden p-6 md:p-8 rounded-3xl text-left transition-all duration-300 focus-ring-hover cursor-pointer border group ${
                 isActive
-                  ? "glass border-primary/40 shadow-lg shadow-primary/5 dark:bg-slate-800/90 dark:border-primary/50"
-                  : "bg-white/80 dark:bg-slate-900/60 border-slate-200/60 dark:border-white/10 hover:bg-white dark:hover:bg-slate-800/60"
-              } border group`}
+                  ? "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed border-sky-500/40"
+                  : "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu hover:shadow-neu-sm border-white/60 dark:border-white/10"
+              }`}
             >
               <div
-                className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${subject.color} opacity-10 rounded-bl-[5rem] -z-10 transition-transform duration-500 group-hover:scale-110`}
-              />
-
-              <div
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg ${
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-neu-sm border border-white/50 dark:border-white/10 ${
                   isActive
                     ? `bg-gradient-to-br ${subject.color} text-white`
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+                    : "bg-[#e0e0e0] dark:bg-[#212121] text-slate-600 dark:text-slate-400"
                 }`}
               >
                 <Icon size={28} />
               </div>
 
-              <h3
-                className={`text-2xl font-black mb-2 ${
-                  isActive ? "text-slate-950 dark:text-white" : "text-slate-800 dark:text-slate-200"
-                }`}
-              >
+              <h3 className="text-2xl sm:text-3xl font-black mb-2 text-slate-900 dark:text-white">
                 {subject.title}
               </h3>
-              <p
-                className={`text-sm leading-relaxed font-medium ${
-                  isActive ? "text-slate-700 dark:text-slate-300" : "text-slate-500 dark:text-slate-400"
-                }`}
-              >
+              <p className="text-base leading-relaxed font-medium text-slate-600 dark:text-slate-300">
                 {subject.description}
               </p>
 
               {isActive && (
                 <motion.div
                   layoutId="active-indicator"
-                  className="absolute bottom-6 right-8 text-primary"
+                  className="absolute bottom-6 right-8 text-sky-600 dark:text-sky-400"
                 >
                   <Sparkles size={24} className="animate-pulse" />
                 </motion.div>
@@ -119,20 +105,21 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
               <Zap className="text-amber-500 fill-amber-500" size={26} />
               Danh sách bài giảng
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 font-medium text-sm md:text-base">
+            <p className="text-slate-600 dark:text-slate-400 font-medium text-base">
               {currentSubjectInfo.title} • {grades.find((g) => g.id === selectedGrade)?.label} (
               {filteredLessons.length} bài)
             </p>
           </div>
 
-          <div className="flex bg-slate-100 dark:bg-slate-800/80 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700/60 backdrop-blur-sm">
+          {/* Neumorphic Inset Grade Switcher */}
+          <div className="flex bg-[#d6d6d6] dark:bg-[#181818] shadow-neu-pressed-sm p-1.5 rounded-2xl border border-black/5 dark:border-white/5">
             {grades.map((grade) => (
               <button
                 key={grade.id}
                 onClick={() => setSelectedGrade(grade.id)}
                 className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer min-h-[44px] ${
                   selectedGrade === grade.id
-                    ? "bg-white dark:bg-slate-700 text-primary dark:text-white shadow-md font-black"
+                    ? "bg-[#e0e0e0] dark:bg-[#212121] text-sky-600 dark:text-sky-400 shadow-neu-sm font-black border border-white/60 dark:border-white/10"
                     : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
@@ -156,32 +143,32 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
                 <Link
                   key={lesson.slug}
                   href={`/lessons/${lesson.subject}/${lesson.grade}/${lesson.slug}`}
-                  className="group glass dark:bg-slate-900/70 p-6 md:p-7 rounded-3xl hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 block h-full border border-slate-200/60 dark:border-white/10 relative overflow-hidden focus-ring-hover cursor-pointer"
+                  className="group bg-[#e0e0e0] dark:bg-[#212121] shadow-neu hover:shadow-neu-sm p-6 md:p-7 rounded-3xl transition-all duration-300 hover:-translate-y-1 block h-full border border-white/60 dark:border-white/10 relative overflow-hidden focus-ring-hover cursor-pointer"
                 >
-                  {/* Decorative number background */}
-                  <span className="absolute -right-4 -top-4 text-8xl font-black text-slate-100/60 dark:text-white/5 select-none group-hover:text-primary/10 transition-colors">
+                  {/* Decorative number watermark */}
+                  <span className="absolute -right-4 -top-4 text-8xl font-black text-black/5 dark:text-white/5 select-none group-hover:text-sky-500/10 transition-colors">
                     {lesson.frontmatter.order}
                   </span>
 
                   <div className="relative z-10">
                     <div className="flex items-center gap-3 mb-4">
                       <span
-                        className={`px-3 py-1 rounded-full ${currentSubjectInfo.bgLight} ${currentSubjectInfo.textLight} text-[11px] font-black uppercase tracking-wider border border-white/40 dark:border-white/10`}
+                        className={`px-3 py-1 rounded-full ${currentSubjectInfo.badgeColor} text-[11px] font-black uppercase tracking-wider border shadow-neu-sm`}
                       >
                         {selectedSubject === "experiential" ? "Chủ đề" : "Bài"}{" "}
                         {lesson.frontmatter.order}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-black mb-3 line-clamp-2 group-hover:text-primary transition-colors text-slate-900 dark:text-white leading-snug">
+                    <h3 className="text-xl md:text-2xl font-black mb-3 line-clamp-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors text-slate-900 dark:text-white leading-snug">
                       {lesson.frontmatter.title.split(":")[1]?.trim() || lesson.frontmatter.title}
                     </h3>
 
-                    <p className="text-sm text-slate-600 dark:text-slate-300 font-medium line-clamp-3 mb-6 leading-relaxed">
+                    <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 font-medium line-clamp-3 mb-6 leading-relaxed">
                       {lesson.frontmatter.description}
                     </p>
 
-                    <div className="flex items-center text-primary text-sm font-black group-hover:gap-2 transition-all">
+                    <div className="flex items-center text-sky-600 dark:text-sky-400 text-sm font-black group-hover:gap-2 transition-all">
                       MỞ BÀI GIẢNG{" "}
                       <ArrowRight
                         size={18}
@@ -192,8 +179,8 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
                 </Link>
               ))
             ) : (
-              <div className="col-span-full py-20 text-center glass dark:bg-slate-900/60 rounded-[2.5rem] border-dashed border-2 border-slate-300 dark:border-slate-700">
-                <div className="bg-slate-100 dark:bg-slate-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-400">
+              <div className="col-span-full py-20 text-center bg-[#e0e0e0] dark:bg-[#212121] shadow-neu rounded-3xl border border-white/60 dark:border-white/10">
+                <div className="bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-400">
                   <BookOpen size={40} />
                 </div>
                 <h3 className="text-2xl font-black text-slate-700 dark:text-slate-300 mb-2">

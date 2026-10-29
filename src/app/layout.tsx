@@ -4,6 +4,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { getAllLessonsSimple } from "@/lib/mdx";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { SettingsProvider } from "@/contexts/SettingsContext";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { TeacherToggle } from "@/components/ui/TeacherToggle";
 
 export const metadata: Metadata = {
@@ -29,19 +30,28 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body
-        className="antialiased pb-0 bg-background selection:bg-primary/20 transition-[padding] duration-300"
+        className="antialiased pb-0 bg-background selection:bg-primary/20 transition-colors duration-300"
         suppressHydrationWarning
       >
         <SettingsProvider>
-          {/* Background Blobs for Pastel feel */}
-          <div className="fixed inset-0 overflow-hidden -z-10 bg-[radial-gradient(#0ea5e910_1.5px,transparent_1.5px)] [background-size:24px_24px]">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[120px]" />
+          {/* Subtle Ambient Depth Lighting */}
+          <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
+            <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-primary/5 blur-[140px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] rounded-full bg-secondary/5 blur-[140px]" />
           </div>
 
           <CustomCursor />
+
+          {/* Floating Top-Right Action Controls (Theme Toggle & Teacher Toggle) */}
+          <div className="fixed top-4 right-4 z-50 flex items-center gap-2.5">
+            <ThemeToggle />
+            <div className="hidden sm:block">
+              <TeacherToggle />
+            </div>
+          </div>
+
           <Navigation lessons={lessons} />
-          <main className="min-h-screen px-4 pt-6 md:px-8 md:pt-8 max-w-none">
+          <main className="min-h-screen px-3 sm:px-6 md:px-8 pt-4 md:pt-6 max-w-none">
             {children}
           </main>
         </SettingsProvider>

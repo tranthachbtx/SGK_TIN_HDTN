@@ -48,7 +48,7 @@ export function MDXOl(props: any) {
 export function MDXA(props: any) {
   return (
     <a
-      className="font-black text-primary hover:text-secondary underline decoration-2 underline-offset-4 transition-all"
+      className="font-black text-sky-600 dark:text-sky-400 hover:underline decoration-2 underline-offset-4 transition-all"
       {...props}
     />
   );
@@ -57,7 +57,7 @@ export function MDXA(props: any) {
 export function MDXThead(props: any) {
   return (
     <thead
-      className="bg-slate-900 text-white dark:bg-slate-800 uppercase font-black text-sm md:text-base tracking-wider"
+      className="bg-[#d5d5d5] dark:bg-[#1a1a1a] text-slate-800 dark:text-slate-100 uppercase font-black text-sm md:text-base tracking-wider"
       {...props}
     />
   );
@@ -75,7 +75,7 @@ export function MDXTbody(props: any) {
 export function MDXTr(props: any) {
   return (
     <tr
-      className="hover:bg-primary/5 dark:hover:bg-white/5 transition-colors"
+      className="hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
       {...props}
     />
   );
@@ -104,14 +104,10 @@ export function MDXHr(props: any) {
 }
 
 export function MDXCode(props: any) {
-  const isInline = !props.className;
-  if (isInline) {
-    return (
-      <code
-        className="bg-primary/10 dark:bg-primary/20 px-2.5 py-1 rounded-lg text-[0.9em] font-mono font-bold text-primary dark:text-sky-300 border border-primary/20"
-        {...props}
-      />
-    );
-  }
-  return <code className="font-mono !bg-transparent !p-0" {...props} />;
+  return (
+    <code
+      className="font-mono px-2 py-0.5 rounded-lg bg-[#d5d5d5] dark:bg-[#2d2d2d] text-sky-700 dark:text-sky-300 font-bold text-sm md:text-base"
+      {...props}
+    />
+  );
 }

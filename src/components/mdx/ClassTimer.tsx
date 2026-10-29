@@ -100,27 +100,28 @@ export function ClassTimer({
   return (
     <div
       className={cn(
-        "my-4 p-4 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-sky-100 dark:border-sky-900/40 shadow-lg shadow-sky-500/5",
-        "flex flex-col sm:flex-row items-center justify-between gap-4 select-none",
-        hasFinished && "ring-4 ring-rose-400/80 animate-pulse",
+        "my-5 p-5 md:p-6 rounded-3xl select-none transition-all duration-300",
+        "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10",
+        "flex flex-col sm:flex-row items-center justify-between gap-4",
+        hasFinished && "ring-4 ring-rose-500/80 animate-pulse",
         className
       )}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3.5">
         <div
           className={cn(
-            "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-colors shadow-sm",
+            "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-colors shadow-neu-sm border border-white/50 dark:border-white/10",
             isRunning
               ? "bg-sky-500 text-white animate-pulse"
               : hasFinished
               ? "bg-rose-500 text-white"
-              : "bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300"
+              : "bg-[#e0e0e0] dark:bg-[#212121] text-sky-600 dark:text-sky-400"
           )}
         >
           <Clock size={24} />
         </div>
         <div>
-          <span className="text-xs uppercase font-black tracking-wider text-slate-400 block">
+          <span className="text-xs uppercase font-black tracking-wider text-slate-500 dark:text-slate-400 block">
             {label}
           </span>
           <span
@@ -137,7 +138,7 @@ export function ClassTimer({
       </div>
 
       {/* Preset time buttons & Controls */}
-      <div className="flex items-center flex-wrap gap-2 justify-center sm:justify-end">
+      <div className="flex items-center flex-wrap gap-2.5 justify-center sm:justify-end">
         <div className="hidden md:flex items-center gap-1.5 mr-2">
           {[
             { label: "1p", val: 60 },
@@ -149,20 +150,21 @@ export function ClassTimer({
             <button
               key={preset.val}
               onClick={() => handleReset(preset.val)}
-              className="px-2.5 py-1.5 rounded-xl text-xs font-black bg-slate-100 hover:bg-sky-100 text-slate-700 hover:text-sky-700 dark:bg-slate-800 dark:text-slate-300 transition-colors min-h-[36px]"
+              className="px-3 py-1.5 rounded-xl text-xs font-black bg-[#e0e0e0] hover:bg-[#e0e0e0] dark:bg-[#212121] dark:hover:bg-[#212121] text-slate-700 dark:text-slate-200 shadow-neu-sm hover:shadow-neu active:shadow-neu-pressed border border-white/50 dark:border-white/10 transition-all min-h-[38px] cursor-pointer"
             >
               {preset.label}
             </button>
           ))}
         </div>
 
+        {/* Start / Pause */}
         <button
           onClick={toggleRunning}
           className={cn(
-            "flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-black text-sm text-white transition-all shadow-md active:scale-95 min-h-[44px] min-w-[44px]",
+            "flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-black text-sm text-white transition-all shadow-neu-sm hover:shadow-neu active:scale-95 min-h-[44px] cursor-pointer",
             isRunning
-              ? "bg-amber-500 hover:bg-amber-600 shadow-amber-500/20"
-              : "bg-sky-600 hover:bg-sky-700 shadow-sky-600/20"
+              ? "bg-amber-500 hover:bg-amber-600"
+              : "bg-sky-600 hover:bg-sky-700"
           )}
         >
           {isRunning ? (
@@ -172,26 +174,32 @@ export function ClassTimer({
             </>
           ) : (
             <>
-              <Play size={18} className="fill-current" />
+              <Play size={18} />
               <span>{secondsLeft === 0 ? "Bắt đầu lại" : "Bắt đầu"}</span>
             </>
           )}
         </button>
 
+        {/* Reset */}
         <button
           onClick={() => handleReset()}
-          className="p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center active:scale-95"
-          title="Đặt lại thời gian"
+          className="p-2.5 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm hover:shadow-neu active:shadow-neu-pressed border border-white/50 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:text-slate-900 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+          title="Đặt lại giờ"
         >
           <RotateCcw size={18} />
         </button>
 
+        {/* Sound toggle */}
         <button
           onClick={() => setSoundEnabled(!soundEnabled)}
-          className="p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center active:scale-95"
-          title={soundEnabled ? "Tắt âm báo" : "Bật âm báo"}
+          className="p-2.5 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm hover:shadow-neu active:shadow-neu-pressed border border-white/50 dark:border-white/10 text-slate-600 dark:text-slate-300 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+          title={soundEnabled ? "Tắt âm báo kết thúc" : "Bật âm báo kết thúc"}
         >
-          {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+          {soundEnabled ? (
+            <Volume2 size={18} className="text-sky-600 dark:text-sky-400" />
+          ) : (
+            <VolumeX size={18} className="text-slate-400" />
+          )}
         </button>
       </div>
     </div>
