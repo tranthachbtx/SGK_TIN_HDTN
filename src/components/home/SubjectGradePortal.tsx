@@ -63,11 +63,11 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
               onClick={() => setSelectedSubject(subject.id)}
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
-              className={`relative overflow-hidden p-6 md:p-8 rounded-[2.5rem] text-left transition-all duration-300 focus-ring-hover cursor-pointer ${
+              className={`relative overflow-hidden p-6 md:p-8 rounded-3xl text-left transition-all duration-300 focus-ring-hover cursor-pointer ${
                 isActive
-                  ? "glass border-primary/50 shadow-2xl shadow-primary/10 dark:bg-slate-800/90 dark:border-primary/50"
-                  : "bg-white/70 dark:bg-slate-900/60 border-white/40 dark:border-white/10 hover:bg-white/90 dark:hover:bg-slate-800/60"
-              } border-2 group`}
+                  ? "glass border-primary/40 shadow-lg shadow-primary/5 dark:bg-slate-800/90 dark:border-primary/50"
+                  : "bg-white/80 dark:bg-slate-900/60 border-slate-200/60 dark:border-white/10 hover:bg-white dark:hover:bg-slate-800/60"
+              } border group`}
             >
               <div
                 className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${subject.color} opacity-10 rounded-bl-[5rem] -z-10 transition-transform duration-500 group-hover:scale-110`}
@@ -156,7 +156,7 @@ export default function SubjectGradePortal({ initialLessons }: SubjectGradePorta
                 <Link
                   key={lesson.slug}
                   href={`/lessons/${lesson.subject}/${lesson.grade}/${lesson.slug}`}
-                  className="group glass dark:bg-slate-900/70 p-7 rounded-[2rem] hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 block h-full border-2 border-white/60 dark:border-white/10 relative overflow-hidden focus-ring-hover cursor-pointer"
+                  className="group glass dark:bg-slate-900/70 p-6 md:p-7 rounded-3xl hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 block h-full border border-slate-200/60 dark:border-white/10 relative overflow-hidden focus-ring-hover cursor-pointer"
                 >
                   {/* Decorative number background */}
                   <span className="absolute -right-4 -top-4 text-8xl font-black text-slate-100/60 dark:text-white/5 select-none group-hover:text-primary/10 transition-colors">

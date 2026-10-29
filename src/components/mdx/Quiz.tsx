@@ -48,7 +48,7 @@ export function Quiz({ data, className, ...rest }: any) {
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ duration: 0.25 }}
       className={cn(
-        "bg-white/95 dark:bg-slate-900/90 border-2 border-primary/20 dark:border-white/10 p-6 md:p-8 my-8 rounded-[2.5rem] relative overflow-hidden transition-all duration-300 shadow-xl backdrop-blur-xl",
+        "bg-white/90 dark:bg-slate-900/90 border border-slate-200/60 dark:border-white/10 p-6 md:p-7 my-6 rounded-3xl relative overflow-hidden transition-all duration-300 shadow-sm backdrop-blur-xl",
         className
       )}
     >

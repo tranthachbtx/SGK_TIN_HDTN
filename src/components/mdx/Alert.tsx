@@ -47,7 +47,7 @@ export function Alert({ children, type = "info", title, className }: AlertProps)
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ duration: 0.25 }}
       className={cn(
-        "flex gap-4 p-6 md:p-7 rounded-[2rem] border-2 shadow-float transition-all my-6 focus-ring-hover",
+        "flex gap-4 p-5 md:p-6 rounded-2xl border shadow-sm transition-all my-5 focus-ring-hover",
         styleClass,
         className
       )}

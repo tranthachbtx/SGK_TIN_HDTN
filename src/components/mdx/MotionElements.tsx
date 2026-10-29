@@ -39,7 +39,7 @@ export function MotionTable({ children, ...props }: any) {
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      className="my-10 w-full overflow-x-auto rounded-[2rem] border-2 border-slate-200/80 dark:border-white/10 shadow-float bg-white/90 dark:bg-slate-900/90 backdrop-blur-md"
+      className="my-8 w-full overflow-x-auto rounded-2xl border border-slate-200/50 dark:border-white/10 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-md"
     >
       <table className="w-full text-base md:text-lg text-left border-collapse" {...props}>
         {children}

@@ -252,7 +252,7 @@ export function ContentPanel() {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={cn(
           "fixed left-0 top-0 bottom-0 w-80 sm:w-88 z-50 flex flex-col",
-          "bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-2xl border-r border-slate-200/80 dark:border-white/10 shadow-2xl",
+          "bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border-r border-slate-200/50 dark:border-white/10 shadow-xl",
           isCollapsed && "pointer-events-none"
         )}
       >

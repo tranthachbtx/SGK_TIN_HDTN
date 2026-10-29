@@ -69,22 +69,22 @@ export default async function LessonPage({ params }: LessonPageProps) {
       {/* Left-docked Smart Lesson Progress Panel */}
       <ContentPanel />
 
-      {/* Subtle Background Decorative Blobs */}
+      {/* Ambient Pastel Background Glow */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-10%] right-[-10%] w-[45%] h-[45%] bg-primary/5 rounded-full blur-[130px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[45%] h-[45%] bg-secondary/5 rounded-full blur-[130px]" />
+        <div className="absolute top-[-10%] right-[-10%] w-[45%] h-[45%] bg-sky-400/5 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[45%] h-[45%] bg-rose-400/5 rounded-full blur-[130px]" />
       </div>
 
-      {/* Full-width Responsive Container Optimized for Smart TV & Projectors */}
-      <article className="relative z-10 mx-auto w-full max-w-[1700px] bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-2xl rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-10 lg:p-12 border border-slate-200/80 dark:border-white/10 shadow-float min-h-screen">
+      {/* Seamless, Frameless Presentation Canvas (No heavy enclosing borders) */}
+      <article className="relative z-10 mx-auto w-full max-w-[1560px] px-2 sm:px-4 md:px-8 py-2 md:py-4">
         <div
           className="prose prose-lg md:prose-2xl dark:prose-invert max-w-none 
                     prose-headings:font-display prose-headings:font-black prose-headings:scroll-mt-28
                     prose-headings:text-slate-900 dark:prose-headings:text-white
-                    prose-p:text-slate-800 dark:prose-p:text-slate-200 prose-p:leading-relaxed
-                    prose-li:text-slate-800 dark:prose-li:text-slate-200 prose-li:leading-relaxed
-                    prose-strong:text-slate-950 dark:prose-strong:text-white prose-strong:font-black
-                    prose-img:rounded-2xl md:prose-img:rounded-[2.5rem] prose-img:shadow-float prose-img:border-2 dark:prose-img:border-white/10
+                    prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:leading-relaxed
+                    prose-li:text-slate-700 dark:prose-li:text-slate-300 prose-li:leading-relaxed
+                    prose-strong:text-slate-900 dark:prose-strong:text-white prose-strong:font-black
+                    prose-img:rounded-2xl md:prose-img:rounded-[2rem] prose-img:shadow-sm
                 "
         >
           <MDXRemote
@@ -100,11 +100,11 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </div>
       </article>
 
-      {/* Footer Completion Note */}
+      {/* Soft Footer Completion Marker */}
       <div className="mt-14 mb-10 text-center relative z-10">
-        <div className="h-1 w-20 bg-primary/20 mx-auto rounded-full mb-4" />
-        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs md:text-sm">
-          Tiết học kết thúc • Chúc mừng thầy cô và các em đã hoàn thành bài học! 🏆
+        <div className="h-1 w-16 bg-sky-500/20 mx-auto rounded-full mb-3" />
+        <p className="text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider text-xs md:text-sm">
+          Tiết học hoàn thành 🏆
         </p>
       </div>
     </div>
