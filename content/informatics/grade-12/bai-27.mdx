@@ -1,0 +1,250 @@
+---
+title: "Bài 27: Biểu mẫu trên trang web"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 27
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (ĐỊNH HƯỚNG ICT)"
+  topic="CHỦ ĐỀ 7: ỨNG DỤNG TIN HỌC"
+  title="BÀI 27: BIỂU MẪU TRÊN TRANG WEB"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu vai trò của Biểu mẫu (Form) trong việc thu thập ý kiến bạn đọc, khảo sát dữ liệu và tương tác hai chiều trên trang web.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững các dạng câu hỏi chuẩn trong Google Forms: Trắc nghiệm (Radio), Hộp kiểm (Checkboxes), Trả lời ngắn, Đoạn văn bản và Thang đo tuyến tính.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Biết cách nhúng Google Forms vào Google Sites và xuất dữ liệu phản hồi ra Google Sheets để phân tích thống kê theo thời gian thực.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Thiết kế biểu mẫu khảo sát trực tuyến chuẩn sư phạm, thiết lập thuộc tính bắt buộc (Required) và nhúng khớp nối vào giao diện web.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực xử lý dữ liệu số (NLd):</strong> Đọc hiểu các biểu đồ thống kê trực quan (biểu đồ tròn, biểu đồ cột) và quản lý cơ sở dữ liệu câu trả lời trên bảng tính.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tinh thần cầu thị, lắng nghe ý kiến đóng góp của cộng đồng để liên tục cải tiến chất lượng sản phẩm số.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Bảo mật và tôn trọng thông tin cá nhân của người tham gia khảo sát.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu giao diện trực tiếp của Google Forms và Google Sites.",
+    "Bộ câu hỏi mẫu khảo sát đánh giá chất lượng website du lịch.",
+    "Bảng tính Google Sheets mẫu tổng hợp dữ liệu phản hồi thời gian thực.",
+  ]}
+  studentChecklist={[
+    "Máy tính học sinh mở sẵn tài khoản Google của nhóm.",
+    "Trang web Google Sites 'Việt Nam - Vẻ đẹp tiềm ẩn' đang trong quá trình phát triển.",
+    "Điện thoại thông minh để quét mã QR hoặc bấm link điền thử nghiệm biểu mẫu.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: SỨC MẠNH CỦA BIỂU MẪU TƯƠNG TÁC SỐ"
+  time="10 phút"
+  objective="Nhận diện sự hiện diện của biểu mẫu trong đời sống số hàng ngày; nhận thức được biểu mẫu là 'cầu nối' biến website từ nơi truyền tin một chiều thành kênh tương tác đa chiều."
+  content="Kể tên các biểu mẫu trực tuyến mà em từng điền và trả lời câu hỏi: Dữ liệu sau khi người dùng bấm 'Gửi' (Submit) sẽ đi về đâu?"
+  product="Học sinh giải thích được cơ chế lưu trữ dữ liệu tập trung vào cơ sở dữ liệu trên đám mây."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao câu hỏi gợi mở">
+    <ClassTimer initialMinutes={3} title="Thời gian liên hệ thực tế" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Em đã từng nhập thông tin vào các biểu mẫu nào trên mạng Internet?
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+        📝 <strong>Học tập:</strong> Đăng ký thi tốt nghiệp THPT, tra cứu điểm thi tuyển sinh, phiếu khảo sát môn học.
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200">
+        🛒 <strong>Thương mại:</strong> Điền họ tên, số điện thoại, địa chỉ nhận hàng trên Shopee, Tiki.
+      </div>
+      <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200">
+        💬 <strong>Đóng góp ý kiến:</strong> Biểu mẫu phản hồi (Feedback) giúp ban quản trị nâng cấp trang web.
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Vào bài thực hành">
+    <Alert type="info">
+      Hôm nay chúng ta sẽ kết hợp bộ đôi công cụ quyền lực của Google: Sử dụng <strong>Google Forms</strong> để tạo bộ câu hỏi khảo sát thông minh và nhúng vào <strong>Google Sites</strong> để thu thập dữ liệu tự động vào <strong>Google Sheets</strong>!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KỸ NĂNG: TẠO, NHÚNG VÀ QUẢN TRỊ DỮ LIỆU BIỂU MẪU"
+  time="45 phút"
+  objective="Tạo biểu mẫu bằng Google Forms với các câu hỏi đánh giá; nhúng biểu mẫu vào cuối trang chủ Google Sites; quản lý kết quả trên Google Sheets."
+  content="Thực hiện theo nhóm 3 nhiệm vụ: Thiết kế Form khảo sát, Nhúng Form vào Sites và Phân tích biểu đồ thống kê."
+  product="Biểu mẫu hoạt động trực tiếp trên website và bảng tính Google Sheets lưu trữ câu trả lời."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Tạo biểu mẫu bằng ứng dụng Google Forms">
+    <SlideStep stepNumber="2.1.1" title="Thiết kế bộ câu hỏi khảo sát ý kiến độc giả">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <p>1. Truy cập <code>forms.google.com</code> &rarr; Chọn tạo biểu mẫu <strong>Trống (Blank)</strong>.</p>
+        <p>2. Đặt tiêu đề: <code>Ý KIẾN PHẢN HỒI CỦA BẠN VỀ TRANG WEB DU LỊCH VIỆT NAM</code>.</p>
+        <p>3. Tạo Câu hỏi 1 (Trắc nghiệm): <em>'Những thông tin trên website có hữu ích với bạn không?'</em></p>
+        <ul className="pl-6 space-y-1 list-disc">
+          <li>A. Rất hữu ích và truyền cảm hứng du lịch.</li>
+          <li>B. Có nhiều thông tin bổ ích.</li>
+          <li>C. Thông tin ở mức độ bình thường.</li>
+          <li>D. Cần bổ sung thêm nhiều hình ảnh và video hơn.</li>
+        </ul>
+        <p>4. Bật công tắc <strong>Bắt buộc (Required)</strong> cho câu hỏi.</p>
+        <p>5. Tạo thêm Câu hỏi 2 (Đoạn văn bản): <em>'Bạn có đóng góp ý kiến gì để website của chúng tôi hoàn thiện hơn?'</em></p>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Nhúng biểu mẫu Forms vào Google Sites">
+    <SlideStep stepNumber="2.2.1" title="Thao tác nhúng Form vào cuối Trang chủ">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 1. Mở trang chủ trong Google Sites:</strong> Chuyển sang tab thiết kế Google Sites, cuộn xuống vị trí trên phần chân trang Footer.
+        </div>
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 2. Chọn công cụ Biểu mẫu:</strong> Ở khung bên phải, chọn thẻ <em>Chèn (Insert)</em> &rarr; Cuộn xuống dưới chọn mục <strong>Biểu mẫu (Forms)</strong>.
+        </div>
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 3. Chèn và căn chỉnh:</strong> Chọn biểu mẫu <em>'Ý kiến phản hồi của bạn'</em> vừa tạo &rarr; Bấm nút <strong>Chèn (Insert)</strong> ở góc dưới bên phải &rarr; Kéo các chấm tròn xanh để mở rộng chiều cao giúp biểu mẫu hiển thị vừa vặn không bị thanh cuộn thừa.
+        </div>
+        <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-300 text-emerald-800 dark:text-emerald-200">
+          <strong>Bước 4. Công bố (Publish):</strong> Nhấn nút <strong>Công bố</strong> để cập nhật phiên bản mới nhất của trang web lên Internet.
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-3" title="Nhiệm vụ 2.3: Xem dữ liệu thống kê và liên kết Google Sheets">
+    <SlideStep stepNumber="2.3.1" title="Khai thác dữ liệu phản hồi thông minh">
+      <div className="p-4 rounded-xl bg-slate-900 text-slate-100 text-xs md:text-sm space-y-2">
+        <p className="text-amber-400 font-bold">📊 QUẢN TRỊ DỮ LIỆU THỜI GIAN THỰC (REAL-TIME DATA):</p>
+        <p>1. Mở lại Google Forms &rarr; Nhấp sang tab <strong>Câu trả lời (Responses)</strong>.</p>
+        <p>2. Quan sát <strong>Biểu đồ tròn (Pie chart)</strong> tự động hiển thị tỷ lệ % các phương án độc giả đã bình chọn.</p>
+        <p>3. Bấm vào biểu tượng bảng tính màu xanh <strong>Liên kết với Trang tính (Link to Sheets)</strong> &rarr; Chọn tạo bảng tính mới.</p>
+        <p className="text-emerald-400">✨ Toàn bộ thời gian điền, câu trả lời của từng người sẽ tự động nhảy vào từng dòng trong file Google Sheets ngay lập tức!</p>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: TRẢI NGHIỆM ĐIỀN BIỂU MẪU VÀ PHÂN TÍCH DỮ LIỆU"
+  time="20 phút"
+  objective="Các nhóm trao đổi link website, truy cập và điền thử biểu mẫu của nhóm bạn; sau đó quay lại trang tính để phân tích kết quả thu thập được."
+  content="Học sinh sử dụng điện thoại thông minh hoặc tab ẩn danh mở website nhóm bạn, gửi phản hồi và đối chiếu dữ liệu nhảy về bảng tính."
+  product="Biểu đồ thống kê của nhóm có ít nhất 5-10 lượt phản hồi thực tế từ các bạn trong lớp."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Hoạt động giao lưu phản hồi chéo">
+    <ClassTimer initialMinutes={10} title="Thời gian điền biểu mẫu và thu thập số liệu" />
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs space-y-1">
+      <p className="font-bold text-slate-800 dark:text-slate-200">Hoạt động lớp học:</p>
+      <p>1. Các nhóm gửi link website công khai lên nhóm Zalo/Teams của lớp.</p>
+      <p>2. Mỗi học sinh truy cập website của 2 nhóm bạn, lướt xem nội dung và kéo xuống cuối trang điền form đánh giá trung thực.</p>
+      <p>3. Trưởng nhóm mở Google Sheets trên màn hình máy tính nhóm mình để quan sát các dòng dữ liệu tự động cập nhật.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Câu hỏi trắc nghiệm kiểm tra nhanh">
+    <Quiz
+      question="Dữ liệu sau khi người dùng điền vào Google Forms được nhúng trên Google Sites sẽ được lưu trữ tự động ở đâu?"
+      options={[
+        "Trong tab Câu trả lời của Google Forms và tệp bảng tính Google Sheets liên kết trên Google Drive",
+        "Chỉ lưu tạm trên bộ nhớ của trình duyệt, tắt máy sẽ mất",
+        "Lưu vào bộ nhớ trong của máy tính học sinh",
+        "Không thể lưu trữ được nếu không mua máy chủ riêng"
+      ]}
+      correctAnswer={0}
+      explanation="Google Forms lưu trữ toàn bộ dữ liệu phản hồi trên đám mây Google Cloud, có thể xem trực quan trong tab Câu trả lời và tự động đồng bộ sang Google Sheets để xử lý lâu dài."
+    />
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: THIẾT KẾ BIỂU MẪU KHẢO SÁT CA KHÚC ĐƯỢC YÊU THÍCH"
+  time="15 phút"
+  objective="Phát triển biểu mẫu tương tác cho đề tài 'Những bài ca đi cùng năm tháng'."
+  content="Tạo biểu mẫu bình chọn: 'Ca khúc cách mạng nào truyền cảm hứng nhất cho thế hệ trẻ hôm nay?', nhúng vào website âm nhạc của nhóm."
+  product="Sản phẩm Form bình chọn âm nhạc hoàn chỉnh trên website."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Chuyển giao bài tập sáng tạo">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Thiết kế một biểu mẫu bình chọn ca khúc lịch sử được yêu thích nhất gồm: Họ tên người bình chọn, Lớp, Lựa chọn ca khúc (dạng Hộp kiểm nhiều lựa chọn) và một câu hỏi dạng Thang đo tuyến tính từ 1 đến 5 sao đánh giá giao diện website. Nhúng Form vào trang web âm nhạc.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá biểu mẫu tương tác (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá biểu mẫu trực tuyến và quản trị dữ liệu (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Thiết kế câu hỏi biểu mẫu",
+          excellent: "Bộ câu hỏi đa dạng (trắc nghiệm, hộp kiểm, đoạn văn bản), câu từ lịch sự, mục đích khảo sát rõ ràng, có thuộc tính Bắt buộc hợp lý.",
+          good: "Câu hỏi rõ ràng, đầy đủ các phương án lựa chọn.",
+          needsImprovement: "Câu hỏi sơ sài, tối nghĩa hoặc lỗi chính tả."
+        },
+        {
+          name: "Kỹ năng nhúng Form vào Sites",
+          excellent: "Nhúng đúng vị trí trên trang chủ, chiều cao vừa vặn, không bị thanh cuộn đôi (nested scrollbars), hiển thị đẹp trên điện thoại.",
+          good: "Nhúng được biểu mẫu vào trang web.",
+          needsImprovement: "Khung nhúng quá bé khiến form bị cắt cụt mất nút Gửi (Submit)."
+        },
+        {
+          name: "Thu thập & Xử lý dữ liệu",
+          excellent: "Liên kết thành công với Google Sheets; biết phân tích biểu đồ thống kê và đưa ra nhận xét khoa học từ kết quả thu được.",
+          good: "Xem được số lượng câu trả lời trong Google Forms.",
+          needsImprovement: "Chưa biết cách mở trang tính Google Sheets để xem dữ liệu."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

@@ -1,0 +1,374 @@
+---
+title: "Bài 17: Các mức ưu tiên của bộ chọn"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 17
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: THIẾT KẾ WEB VỚI HTML VÀ CSS"
+  title="BÀI 17: CÁC MỨC ƯU TIÊN CỦA BỘ CHỌN"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu và sử dụng được lớp giả (<code>pseudo-class</code>: <code>:hover</code>, <code>:active</code>, <code>:visited</code>) và phần tử giả (<code>pseudo-element</code>: <code>::first-letter</code>, <code>::first-line</code>).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững cơ chế tính trọng số độ đặc hiệu (CSS Specificity) và thứ tự ưu tiên khi các quy tắc định dạng xung đột nhau.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu nguyên tắc kế thừa (Inheritance), nguyên tắc dòng thác (Cascading - mẫu viết sau ghi đè mẫu viết trước) và từ khóa <code>!important</code>.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Thiết lập các hiệu ứng tương tác trực tiếp (Hover menu, Active link) và kiểm soát giao diện động bằng CSS thuần.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực giải quyết vấn đề (NLc):</strong> Phân tích và gỡ lỗi (debug) xung đột mã CSS bằng cách so sánh điểm trọng số giữa các bộ chọn.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tư duy logic chặt chẽ, tôn trọng các nguyên tắc kỹ thuật trong kiến trúc phần mềm và thiết kế web.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Cẩn trọng khi sử dụng <code>!important</code>, tránh phá vỡ tính module và tái sử dụng của mã nguồn.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu slide động và công cụ tính điểm trọng số CSS tương tác.",
+    "File mã nguồn mẫu minh họa hiệu ứng tương tác :hover và bộ chọn giả.",
+    "Bảng công thức tính CSS Specificity (Hệ số 1000 - 100 - 10 - 1).",
+  ]}
+  studentChecklist={[
+    "Máy tính học sinh mở sẵn công cụ DevTools (F12) trên Chrome/Edge để soi Styles.",
+    "Vở ghi chép công thức phân cấp trọng số bộ chọn.",
+    "Mã nguồn trang giới thiệu HTML và CSS từ bài trước.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: BÍ MẬT HIỆU ỨNG CHẠM CHUỘT TRÊN WEB"
+  time="10 phút"
+  objective="Kích thích hứng thú về các hiệu ứng giao diện tương tác (di chuột đổi màu, nhấp chuột kích hoạt); dẫn dắt vào khái niệm lớp giả và mức ưu tiên trong CSS."
+  content="Quan sát menu trang web: Khi di con trỏ chuột lên nút bấm, nút sáng lên và đổi màu chữ. Làm sao CSS làm được điều này khi HTML là tài liệu tĩnh?"
+  product="Học sinh gọi tên được các trạng thái tương tác của người dùng trên trang web."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao nhiệm vụ - Quan sát giao diện tương tác">
+    <ClassTimer initialMinutes={3} title="Thời gian quan sát và nêu câu hỏi" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Giáo viên mở một trang web thực tế, rê chuột qua thanh điều hướng và nhấp vào liên kết.
+    </p>
+    <div className="p-4 rounded-xl bg-slate-900 text-sky-300 font-mono text-xs md:text-sm">
+      <p className="text-slate-400">// Trạng thái tĩnh:</p>
+      <p>Nút bấm có chữ màu xanh dương, nền trắng.</p>
+      <p className="text-slate-400 mt-2">// Khi rê chuột (Hover) lên nút:</p>
+      <p className="text-amber-400">Nút tự động đổi sang nền xanh dương, chữ biến thành màu trắng!</p>
+    </div>
+    <div className="mt-3 p-3 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 text-xs text-amber-900 dark:text-amber-200">
+      <strong>Câu hỏi gợi mở:</strong> Liệu có phải lập trình viên đã viết mã JavaScript phức tạp, hay chỉ cần vài dòng CSS đơn giản là có thể điều khiển được trạng thái này?
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.2" title="Bước 2: Thực hiện nhiệm vụ - Thảo luận nhóm">
+    <p className="text-sm text-slate-600 dark:text-slate-400">
+      Học sinh trao đổi nhanh theo cặp đôi: Phát hiện các trạng thái của người dùng gồm: chưa bấm (link), đã bấm xem rồi (visited), đang di chuột qua (hover), đang nhấn giữ (active).
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.3" title="Bước 3: Báo cáo, thảo luận - Chia sẻ nhận định">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Đại diện học sinh trả lời: CSS cung cấp các 'trạng thái đặc biệt' để gắn liền với hành động của người dùng mà không cần lập trình kịch bản phức tạp.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Vào bài học mới">
+    <Alert type="info">
+      CSS hỗ trợ các <strong>Pseudo-class</strong> (Lớp giả) để bắt trọn trạng thái tương tác và <strong>Pseudo-element</strong> (Phần tử giả) để định dạng từng mảnh nhỏ của phần tử mà không cần sinh thêm thẻ HTML mới!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="45 phút"
+  objective="Làm chủ cú pháp Pseudo-class & Pseudo-element; tính toán chính xác trọng số CSS Specificity và quy luật giải quyết xung đột mã nguồn."
+  content="Khám phá các trạng thái của liên kết, ký tự mở đầu chữ to (Drop cap), bảng quy đổi trọng số độ đặc hiệu và từ khóa !important."
+  product="Bảng tính điểm trọng số cho các bộ chọn phức hợp và mã nguồn CSS tương tác."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Bộ chọn kiểu Pseudo-class và Pseudo-element">
+    <SlideStep stepNumber="2.1.1" title="Khám phá Pseudo-class (Lớp giả - Dấu hai chấm :)">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Lớp giả biểu diễn các trạng thái khác nhau của một phần tử. Cú pháp: <code>bộ_chọn:tên_lớp_giả &#123; ... &#125;</code>
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs md:text-sm text-left border-collapse border border-slate-200 dark:border-slate-700">
+          <thead className="bg-slate-100 dark:bg-slate-800">
+            <tr>
+              <th className="border p-2">Lớp giả</th>
+              <th className="border p-2">Ý nghĩa trạng thái</th>
+              <th className="border p-2">Ví dụ mã lệnh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border p-2 font-mono font-bold text-sky-600">:link</td>
+              <td className="border p-2">Liên kết chưa được người dùng nhấp vào</td>
+              <td className="border p-2 font-mono">a:link &#123; color: #2563eb; &#125;</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-mono font-bold text-purple-600">:visited</td>
+              <td className="border p-2">Liên kết đã từng được truy cập trước đó</td>
+              <td className="border p-2 font-mono">a:visited &#123; color: #7c3aed; &#125;</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-mono font-bold text-amber-600">:hover</td>
+              <td className="border p-2">Khi con trỏ chuột đang di chuyển nằm trên phần tử</td>
+              <td className="border p-2 font-mono">a:hover &#123; color: #ea580c; text-decoration: underline; &#125;</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-mono font-bold text-rose-600">:active</td>
+              <td className="border p-2">Khoảnh khắc chuột đang nhấn giữ xuống phần tử</td>
+              <td className="border p-2 font-mono">button:active &#123; transform: scale(0.98); &#125;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-2 text-xs text-slate-500 italic">
+        * Quy tắc nhớ thứ tự khai báo liên kết chuẩn trong CSS: <strong>L - V - H - A</strong> (Love - Victory - Hope - Always).
+      </div>
+    </SlideStep>
+
+    <SlideStep stepNumber="2.1.2" title="Khám phá Pseudo-element (Phần tử giả - Dấu hai chấm kép ::)">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Phần tử giả cho phép định dạng một phần nội dung nhất định của thẻ mà không cần chèn thêm thẻ span hoặc div:
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+          <span className="font-mono font-bold text-indigo-600 text-xs">::first-letter</span>
+          <h4 className="font-bold text-sm mt-1">Chữ cái đầu tiên (Drop Cap)</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+            Định dạng chữ cái mở đầu đoạn văn giống như trong sách báo nghệ thuật.
+          </p>
+          <pre className="mt-2 p-2 bg-slate-900 text-sky-300 rounded text-xs font-mono">
+{`p::first-letter {
+  font-size: 250%;
+  font-weight: bold;
+  color: #b91c1c;
+}`}
+          </pre>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+          <span className="font-mono font-bold text-emerald-600 text-xs">::first-line</span>
+          <h4 className="font-bold text-sm mt-1">Dòng chữ đầu tiên</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+            Định dạng dòng đầu tiên của đoạn văn bản (tự động điều chỉnh theo kích thước màn hình).
+          </p>
+          <pre className="mt-2 p-2 bg-slate-900 text-emerald-300 rounded text-xs font-mono">
+{`p::first-line {
+  font-variant: small-caps;
+  color: #1e3a8a;
+}`}
+          </pre>
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Trọng số và thứ tự ưu tiên trong CSS (Specificity)">
+    <SlideStep stepNumber="2.2.1" title="Bảng tính điểm trọng số độ đặc hiệu (Specificity)">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Khi có nhiều quy tắc CSS cùng nhắm tới một phần tử HTML và thiết lập cùng một thuộc tính (như <code>color</code>), trình duyệt sẽ giải quyết theo bảng điểm trọng số sau:
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs md:text-sm text-left border-collapse border border-slate-200 dark:border-slate-700">
+          <thead className="bg-slate-100 dark:bg-slate-800">
+            <tr>
+              <th className="border p-2">Mức ưu tiên</th>
+              <th className="border p-2">Loại bộ chọn</th>
+              <th className="border p-2">Điểm trọng số</th>
+              <th className="border p-2">Ví dụ bộ chọn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-rose-50/50 dark:bg-rose-950/20">
+              <td className="border p-2 font-bold text-rose-600">Đặc biệt tối thượng</td>
+              <td className="border p-2 font-mono">!important</td>
+              <td className="border p-2 font-bold text-rose-700">Vô địch</td>
+              <td className="border p-2 font-mono">color: red !important;</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-bold text-purple-600">Mức 1</td>
+              <td className="border p-2">Inline style (trong thẻ style="...")</td>
+              <td className="border p-2 font-mono font-bold">1000</td>
+              <td className="border p-2 font-mono">&lt;p style="color: blue"&gt;</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-bold text-indigo-600">Mức 2</td>
+              <td className="border p-2">Bộ chọn ID (<code>#id</code>)</td>
+              <td className="border p-2 font-mono font-bold">100</td>
+              <td className="border p-2 font-mono">#header, #main-nav</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-bold text-blue-600">Mức 3</td>
+              <td className="border p-2">Class (<code>.class</code>), Pseudo-class (<code>:hover</code>), Attribute (<code>[href]</code>)</td>
+              <td className="border p-2 font-mono font-bold">10</td>
+              <td className="border p-2 font-mono">.btn, :hover, [type="text"]</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-bold text-slate-600">Mức 4</td>
+              <td className="border p-2">Thẻ HTML (<code>div, p</code>), Pseudo-element (<code>::first-line</code>)</td>
+              <td className="border p-2 font-mono font-bold">1</td>
+              <td className="border p-2 font-mono">p, h1, li, ::before</td>
+            </tr>
+            <tr className="text-slate-400">
+              <td className="border p-2">Mức 5</td>
+              <td className="border p-2">Bộ chọn toàn cục (<code>&#42;</code>), Thừa kế (Inherited)</td>
+              <td className="border p-2 font-mono">0</td>
+              <td className="border p-2 font-mono">&#42;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-3 p-3 bg-indigo-50 dark:bg-indigo-950/20 rounded-xl text-xs space-y-1 text-indigo-900 dark:text-indigo-200">
+        <p><strong>Nguyên tắc Cascading (Thứ tự dòng chảy):</strong> Nếu hai bộ chọn có điểm trọng số bằng nhau, quy tắc nào được viết ở vị trí <strong>sau cùng</strong> trong mã CSS sẽ được áp dụng (ghi đè quy tắc viết trước)!</p>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: TÍNH ĐIỂM TRỌNG SỐ VÀ THIẾT KẾ MENU ĐỔI MÀU"
+  time="20 phút"
+  objective="Rèn luyện kỹ năng phân tích trọng số CSS qua bài tập trắc nghiệm và thực hành lập trình thanh điều hướng đổi màu khi hover."
+  content="Tính toán độ ưu tiên của các biểu thức bộ chọn phức tạp và viết CSS trang trí danh sách điều hướng."
+  product="Đáp án chính xác các bài toán trọng số và trang web mini có hiệu ứng hover mượt mà."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao nhiệm vụ luyện tập">
+    <ClassTimer initialMinutes={10} title="Thời gian tính toán và thử nghiệm trên máy" />
+    <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
+      Hãy tính tổng điểm trọng số cho các bộ chọn sau:
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
+      <div className="p-3 bg-slate-900 text-sky-300 rounded-lg">
+        a) p.intro em<br />
+        (1 thẻ p + 1 class .intro + 1 thẻ em) = ?
+      </div>
+      <div className="p-3 bg-slate-900 text-emerald-300 rounded-lg">
+        b) #header nav a:hover<br />
+        (1 ID + 1 thẻ nav + 1 thẻ a + 1 pseudo-class) = ?
+      </div>
+      <div className="p-3 bg-slate-900 text-amber-300 rounded-lg">
+        c) div#main .card p<br />
+        (1 ID + 1 thẻ div + 1 class + 1 thẻ p) = ?
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Trắc nghiệm kiểm tra độ hiểu bài">
+    <Quiz
+      question="Cho hai mẫu CSS: '.box p { color: blue; }' và '#main p { color: red; }' cùng áp dụng vào thẻ <p> trong <div id='main' class='box'><p>Xin chào</p></div>. Chữ 'Xin chào' sẽ có màu gì?"
+      options={[
+        "Màu đỏ (Red) vì bộ chọn có ID mang trọng số 101, cao hơn bộ chọn Class có trọng số 11",
+        "Màu xanh (Blue) vì class đứng trước",
+        "Màu đen mặc định vì hai bộ chọn xung đột và triệt tiêu nhau",
+        "Tùy thuộc vào việc đoạn mã nào được viết sau cùng"
+      ]}
+      correctAnswer={0}
+      explanation="#main p có 1 ID (100) + 1 thẻ p (1) = 101 điểm. Trong khi .box p có 1 Class (10) + 1 thẻ p (1) = 11 điểm. Điểm 101 > 11 nên màu đỏ chắc chắn chiến thắng bất kể vị trí viết trước hay sau."
+    />
+  </SlideStep>
+
+  <SlideStep stepNumber="3.4" title="Bước 4: Nhận định và chốt kết quả">
+    <Alert type="success">
+      Đáp án tính trọng số:
+      <ul className="mt-1 text-xs space-y-1 font-mono">
+        <li>• a) <code>p.intro em</code> = 1 + 10 + 1 = <strong>12 điểm</strong></li>
+        <li>• b) <code>#header nav a:hover</code> = 100 + 1 + 1 + 10 = <strong>112 điểm</strong></li>
+        <li>• c) <code>div#main .card p</code> = 1 + 100 + 10 + 1 = <strong>112 điểm</strong></li>
+      </ul>
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: XÂY DỰNG TRANG GIỚI THIỆU HTML VÀ CSS NÂNG CAO"
+  time="15 phút"
+  objective="Tổng hợp kiến thức về lớp giả, phần tử giả và thứ tự ưu tiên để hoàn thiện bài thực hành SGK Trang 102."
+  content="Thiết kế trang web giới thiệu công nghệ với tiêu đề có Drop Cap, thanh menu đổi màu nền và tương tác ảnh logo."
+  product="Trang web hoàn chỉnh chuẩn kỹ thuật và tiêu chí đánh giá sư phạm."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Chuyển giao bài tập dự án nhỏ">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Áp dụng toàn bộ kiến thức Bài 15, 16 và 17 để tạo tệp <code>gioi-thieu-html-css.html</code>: Tiêu đề lớn căn giữa màu đỏ; menu điều hướng căn phải dùng <code>display: inline-block</code>; rê chuột qua nút đổi màu nền sang xanh dạ quang; đoạn văn mở đầu dùng <code>::first-letter</code> tạo chữ cái cách điệu kích thước 200%.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá sản phẩm (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá mức độ làm chủ bộ chọn và thứ tự ưu tiên CSS (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Sử dụng Pseudo-class & Pseudo-element",
+          excellent: "Vận dụng chuẩn xác :hover, :active và ::first-letter; hiệu ứng chuyển màu mượt mà, đúng chuẩn.",
+          good: "Có sử dụng :hover và ::first-letter; trạng thái hoạt động tốt.",
+          needsImprovement: "Nhầm lẫn giữa cú pháp một dấu hai chấm (:) và hai dấu hai chấm (::) hoặc hiệu ứng không chạy."
+        },
+        {
+          name: "Kiểm soát độ ưu tiên (Specificity)",
+          excellent: "Cấu trúc bộ chọn tinh gọn, không lạm dụng !important; phân cấp rõ ràng giữa ID, Class và Tag.",
+          good: "Kiểm soát được thứ tự ưu tiên, mã nguồn chạy đúng ý muốn.",
+          needsImprovement: "Lạm dụng từ khóa !important bừa bãi khiến mã nguồn khó mở rộng."
+        },
+        {
+          name: "Kỹ năng sửa lỗi (Debugging)",
+          excellent: "Biết sử dụng DevTools F12 để kiểm tra dòng CSS nào đang bị ghi đè (strikethrough) và lý giải được nguyên nhân.",
+          good: "Nhận biết được xung đột khi giao diện hiển thị sai màu.",
+          needsImprovement: "Lúng túng không biết vì sao thuộc tính CSS không có tác dụng trên màn hình."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

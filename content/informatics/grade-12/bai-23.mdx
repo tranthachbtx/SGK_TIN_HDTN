@@ -1,0 +1,271 @@
+---
+title: "Bài 23: Chuẩn bị xây dựng trang web"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 23
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (ĐỊNH HƯỚNG ICT)"
+  topic="CHỦ ĐỀ 7: ỨNG DỤNG TIN HỌC"
+  title="BÀI 23: CHUẨN BỊ XÂY DỰNG TRANG WEB"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững cấu trúc 3 phần chuẩn mực của một trang web: Phần đầu trang (Header), Phần thân trang (Body) và Phần chân trang (Footer).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt được Logo và Favicon (biểu tượng tab trình duyệt); hiểu vai trò của URL và thanh điều hướng Navigation Bar.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm chắc quy trình 3 giai đoạn chuẩn bị xây dựng website: Định hình ý tưởng &rarr; Thiết kế kiến trúc/mỹ thuật &rarr; Chuẩn bị tư liệu & Chọn công cụ (Google Sites).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa, NLc):</strong> Phân tích và phác thảo được sơ đồ bố cục Wireframe, lựa chọn bảng màu phối hợp (Palette) và kiểu phông chữ không chân (Sans-Serif) tối ưu cho màn hình số.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực lập kế hoạch dự án:</strong> Thu thập, tổ chức và biên tập kho tài nguyên đa phương tiện (văn bản, ảnh chất lượng cao, video) có bản quyền.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tư duy thẩm mỹ hiện đại, tôn trọng trải nghiệm người đọc (UI/UX).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Ý thức bản quyền thông tin: ghi rõ nguồn gốc tài liệu, hình ảnh khi xây dựng trang web.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu các mẫu website chuẩn (Đại học Harvard, Báo VnExpress, Google Sites template).",
+    "Phiếu hướng dẫn lập kế hoạch đề cương website (Website Blueprint Worksheet).",
+    "Tài khoản Google dùng chung để thao tác thị phạm nền tảng Google Sites.",
+  ]}
+  studentChecklist={[
+    "Mỗi học sinh/nhóm có 1 tài khoản Google (Gmail) hoạt động bình thường.",
+    "Tập giấy A4 hoặc phần mềm vẽ (Canva/Figma) để phác thảo Wireframe sơ bộ.",
+    "Thư mục tài nguyên ảnh và bài viết đã chuẩn bị cho đề tài của nhóm.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: GIẢI PHẪU CẤU TRÚC MỘT TRANG WEB HIỆN ĐẠI"
+  time="10 phút"
+  objective="Giúp học sinh chuyển từ góc nhìn người lướt web thông thường sang góc nhìn của nhà thiết kế hệ thống; nhận diện các thành phần cấu tạo nên một website."
+  content="Quan sát trang chủ của Đại học Quốc gia hoặc Báo điện tử: Chỉ ra đâu là phần đầu trang, phần nội dung và phần chân trang."
+  product="Học sinh xác định được 3 khối cấu trúc cơ bản và gọi tên đúng các yếu tố giao diện."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao nhiệm vụ quan sát giao diện">
+    <ClassTimer initialMinutes={3} title="Thời gian quan sát và thảo luận" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Giáo viên mở website VnExpress hoặc Harvard University trên màn chiếu. Đặt câu hỏi:
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+        <strong>1. Đầu trang (Header):</strong> Chứa những gì? Biểu tượng nhỏ xíu trên tab trình duyệt là gì?
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200">
+        <strong>2. Thân trang (Body):</strong> Các bài viết, hình ảnh được sắp xếp theo bố cục nào?
+      </div>
+      <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200">
+        <strong>3. Chân trang (Footer):</strong> Thông tin bản quyền, giấy phép báo chí nằm ở đâu?
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Chốt cấu trúc cơ bản">
+    <Alert type="info">
+      Mọi trang web dù lớn hay nhỏ đều tuân theo cấu trúc 3 phần chặt chẽ: <strong>Header</strong> (Đầu trang định vị thương hiệu), <strong>Body</strong> (Thân trang truyền tải nội dung) và <strong>Footer</strong> (Chân trang khẳng định bản quyền và thông tin pháp lý).
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="45 phút"
+  objective="Nắm vững chi tiết các thành phần Header, Body, Footer; làm chủ quy trình 3 bước chuẩn bị thiết kế website và làm quen với công cụ Google Sites."
+  content="Tìm hiểu vai trò Favicon, quy tắc chọn phông chữ Sans-Serif, phối màu thương hiệu và các bước định hình ý tưởng website."
+  product="Bản đề cương phác thảo website (Website Blueprint) hoàn chỉnh của nhóm."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Cấu trúc ba phần của trang web">
+    <SlideStep stepNumber="2.1.1" title="Khám phá chi tiết Header, Body và Footer">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-sky-500">
+          <span className="font-bold text-sky-600 dark:text-sky-400 text-sm">1. Phần đầu trang (Header)</span>
+          <p className="mt-1">
+            Đóng vai trò như bìa sách thu nhỏ: Gồm <strong>Logo</strong> đại diện, <strong>Tên website</strong>, <strong>Thanh điều hướng (Navigation Bar)</strong> chứa các nút chuyển trang, thanh tìm kiếm và <strong>Favicon</strong> (Favorite Icon - biểu tượng nhỏ 16x16px hoặc 32x32px hiển thị trên tab trình duyệt).
+          </p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-emerald-500">
+          <span className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">2. Phần thân trang (Body)</span>
+          <p className="mt-1">
+            Khu vực nội dung chính, được tổ chức thành các <strong>Khối hình chữ nhật (Content Blocks)</strong>. Mỗi khối chứa tiêu đề chuyên mục, bài viết, băng chuyền ảnh (Carousel), video YouTube, bản đồ vị trí Google Maps hoặc biểu mẫu khảo sát.
+          </p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-indigo-500">
+          <span className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">3. Phần chân trang (Footer)</span>
+          <p className="mt-1">
+            Thông tin chủ thể sở hữu website, ký hiệu bản quyền &copy;, giấy phép hoạt động, địa chỉ trụ sở, số điện thoại liên hệ, email hỗ trợ và các liên kết mạng xã hội (Facebook, YouTube, TikTok).
+          </p>
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Quy trình 3 bước chuẩn bị xây dựng website">
+    <SlideStep stepNumber="2.2.1" title="Ba bước vàng từ ý tưởng đến bản thiết kế">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 shadow-sm">
+          <span className="px-2 py-1 rounded bg-blue-100 text-blue-800 text-xs font-bold">BƯỚC 1</span>
+          <h4 className="font-bold text-sm mt-2 text-slate-800 dark:text-slate-100">Định hình ý tưởng</h4>
+          <ul className="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300">
+            <li>• Mục đích website là gì? (Giới thiệu trường học, CLB, du lịch...).</li>
+            <li>• Đối tượng bạn đọc là ai? (Học sinh, phụ huynh, du khách...).</li>
+            <li>• Người đọc cần thông tin gì nhất?</li>
+          </ul>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 shadow-sm">
+          <span className="px-2 py-1 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">BƯỚC 2</span>
+          <h4 className="font-bold text-sm mt-2 text-slate-800 dark:text-slate-100">Thiết kế kiến trúc & Mỹ thuật</h4>
+          <ul className="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300">
+            <li>• Lập sơ đồ cấu trúc trang (Sitemap): Trang chủ &rarr; Các trang con.</li>
+            <li>• Phác thảo khung layout (Wireframe).</li>
+            <li>• Chọn bộ phông không chân Sans-Serif (Arial, Roboto) và bảng màu 3-5 sắc thái hài hòa.</li>
+          </ul>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 shadow-sm">
+          <span className="px-2 py-1 rounded bg-purple-100 text-purple-800 text-xs font-bold">BƯỚC 3</span>
+          <h4 className="font-bold text-sm mt-2 text-slate-800 dark:text-slate-100">Chuẩn bị tư liệu & Công cụ</h4>
+          <ul className="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300">
+            <li>• Thiết kế Logo, icon Favicon.</li>
+            <li>• Biên tập sẵn 3-4 bài viết ngắn súc tích.</li>
+            <li>• Thu thập ảnh chụp sắc nét, video clip.</li>
+            <li>• Chọn nền tảng Google Sites trực quan miễn phí.</li>
+          </ul>
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: PHÂN TÍCH GIAO DIỆN VÀ LẬP ĐỀ CƯƠNG DỰ ÁN"
+  time="20 phút"
+  objective="Vận dụng kiến thức để phân tích một website có sẵn và hoàn thiện đề cương chuẩn bị cho dự án website của nhóm mình."
+  content="Học sinh thực hiện bài tập phân tích trang web tin tức và hoàn thiện phiếu đề cương dự án 'Việt Nam - Vẻ đẹp tiềm ẩn'."
+  product="Phiếu đề cương dự án website của nhóm có đầy đủ mục tiêu, sitemap và bảng màu."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao bài tập thực hành">
+    <ClassTimer initialMinutes={10} title="Thời gian lập đề cương dự án nhóm" />
+    <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
+      Các nhóm thảo luận và điền vào Phiếu kế hoạch:
+    </p>
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs space-y-1">
+      <p>• <strong>Tên dự án:</strong> 'Việt Nam - Vẻ đẹp tiềm ẩn' (hoặc đề tài tự chọn của nhóm).</p>
+      <p>• <strong>Đối tượng phục vụ:</strong> Khách du lịch yêu thiên nhiên và các bạn trẻ đam mê khám phá.</p>
+      <p>• <strong>Cấu trúc trang con:</strong> Trang chủ, Điểm đến Tây Bắc - Đông Bắc, Di sản Miền Trung, Ẩm thực 3 miền.</p>
+      <p>• <strong>Bảng màu chủ đạo:</strong> Xanh lá cây thiên nhiên (Forest Green), Xanh da trời và Trắng ngà.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Câu hỏi trắc nghiệm kiểm tra nhanh">
+    <Quiz
+      question="Biểu tượng nhỏ hiển thị ở góc bên trái trên tab của trình duyệt web được gọi là gì?"
+      options={[
+        "Favicon (Favorite Icon)",
+        "Banner",
+        "Avatar",
+        "Watermark"
+      ]}
+      correctAnswer={0}
+      explanation="Favicon là biểu tượng đại diện của website hiển thị trên thanh tiêu đề hoặc tab của trình duyệt web, giúp người dùng nhận diện nhanh trang web giữa nhiều thẻ đang mở."
+    />
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: ĐĂNG NHẬP GOOGLE SITES VÀ KHỞI TẠO DỰ ÁN"
+  time="15 phút"
+  objective="Khởi động nền tảng Google Sites, làm quen với giao diện thiết kế trực quan và tạo tệp dự án đầu tiên."
+  content="Truy cập địa chỉ sites.google.com bằng tài khoản Google, tạo một website trống mới (Blank Site) và đặt tên dự án."
+  product="Trang Google Sites mới được tạo sẵn sàng cho các bài thực hành tiếp theo."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Hướng dẫn đăng nhập Google Sites">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      1. Mở trình duyệt Chrome, truy cập <code>https://sites.google.com</code>.<br />
+      2. Đăng nhập bằng tài khoản Google của nhóm.<br />
+      3. Bấm vào nút dấu cộng <strong>Trống (Blank)</strong> để tạo một trang web mới.<br />
+      4. Đặt tên tệp trang web ở góc trên bên trái: <code>DuLichVietNam_Nhom1</code>.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá đề cương chuẩn bị (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá giai đoạn chuẩn bị xây dựng trang web (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Xác định mục tiêu & Đối tượng",
+          excellent: "Mục đích rõ ràng, thấu hiểu sâu sắc nhu cầu người dùng, thông điệp cốt lõi giàu ý nghĩa.",
+          good: "Nêu được mục đích và đối tượng cơ bản.",
+          needsImprovement: "Mục đích mơ hồ, chưa xác định rõ trang web xây dựng cho ai xem."
+        },
+        {
+          name: "Kiến trúc Sitemap & Thiết kế mỹ thuật",
+          excellent: "Sitemap hình cây phân nhánh mạch lạc (3-4 trang); chọn phông Sans-Serif chuẩn, bảng màu phối hợp trang nhã.",
+          good: "Có sơ đồ trang và bảng màu cơ bản.",
+          needsImprovement: "Bố cục lộn xộn, chọn phông chữ rườm rà khó đọc trên màn hình."
+        },
+        {
+          name: "Chuẩn bị tư liệu & Khởi tạo công cụ",
+          excellent: "Có sẵn kho ảnh chất lượng cao, bài viết chuẩn bị công phu; đã khởi tạo thành công Google Sites.",
+          good: "Đã tạo được trang Google Sites và có một số hình ảnh mẫu.",
+          needsImprovement: "Chưa có tư liệu hoặc chưa đăng nhập được vào Google Sites."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

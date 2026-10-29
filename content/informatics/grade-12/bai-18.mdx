@@ -1,0 +1,299 @@
+---
+title: "Bài 18: Thực hành tổng hợp thiết kế trang web"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 18
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: THIẾT KẾ WEB VỚI HTML VÀ CSS"
+  title="BÀI 18: THỰC HÀNH TỔNG HỢP THIẾT KẾ TRANG WEB"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững phương pháp tổ chức cấu trúc tệp của một website nhiều trang (Multi-page website) dùng chung một tệp CSS ngoài (External Style Sheet <code>style.css</code>).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân tích bố cục wireframe trang web thành các khối logic: Banner đầu trang, Thanh thông điệp Slogan chia 3 cột, Khối nội dung chính và Chân trang Footer.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Kết hợp toàn diện HTML (thẻ cấu trúc, danh sách, liên kết, biểu mẫu) và CSS (Box model, định dạng chữ, màu sắc, pseudo-class).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Lập trình hoàn chỉnh website dự án 'Câu lạc bộ ngoại khóa trường học' với ít nhất 3 trang HTML liên kết chặt chẽ.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực số & Hợp tác (NLb, NLc):</strong> Phân công nhóm làm việc, quản lý mã nguồn trong thư mục dự án và kiểm thử giao diện trên trình duyệt.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tinh thần trách nhiệm khi làm việc nhóm; tính kiên trì, tỉ mỉ khi sắp xếp bố cục và gỡ lỗi hiển thị.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Ý thức bản quyền hình ảnh, lựa chọn nguồn tư liệu trực quan văn minh và lành mạnh.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu website mẫu CLB Ngoại khóa (Live Demo).",
+    "Gói tư liệu mẫu gồm hình ảnh banner, logo, biểu tượng trong thư mục assets/img.",
+    "File hướng dẫn khung dự án (Starter Code template) và phiếu chấm điểm Rubric.",
+  ]}
+  studentChecklist={[
+    "Máy tính thực hành có VS Code, tạo sẵn thư mục dự án clb-ngoai-khoa.",
+    "Hình ảnh các hoạt động phong trào của lớp/trường đã chuẩn bị trước.",
+    "Bảng phân công nhiệm vụ nhóm (Trang chủ, Thể thao, Nghệ thuật, Đăng ký).",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: BÀI TOÁN XÂY DỰNG WEBSITE ĐA TRANG ĐỒNG NHẤT"
+  time="10 phút"
+  objective="Khơi dậy nhu cầu thực tế: Khi một website có 10 hoặc 100 trang web con, làm sao để thay đổi màu sắc hay phông chữ mà không phải mở từng tệp HTML ra sửa?"
+  content="Thảo luận về lợi ích của tệp CSS dùng chung (style.css) và nguyên tắc liên kết đa trang trong thiết kế web hiện đại."
+  product="Học sinh thống nhất phương án sử dụng 1 tệp style.css duy nhất cho toàn bộ hệ thống website."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao nhiệm vụ - Tình huống quản trị website">
+    <ClassTimer initialMinutes={3} title="Thời gian thảo luận nhóm bàn" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Giả sử website trường em có 50 trang web giới thiệu 50 lớp học. Nếu thầy Hiệu trưởng yêu cầu đổi màu nền của tất cả các tiêu đề từ màu xanh sang màu đỏ gạch, em sẽ làm cách nào?
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/20 border border-rose-200 text-rose-800 dark:text-rose-300">
+        ❌ <strong>Cách 1:</strong> Mở từng tệp trong số 50 tệp HTML, sửa thuộc tính style bên trong từng thẻ h1. Mất hàng giờ và rất dễ sót lỗi!
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 text-emerald-800 dark:text-emerald-300">
+        &check; <strong>Cách 2:</strong> Tạo một tệp <code>style.css</code> riêng, tất cả 50 tệp HTML đều liên kết tới tệp này qua thẻ <code>&lt;link&gt;</code>. Chỉ sửa đúng 1 dòng trong file CSS là cả 50 trang đồng loạt đổi màu!
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.2" title="Bước 2: Báo cáo & Chốt giải pháp kiến trúc">
+    <Alert type="info">
+      Đây chính là lý do kiến trúc <strong>External CSS</strong> (tệp CSS ngoài) là chuẩn mực bắt buộc trong công nghiệp phần mềm web. Hôm nay, chúng ta sẽ vận dụng toàn bộ kiến thức Chủ đề 4 để xây dựng website hoàn chỉnh!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KIẾN THỨC VÀ THIẾT KẾ BỐ CỤC DỰ ÁN"
+  time="45 phút"
+  objective="Phân tích bố cục trang web (Wireframe); thiết lập cấu trúc thư mục chuẩn; viết tệp style.css dùng chung với hệ thống lớp Flexbox chia cột."
+  content="Phân tích bố cục 4 thành phần: Banner, Slogan row (3 cột), Nội dung chi tiết các CLB và Footer; thiết lập hệ thống liên kết thẻ a."
+  product="Sơ đồ cây thư mục dự án và tệp định dạng style.css chuẩn."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Tổ chức thư mục dự án và phân tích Wireframe">
+    <SlideStep stepNumber="2.1.1" title="Cấu trúc thư mục dự án website chuyên nghiệp">
+      <div className="p-4 rounded-xl bg-slate-900 text-slate-100 font-mono text-xs md:text-sm">
+        <p className="text-amber-400 font-bold">📁 website-clb/</p>
+        <p className="pl-4">├── 📁 css/</p>
+        <p className="pl-8 text-sky-300">└── style.css       <span className="text-slate-500">// Tệp CSS dùng chung toàn site</span></p>
+        <p className="pl-4">├── 📁 assets/</p>
+        <p className="pl-8">└── 📁 img/          <span className="text-slate-500">// Chứa hình ảnh banner, logo, clb...</span></p>
+        <p className="pl-4 text-emerald-400">├── index.html       <span className="text-slate-500">// Trang chủ</span></p>
+        <p className="pl-4 text-emerald-400">├── thethao.html     <span className="text-slate-500">// Trang CLB Thể thao</span></p>
+        <p className="pl-4 text-emerald-400">├── nghethuat.html   <span className="text-slate-500">// Trang CLB Nghệ thuật</span></p>
+        <p className="pl-4 text-emerald-400">└── dang_ki.html     <span className="text-slate-500">// Trang đăng ký thành viên</span></p>
+      </div>
+      <div className="mt-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20 text-xs text-blue-900 dark:text-blue-200">
+        💡 Mỗi tệp HTML kết nối với tệp CSS qua dòng lệnh đặt trong phần <code>&lt;head&gt;</code>:
+        <code className="block mt-1 p-2 bg-white dark:bg-slate-900 rounded font-mono text-primary font-bold">
+          &lt;link rel="stylesheet" href="css/style.css"&gt;
+        </code>
+      </div>
+    </SlideStep>
+
+    <SlideStep stepNumber="2.1.2" title="Xây dựng bố cục 3 cột cho Slogan bằng Flexbox">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
+        Để 3 ô nội dung nằm thẳng hàng ngang nhau trên màn hình máy tính, ta sử dụng mô hình <code>display: flex</code>:
+      </p>
+      <pre className="p-3 bg-slate-900 text-sky-300 rounded-xl text-xs font-mono">
+{`.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.block_3 {
+  flex: 0 0 32%; /* Mỗi ô chiếm gần 1/3 chiều rộng */
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}`}
+      </pre>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Thiết kế mã nguồn HTML các trang con">
+    <SlideStep stepNumber="2.2.1" title="Khung HTML Trang chủ (index.html)">
+      <pre className="p-3 bg-slate-900 text-emerald-300 rounded-xl text-xs font-mono">
+{`<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>CLB Ngoại Khóa Trường THPT</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 1. Header / Banner -->
+  <header class="banner">
+    <h1>CÂU LẠC BỘ NGOẠI KHÓA</h1>
+    <p>Nơi ươm mầm đam mê, sáng tạo và tỏa sáng tài năng</p>
+  </header>
+
+  <!-- 2. Slogan 3 cột -->
+  <section class="slogan">
+    <div class="row">
+      <div class="block_3">
+        <h3>Năng Động</h3>
+        <p>Tham gia các hoạt động ngoại khóa bổ ích và rèn luyện thể chất.</p>
+      </div>
+      <div class="block_3">
+        <h3>Đam Mê</h3>
+        <p>Khám phá năng khiếu nghệ thuật, âm nhạc và hội họa tiềm ẩn.</p>
+      </div>
+      <div class="block_3">
+        <h3>Tỏa Sáng</h3>
+        <p>Tự tin chinh phục các giải thưởng và cống hiến cho cộng đồng.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Liên kết chuyển trang -->
+  <nav class="footer-nav">
+    <a href="thethao.html">CLB Thể Thao</a>
+    <a href="nghethuat.html">CLB Nghệ Thuật</a>
+    <a href="dang_ki.html" class="btn-highlight">Đăng Ký Tham Gia</a>
+  </nav>
+</body>
+</html>`}
+      </pre>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: HOÀN THIỆN TRANG WEB VÀ LIÊN KẾT ĐA TRANG"
+  time="20 phút"
+  objective="Học sinh thực hành phân công nhóm, hoàn thiện mã nguồn các trang con thethao.html, nghethuat.html và trang biểu mẫu dang_ki.html."
+  content="Thực hiện ghép nối mã HTML và CSS, kiểm tra đường dẫn hình ảnh và các siêu liên kết giữa các trang web."
+  product="Bộ tệp mã nguồn website chạy mượt mà, chuyển trang qua lại chính xác."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao nhiệm vụ lập trình nhóm">
+    <ClassTimer initialMinutes={12} title="Thời gian lập trình hoàn thiện dự án" />
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs md:text-sm space-y-1">
+      <p className="font-bold text-slate-800 dark:text-slate-200">Mục tiêu luyện tập theo cặp đôi / nhóm:</p>
+      <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+        <li>Thành viên A: Hoàn thiện tệp <code>index.html</code> và <code>thethao.html</code>.</li>
+        <li>Thành viên B: Hoàn thiện tệp <code>nghethuat.html</code> và <code>dang_ki.html</code> (có Form họ tên, lớp, CLB đăng ký).</li>
+        <li>Cả hai cùng tinh chỉnh tệp <code>css/style.css</code>: Thêm hiệu ứng <code>a:hover</code> phóng to nút hoặc đổi màu nền.</li>
+      </ul>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Câu hỏi kiểm tra kỹ thuật">
+    <Quiz
+      question="Để liên kết từ tệp 'thethao.html' nằm trong thư mục gốc quay trở về trang chủ 'index.html', ta dùng cú pháp thẻ nào sau đây?"
+      options={[
+        "<a href='index.html'>Trang chủ</a>",
+        "<link rel='stylesheet' href='index.html'>",
+        "<a src='index.html'>Trang chủ</a>",
+        "<a to='index.html'>Trang chủ</a>"
+      ]}
+      correctAnswer={0}
+      explanation="Thẻ liên kết siêu văn bản trong HTML là <a> với thuộc tính đích đến là 'href'. Thẻ <link> chỉ dùng để nhúng tài nguyên bên ngoài như tệp CSS hoặc favicon."
+    />
+  </SlideStep>
+
+  <SlideStep stepNumber="3.4" title="Bước 4: Nhận định, chốt kết quả bài thực hành">
+    <Alert type="success">
+      Đến đây, học sinh đã nắm trọn vẹn quy trình phát triển một website tĩnh chuẩn chuyên nghiệp từ khâu lập kế hoạch bố cục, phân tách HTML và CSS, đến triển khai liên kết đa trang!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: TÙY BIẾN GIAO DIỆN THEO CHỦ ĐỀ SÁNG TẠO"
+  time="15 phút"
+  objective="Phát huy tính sáng tạo cá nhân: Đổi mới bảng màu, phông chữ và bố cục để thiết kế website phục vụ một sự kiện hoặc sở thích thực tế của học sinh."
+  content="Tái cấu trúc giao diện website CLB sang một chủ đề mới: 'Dự án Bảo vệ Môi trường trường học' hoặc 'CLB Sách & Văn hóa đọc'."
+  product="Bản thiết kế giao diện mới thể hiện cá tính sáng tạo của học sinh."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Thử thách thiết kế Theme mới">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Chỉ bằng cách thay đổi các thông số trong tệp <code>css/style.css</code> (không sửa cấu trúc HTML), hãy 'thay áo' cho website câu lạc bộ theo một gam màu chủ đạo mới (ví dụ phong cách Dark Mode hiện đại, hoặc phong cách Pastel trẻ trung).
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá sản phẩm (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá dự án thực hành tổng hợp thiết kế website (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Kiến trúc thư mục và liên kết đa trang",
+          excellent: "Tổ chức tệp chuẩn mực (css/, assets/img/); liên kết đa chiều giữa các trang hoạt động hoàn hảo, không có liên kết gãy.",
+          good: "Có đủ các trang và liên kết chạy tốt; cấu trúc tệp còn gom chung một thư mục.",
+          needsImprovement: "Bị lỗi đường dẫn hình ảnh hoặc bấm vào link bị báo lỗi 404 không tìm thấy trang."
+        },
+        {
+          name: "Kỹ năng lập trình CSS và Bố cục",
+          excellent: "Bố cục chia cột bằng Flexbox cân xứng; áp dụng chuẩn mực Box Model, màu sắc, phông chữ và hiệu ứng tương tác :hover tinh tế.",
+          good: "Giao diện rõ ràng, các khối nội dung ngăn nắp.",
+          needsImprovement: "Bố cục bị xô lệch, các khối đè lên nhau hoặc giao diện quá đơn điệu."
+        },
+        {
+          name: "Hợp tác nhóm và Trình bày sản phẩm",
+          excellent: "Phân công nhiệm vụ rõ ràng, tự tin thuyết trình sản phẩm demo và trả lời trôi chảy các câu hỏi phản biện.",
+          good: "Nhóm hoàn thành đúng hạn sản phẩm.",
+          needsImprovement: "Còn phụ thuộc vào một cá nhân, chưa có sự phối hợp nhịp nhàng giữa các thành viên."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

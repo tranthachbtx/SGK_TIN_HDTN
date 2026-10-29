@@ -1,0 +1,250 @@
+---
+title: "Bài 26: Liên kết và thanh điều hướng"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 26
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (ĐỊNH HƯỚNG ICT)"
+  topic="CHỦ ĐỀ 7: ỨNG DỤNG TIN HỌC"
+  title="BÀI 26: LIÊN KẾT VÀ THANH ĐIỀU HƯỚNG"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu mô hình tổ chức website dạng cây phân cấp (Tree Hierarchy): Trang chủ (Home) và các Trang con (Subpages) nhiều tầng.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững phương pháp thiết lập và phân cấp bảng chọn trên Thanh điều hướng (Navigation Bar) trong thẻ Trang (Pages) của Google Sites.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu cơ chế liên kết nội bộ (Internal link) kết nối bài tóm tắt ở trang chủ với trang chi tiết qua nút 'Đọc tiếp...'.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Thao tác thành thạo tạo trang con cấp 1, cấp 2; kéo thả cấu trúc cây thư mục và tùy chỉnh vị trí thanh menu (Đầu trang hoặc Bên cạnh).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực thiết kế trải nghiệm người dùng (UX):</strong> Tối ưu hóa luồng điều hướng trang web, giúp người xem dễ dàng tìm thấy thông tin chỉ sau 1-2 cú nhấp chuột.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tư duy tổ chức hệ thống ngăn nắp, khoa học, logic trong phân loại chuyên mục nội dung.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tác phong làm việc chuẩn mực, kiểm tra kỹ lưỡng các siêu liên kết để tránh lỗi liên kết gãy.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu sơ đồ kiến trúc hình cây (Sitemap Tree Visualizer).",
+    "Dự án Google Sites mẫu có hệ thống menu phân cấp 2 tầng mượt mà.",
+    "Bảng câu hỏi thảo luận về trải nghiệm điều hướng website du lịch.",
+  ]}
+  studentChecklist={[
+    "Dự án Google Sites 'Việt Nam - Vẻ đẹp tiềm ẩn' đã có trang chủ từ bài 25.",
+    "Sơ đồ phân nhánh các trang con của nhóm trên giấy A4.",
+    "Các đoạn văn bản chi tiết về Mù Cang Chải, Thung Nham để đưa vào trang con.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: BÀI TOÁN 'TRANG CHỦ BỘI THỰC CHỮ'"
+  time="10 phút"
+  objective="Đặt ra mâu thuẫn thực tế: Nếu nhồi nhét toàn bộ bài viết dài hàng nghìn từ về tất cả các danh lam thắng cảnh lên trang chủ thì trang web sẽ dài lê thê và mất cân đối."
+  content="Thảo luận giải pháp: Trang chủ chỉ nên tóm tắt 3-4 dòng kèm nút 'Đọc tiếp...', khi bấm vào sẽ dẫn tới một trang con độc lập."
+  product="Học sinh đồng thuận về giải pháp tổ chức website hình cây và vai trò của thanh điều hướng."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao tình huống thiết kế UX">
+    <ClassTimer initialMinutes={3} title="Thời gian phân tích bố cục trang chủ" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Giả sử nhóm em muốn giới thiệu 20 địa danh du lịch nổi tiếng trên khắp Việt Nam. Nếu đưa toàn bộ hình ảnh, lịch sử và cẩm nang chi tiết của cả 20 nơi lên một trang chủ duy nhất, điều gì sẽ xảy ra?
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/20 border border-rose-200 text-rose-800 dark:text-rose-300">
+        ❌ <strong>Trang chủ quá tải:</strong> Người dùng phải cuộn chuột mỏi tay qua hàng chục mét màn hình; thời gian tải trang rất chậm; bài viết dài ngắn chênh lệch để lộ khoảng trống xấu xí.
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 text-emerald-800 dark:text-emerald-300">
+        &check; <strong>Kiến trúc hình cây (Sitemap):</strong> Trang chủ đóng vai trò như 'mục lục' tổng quan với các ô tóm tắt gọn gàng; mỗi địa danh có một 'trang con' riêng biệt, được kết nối qua thanh menu thông minh!
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Vào bài học mới">
+    <Alert type="info">
+      Thanh điều hướng (Navigation Bar) chính là 'chiếc la bàn' dẫn dắt người xem khám phá toàn bộ kho tàng tri thức trong website mà không bao giờ bị lạc đường!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KỸ NĂNG: TẠO TRANG CON VÀ THIẾT LẬP MENU PHÂN CẤP"
+  time="45 phút"
+  objective="Xây dựng cấu trúc trang con 2 cấp (Cấp 1: Tây Bắc - Đông Bắc; Cấp 2: Mù Cang Chải); tùy chỉnh kiểu hiển thị thanh điều hướng và tạo siêu liên kết nội bộ 'Đọc tiếp...'."
+  content="Thực hiện theo nhóm các thao tác trên thẻ Trang (Pages) và gắn liên kết cho văn bản trên Google Sites."
+  product="Hệ thống thanh menu đa cấp hiển thị chính xác và liên kết chuyển trang mượt mà."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Tạo các trang con trong thẻ Trang (Pages)">
+    <SlideStep stepNumber="2.1.1" title="Thao tác tạo cây phân cấp trang con">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>1. Mở thẻ Trang (Pages):</strong> Ở khung bên phải, nhấp vào thẻ <em>Trang (Pages)</em> cạnh thẻ Chèn.
+        </div>
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>2. Tạo trang con cấp 1:</strong> Rê chuột vào mục <em>Trang chủ</em> &rarr; Nhấp vào dấu 3 chấm dọc bên cạnh &rarr; Chọn <strong>Thêm trang con (Add subpage)</strong> &rarr; Đặt tên: <code>Tây Bắc - Đông Bắc</code> &rarr; Nhấn Xong.
+        </div>
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>3. Tạo trang con cấp 2:</strong> Rê chuột vào trang <em>Tây Bắc - Đông Bắc</em> vừa tạo &rarr; Bấm dấu 3 chấm &rarr; Chọn <em>Thêm trang con</em> &rarr; Đặt tên: <code>Mù Cang Chải</code>.
+        </div>
+        <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-300 text-emerald-800 dark:text-emerald-200">
+          💡 Quan sát trên thanh Header: Mục <em>Tây Bắc - Đông Bắc</em> tự động xuất hiện mũi tên thả xuống chứa trang con <em>Mù Cang Chải</em>!
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Tùy biến kiểu hiển thị thanh điều hướng">
+    <SlideStep stepNumber="2.2.1" title="Menu trên cùng vs Menu bên cạnh (Drawer Menu)">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border">
+          <span className="font-bold text-sky-600">Menu Trên cùng (Top)</span>
+          <p className="mt-1">Hiển thị trải dài trên Header. Phù hợp cho website có ít trang (dưới 5-6 chuyên mục). Khi mở trên điện thoại, hệ thống sẽ tự động chuyển thành nút 3 gạch (Hamburger).</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border">
+          <span className="font-bold text-purple-600">Menu Bên cạnh (Side)</span>
+          <p className="mt-1">Thu gọn vào biểu tượng 3 gạch ở góc trái, khi nhấp chuột sẽ trượt ra một ngăn kéo danh mục. Rất phù hợp cho website có cấu trúc cây thư mục sâu và nhiều trang con.</p>
+        </div>
+      </div>
+      <div className="mt-2 text-xs text-slate-500">
+        * Thao tác: Vào biểu tượng Cài đặt (bánh răng) &rarr; Mục <em>Điều hướng (Navigation)</em> &rarr; Chọn Chế độ: <strong>Bên trên (Top)</strong> hoặc <strong>Bên (Side)</strong>.
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-3" title="Nhiệm vụ 2.3: Tạo liên kết 'Đọc tiếp...' từ Trang chủ">
+    <SlideStep stepNumber="2.3.1" title="Kỹ thuật gắn Internal Link cho văn bản">
+      <div className="p-4 rounded-xl bg-slate-900 text-slate-100 text-xs md:text-sm space-y-2">
+        <p className="text-amber-400 font-bold">🔗 TRÌNH TỰ GẮN LIÊN KẾT NỘI BỘ:</p>
+        <p>1. Mở lại Trang chủ, nhấp chuột vào cuối đoạn tóm tắt bài viết Mù Cang Chải.</p>
+        <p>2. Gõ dòng chữ: <code>Đọc tiếp &gt;&gt;</code> &rarr; Bôi đen cụm từ này.</p>
+        <p>3. Trên thanh công cụ văn bản nổi lên, nhấp vào biểu tượng <strong>Mắt xích liên kết (Chèn đường liên kết)</strong>.</p>
+        <p>4. Bảng danh sách các trang web trong website sẽ hiện ra &rarr; Nhấp chọn trang: <strong>Mù Cang Chải</strong> &rarr; Nhấn <strong>Áp dụng (Apply)</strong>.</p>
+        <p className="text-emerald-400">✨ Từ nay, khi người xem bấm vào chữ 'Đọc tiếp &gt;&gt;', trình duyệt sẽ lập tức chuyển ngay sang trang chi tiết Mù Cang Chải!</p>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: MỞ RỘNG CÂY TRANG VÀ KIỂM THỬ ĐIỀU HƯỚNG"
+  time="20 phút"
+  objective="Học sinh tự thực hành tạo thêm nhánh trang con mới: 'Đồng bằng & Trung du Bắc Bộ' chứa trang con 'Thung Nham', đồng thời tạo trang 'Tây Nguyên' chứa 'Bản Đôn'."
+  content="Thực hiện phân cấp các trang con và gắn liên kết chuyển hướng từ các khối tóm tắt tương ứng ở trang chủ."
+  product="Website hoàn chỉnh gồm ít nhất 4 trang con liên kết thông suốt."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao bài tập thực hành phân cấp">
+    <ClassTimer initialMinutes={10} title="Thời gian tạo trang con và gắn liên kết" />
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs space-y-1">
+      <p className="font-bold text-slate-800 dark:text-slate-200">Yêu cầu luyện tập:</p>
+      <p>1. Tạo trang con cấp 1: <code>Đồng bằng & Trung du Bắc Bộ</code> &rarr; Tạo trang con cấp 2: <code>Thung Nham</code>.</p>
+      <p>2. Tạo trang con cấp 1: <code>Tây Nguyên</code> &rarr; Tạo trang con cấp 2: <code>Bản Đôn</code>.</p>
+      <p>3. Ở trang chủ, gắn liên kết 'Đọc tiếp &gt;&gt;' dưới bài Thung Nham dẫn thẳng tới trang chi tiết Thung Nham.</p>
+      <p>4. Xuất bản (Publish) lại trang web và mở đường dẫn URL trên tab mới để kiểm tra nhấp chuột từng liên kết.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Câu hỏi trắc nghiệm kiểm tra nhanh">
+    <Quiz
+      question="Để biến một trang web thành trang con (Subpage) của trang chủ trong giao diện thiết kế Google Sites, em thực hiện thao tác nào?"
+      options={[
+        "Trong thẻ Trang, bấm vào dấu 3 chấm cạnh Trang chủ và chọn 'Thêm trang con'",
+        "Viết lệnh HTML <a href='subpage'>",
+        "Tạo một tệp mới trên Google Drive rồi kéo vào màn hình",
+        "Vào phần Cài đặt của Header để chọn"
+      ]}
+      correctAnswer={0}
+      explanation="Trong thẻ Trang (Pages), nhấp vào dấu 3 chấm cạnh một trang bất kỳ và chọn 'Thêm trang con' là cách chuẩn mực để thiết lập cây phân cấp sitemap trong Google Sites."
+    />
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: THIẾT LẬP CÂY THƯ MỤC CHO DỰ ÁN ÂM NHẠC LỊCH SỬ"
+  time="15 phút"
+  objective="Phát triển hệ thống menu điều hướng cho website 'Những bài ca đi cùng năm tháng'."
+  content="Tạo 3 trang nhánh chính: 'Ca khúc bất hủ', 'Nhạc sĩ tiêu biểu' và 'Nghệ sĩ biểu diễn', kết nối mạch lạc với các bài viết giới thiệu ở trang chủ."
+  product="Sơ đồ sitemap đa tầng và hệ thống menu của dự án âm nhạc."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Chuyển giao bài tập dự án">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Tiến hành tái cấu trúc trang web <code>NhungBaiCaDiCungNamThang</code>: Tạo 3 trang con cấp 1: <em>Ca khúc</em>, <em>Nhạc sĩ</em>, <em>Ca sĩ</em>. Trong trang <em>Nhạc sĩ</em>, tạo trang con cấp 2 giới thiệu về cố nhạc sĩ <em>Văn Cao</em> và <em>Hoàng Việt</em>. Gắn nút liên kết từ trang chủ đến các trang con này.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá hệ thống điều hướng (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá thanh điều hướng và liên kết website (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Kiến trúc Sitemap hình cây",
+          excellent: "Phân cấp trang con rõ ràng 2 tầng, tên trang ngắn gọn, mạch lạc, dễ hiểu đối với người dùng.",
+          good: "Có tạo trang con nhưng tên trang còn quá dài hoặc phân loại chưa thật hợp lý.",
+          needsImprovement: "Các trang ngang hàng lộn xộn, không phân cấp được trang con."
+        },
+        {
+          name: "Tính chính xác của liên kết (Links)",
+          excellent: "100% liên kết 'Đọc tiếp...' và thanh menu dẫn trúng đích trang cần mở; không có bất kỳ liên kết gãy nào.",
+          good: "Các liên kết cơ bản hoạt động tốt.",
+          needsImprovement: "Nhấp vào liên kết bị báo lỗi không tìm thấy trang hoặc dẫn nhầm địa chỉ."
+        },
+        {
+          name: "Tối ưu hóa điều hướng (UX)",
+          excellent: "Cung cấp đường dẫn quay lại trang chủ tiện lợi; thanh menu chuyển đổi mượt mà giữa Desktop và Mobile.",
+          good: "Điều hướng sử dụng thuận tiện.",
+          needsImprovement: "Khó khăn trong việc quay trở lại trang chủ sau khi đã bấm vào trang con."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

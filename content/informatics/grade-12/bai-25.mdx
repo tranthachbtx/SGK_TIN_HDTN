@@ -1,0 +1,238 @@
+---
+title: "Bài 25: Xây dựng phần thân và chân trang web"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 25
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (ĐỊNH HƯỚNG ICT)"
+  topic="CHỦ ĐỀ 7: ỨNG DỤNG TIN HỌC"
+  title="BÀI 25: XÂY DỰNG PHẦN THÂN VÀ CHÂN TRANG WEB"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững 3 nhóm công cụ trong bảng chọn Chèn (Insert) của Google Sites: Đối tượng cơ bản, Khối bố cục (Content Blocks) và Đối tượng tích hợp hệ sinh thái Google.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu phương pháp nhúng bản đồ tương tác Google Maps, video YouTube, băng chuyền ảnh (Image Carousel) và tài liệu Drive vào thân trang.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm chắc kỹ thuật thiết lập phần chân trang Footer: Thông tin bản quyền, liên hệ và các nút liên kết mạng xã hội (Social links).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Thao tác kéo thả mượt mà, định cỡ khung nội dung, sao chép khối và sử dụng phím tắt Undo (Ctrl+Z) / Redo (Ctrl+Y) linh hoạt.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực tích hợp & Sáng tạo số:</strong> Phối hợp hài hòa giữa văn bản mô tả, hình ảnh sắc nét và các ứng dụng vệ tinh (Maps, YouTube) tạo nên trang web đa phương tiện hấp dẫn.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tư duy bố cục khoa học, ngăn nắp, cân đối thị giác giữa cột chữ và cột hình ảnh.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Trách nhiệm tôn trọng quyền tác giả khi nhúng video và trích dẫn thông tin địa lý.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu dự án mẫu 'Việt Nam - Vẻ đẹp tiềm ẩn' đã có đầy đủ Body và Footer.",
+    "Tọa độ và tên các địa danh du lịch nổi tiếng trên Google Maps (Khu sinh thái Thung Nham, Ruộng bậc thang Mù Cang Chải).",
+    "Danh sách các đường link video YouTube chất lượng cao về du lịch Việt Nam.",
+  ]}
+  studentChecklist={[
+    "Máy tính học sinh đã hoàn thành phần Header từ Bài 24 trên Google Sites.",
+    "Thư mục ảnh chụp các danh thắng đã biên tập sẵn trên máy.",
+    "Đoạn văn bản tóm tắt nội dung bài viết về các địa danh.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: BIẾN TRANG WEB TĨNH THÀNH TRUNG TÂM ĐA PHƯƠNG TIỆN"
+  time="10 phút"
+  objective="Khơi dậy hứng thú về khả năng tích hợp không giới hạn của web hiện đại: Không chỉ đọc chữ, người xem có thể phóng to bản đồ đường đi và xem video trực tiếp ngay trên trang."
+  content="Thảo luận: Một bài viết giới thiệu địa điểm du lịch có bản đồ chỉ đường tương tác và video trải nghiệm thực tế sẽ hấp dẫn du khách hơn một bài viết chỉ có chữ như thế nào?"
+  product="Học sinh nhận thức rõ giá trị của việc nhúng các đối tượng đa phương tiện (Multimedia Embedding) vào thân trang."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao tình huống trải nghiệm">
+    <ClassTimer initialMinutes={3} title="Thời gian thảo luận nhóm" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Khi bạn đọc muốn tìm hiểu về khu du lịch sinh thái Thung Nham (Ninh Bình), điều họ mong muốn thấy nhất trên trang web là gì?
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+        📸 <strong>Hình ảnh chân thực:</strong> Xem các đàn chim về tổ và vẻ đẹp hoang sơ của hang động.
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200">
+        🗺️ <strong>Bản đồ vệ tinh Google Maps:</strong> Định vị chính xác khoảng cách từ Hà Nội đến Thung Nham và cách di chuyển.
+      </div>
+      <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200">
+        🎥 <strong>Video trải nghiệm YouTube:</strong> Lắng nghe âm thanh thiên nhiên sống động như đang có mặt tại hiện trường.
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Vào bài thực hành">
+    <Alert type="info">
+      Google Sites cho phép nhúng trực tiếp mọi dịch vụ trong hệ sinh thái Google (Maps, YouTube, Docs, Sheets) vào trang web chỉ bằng vài thao tác kéo thả cực kỳ trực quan!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KỸ NĂNG: XÂY DỰNG BODY VÀ FOOTER ĐA PHƯƠNG TIỆN"
+  time="45 phút"
+  objective="Sử dụng mẫu khối bố cục 2 cột (Content Blocks); nhúng bản đồ Google Maps và video YouTube; thiết lập chân trang Footer bản quyền và liên kết mạng xã hội."
+  content="Thực hiện lần lượt 5 nhiệm vụ thực hành trên tệp dự án 'Việt Nam - Vẻ đẹp tiềm ẩn'."
+  product="Thân trang web có 2 khối bài viết kèm ảnh, bản đồ tương tác chuẩn vị trí và Footer chuyên nghiệp."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Tạo khối nội dung 2 cột bằng Content Blocks">
+    <SlideStep stepNumber="2.1.1" title="Sử dụng mẫu khối bố cục có sẵn">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <p>1. Ở khung bên phải, chọn thẻ <strong>Chèn (Insert)</strong> &rarr; Tìm mục <strong>Khối nội dung (Content blocks)</strong> &rarr; Chọn mẫu 2 cột (2 ảnh kèm 2 khung chữ bên dưới).</p>
+        <p>2. Khối 1: Nhấp dấu cộng tải ảnh phong cảnh <em>Thung Nham (Ninh Bình)</em> &rarr; Nhập tiêu đề và đoạn văn bản giới thiệu về khu bảo tồn chim.</p>
+        <p>3. Khối 2: Nhấp dấu cộng tải ảnh <em>Ruộng bậc thang Mù Cang Chải (Yên Bái)</em> &rarr; Nhập đoạn giới thiệu mùa lúa chín rực rỡ.</p>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Nhúng bản đồ tương tác Google Maps">
+    <SlideStep stepNumber="2.2.1" title="Quy trình nhúng và căn chỉnh kích thước bản đồ">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 1. Mở công cụ Bản đồ:</strong> Trong thẻ Chèn, cuộn xuống nhóm thứ 3 &rarr; Chọn <strong>Bản đồ (Map)</strong>.
+        </div>
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 2. Định vị địa danh:</strong> Nhập từ khóa: <code>Khu sinh thái Thung Nham</code> vào ô tìm kiếm &rarr; Nhấp chọn vị trí ghim đỏ &rarr; Nhấn nút xanh <strong>Chọn (Select)</strong>.
+        </div>
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 3. Tùy biến vị trí & Kích thước:</strong> Nhấp vào bản đồ vừa chèn, kéo các chấm tròn màu xanh ở 4 góc để co giãn kích thước; kéo thả bản đồ đặt ngay ngắn bên dưới bài viết Thung Nham.
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-3" title="Nhiệm vụ 2.3: Thiết lập phần chân trang Footer">
+    <SlideStep stepNumber="2.3.1" title="Tuyên bố bản quyền và Nút mạng xã hội">
+      <div className="p-4 rounded-xl bg-slate-900 text-slate-100 text-xs md:text-sm space-y-2">
+        <p className="text-amber-400 font-bold">👣 CÁCH THIẾT LẬP CHÂN TRANG FOOTER:</p>
+        <p>1. Cuộn chuột xuống đáy trang &rarr; Rê chuột thấy hiện nút <strong>Thêm chân trang (Add footer)</strong> &rarr; Nhấp chuột để mở vùng Footer.</p>
+        <p>2. Chèn Hộp văn bản: Gõ nội dung bản quyền: <code>&copy; 2026 Chuyên trang Du lịch Việt Nam. Bản quyền thuộc về Nhóm dự án Lớp 12. Email: dulich@thpt.edu.vn</code>.</p>
+        <p>3. Trong thẻ Chèn, chọn <strong>Đường liên kết đến mạng xã hội (Social links)</strong> &rarr; Tải icon hoặc nhập link Facebook, YouTube, TikTok của nhóm để kết nối với người đọc.</p>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: NHÚNG VIDEO YOUTUBE VÀ THAO TÁC SẮP XẾP KHỐI"
+  time="20 phút"
+  objective="Luyện tập mở rộng: Nhúng video YouTube thuyết minh về vẻ đẹp Mù Cang Chải, sắp xếp lại trật tự các khối bằng thao tác kéo thả và sử dụng nút Hoàn tác Undo."
+  content="Thực hiện nhúng video từ YouTube vào khối Mù Cang Chải; thay đổi màu nền của từng phân vùng (Section background) để tạo chiều sâu thị giác."
+  product="Trang web có đầy đủ ảnh, chữ, bản đồ Maps và video YouTube chạy mượt mà."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao bài tập mở rộng">
+    <ClassTimer initialMinutes={10} title="Thời gian nhúng video và hoàn thiện giao diện" />
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs space-y-1">
+      <p className="font-bold text-slate-800 dark:text-slate-200">Nhiệm vụ thực hành:</p>
+      <p>1. Trong thẻ Chèn, chọn <strong>YouTube</strong> &rarr; Tìm kiếm: <code>Vẻ đẹp Mù Cang Chải mùa lúa chín</code> &rarr; Chọn 1 video ngắn sắc nét nhúng vào bên dưới bài viết Mù Cang Chải.</p>
+      <p>2. Rê chuột vào thanh công cụ bên trái của từng phân vùng (Section) &rarr; Nhấp vào biểu tượng <strong>Bảng màu phần (Section colors)</strong> &rarr; Đổi màu nền từ Bình thường sang <em>Nhấn mạnh 1</em> hoặc <em>Nhấn mạnh 2</em> để phân tách rõ ràng giữa các phần.</p>
+      <p>3. Thử nghiệm phím tắt <code>Ctrl + Z</code> (Undo) khi lỡ xóa nhầm hoặc kéo lệch vị trí một khối.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Câu hỏi trắc nghiệm kiểm tra nhanh">
+    <Quiz
+      question="Để chèn một bản đồ Google Maps tương tác vào trang web Google Sites, em thực hiện như thế nào là nhanh nhất?"
+      options={[
+        "Chọn mục 'Bản đồ' trong bảng chọn Chèn, tìm kiếm địa danh và nhấn nút Chọn",
+        "Chụp ảnh màn hình Google Maps rồi chèn như một bức ảnh thông thường",
+        "Vào phần Cài đặt của Header để tìm",
+        "Bắt buộc phải viết mã nhúng <iframe> phức tạp"
+      ]}
+      correctAnswer={0}
+      explanation="Google Sites tích hợp sẵn công cụ Bản đồ (Map) ngay trong bảng chọn Chèn, chỉ cần gõ tên địa danh và chọn là bản đồ tương tác sẽ tự động được nhúng hoàn chỉnh."
+    />
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: XÂY DỰNG BODY VÀ FOOTER DỰ ÁN ÂM NHẠC LỊCH SỬ"
+  time="15 phút"
+  objective="Áp dụng toàn bộ kỹ năng xây dựng thân và chân trang để phát triển dự án 'Những bài ca đi cùng năm tháng'."
+  content="Tạo 2 khối bài viết về 2 ca khúc lịch sử nổi tiếng (ví dụ: 'Tiến quân ca' của Văn Cao, 'Bài ca hy vọng' của Văn Ký), nhúng video biểu diễn từ YouTube và Footer bản quyền."
+  product="Sản phẩm thân trang và chân trang của dự án âm nhạc."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Chuyển giao bài tập sáng tạo">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Tiếp tục hoàn thiện trang web <code>NhungBaiCaDiCungNamThang</code> đã tạo ở Bài 24: Thiết kế thân trang gồm 2 khối ca khúc lịch sử, nhúng video YouTube thu âm chuẩn của dàn nhạc giao hưởng và thiết lập chân trang tri ân các nhạc sĩ tiền bối.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá sản phẩm Body & Footer (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá phần thân và chân trang Google Sites (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Bố cục thân trang (Layout & Content Blocks)",
+          excellent: "Khối nội dung 2 cột cân đối, bài viết cô đọng, ảnh minh họa chất lượng cao không bị méo tỷ lệ.",
+          good: "Có sử dụng Content blocks; ảnh và chữ rõ ràng.",
+          needsImprovement: "Bố cục lộn xộn, khoảng trống quá nhiều hoặc ảnh bị kéo giãn biến dạng."
+        },
+        {
+          name: "Tích hợp đa phương tiện (Maps, YouTube)",
+          excellent: "Bản đồ Maps ghim trúng tọa độ danh thắng; video YouTube hoạt động mượt mà, đúng chủ đề bài viết.",
+          good: "Nhúng được bản đồ hoặc video.",
+          needsImprovement: "Nhúng bản đồ sai địa điểm hoặc video bị lỗi bản quyền không phát được."
+        },
+        {
+          name: "Phần chân trang Footer",
+          excellent: "Đầy đủ tuyên bố bản quyền ©, thông tin liên hệ nhóm và các liên kết mạng xã hội chính xác.",
+          good: "Có thông tin bản quyền và liên hệ cơ bản.",
+          needsImprovement: "Chưa tạo phần chân trang Footer."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

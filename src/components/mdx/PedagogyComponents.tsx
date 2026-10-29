@@ -634,13 +634,14 @@ export function SubTask({
 
 interface SlideStepProps {
   id?: string;
-  slide: string; // e.g. "SLIDE 1.1", "SLIDE 2.1.2"
-  step: 1 | 2 | 3 | 4 | number;
-  title: string;
+  slide?: string; // e.g. "SLIDE 1.1", "SLIDE 2.1.2"
+  stepNumber?: string;
+  step?: 1 | 2 | 3 | 4 | number;
+  title?: string;
   duration?: string;
   showTimer?: boolean;
   timerSeconds?: number;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const STEP_METADATA: Record<
@@ -691,6 +692,7 @@ const STEP_METADATA: Record<
 export function SlideStep({
   id,
   slide,
+  stepNumber,
   step,
   title,
   duration,
@@ -698,10 +700,20 @@ export function SlideStep({
   timerSeconds,
   children,
 }: SlideStepProps) {
-  const meta = STEP_METADATA[step] || STEP_METADATA[1];
+  const resolvedSlide = slide || (stepNumber ? `SLIDE ${stepNumber}` : "SLIDE");
+  let resolvedStep = step;
+  if (!resolvedStep && stepNumber) {
+    const parts = stepNumber.split(".");
+    const lastPart = parseInt(parts[parts.length - 1], 10);
+    if (!isNaN(lastPart) && lastPart >= 1 && lastPart <= 4) {
+      resolvedStep = lastPart;
+    }
+  }
+  const currentStep = resolvedStep || 1;
+  const meta = STEP_METADATA[currentStep] || STEP_METADATA[1];
   const elementId =
     id ||
-    `slide-${slide.toLowerCase().replace(/[^a-z0-9]/g, "-")}-buoc-${step}`;
+    `slide-${resolvedSlide.toLowerCase().replace(/[^a-z0-9]/g, "-")}-buoc-${currentStep}`;
 
   return (
     <div
@@ -717,7 +729,7 @@ export function SlideStep({
         <div className="flex flex-wrap items-center gap-2">
           {/* Slide badge */}
           <span className="px-3 py-1 rounded-xl text-xs font-black tracking-widest uppercase bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-sm">
-            {slide}
+            {resolvedSlide}
           </span>
           {/* Step badge */}
           <span

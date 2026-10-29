@@ -1,0 +1,360 @@
+---
+title: "Bài 16: Định dạng khung"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 16
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: THIẾT KẾ WEB VỚI HTML VÀ CSS"
+  title="BÀI 16: ĐỊNH DẠNG KHUNG"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt bản chất của phần tử khối (Block-level) và phần tử nội tuyến (Inline-level); chuyển đổi bằng thuộc tính <code>display</code>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững Mô hình hộp (CSS Box Model) gồm 4 lớp: Content, Padding, Border, Margin và các thuộc tính điều khiển kích thước.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu và sử dụng thành thạo bộ chọn ID (<code>#id</code>), bộ chọn Class (<code>.class</code>) và bộ chọn thuộc tính (<code>[attr]</code>).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Định dạng viền, khoảng cách lề và vùng đệm để tạo bố cục thẻ bài viết (Card) hoặc bảng biểu chuẩn chỉnh.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực số (NLc):</strong> Phân loại nhóm đối tượng bằng Class và định danh phần tử độc nhất bằng ID để tái sử dụng mã CSS hiệu quả.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tư duy thiết kế khoa học, ngăn nắp, chú trọng tính cân đối và trải nghiệm thị giác người dùng.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tính chính xác trong quy tắc đặt tên ID, Class theo chuẩn quốc tế.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học hiển thị sơ đồ tương tác Mô hình hộp (CSS Box Model Visualizer).",
+    "Mã nguồn mẫu hiển thị sự khác biệt giữa phần tử khối và nội tuyến.",
+    "Bảng 16 màu CSS chuẩn và bộ câu hỏi tương tác.",
+  ]}
+  studentChecklist={[
+    "Máy tính cá nhân cài đặt sẵn trình duyệt hiện đại (Chrome/Edge) và trình soạn thảo mã.",
+    "Tệp mã nguồn bài tập từ tiết trước.",
+    "Vở ghi chép sơ đồ 4 lớp của Box Model.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: BÀI TOÁN PHÂN BIỆT CÁC ĐOẠN VĂN BẢN TRÊN WEB"
+  time="10 phút"
+  objective="Đặt ra tình huống thực tế khi một trang web có nhiều thẻ p giống nhau nhưng cần hiển thị phong cách khác nhau; dẫn dắt học sinh tới khái niệm bộ chọn Class và ID."
+  content="Thảo luận câu hỏi: Làm thế nào để định dạng đoạn văn mở đầu màu đỏ, đoạn kết luận màu xanh lá cây trong khi cả hai đều sử dụng thẻ p?"
+  product="Học sinh nhận thức được sự cần thiết phải phân loại và đặt tên riêng cho từng phần tử bằng Class hoặc ID."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao nhiệm vụ - Tình huống xung đột bộ chọn">
+    <ClassTimer initialMinutes={3} title="Thời gian suy ngẫm giải pháp" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Giáo viên trình chiếu một bài viết có 5 đoạn văn bản cùng dùng thẻ <code>&lt;p&gt;</code>. Nếu viết <code>p &#123; color: red; &#125;</code> thì TẤT CẢ các đoạn văn đều biến thành màu đỏ.
+    </p>
+    <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-sm text-amber-900 dark:text-amber-200">
+      <strong>Vấn đề đặt ra:</strong> Làm sao để chỉ riêng đoạn văn thứ nhất có khung viền vàng, đoạn thứ hai có viền xanh, còn các đoạn khác giữ nguyên bình thường?
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.2" title="Bước 2: Thực hiện nhiệm vụ - Đề xuất ý tưởng">
+    <p className="text-sm text-slate-600 dark:text-slate-400">
+      Học sinh thảo luận nhóm bàn, liên hệ với việc phân loại học sinh trong trường: Dùng 'Tên lớp' (Class) để gọi nhóm học sinh cùng đặc điểm, và dùng 'Số báo danh / Mã định danh' (ID) để gọi đích danh một học sinh duy nhất.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.3" title="Bước 3: Báo cáo, thảo luận - Chia sẻ giải pháp">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Học sinh nhận diện: Cần bổ sung thêm thông tin định danh cho thẻ HTML để CSS có thể 'gọi tên' từng phần tử hoặc từng nhóm phần tử riêng biệt.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Giới thiệu nội dung bài">
+    <Alert type="info">
+      CSS cung cấp các bộ chọn đặc biệt như <code>class</code>, <code>id</code> và các thuộc tính định dạng khung viền (Box Model) để điều khiển chính xác hình dáng, kích thước của từng vùng nội dung trên trang web.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="45 phút"
+  objective="Phân biệt Block vs Inline; nắm vững CSS Box Model (width, height, padding, border, margin); làm chủ bộ chọn ID, Class và bộ chọn thuộc tính."
+  content="Tìm hiểu cấu trúc mô hình hộp CSS, tính chất của các phần tử khối/nội tuyến và kỹ thuật phân lớp đối tượng trong thiết kế giao diện."
+  product="Sơ đồ phân tích mô hình hộp CSS và đoạn mã ứng dụng bộ chọn class, id."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Phân loại phần tử khối (Block) và nội tuyến (Inline)">
+    <SlideStep stepNumber="2.1.1" title="Khái niệm và đặc điểm phần tử Khối vs Nội tuyến">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
+          <span className="font-bold text-blue-700 dark:text-blue-300 text-sm">📦 1. Phần tử Khối (Block-level)</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-2">
+            Luôn bắt đầu trên một dòng mới và chiếm toàn bộ chiều rộng có sẵn của phần tử cha (100% width).
+          </p>
+          <div className="mt-2 text-xs font-mono text-blue-800 dark:text-blue-300 bg-white/80 dark:bg-slate-900 p-2 rounded">
+            Các thẻ tiêu biểu: &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;table&gt;, &lt;header&gt;, &lt;footer&gt;...
+          </div>
+          <p className="text-xs text-slate-500 mt-2">
+            Có thể thiết lập đầy đủ: <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code>.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800">
+          <span className="font-bold text-emerald-700 dark:text-emerald-300 text-sm">🔤 2. Phần tử Nội tuyến (Inline-level)</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-2">
+            Nằm trên cùng một dòng với các phần tử khác, chiều rộng vừa khít với nội dung bên trong nó.
+          </p>
+          <div className="mt-2 text-xs font-mono text-emerald-800 dark:text-emerald-300 bg-white/80 dark:bg-slate-900 p-2 rounded">
+            Các thẻ tiêu biểu: &lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;b&gt;, &lt;i&gt;, &lt;img&gt;...
+          </div>
+          <p className="text-xs text-slate-500 mt-2">
+            Không thể thiết lập trực tiếp <code>width</code> và <code>height</code> (phụ thuộc vào chữ bên trong).
+          </p>
+        </div>
+      </div>
+      <div className="mt-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300">
+        💡 <strong>Thuộc tính display:</strong> Có thể chuyển đổi hành vi hiển thị: <code>display: block;</code> (biến inline thành block), <code>display: inline;</code> (biến block thành inline), <code>display: inline-block;</code> (nằm cùng hàng nhưng cho phép chỉnh width/height), <code>display: none;</code> (ẩn hoàn toàn khỏi trang).
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Mô hình hộp (CSS Box Model) và thuộc tính khung viền">
+    <SlideStep stepNumber="2.2.1" title="Cấu trúc 4 lớp của CSS Box Model">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Mọi phần tử HTML trên trang web đều được trình duyệt coi là một 'chiếc hộp' hình chữ nhật gồm 4 lớp bao bọc nhau:
+      </p>
+      <div className="p-4 rounded-2xl bg-amber-50 dark:bg-slate-900 border-2 border-dashed border-amber-300 dark:border-amber-600 text-center space-y-2">
+        <div className="text-xs font-bold text-amber-700 dark:text-amber-400">MARGIN (Lề ngoài cùng - Khoảng cách đến các hộp xung quanh)</div>
+        <div className="p-4 rounded-xl bg-orange-100 dark:bg-slate-800 border-2 border-orange-400 text-center space-y-2">
+          <div className="text-xs font-bold text-orange-700 dark:text-orange-400">BORDER (Đường viền - Độ dày, kiểu dáng và màu sắc viền)</div>
+          <div className="p-4 rounded-lg bg-emerald-100 dark:bg-slate-700 border-2 border-dashed border-emerald-400 text-center space-y-2">
+            <div className="text-xs font-bold text-emerald-800 dark:text-emerald-300">PADDING (Vùng đệm - Khoảng cách từ nội dung tới viền)</div>
+            <div className="p-4 rounded bg-sky-200 dark:bg-sky-900 text-sky-900 dark:text-sky-100 font-bold text-sm">
+              CONTENT (Vùng nội dung: Chữ, hình ảnh, video - Chiều rộng width &times; Chiều cao height)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full text-xs text-left border-collapse border border-slate-200 dark:border-slate-700">
+          <thead className="bg-slate-100 dark:bg-slate-800">
+            <tr>
+              <th className="border p-1.5">Thuộc tính</th>
+              <th className="border p-1.5">Ý nghĩa</th>
+              <th className="border p-1.5">Ví dụ cú pháp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border p-1.5 font-mono font-bold">border</td>
+              <td className="border p-1.5">Viết tắt: [độ dày] [kiểu đường] [màu]</td>
+              <td className="border p-1.5 font-mono text-indigo-600">border: 2px solid #2563eb;</td>
+            </tr>
+            <tr>
+              <td className="border p-1.5 font-mono font-bold">border-style</td>
+              <td className="border p-1.5">Kiểu viền: none, solid (liền), dashed (đứt), dotted (chấm), double (kép)</td>
+              <td className="border p-1.5 font-mono text-indigo-600">border-style: dashed;</td>
+            </tr>
+            <tr>
+              <td className="border p-1.5 font-mono font-bold">padding / margin</td>
+              <td className="border p-1.5">Khoảng đệm trong / Lề ngoài (trên, phải, dưới, trái)</td>
+              <td className="border p-1.5 font-mono text-indigo-600">padding: 16px; margin: 10px auto;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-3" title="Nhiệm vụ 2.3: Một số bộ chọn đặc biệt (Class, ID, Thuộc tính)">
+    <SlideStep stepNumber="2.3.1" title="Bộ chọn ID (#) và Bộ chọn Class (.)">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="px-2 py-0.5 rounded bg-purple-100 text-purple-700 text-xs font-mono font-bold">#idname</span>
+            <span className="font-bold text-sm">1. Bộ chọn ID</span>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300">
+            Dành riêng cho phần tử <strong>độc nhất vô nhị</strong> trên toàn trang (mỗi ID chỉ xuất hiện 1 lần trong tệp HTML).
+          </p>
+          <pre className="mt-2 p-2 bg-slate-900 text-purple-300 rounded text-xs font-mono">
+{`#main-header {
+  background-color: #1e293b;
+  color: white;
+  padding: 20px;
+}`}
+          </pre>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-700 text-xs font-mono font-bold">.classname</span>
+            <span className="font-bold text-sm">2. Bộ chọn Class (Lớp)</span>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300">
+            Áp dụng chung cho <strong>nhiều phần tử</strong> có cùng đặc điểm thiết kế. Một phần tử có thể thuộc nhiều lớp (cách nhau bởi khoảng trắng).
+          </p>
+          <pre className="mt-2 p-2 bg-slate-900 text-blue-300 rounded text-xs font-mono">
+{`.card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}`}
+          </pre>
+        </div>
+      </div>
+      <div className="mt-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 text-xs text-amber-900 dark:text-amber-200">
+        ⚠️ <strong>Quy tắc đặt tên ID và Class:</strong> Phân biệt chữ hoa/thường, không bắt đầu bằng số, không chứa dấu cách hoặc ký tự đặc biệt (chỉ dùng chữ cái, chữ số, dấu gạch nối <code>-</code> hoặc gạch dưới <code>_</code>).
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: ĐÓNG KHUNG BẢNG MÀU CSS CHUẨN ĐỒ HỌA"
+  time="20 phút"
+  objective="Củng cố kiến thức Box Model và bộ chọn Class/ID qua việc tạo lập bảng màu cơ bản, áp dụng viền kép, khoảng đệm padding và lề margin."
+  content="Lập trình trang web hiển thị bảng danh sách màu sắc CSS, định dạng viền cho bảng table, hàng tiêu đề th, ô dữ liệu td và khối tiêu đề caption."
+  product="Trang web hoàn chỉnh thể hiện bảng dữ liệu có khung viền sắc nét, màu sắc trực quan."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao bài tập thực hành">
+    <ClassTimer initialMinutes={10} title="Thời gian lập trình bảng dữ liệu có khung viền" />
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs md:text-sm space-y-1">
+      <p className="font-bold">Nhiệm vụ:</p>
+      <p>1. Tạo bảng <code>&lt;table&gt;</code> gồm 4 cột: Tên màu, Mã HEX, Mã RGB, Ô minh họa màu.</p>
+      <p>2. Đóng khung viền <code>border: 2px solid #3b82f6</code> cho toàn bảng và các ô.</p>
+      <p>3. Thiết lập vùng đệm <code>padding: 8px</code> cho ô để nội dung không bị dính sát đường viền.</p>
+      <p>4. Tiêu đề bảng <code>&lt;caption&gt;</code> có chữ đỏ, in đậm và lề <code>margin-bottom: 12px</code>.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Lập trình trên phòng máy">
+    <p className="text-sm text-slate-600 dark:text-slate-400">
+      Học sinh mở trình soạn thảo, thực hiện ghép nối mã HTML và CSS theo gợi ý SGK Trang 96-97.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.3" title="Bước 3: Đố vui tương tác nhanh">
+    <Quiz
+      question="Khoảng cách từ chữ (nội dung) đến đường viền của một phần tử được gọi là gì trong CSS Box Model?"
+      options={[
+        "Padding (Vùng đệm)",
+        "Margin (Khoảng cách lề)",
+        "Border (Đường viền)",
+        "Outline (Đường viền ngoài)"
+      ]}
+      correctAnswer={0}
+      explanation="Padding là vùng đệm nằm giữa nội dung (content) và đường viền (border). Còn Margin là khoảng cách từ đường viền ra bên ngoài đến các phần tử lân cận."
+    />
+  </SlideStep>
+
+  <SlideStep stepNumber="3.4" title="Bước 4: Tổng kết mã mẫu">
+    <Alert type="success">
+      Mã CSS định dạng bảng chuẩn:
+      <pre className="mt-2 text-xs font-mono text-emerald-900 dark:text-emerald-200">
+{`table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+th, td {
+  border: 1px solid #cbd5e1;
+  padding: 10px 14px;
+  text-align: left;
+}
+th {
+  background-color: #f1f5f9;
+  font-weight: bold;
+}`}
+      </pre>
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: THIẾT KẾ THẺ THÔNG TIN (USER CARD) CHUYÊN NGHIỆP"
+  time="15 phút"
+  objective="Vận dụng toàn diện Box Model, border-radius bo góc và bộ chọn Class để thiết kế khối thẻ giới thiệu thông tin cá nhân hoặc bài viết tin tức."
+  content="Thiết kế thẻ bài viết có khung viền mềm mại, đổ bóng nhẹ, khoảng đệm hợp lý và nút bấm tương tác."
+  product="Sản phẩm Card component hoàn chỉnh trên giao diện web."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Chuyển giao thử thách nâng cao">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Hãy tạo một khối <code>&lt;div class="card"&gt;</code> giới thiệu về bản thân hoặc một nhân vật lịch sử công nghệ (như Tim Berners-Lee). Yêu cầu có ảnh đại diện, tiêu đề, đoạn văn bản mô tả và một nút bấm 'Xem chi tiết'. Áp dụng: <code>padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; margin: 20px auto; max-width: 400px;</code>.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá sản phẩm (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá sản phẩm định dạng khung CSS (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Áp dụng CSS Box Model",
+          excellent: "Phân biệt rõ ràng và làm chủ padding, margin, border; bố cục cân đối, thoáng đãng, không bị tràn khung.",
+          good: "Có sử dụng padding và border; margin chưa thật sự cân đối.",
+          needsImprovement: "Chưa phân biệt được padding và margin khiến chữ bị dính sát mép viền."
+        },
+        {
+          name: "Sử dụng bộ chọn Class và ID",
+          excellent: "Đặt tên Class/ID chuẩn quy ước (kebab-case), phân chia lớp hợp lý, không trùng lặp ID.",
+          good: "Sử dụng được Class và ID đúng cú pháp.",
+          needsImprovement: "Đặt tên class chứa dấu tiếng Việt, khoảng trắng hoặc trùng lặp nhiều ID giống nhau."
+        },
+        {
+          name: "Thẩm mỹ và Trải nghiệm (UI/UX)",
+          excellent: "Thẻ card có góc bo tròn hiện đại (border-radius), màu sắc viền nhã nhặn, kích thước tối ưu trên di động.",
+          good: "Giao diện rõ ràng, dễ nhìn.",
+          needsImprovement: "Đường viền quá thô, màu sắc đối chọi gắt mắt."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

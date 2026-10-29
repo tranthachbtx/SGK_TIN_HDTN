@@ -1,0 +1,257 @@
+---
+title: "Bài 24: Xây dựng phần đầu trang web"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 24
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (ĐỊNH HƯỚNG ICT)"
+  topic="CHỦ ĐỀ 7: ỨNG DỤNG TIN HỌC"
+  title="BÀI 24: XÂY DỰNG PHẦN ĐẦU TRANG WEB"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nhận diện được các khu vực chức năng trong giao diện Google Sites: Thanh công cụ, Cài đặt thương hiệu, Loại biểu ngữ và Bảng xem trước.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Phân biệt được 4 loại kích thước biểu ngữ Header (Bìa toàn màn hình, Biểu ngữ lớn, Biểu ngữ tiêu chuẩn, Chỉ tiêu đề).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững quy trình 6 bước thiết lập phần đầu trang và xuất bản website (Publish) lấy liên kết URL.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Thao tác thành thạo tải ảnh Logo, Favicon, chỉnh neo vị trí ảnh nền (Anchor) và bật/tắt chế độ tự động điều chỉnh độ sáng dễ đọc.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực số & Kiểm thử giao diện:</strong> Sử dụng chế độ Preview để kiểm tra độ hiển thị co giãn (Responsive) trên màn hình máy tính, máy tính bảng và điện thoại thông minh.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tinh thần thẩm mỹ trang nhã: Chọn hình ảnh phong cảnh Việt Nam sắc nét, thông điệp tích cực.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tính kiên trì, cẩn trọng khi căn chỉnh từng chi tiết điểm ảnh và tiêu đề.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học trình chiếu các bước thao tác trực tiếp trên Google Sites.",
+    "Kho tư liệu ảnh phong cảnh Việt Nam (Hạ Long, Tràng An, Mù Cang Chải) độ phân giải Full HD.",
+    "File logo và favicon mẫu định dạng PNG nền trong suốt.",
+  ]}
+  studentChecklist={[
+    "Máy tính học sinh đăng nhập sẵn tài khoản Google của nhóm.",
+    "Thư mục ảnh tư liệu đã tải sẵn về máy hoặc lưu trên Google Drive nhóm.",
+    "Vở ghi chép quy trình 6 bước tạo Header.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: ẤN TƯỢNG ĐẦU TIÊN VỀ MỘT WEBSITE"
+  time="10 phút"
+  objective="Khơi dậy nhận thức: Người xem chỉ mất 3 giây đầu tiên để quyết định ở lại hay rời bỏ một trang web dựa trên vẻ đẹp của phần Header."
+  content="Quan sát 2 giao diện Header: Một bên ảnh nhòe vỡ, chữ khó đọc; một bên ảnh sắc nét, logo trang trọng, thông điệp truyền cảm hứng."
+  product="Học sinh đúc rút các tiêu chí đánh giá một Header chất lượng cao."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao thử thách thị giác">
+    <ClassTimer initialMinutes={3} title="Thời gian quan sát và so sánh" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Một phần đầu trang (Header) xuất sắc cần đạt được những yếu tố nào sau đây?
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+        ✨ <strong>Hình ảnh & Nhận diện:</strong> Logo sắc nét, ảnh nền biểu cảm, đại diện đúng tinh thần của website.
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200">
+        📖 <strong>Độ tương phản dễ đọc:</strong> Chữ tiêu đề nổi bật rõ ràng, không bị chìm vào nền ảnh phức tạp.
+      </div>
+      <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200">
+        📱 <strong>Tương thích đa màn hình:</strong> Co giãn mượt mà khi xem trên máy tính cũng như điện thoại.
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Vào bài thực hành">
+    <Alert type="info">
+      Với nền tảng <strong>Google Sites</strong>, chúng ta có thể tạo dựng phần đầu trang chuẩn chuyên nghiệp chỉ với vài cú nhấp chuột mà không cần viết một dòng mã HTML/CSS nào!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KỸ NĂNG VÀ THỰC HÀNH TẠO PHẦN ĐẦU TRANG"
+  time="45 phút"
+  objective="Làm chủ 4 loại biểu ngữ Header, tải ảnh thương hiệu Logo/Favicon, hiệu chỉnh neo vị trí ảnh nền và xuất bản trang web công khai."
+  content="Thực hiện theo nhóm dự án tạo phần đầu trang web 'Việt Nam - Vẻ đẹp tiềm ẩn' trên Google Sites."
+  product="Phần đầu trang web hoàn chỉnh được xuất bản trực tuyến có địa chỉ URL xem được."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Bốn loại kích thước biểu ngữ (Banner Types)">
+    <SlideStep stepNumber="2.1.1" title="Khám phá các tùy chọn Loại tiêu đề">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border">
+          <span className="font-bold text-sky-600">1. Bìa (Cover)</span>
+          <p className="mt-1">Chiều cao lớn nhất, chiếm trọn 100% màn hình khi vừa mở trang web. Thích hợp cho trang chủ du lịch, tạp chí nghệ thuật cần tạo ấn tượng thị giác choáng ngợp.</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border">
+          <span className="font-bold text-emerald-600">2. Biểu ngữ lớn (Large Banner)</span>
+          <p className="mt-1">Chiều cao vừa phải (khoảng 50-60% màn hình), cân đối giữa hình ảnh ấn tượng và việc để lộ một phần nội dung bài viết bên dưới.</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border">
+          <span className="font-bold text-amber-600">3. Biểu ngữ tiêu chuẩn (Banner)</span>
+          <p className="mt-1">Kích thước chuẩn mực thông dụng nhất của Google Sites, phù hợp cho hầu hết các trang con tin tức, bài viết.</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border">
+          <span className="font-bold text-purple-600">4. Chỉ tiêu đề (Title only)</span>
+          <p className="mt-1">Không có ảnh nền, chỉ có dòng chữ tiêu đề trên nền màu trơn. Rất gọn gàng, tiết kiệm dung lượng, phù hợp các trang tài liệu văn bản.</p>
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Quy trình 6 bước xây dựng và xuất bản Header">
+    <SlideStep stepNumber="2.2.1" title="Trình tự thao tác chuẩn trên Google Sites">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 1. Đặt tên tệp lưu trữ:</strong> Nhấp vào <em>'Trang web không có tiêu đề'</em> góc trên bên trái, nhập: <code>VN_Ver1</code> (tệp tự động lưu vào Google Drive).
+        </div>
+
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 2. Thiết lập Logo & Favicon:</strong> Rê chuột vào góc trên bên trái &rarr; Chọn <em>Thêm biểu tượng (Add logo)</em> &rarr; Chọn mục <em>Hình ảnh thương hiệu</em> &rarr; Tải ảnh <code>logo.png</code> và <code>favicon.png</code> lên.
+        </div>
+
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 3. Tải ảnh nền & Neo vị trí:</strong> Nhấp <em>Thay đổi hình ảnh (Change image)</em> &rarr; Tải ảnh phong cảnh lên. Bấm vào biểu tượng <strong>Neo hình ảnh (Anchor image)</strong> gồm 9 mũi tên để chọn vùng trung tâm của bức ảnh hiển thị chuẩn nhất.
+        </div>
+
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 4. Soạn thảo Tiêu đề:</strong> Nhập tiêu đề: <code>VIỆT NAM - VẺ ĐẸP TIỀM ẨN</code>. Định dạng kiểu chữ <em>Tiêu đề (Title)</em>, căn giữa, chọn màu chữ tương phản.
+        </div>
+
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border">
+          <strong>Bước 5. Thêm Banner thông báo:</strong> Vào biểu tượng Cài đặt (bánh răng) &rarr; Mục <em>Thông báo (Announcement banner)</em> &rarr; Bật hiển thị với nội dung: <em>'Chào mừng bạn đến với chuyên trang du lịch khám phá di sản Việt Nam!'</em>.
+        </div>
+
+        <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-300">
+          <strong>Bước 6. Xem trước & Công bố:</strong> Nhấp biểu tượng <strong>Xem trước (Preview)</strong> kiểm tra 3 màn hình Desktop/Tablet/Mobile &rarr; Bấm nút xanh <strong>Công bố (Publish)</strong> &rarr; Đặt địa chỉ web &rarr; Sao chép link URL công khai.
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: TÙY CHỈNH HEADER VÀ KIỂM TRA RESPONSIVE"
+  time="20 phút"
+  objective="Học sinh thực hành trực tiếp trên máy: Đổi loại tiêu đề, kiểm tra tính năng tự động cân bằng độ sáng và xem trước trên giao diện di động."
+  content="Tùy chỉnh Header theo yêu cầu: Đổi từ Banner sang Bìa (Cover), tắt tính năng điều chỉnh độ sáng để so sánh kết quả."
+  product="Trang web được công bố trực tuyến và hoạt động hoàn hảo trên mọi kích thước màn hình."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao bài tập thực hành trên máy">
+    <ClassTimer initialMinutes={10} title="Thời gian thao tác thực hành Google Sites" />
+    <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg text-xs space-y-1">
+      <p className="font-bold text-slate-800 dark:text-slate-200">Yêu cầu luyện tập:</p>
+      <p>1. Chuyển đổi qua lại giữa 4 loại tiêu đề (Title only, Banner, Large Banner, Cover) để quan sát sự thay đổi.</p>
+      <p>2. Bấm vào biểu tượng ngôi sao lấp lánh ở góc dưới bên phải Header để xem sự khác biệt khi bật/tắt tính năng <em>'Tự động điều chỉnh để dễ đọc' (Adjust for readability)</em>.</p>
+      <p>3. Mở chế độ xem trước trên điện thoại (Phone preview) để kiểm tra dòng tiêu đề có bị ngắt chữ xấu xí hay không.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Câu hỏi trắc nghiệm kỹ thuật">
+    <Quiz
+      question="Tính năng 'Neo hình ảnh' (Anchor image) với 9 vị trí mũi tên trong phần đầu trang Google Sites dùng để làm gì?"
+      options={[
+        "Xác định phần trọng tâm nhất của bức ảnh nền sẽ luôn được ưu tiên hiển thị trọn vẹn trong khung",
+        "Thay đổi màu sắc của ảnh nền",
+        "Xóa bức ảnh nền khỏi trang web",
+        "Tạo liên kết siêu văn bản khi bấm vào ảnh nền"
+      ]}
+      correctAnswer={0}
+      explanation="Khi ảnh nền có kích thước lớn hơn khung Header, tính năng Neo (Anchor) cho phép bạn ghim vị trí trọng tâm (ví dụ góc trên, giữa tâm hoặc góc dưới) để phần đẹp nhất của bức ảnh không bị cắt mất."
+    />
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: XÂY DỰNG HEADER CHO DỰ ÁN ÂM NHẠC TRƯỜNG HỌC"
+  time="15 phút"
+  objective="Vận dụng kỹ năng vừa học để tạo phần đầu trang cho đề tài 'Những bài ca đi cùng năm tháng' hoặc trang web giới thiệu lớp học."
+  content="Thiết kế một Header hoàn chỉnh: Tải logo lớp/nhóm, ảnh nền nhạc cụ hoặc sân khấu hào hùng, tiêu đề trang trọng."
+  product="Sản phẩm Header dự án sáng tạo của nhóm."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Thử thách thiết kế Header sáng tạo">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Mỗi nhóm áp dụng quy trình 6 bước để khởi tạo phần đầu trang cho dự án mới mang tên <code>NhungBaiCaDiCungNamThang</code>. Đảm bảo có thông báo đầu trang, logo đại diện và ảnh nền mang phong cách nghệ thuật lịch sử hào hùng.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá sản phẩm Header (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá sản phẩm phần đầu trang Google Sites (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Bộ nhận diện thương hiệu (Logo & Favicon)",
+          excellent: "Logo và Favicon định dạng PNG trong suốt, hiển thị rõ ràng trên thanh tab và thanh điều hướng.",
+          good: "Có logo nhưng chưa thiết lập favicon hoặc ảnh bị vỡ nét.",
+          needsImprovement: "Chưa thiết lập logo và favicon, dùng mặc định của Google."
+        },
+        {
+          name: "Ảnh nền & Bố cục tiêu đề",
+          excellent: "Ảnh nền sắc nét, dùng tính năng Neo hợp lý, tiêu đề nổi bật tương phản tốt, không bị rối mắt.",
+          good: "Ảnh nền đẹp, tiêu đề đọc được.",
+          needsImprovement: "Ảnh nền quá mờ hoặc chữ tiêu đề bị chìm vào nền tối khó đọc."
+        },
+        {
+          name: "Xuất bản & Kiểm thử Responsive",
+          excellent: "Đã xuất bản thành công với đường dẫn URL ngắn gọn; hiển thị hoàn hảo trên cả 3 thiết bị Desktop, Tablet và Mobile.",
+          good: "Đã xuất bản được trang web.",
+          needsImprovement: "Chưa công bố (Publish) hoặc link bị khóa quyền riêng tư không xem được."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

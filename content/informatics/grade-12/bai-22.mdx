@@ -1,0 +1,255 @@
+---
+title: "Bài 22: Thực hành kết nối các thiết bị số"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 22
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (ĐỊNH HƯỚNG ICT)"
+  topic="CHỦ ĐỀ 6: MÁY TÍNH VÀ XÃ HỘI TRI THỨC"
+  title="BÀI 22: THỰC HÀNH KẾT NỐI CÁC THIẾT BỊ SỐ"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững các chuẩn cổng kết nối có dây (HDMI, VGA, USB-C) và không dây (Bluetooth, Wi-Fi Direct, Miracast).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu rõ 4 chế độ xuất màn hình ngoài trên Windows (PC screen only, Duplicate, Extend, Second screen only).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu nguyên lý hoạt động của các thiết bị IoT trong nhà thông minh (Smart Home) và thiết bị đeo thông minh (Smartwatch, Kính VR).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Thực hiện thành thạo thao tác cắm nối cáp HDMI/VGA, sử dụng phím tắt <code>Windows + P</code> để tùy biến màn hình chiếu.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực số (NLb):</strong> Thiết lập ghép đôi (Pairing) Bluetooth an toàn giữa điện thoại và máy tính để chia sẻ dữ liệu không dây.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Cẩn thận, khéo léo trong thao tác cơ học khi cắm và rút các chân cáp tín hiệu điện tử.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Ý thức bảo mật cá nhân, chủ động tắt Bluetooth và ngắt kết nối chia sẻ khi ở nơi công cộng.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn chiếu lớp học kết nối máy tính qua cổng HDMI / VGA.",
+    "Cáp chuyển đổi đa năng (USB-C to HDMI, VGA adapter).",
+    "Thiết bị mẫu: Điện thoại thông minh, loa Bluetooth, công tắc/ổ cắm thông minh Smart Plug.",
+  ]}
+  studentChecklist={[
+    "Máy tính thực hành có bật Bluetooth và kết nối mạng nội bộ.",
+    "Điện thoại thông minh cá nhân có ảnh chụp để thực hành truyền tệp.",
+    "Vở ghi chép bảng so sánh 4 chế độ màn hình.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: THẾ GIỚI KẾT NỐI VẠN VẬT (IoT)"
+  time="10 phút"
+  objective="Dẫn dắt học sinh từ các thao tác quen thuộc (cắm chuột, nối máy chiếu) đến khả năng điều khiển thiết bị thông minh cách xa hàng nghìn cây số qua Internet."
+  content="Thảo luận câu hỏi: Bằng cách nào chúng ta có thể dùng điện thoại ở trường học để bật bình nóng lạnh hoặc kiểm tra camera an ninh tại nhà?"
+  product="Học sinh nhận biết sự chuyển dịch từ kết nối vật lý có dây sang kết nối không dây và kết nối đám mây (Cloud IoT)."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao câu hỏi gợi mở">
+    <ClassTimer initialMinutes={3} title="Thời gian thảo luận nhóm" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-3">
+      Hãy liệt kê tất cả các thiết bị số mà em hoặc gia đình đang kết nối với máy tính và điện thoại hàng ngày:
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm">
+      <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+        🔌 <strong>Cổng cắm vật lý:</strong> Chuột, bàn phím, màn hình TV, máy chiếu, USB flash, tai nghe có dây.
+      </div>
+      <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200">
+        📡 <strong>Không dây cự ly gần:</strong> Tai nghe Bluetooth, Smartwatch, chia sẻ AirDrop / Quick Share.
+      </div>
+      <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200">
+        ☁️ <strong>Điều khiển từ xa qua Cloud:</strong> Camera an ninh, robot hút bụi, công tắc đèn thông minh.
+      </div>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Vào bài thực hành">
+    <Alert type="info">
+      Làm chủ kỹ năng kết nối thiết bị số là năng lực cơ bản bắt buộc của công dân số thế kỷ 21, từ kỹ năng trình chiếu văn phòng đến lắp đặt hệ thống nhà thông minh!
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="THỰC HÀNH CÁC PHƯƠNG THỨC KẾT NỐI THIẾT BỊ SỐ"
+  time="45 phút"
+  objective="Rèn luyện kỹ năng kết nối máy chiếu qua cáp HDMI/VGA (phím Windows + P), ghép đôi Bluetooth truyền tệp và tìm hiểu nguyên lý thiết bị IoT nhà thông minh."
+  content="Thực hiện 3 nhiệm vụ thực hành: Xuất màn hình ngoài, truyền tệp qua Bluetooth và cấu hình thiết bị thông minh qua ứng dụng di động."
+  product="Màn hình ngoài hiển thị đúng chế độ Extend/Duplicate và tệp ảnh được chuyển thành công qua Bluetooth."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Kết nối máy tính với thiết bị hiển thị (TV, Máy chiếu)">
+    <SlideStep stepNumber="2.1.1" title="Tổ hợp phím thần thánh: Windows + P">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Khi cắm cáp HDMI hoặc VGA từ máy tính vào máy chiếu/TV, nhấn tổ hợp phím <code>Windows + P</code> để mở thanh chọn Project:
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border">
+          <span className="font-bold text-sky-600 text-sm">1. PC screen only</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Chỉ hiển thị trên màn hình laptop; tắt màn hình ngoài.</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-emerald-400">
+          <span className="font-bold text-emerald-600 text-sm">2. Duplicate (Sao chép / Nhân bản)</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Cả hai màn hình hiển thị nội dung y hệt nhau (thích hợp khi giáo viên giảng bài cho học sinh nhìn).</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-indigo-400">
+          <span className="font-bold text-indigo-600 text-sm">3. Extend (Mở rộng không gian làm việc)</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Biến máy chiếu thành màn hình phụ thứ hai; có thể kéo cửa sổ ứng dụng sang phải để trình chiếu trong khi laptop vẫn làm việc riêng.</p>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border">
+          <span className="font-bold text-amber-600 text-sm">4. Second screen only</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Tắt hẳn màn hình laptop, chỉ phát hình lên màn hình lớn.</p>
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Ghép đôi Bluetooth và truyền nhận tệp">
+    <SlideStep stepNumber="2.2.1" title="Quy trình 3 bước ghép đôi Bluetooth máy tính và điện thoại">
+      <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+        <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+          <strong>Bước 1. Bật Bluetooth & Quét tìm kiếm:</strong> Trên máy tính vào <em>Settings &gt; Bluetooth & devices &gt; Add device</em>. Trên điện thoại bật Bluetooth và chế độ hiển thị cho thiết bị xung quanh.
+        </div>
+        <div className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200">
+          <strong>Bước 2. Xác thực mã PIN (Pairing code):</strong> Khi xuất hiện mã 6 chữ số (ví dụ: <code>482910</code>) trên cả hai màn hình, kiểm tra trùng khớp và bấm <em>Connect / Pair</em>.
+        </div>
+        <div className="p-3 rounded-lg bg-purple-50 dark:bg-purple-950/20 border border-purple-200">
+          <strong>Bước 3. Truyền tệp:</strong> Nhấp chuột phải vào biểu tượng Bluetooth ở góc thanh Taskbar chọn <em>Receive a File</em> (để nhận từ điện thoại) hoặc chọn ảnh trên điện thoại nhấn <em>Chia sẻ qua Bluetooth</em>.
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-3" title="Nhiệm vụ 2.3: Cơ chế kết nối thiết bị Nhà thông minh (IoT)">
+    <SlideStep stepNumber="2.3.1" title="Làm sao thiết bị IoT không có màn hình kết nối được Internet?">
+      <div className="p-4 rounded-xl bg-slate-900 text-slate-200 text-xs md:text-sm space-y-2">
+        <p className="text-amber-400 font-bold">💡 BÍ MẬT CỦA CÔNG NGHỆ NHÀ THÔNG MINH:</p>
+        <p>1. Ổ cắm/Bóng đèn mới mua về không có bàn phím hay màn hình nhập mật khẩu Wi-Fi.</p>
+        <p>2. Khi cắm nguồn, thiết bị tự phát ra sóng Bluetooth hoặc một mạng Wi-Fi tạm thời.</p>
+        <p>3. Ứng dụng trên điện thoại (Smart Life, Mi Home, Google Home) kết nối vào sóng Bluetooth đó và 'bắn' tên + mật khẩu Wi-Fi nhà sang cho thiết bị.</p>
+        <p>4. Thiết bị tự kết nối vào Router Wi-Fi và đăng ký mã định danh lên Cloud Server của nhà sản xuất. Từ đó trở đi, dù ở bất kỳ nơi nào trên Trái Đất, bạn chỉ cần mở 4G là điều khiển được!</p>
+      </div>
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: TRẮC NGHIỆM KỸ NĂNG VÀ THAO TÁC THỰC TẾ"
+  time="20 phút"
+  objective="Củng cố các phím tắt điều khiển màn hình, giải quyết sự cố mất tín hiệu kết nối và kiểm tra tính tương thích thiết bị."
+  content="Thực hiện truyền 1 tệp ảnh qua Bluetooth và trả lời các câu hỏi xử lý sự cố kết nối số."
+  product="Tệp dữ liệu được chuyển nhận nguyên vẹn và kết quả trắc nghiệm đạt điểm tối đa."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Luyện tập theo cặp đôi trên máy tính">
+    <ClassTimer initialMinutes={10} title="Thời gian thao tác ghép nối và truyền tệp" />
+    <p className="text-sm text-slate-600 dark:text-slate-400">
+      Học sinh bàn 1 và bàn 2 ghép cặp, gửi 1 bức ảnh phong cảnh từ điện thoại sang máy tính và ngược lại. Quan sát thông báo dung lượng và thời gian truyền tệp.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Trắc nghiệm kiểm tra nhanh">
+    <Quiz
+      question="Khi đang báo cáo bài tập nhóm trước lớp trên máy chiếu, chế độ hiển thị nào sau đây là phù hợp nhất để cả lớp cùng quan sát các thao tác trên màn hình của em?"
+      options={[
+        "Duplicate (Sao chép màn hình)",
+        "PC screen only (Chỉ màn hình máy tính)",
+        "Second screen only (Tắt màn hình laptop)",
+        "Không cần thiết lập gì"
+      ]}
+      correctAnswer={0}
+      explanation="Chế độ Duplicate giúp sao chép chính xác toàn bộ nội dung từ màn hình laptop lên màn chiếu lớn theo thời gian thực."
+    />
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: TÌM HIỂU THIẾT BỊ ĐEO THÔNG MINH VÀ KÍNH THỰC TẾ ẢO VR"
+  time="15 phút"
+  objective="Mở rộng kiến thức về các thiết bị số xu hướng tương lai: Vòng đeo tay thông minh (Smart Band), Đồng hồ thông minh (Apple Watch, Galaxy Watch) và Kính VR."
+  content="Khảo sát các loại kính thực tế ảo (VR Standalone như Oculus Quest vs PCVR như HTC Vive) và chức năng đo nhịp tim, SpO2 của thiết bị đeo."
+  product="Bản so sánh tính năng và nguyên tắc đồng bộ dữ liệu sức khỏe lên đám mây."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Thử thách công nghệ tương lai">
+    <p className="text-sm text-slate-700 dark:text-slate-300">
+      Hãy tìm hiểu về chiếc kính thực tế ảo Apple Vision Pro hoặc Oculus Quest 2: Chúng kết nối với máy tính qua công nghệ gì? Làm thế nào chúng truyền tải được hình ảnh 4K với độ trễ cực thấp mà không bị chóng mặt?
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá kỹ năng kết nối số (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá kỹ năng thực hành kết nối thiết bị số (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Kỹ năng kết nối có dây (HDMI/VGA)",
+          excellent: "Cắm đúng chiều cáp, sử dụng thành thạo phím tắt Windows + P, chuyển đổi trơn tru giữa Extend và Duplicate.",
+          good: "Kết nối thành công máy chiếu lên màn hình.",
+          needsImprovement: "Cắm lỏng dây tín hiệu hoặc lúng túng không biết cách bật chế độ hiển thị."
+        },
+        {
+          name: "Kỹ năng kết nối không dây Bluetooth",
+          excellent: "Bật thiết bị, ghép đôi xác thực mã PIN an toàn, truyền nhận tệp thành công hai chiều giữa PC và điện thoại.",
+          good: "Truyền được tệp nhưng cần hỗ trợ ghép đôi.",
+          needsImprovement: "Không tìm thấy thiết bị hoặc không biết mở cửa sổ nhận file trên máy tính."
+        },
+        {
+          name: "Hiểu biết về IoT và Thiết bị số mới",
+          excellent: "Giải thích rõ ràng nguyên lý đồng bộ đám mây của thiết bị nhà thông minh và vòng đeo tay sức khỏe.",
+          good: "Nêu được một số tính năng của đồng hồ thông minh.",
+          needsImprovement: "Chưa nắm được sự khác biệt giữa kết nối trực tiếp Bluetooth và kết nối qua Internet Cloud."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>

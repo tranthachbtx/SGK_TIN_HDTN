@@ -1,0 +1,401 @@
+---
+title: "Bài 15: Tạo màu cho chữ và nền"
+description: "Kế hoạch bài học trình chiếu & tương tác trên lớp (Chuẩn Công văn 5512) - Tin học 12 (Kết nối tri thức với cuộc sống)"
+order: 15
+---
+
+<LessonPlanHeader
+  subject="TIN HỌC 12"
+  bookSeries="BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
+  topic="CHỦ ĐỀ 4: THIẾT KẾ WEB VỚI HTML VÀ CSS"
+  title="BÀI 15: TẠO MÀU CHO CHỮ VÀ NỀN"
+  duration="Thời lượng: 02 tiết (90 phút)"
+  badge="CHUẨN CÔNG VĂN 5512 / BGDĐT • TRÌNH CHIẾU & TƯƠNG TÁC LỚP HỌC"
+/>
+
+<LearningObjectives>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+      <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base">
+        <span>📖 1. Về kiến thức</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Nắm vững 3 cách biểu diễn màu sắc chuẩn trong CSS: Tên màu tiếng Anh (Color Name), Mã RGB (hàm <code>rgb()</code>) và Mã Hexadecimal (<code>#RRGGBB</code>).</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Sử dụng thành thạo thuộc tính <code>color</code> (màu chữ), <code>background-color</code> (màu nền) và tính kế thừa của màu sắc trong cây DOM.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-sky-500 font-bold">•</span>
+          <span>Hiểu và áp dụng đúng 4 loại bộ chọn tổ hợp quan hệ: con cháu (<code>E F</code>), con trực tiếp (<code>E &gt; F</code>), anh em liền kề (<code>E + F</code>) và anh em chung (<code>E ~ F</code>).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+      <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base">
+        <span>⚡ 2. Về năng lực</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực Tin học (NLa):</strong> Viết mã CSS chuẩn để phối màu thẩm mỹ, phân cấp thị giác trang web và nhắm trúng phần tử đích bằng bộ chọn quan hệ.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-indigo-500 font-bold">•</span>
+          <span><strong>Năng lực giải quyết vấn đề (NLc):</strong> Phát hiện và sửa lỗi phạm vi áp dụng CSS khi các bộ chọn quan hệ tác động ngoài ý muốn lên các phần tử con.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div className="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+      <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300 font-black text-base">
+        <span>🌱 3. Về phẩm chất</span>
+      </div>
+      <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Ý thức thẩm mỹ tinh tế, lựa chọn gam màu hài hòa, đảm bảo độ tương phản dễ đọc cho người dùng.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-emerald-500 font-bold">•</span>
+          <span>Tính chính xác, kiên trì khi làm việc với các hệ thống mã màu số học.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LearningObjectives>
+
+<EquipmentChecklist
+  teacherChecklist={[
+    "Màn hình tương tác / Máy chiếu lớp học độ nét cao hiển thị màu sắc trung thực.",
+    "Bộ công cụ kiểm tra độ tương phản tương tác (Contrast Checker) và bảng màu CSS3.",
+    "File mã nguồn mẫu HTML/CSS bài 15 và hệ thống bài tập tương tác.",
+  ]}
+  studentChecklist={[
+    "Máy tính thực hành có cài đặt VS Code hoặc Notepad++, trình duyệt Google Chrome / Edge.",
+    "Tệp thực hành bài trước (index.html) để tiếp tục bổ sung CSS.",
+    "Vở ghi chép và bảng tham chiếu hệ màu RGB/HEX.",
+  ]}
+/>
+
+## III. TIẾN TRÌNH TỔ CHỨC HOẠT ĐỘNG DẠY HỌC
+
+<PedagogyActivity
+  number="1"
+  title="KHỞI ĐỘNG: BÍ ẨN BA CÁCH GỌI TÊN MÀU SẮC"
+  time="10 phút"
+  objective="Khơi gợi sự tò mò của học sinh về các quy ước biểu diễn màu sắc trong lập trình web; nhận biết sự đa dạng của các cách viết CSS cùng tạo ra một màu."
+  content="Quan sát 3 đoạn mã CSS thiết lập màu cho thẻ p và phán đoán sự khác biệt về bản chất của chúng."
+  product="Học sinh nhận biết cả 3 đoạn mã đều tạo ra cùng một màu tím (Purple) nhưng sử dụng 3 hệ quy chiếu khác nhau: tên màu, mã hexa và mã RGB."
+>
+  <SlideStep stepNumber="1.1" title="Bước 1: Chuyển giao nhiệm vụ - Thử thách Thám tử Màu sắc">
+    <ClassTimer initialMinutes={3} title="Thời gian suy ngẫm và phán đoán" />
+    <p className="text-base text-slate-700 dark:text-slate-300 mb-4">
+      Giáo viên trình chiếu 3 dòng lệnh CSS sau lên màn hình và đặt câu hỏi cho lớp:
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div className="p-4 rounded-xl bg-slate-900 text-sky-400 font-mono text-sm shadow-md">
+        <code>p &#123; color: purple; &#125;</code>
+        <div className="mt-2 text-xs text-slate-400">Cách (a): Tên màu có sẵn</div>
+      </div>
+      <div className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-sm shadow-md">
+        <code>p &#123; color: #800080; &#125;</code>
+        <div className="mt-2 text-xs text-slate-400">Cách (b): Mã Hexadecimal</div>
+      </div>
+      <div className="p-4 rounded-xl bg-slate-900 text-amber-400 font-mono text-sm shadow-md">
+        <code>p &#123; color: rgb(128, 0, 128); &#125;</code>
+        <div className="mt-2 text-xs text-slate-400">Cách (c): Hàm rgb(r, g, b)</div>
+      </div>
+    </div>
+    <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-sm text-amber-900 dark:text-amber-200">
+      <strong>Câu hỏi gợi mở:</strong> Ba dòng lệnh trên có hiển thị cùng một màu chữ trên trình duyệt hay không? Vì sao trong lập trình web người ta lại cần nhiều cách viết mã màu khác nhau như vậy?
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.2" title="Bước 2: Thực hiện nhiệm vụ - Thử nghiệm và đối chiếu">
+    <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-sm">
+      <li>• Học sinh thảo luận theo bàn (cặp đôi), quan sát kỹ các giá trị số 128, số hexa 80.</li>
+      <li>• Gợi ý: Chuyển đổi số 128 trong hệ thập phân sang hệ hexa (cơ số 16): <code>128 / 16 = 8 dư 0</code> &rarr; chính là <code>80</code>!</li>
+      <li>• Các em dự đoán màu sắc tương ứng hiển thị trên màn hình.</li>
+    </ul>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.3" title="Bước 3: Báo cáo, thảo luận - Lắng nghe nhận định">
+    <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-sm space-y-2">
+      <p>• Đại diện học sinh phát biểu: Cả 3 cách đều cho ra màu tím giống nhau.</p>
+      <p>• Cách viết tên tiếng Anh dễ nhớ nhưng số lượng màu hạn chế. Cách viết bằng số (RGB hoặc HEX) cho phép máy tính tạo ra hàng triệu màu sắc khác nhau chính xác tuyệt đối.</p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="1.4" title="Bước 4: Kết luận, nhận định - Chốt kiến thức nhập môn">
+    <Alert type="info">
+      Màn hình máy tính hiển thị màu sắc dựa trên sự phối hợp của 3 tia sáng cơ bản: Đỏ (Red), Xanh lá (Green) và Xanh dương (Blue). CSS hỗ trợ cả 3 cách biểu diễn để lập trình viên linh hoạt sử dụng từ trực quan đến đồ họa kỹ thuật cao.
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="2"
+  title="HÌNH THÀNH KIẾN THỨC MỚI"
+  time="45 phút"
+  objective="Nắm vững cách biểu diễn màu sắc RGB, HEX, HSL; sử dụng thuộc tính color, background-color; vận dụng thành thạo 4 bộ chọn quan hệ E F, E > F, E + F, E ~ F."
+  content="Nghiên cứu nguyên lý phối màu trong CSS và quy tắc phân cấp bộ chọn theo mối quan hệ cha-con, anh-em trong cây cấu trúc HTML."
+  product="Bảng tổng hợp các hệ màu CSS, sơ đồ cây bộ chọn quan hệ và ví dụ áp dụng chính xác."
+>
+  <SubTask id="task-2-1" title="Nhiệm vụ 2.1: Các hệ màu và thuộc tính tô màu trong CSS">
+    <SlideStep stepNumber="2.1.1" title="Khám phá 3 hệ màu chuẩn trong CSS">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Mọi màu sắc trên web được tạo nên từ không gian màu RGB (Red, Green, Blue) với mỗi kênh nhận giá trị từ 0 đến 255 (8 bit). Tổng số màu hiển thị được là <code>256 &times; 256 &times; 256 = 16.777.216</code> màu (24-bit TrueColor).
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs md:text-sm text-left border-collapse border border-slate-200 dark:border-slate-700">
+          <thead className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+            <tr>
+              <th className="border p-2">Hệ màu</th>
+              <th className="border p-2">Cú pháp CSS</th>
+              <th className="border p-2">Ví dụ (Màu trắng)</th>
+              <th className="border p-2">Ví dụ (Màu đen)</th>
+              <th className="border p-2">Đặc điểm ứng dụng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border p-2 font-bold text-sky-600">Tên màu (Names)</td>
+              <td className="border p-2 font-mono">color_name</td>
+              <td className="border p-2 font-mono">white</td>
+              <td className="border p-2 font-mono">black</td>
+              <td className="border p-2">CSS2 có 16 màu cơ bản, CSS3 có 140 tên màu chuẩn (red, blue, lime, gray...). Dễ nhớ, nhanh chóng.</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-bold text-emerald-600">Hàm RGB</td>
+              <td className="border p-2 font-mono">rgb(r, g, b)</td>
+              <td className="border p-2 font-mono">rgb(255, 255, 255)</td>
+              <td className="border p-2 font-mono">rgb(0, 0, 0)</td>
+              <td className="border p-2">Mỗi giá trị từ 0 đến 255 hoặc 0% đến 100%. Có thể dùng <code>rgba(r,g,b,alpha)</code> để chỉnh độ trong suốt.</td>
+            </tr>
+            <tr>
+              <td className="border p-2 font-bold text-indigo-600">Mã Hexadecimal</td>
+              <td className="border p-2 font-mono">#RRGGBB</td>
+              <td className="border p-2 font-mono">#ffffff</td>
+              <td className="border p-2 font-mono">#000000</td>
+              <td className="border p-2">Sử dụng hệ cơ số 16 (0-9, A-F). Phổ biến nhất trong thiết kế web chuyên nghiệp do độ gọn nhẹ.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-3 p-3 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 text-xs text-sky-800 dark:text-sky-300">
+        💡 <strong>Mẹo nhận biết màu xám:</strong> Khi 3 giá trị <code>r = g = b</code> (ví dụ: <code>rgb(128,128,128)</code> hoặc <code>#808080</code>), ta sẽ thu được các sắc độ xám từ tối đến sáng!
+      </div>
+    </SlideStep>
+
+    <SlideStep stepNumber="2.1.2" title="Thuộc tính color và background-color">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+          <h4 className="font-bold text-primary mb-2 text-sm">1. Thuộc tính color (Màu chữ)</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+            Định dạng màu sắc hiển thị cho văn bản và các biểu tượng bên trong phần tử.
+          </p>
+          <pre className="p-3 bg-slate-900 text-sky-300 rounded-lg text-xs font-mono">
+{`h1 {
+  color: #c0392b; /* Đỏ đậm */
+}`}
+          </pre>
+          <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-2 font-medium">
+            &check; Có tính kế thừa (Inheritance): các thẻ con bên trong sẽ tự động nhận màu này nếu không bị ghi đè.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+          <h4 className="font-bold text-primary mb-2 text-sm">2. Thuộc tính background-color (Màu nền)</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+            Tô màu toàn bộ diện tích nền của phần tử (bao gồm vùng padding).
+          </p>
+          <pre className="p-3 bg-slate-900 text-emerald-300 rounded-lg text-xs font-mono">
+{`body {
+  background-color: #f8fafc; /* Trắng xám */
+}`}
+          </pre>
+          <p className="text-xs text-slate-500 mt-2">
+            Mặc định là <code>transparent</code> (trong suốt).
+          </p>
+        </div>
+      </div>
+    </SlideStep>
+  </SubTask>
+
+  <SubTask id="task-2-2" title="Nhiệm vụ 2.2: Thiết lập bộ chọn là tổ hợp các phần tử có quan hệ">
+    <SlideStep stepNumber="2.2.1" title="Bốn kiểu bộ chọn quan hệ trong cây HTML">
+      <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+        Thay vì chỉ chọn đơn lẻ từng thẻ (như <code>p</code> hay <code>h1</code>), CSS cho phép nhắm mục tiêu chính xác dựa trên quan hệ huyết thống và vị trí kề nhau:
+      </p>
+      <div className="space-y-3">
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-blue-500">
+          <div className="flex items-center justify-between">
+            <span className="font-mono font-bold text-blue-600 dark:text-blue-400">1. Bộ chọn con cháu: E F</span>
+            <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-semibold">Khoảng trắng</span>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
+            Chọn tất cả phần tử <code>F</code> nằm bên trong <code>E</code> (bao gồm con ruột, cháu, chắt... ở mọi cấp độ sâu).
+          </p>
+          <div className="mt-1 font-mono text-xs text-slate-500">Ví dụ: <code>div p &#123; color: blue; &#125;</code> &rarr; mọi thẻ p trong div đều có chữ xanh.</div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-emerald-500">
+          <div className="flex items-center justify-between">
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">2. Bộ chọn con trực tiếp: E &gt; F</span>
+            <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Dấu &gt;</span>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
+            Chỉ chọn phần tử <code>F</code> là con trực tiếp (cấp 1) của <code>E</code>. Nếu <code>F</code> nằm trong thẻ lồng khác (cháu) sẽ không bị tác động.
+          </p>
+          <div className="mt-1 font-mono text-xs text-slate-500">Ví dụ: <code>ul &gt; li &#123; font-weight: bold; &#125;</code></div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-amber-500">
+          <div className="flex items-center justify-between">
+            <span className="font-mono font-bold text-amber-600 dark:text-amber-400">3. Bộ chọn anh em liền kề: E + F</span>
+            <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-semibold">Dấu +</span>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
+            Chọn phần tử <code>F</code> đứng ngay phía sau <code>E</code> và có cùng phần tử cha trực tiếp.
+          </p>
+          <div className="mt-1 font-mono text-xs text-slate-500">Ví dụ: <code>h2 + p &#123; text-indent: 0; &#125;</code> &rarr; chỉ tác động đoạn văn đầu tiên ngay dưới h2.</div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-l-4 border-purple-500">
+          <div className="flex items-center justify-between">
+            <span className="font-mono font-bold text-purple-600 dark:text-purple-400">4. Bộ chọn anh em chung: E ~ F</span>
+            <span className="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full font-semibold">Dấu ~</span>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
+            Chọn tất cả các phần tử <code>F</code> đứng sau <code>E</code> có cùng cha, không nhất thiết phải liền kề sát cạnh.
+          </p>
+          <div className="mt-1 font-mono text-xs text-slate-500">Ví dụ: <code>h1 ~ p &#123; color: gray; &#125;</code></div>
+        </div>
+      </div>
+    </SlideStep>
+
+    <SlideStep stepNumber="2.2.2" title="Phòng thí nghiệm tương tác trực quan: Bộ chọn quan hệ">
+      <HtmlLiveSandbox
+        title="Thử nghiệm trực tiếp: Thay đổi bộ chọn quan hệ"
+        initialHtml={`<div class="box">
+  <h2>Tiêu đề mục</h2>
+  <p>Đoạn văn 1 (Con trực tiếp)</p>
+  <article>
+    <p>Đoạn văn 2 (Cháu bên trong article)</p>
+  </article>
+  <p>Đoạn văn 3 (Con trực tiếp)</p>
+</div>`}
+        initialCss={`/* Hãy thử đổi .box p thành .box > p hoặc h2 + p */
+.box > p {
+  color: #2563eb;
+  background-color: #eff6ff;
+  padding: 8px;
+  border-left: 4px solid #3b82f6;
+}`}
+      />
+    </SlideStep>
+  </SubTask>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="3"
+  title="LUYỆN TẬP: TẠO TRANG LỢI ÍCH CỦA CSS VÀ PHỐI MÀU"
+  time="20 phút"
+  objective="Củng cố kỹ năng lập trình HTML kết hợp CSS: áp dụng màu sắc hài hòa và sử dụng bộ chọn tổ hợp để định dạng danh sách bài viết chuẩn xác."
+  content="Thực hiện yêu cầu định dạng trang 'Lợi ích của CSS' với tiêu đề đỏ, danh sách ý chính có dòng nhấn mạnh màu xanh, từ khóa in nghiêng màu đỏ."
+  product="Mã nguồn hoàn chỉnh hiển thị trang web chuẩn giao diện theo yêu cầu SGK Trang 90."
+>
+  <SlideStep stepNumber="3.1" title="Bước 1: Chuyển giao nhiệm vụ luyện tập">
+    <ClassTimer initialMinutes={10} title="Thời gian lập trình hoàn thiện bài tập" />
+    <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs md:text-sm space-y-2">
+      <p className="font-bold text-slate-900 dark:text-slate-100">Yêu cầu thiết kế trang web 'LỢI ÍCH CỦA CSS':</p>
+      <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+        <li>Tiêu đề chính <code>h1</code>: Chữ màu đỏ (<code>red</code> hoặc <code>#dc2626</code>).</li>
+        <li>Danh sách <code>ul</code> &gt; <code>li</code>: Chiều cao dòng <code>line-height: 1.5</code>.</li>
+        <li>Các cụm từ in đậm <code>strong</code> đầu mỗi ý: Màu xanh đậm (<code>blue</code> hoặc <code>#1d4ed8</code>).</li>
+        <li>Các từ khóa nhấn mạnh lồng bên trong <code>strong em</code>: Màu đỏ cam (<code>#ea580c</code>) nổi bật.</li>
+      </ul>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.2" title="Bước 2: Học sinh thực hành trên máy">
+    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+      Học sinh mở VS Code, tạo tệp <code>loi-ich-css.html</code>, nhập cấu trúc HTML và khối định dạng CSS trong thẻ <code>&lt;style&gt;</code>. Giáo viên quan sát, hỗ trợ các học sinh gặp lỗi đóng thẻ hoặc nhầm lẫn bộ chọn quan hệ.
+    </p>
+  </SlideStep>
+
+  <SlideStep stepNumber="3.3" title="Bước 3: Báo cáo kết quả và Đố vui tốc độ">
+    <Quiz
+      question="Trong đoạn mã HTML: '<div><p>Đoạn 1</p><section><p>Đoạn 2</p></section></div>', bộ chọn 'div > p' sẽ tác động lên phần tử nào?"
+      options={[
+        "Chỉ tác động lên Đoạn 1 vì nó là con trực tiếp của div",
+        "Tác động lên cả Đoạn 1 và Đoạn 2",
+        "Chỉ tác động lên Đoạn 2 vì nó nằm sâu bên trong",
+        "Không tác động lên đoạn nào cả"
+      ]}
+      correctAnswer={0}
+      explanation="Bộ chọn 'E > F' chỉ chọn các phần tử F là con trực tiếp (cấp 1) của E. Đoạn 2 là con của section (cháu của div) nên không thỏa mãn điều kiện con trực tiếp."
+    />
+  </SlideStep>
+
+  <SlideStep stepNumber="3.4" title="Bước 4: Nhận định, chốt mã nguồn chuẩn">
+    <Alert type="success">
+      Mã CSS tối ưu chuẩn kiến trúc:
+      <pre className="mt-2 text-xs font-mono text-emerald-900 dark:text-emerald-200">
+{`h1 { color: #dc2626; text-align: center; }
+ul li { line-height: 1.6; margin-bottom: 8px; }
+li > strong { color: #1d4ed8; }
+li strong em { color: #b91c1c; font-style: normal; text-decoration: underline; }`}
+      </pre>
+    </Alert>
+  </SlideStep>
+</PedagogyActivity>
+
+<PedagogyActivity
+  number="4"
+  title="VẬN DỤNG: THIẾT KẾ BẢNG MÀU THƯƠNG HIỆU WEB"
+  time="15 phút"
+  objective="Vận dụng nguyên lý phối màu RGB/HEX và bộ chọn quan hệ để xây dựng giao diện Card thông báo sự kiện trường học có độ tương phản đạt chuẩn WCAG."
+  content="Thiết kế một thẻ thông báo sự kiện (Event Card) với nền nhạt, viền màu chủ đạo, tiêu đề nổi bật và liên kết đổi màu khi hover."
+  product="Trang web nhỏ có chứa Event Card đạt tiêu chí thẩm mỹ và chuẩn kỹ thuật."
+>
+  <SlideStep stepNumber="4.1" title="Bước 1: Chuyển giao thử thách sáng tạo">
+    <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-sm text-indigo-900 dark:text-indigo-200 space-y-2">
+      <p className="font-bold">Nhiệm vụ về nhà / Dự án nhỏ:</p>
+      <p>
+        Em hãy đóng vai trò là một UI/UX Designer, chọn một bộ 3 màu sắc hài hòa (1 màu nền chính, 1 màu chữ, 1 màu điểm nhấn Accent) để trang trí cho trang web giới thiệu một câu lạc bộ hoặc địa danh du lịch em yêu thích. Sử dụng ít nhất 2 bộ chọn quan hệ (như <code>E &gt; F</code> và <code>E + F</code>) để tạo kiểu dáng chuyên nghiệp.
+      </p>
+    </div>
+  </SlideStep>
+
+  <SlideStep stepNumber="4.4" title="Bước 4: Tiêu chí đánh giá sản phẩm (Rubric)">
+    <RubricCard
+      title="Phiếu đánh giá sản phẩm thiết kế màu sắc CSS (Chuẩn 5512)"
+      criteria={[
+        {
+          name: "Sử dụng mã màu chuẩn xác",
+          excellent: "Áp dụng thành thạo cả 3 cách (Tên màu, HEX, RGB); phối màu hài hòa, độ tương phản chữ và nền cao, dễ đọc.",
+          good: "Sử dụng đúng mã màu HEX và RGB; màu sắc dễ nhìn nhưng chưa thật sự nổi bật.",
+          needsImprovement: "Màu sắc lòe loẹt, độ tương phản kém (chữ khó đọc) hoặc viết sai cú pháp hàm rgb/mã hex."
+        },
+        {
+          name: "Vận dụng bộ chọn quan hệ",
+          excellent: "Sử dụng đúng và sáng tạo các bộ chọn E > F, E + F hoặc E ~ F để định dạng chính xác từng phần tử theo ý đồ.",
+          good: "Sử dụng đúng bộ chọn quan hệ cơ bản E F và E > F.",
+          needsImprovement: "Chưa biết dùng bộ chọn quan hệ hoặc dùng nhầm lẫn dẫn tới định dạng sai đối tượng."
+        },
+        {
+          name: "Cấu trúc mã nguồn",
+          excellent: "Mã nguồn sạch, có thụt dòng chuẩn, ghi chú (comments) rõ ràng từng khu vực màu sắc.",
+          good: "Mã nguồn đầy đủ, chạy tốt trên trình duyệt.",
+          needsImprovement: "Mã lộn xộn, quên đóng thẻ hoặc thiếu dấu chấm phẩy trong CSS."
+        }
+      ]}
+    />
+  </SlideStep>
+</PedagogyActivity>
