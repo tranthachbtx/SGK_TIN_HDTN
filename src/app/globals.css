@@ -19,7 +19,7 @@
   --background: #ffffff;
   --foreground: #020617;
 
-  /* Spacing System - Tightened */
+  /* Spacing System */
   --spacing-section: 1.5rem;
   --spacing-block: 1rem;
 
@@ -43,28 +43,60 @@
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: rgba(15, 23, 42, 0.05);
-  --input: rgba(15, 23, 42, 0.05);
+  --border: rgba(15, 23, 42, 0.08);
+  --input: rgba(15, 23, 42, 0.08);
   --ring: #0ea5e9;
   --radius: 2.5rem;
 
-  /* Modern Effects */
+  /* Modern Neomorphic Effects */
   --shadow-neu: 10px 10px 20px rgba(0, 0, 0, 0.02), -10px -10px 20px #ffffff;
   --shadow-neu-pressed:
     inset 4px 4px 8px rgba(0, 0, 0, 0.02), inset -4px -4px 8px #ffffff;
   --shadow-float: 0 15px 40px -10px rgba(15, 23, 42, 0.08);
+  --sidebar-width: 0px;
   --toc-width: 0px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #212121;
+    --foreground: #e0e0e0;
+
+    --card: rgba(33, 33, 33, 0.92);
+    --card-foreground: #e0e0e0;
+
+    --popover: rgba(33, 33, 33, 0.98);
+    --popover-foreground: #e0e0e0;
+
+    --primary: #38bdf8;
+    --primary-foreground: #ffffff;
+
+    --secondary: #fb7185;
+    --secondary-foreground: #ffffff;
+
+    --muted: #2a2a2a;
+    --muted-foreground: #a3a3a3;
+
+    --border: rgba(255, 255, 255, 0.12);
+    --input: rgba(255, 255, 255, 0.12);
+    --ring: #38bdf8;
+
+    --shadow-neu: 8px 8px 16px #161616, -8px -8px 16px #2c2c2c;
+    --shadow-neu-pressed:
+      inset 4px 4px 8px #161616, inset -4px -4px 8px #2c2c2c;
+    --shadow-float: 0 15px 40px -10px rgba(0, 0, 0, 0.45);
+  }
+}
+
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
+  --background: #212121;
+  --foreground: #e0e0e0;
 
-  --card: rgba(15, 23, 42, 0.8);
-  --card-foreground: #f8fafc;
+  --card: rgba(33, 33, 33, 0.92);
+  --card-foreground: #e0e0e0;
 
-  --popover: rgba(15, 23, 42, 0.95);
-  --popover-foreground: #f8fafc;
+  --popover: rgba(33, 33, 33, 0.98);
+  --popover-foreground: #e0e0e0;
 
   --primary: #38bdf8;
   --primary-foreground: #ffffff;
@@ -72,16 +104,17 @@
   --secondary: #fb7185;
   --secondary-foreground: #ffffff;
 
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  --muted: #2a2a2a;
+  --muted-foreground: #a3a3a3;
 
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.12);
   --ring: #38bdf8;
 
-  --shadow-neu: 8px 8px 16px #020617, -8px -8px 16px #1e293b;
+  --shadow-neu: 8px 8px 16px #161616, -8px -8px 16px #2c2c2c;
   --shadow-neu-pressed:
-    inset 8px 8px 16px #020617, inset -8px -8px 16px #1e293b;
+    inset 4px 4px 8px #161616, inset -4px -4px 8px #2c2c2c;
+  --shadow-float: 0 15px 40px -10px rgba(0, 0, 0, 0.45);
 }
 
 @theme {
@@ -148,14 +181,26 @@
   }
 }
 
+/* Typography scaling for TV & classroom visibility */
 html {
-  font-size: 115%;
-  /* Balanced for high-density content */
+  font-size: 112.5%; /* 18px base */
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 125%; /* 20px base for desktop / class screens */
+  }
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 137.5%; /* 22px base for 65"+ Smart TV classrooms */
+  }
 }
 
 @media (max-width: 767px) {
   html {
-    font-size: 95%;
+    font-size: 100%; /* 16px base for mobile */
   }
 }
 
@@ -167,16 +212,8 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  padding-left: var(--sidebar-width, 288px);
   overflow-x: hidden;
-  transition: padding-left 0.3s ease-in-out;
-}
-
-/* On mobile, remove side padding for bottom navigation */
-@media (max-width: 767px) {
-  body {
-    padding-left: 0 !important;
-  }
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -185,14 +222,14 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--foreground) !important;
   font-family: var(--font-display);
   letter-spacing: -0.02em;
+  color: inherit;
 }
 
 strong {
-  color: #020617;
-  font-weight: 900;
+  color: inherit;
+  font-weight: 800;
 }
 
 /* Ensure headings inside not-prose (like in CodeBlocks) are bright */
@@ -252,12 +289,20 @@ strong {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass {
+  background: rgba(33, 33, 33, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
 }
 
 .focus-ring-hover {
@@ -305,12 +350,12 @@ strong {
 }
 
 .glass-dark {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(33, 33, 33, 0.85);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .shadow-neu-flat-lg {
@@ -321,12 +366,16 @@ strong {
 
 .dark .shadow-neu-flat-lg {
   box-shadow:
-    10px 10px 25px #020617,
-    -10px -10px 25px #1e293b;
+    10px 10px 25px #151515,
+    -10px -10px 25px #2d2d2d;
 }
 
 .shadow-float {
   box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.12);
+}
+
+.dark .shadow-float {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 /* Transitions & Animations */
@@ -363,8 +412,8 @@ strong {
 }
 
 .hljs-comment {
-  color: #64748b !important;
-  /* Slate 500 */
+  color: #94a3b8 !important;
+  /* Slate 400 */
   font-style: italic;
 }
 
@@ -376,7 +425,7 @@ strong {
 }
 
 .hljs-params {
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important;
 }
 
 .hljs-built_in {
@@ -402,7 +451,6 @@ strong {
 }
 
 /* Dark Mode Syntax Highlighting */
-/* Dark Mode Syntax Highlighting - Same as above as code blocks are always dark now */
 .dark .hljs-keyword,
 .dark .hljs-selector-tag {
   color: #38bdf8 !important;
@@ -418,7 +466,7 @@ strong {
 }
 
 .dark .hljs-comment {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 .dark .hljs-function,
@@ -427,7 +475,7 @@ strong {
 }
 
 .dark .hljs-params {
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important;
 }
 
 .dark .hljs-built_in {
@@ -436,7 +484,6 @@ strong {
 
 .dark .hljs-meta {
   color: #94a3b8 !important;
-  /* Brighter for >>> */
 }
 
 .dark .hljs {

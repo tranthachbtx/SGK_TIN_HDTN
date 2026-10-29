@@ -55,7 +55,7 @@ export function RubricCard() {
           </div>
           <div>
             <span className="text-xs uppercase font-black tracking-widest text-amber-600 dark:text-amber-400 block">
-              Tiêu chí Đánh giá Sản phẩm (Rubric 5512)
+              Tiêu chí Đánh giá Sản phẩm (Rubric)
             </span>
             <h4 className="text-xl md:text-2xl font-black text-slate-950 dark:text-white !m-0">
               Bảng Đánh giá Dự án Mini "Danh thiếp số của tôi"

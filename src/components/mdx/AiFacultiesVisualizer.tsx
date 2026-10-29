@@ -161,7 +161,7 @@ export function AiFacultiesVisualizer() {
           </div>
           <div>
             <h4 className="font-bold text-base sm:text-lg">Bộ công cụ khám phá Trí tuệ nhân tạo (AI Explorer)</h4>
-            <p className="text-xs text-sky-100">Dành cho Trình chiếu & Tương tác lớp học chuẩn 5512</p>
+            <p className="text-xs text-sky-100">Dành cho Trình chiếu & Tương tác lớp học</p>
           </div>
         </div>
 

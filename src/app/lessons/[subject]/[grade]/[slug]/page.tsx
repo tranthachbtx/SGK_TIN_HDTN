@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: LessonPageProps) {
 
   if (!lesson) {
     return {
-      title: "Lesson Not Found",
+      title: "Không tìm thấy bài học",
     };
   }
 
@@ -65,38 +65,26 @@ export default async function LessonPage({ params }: LessonPageProps) {
   }
 
   return (
-    <div className="relative min-h-screen py-4 md:py-20 px-0 md:px-8 xl:pr-[var(--toc-width,0px)] transition-[padding] duration-500 ease-in-out">
+    <div className="relative min-h-screen py-2 md:py-6 px-1 sm:px-3 md:px-6 transition-all duration-300">
+      {/* Left-docked Smart Lesson Progress Panel */}
       <ContentPanel />
 
-      {/* Background Decorative Elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 rounded-full blur-[120px]" />
+      {/* Subtle Background Decorative Blobs */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div className="absolute top-[-10%] right-[-10%] w-[45%] h-[45%] bg-primary/5 rounded-full blur-[130px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[45%] h-[45%] bg-secondary/5 rounded-full blur-[130px]" />
       </div>
 
-      {/* Header Section - Compact */}
-      <div className="relative z-10 mb-6 md:mb-10 text-center max-w-7xl mx-auto">
-        <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-black text-[10px] md:text-sm mb-3 md:mb-4 uppercase tracking-widest border border-primary/20">
-          Bài {lesson.frontmatter.order}
-        </div>
-        <h1 className="text-3xl md:text-6xl font-display font-black mb-4 md:mb-6 !leading-tight text-slate-950 px-4">
-          {lesson.frontmatter.title.split(":")[1]?.trim() ||
-            lesson.frontmatter.title}
-        </h1>
-        <p className="text-base md:text-xl text-slate-700 mx-auto leading-relaxed font-medium opacity-80 italic max-w-3xl px-6">
-          {lesson.frontmatter.description}
-        </p>
-      </div>
-
-      {/* Content Container - Full Width Expansion */}
-      <article className="relative z-10 mx-auto max-w-7xl bg-white rounded-t-none rounded-b-3xl md:rounded-[3rem] p-4 md:p-12 border-x-0 md:border-2 border-slate-100 shadow-float min-h-screen">
+      {/* Full-width Responsive Container Optimized for Smart TV & Projectors */}
+      <article className="relative z-10 mx-auto w-full max-w-[1700px] bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-2xl rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-10 lg:p-12 border border-slate-200/80 dark:border-white/10 shadow-float min-h-screen">
         <div
-          className="prose prose-base md:prose-xl dark:prose-invert max-w-none 
-                    prose-headings:font-display prose-headings:font-black prose-headings:scroll-mt-24
-                    prose-p:text-slate-900 prose-p:leading-relaxed
-                    prose-li:text-slate-900 prose-li:leading-relaxed
-                    prose-strong:text-black prose-strong:font-black
-                    prose-img:rounded-2xl md:prose-img:rounded-[3rem] prose-img:shadow-float prose-img:border-4 md:prose-img:border-8 prose-img:border-white/50
+          className="prose prose-lg md:prose-2xl dark:prose-invert max-w-none 
+                    prose-headings:font-display prose-headings:font-black prose-headings:scroll-mt-28
+                    prose-headings:text-slate-900 dark:prose-headings:text-white
+                    prose-p:text-slate-800 dark:prose-p:text-slate-200 prose-p:leading-relaxed
+                    prose-li:text-slate-800 dark:prose-li:text-slate-200 prose-li:leading-relaxed
+                    prose-strong:text-slate-950 dark:prose-strong:text-white prose-strong:font-black
+                    prose-img:rounded-2xl md:prose-img:rounded-[2.5rem] prose-img:shadow-float prose-img:border-2 dark:prose-img:border-white/10
                 "
         >
           <MDXRemote
@@ -112,11 +100,11 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </div>
       </article>
 
-      {/* Footer Navigation or similar could go here */}
-      <div className="mt-20 text-center relative z-10">
-        <div className="h-1 w-20 bg-primary/20 mx-auto rounded-full mb-8" />
-        <p className="text-slate-400 font-bold uppercase tracking-widest text-sm">
-          Chúc mừng bạn đã hoàn thành bài học này! 🏆
+      {/* Footer Completion Note */}
+      <div className="mt-14 mb-10 text-center relative z-10">
+        <div className="h-1 w-20 bg-primary/20 mx-auto rounded-full mb-4" />
+        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs md:text-sm">
+          Tiết học kết thúc • Chúc mừng thầy cô và các em đã hoàn thành bài học! 🏆
         </p>
       </div>
     </div>

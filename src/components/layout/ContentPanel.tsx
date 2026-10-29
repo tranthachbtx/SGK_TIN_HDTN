@@ -1,14 +1,18 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   List,
-  PanelRightClose,
-  PanelRightOpen,
+  PanelLeftClose,
+  PanelLeftOpen,
+  ArrowLeft,
   Tv,
+  CheckCircle2,
 } from "lucide-react";
+import { TeacherToggle } from "@/components/ui/TeacherToggle";
 
 interface Heading {
   id: string;
@@ -23,7 +27,7 @@ export function ContentPanel() {
   const [isMounted, setIsMounted] = useState(false);
   const sidebarNavRef = useRef<HTMLElement>(null);
 
-  // Initialize collapse preference from localStorage (default to closed/collapsed)
+  // Initialize collapse preference from localStorage (default to closed/collapsed for clean projection)
   useEffect(() => {
     setIsMounted(true);
     const saved = localStorage.getItem("lesson_toc_collapsed");
@@ -36,7 +40,7 @@ export function ContentPanel() {
 
   // Sync CSS variable for dynamic layout padding on desktop
   useEffect(() => {
-    const width = isCollapsed ? "0px" : "320px";
+    const width = isCollapsed ? "0px" : "340px";
     document.documentElement.style.setProperty("--toc-width", width);
 
     return () => {
@@ -69,45 +73,47 @@ export function ContentPanel() {
   useEffect(() => {
     const queryElements = () => {
       const elements = Array.from(
-        document.querySelectorAll("h2, h3, h4, li, p > strong:first-child"),
+        document.querySelectorAll(
+          "h2, h3, h4, section[id], div[id^='activity-'], div[id^='slide-']"
+        )
       )
         .map((elem) => {
           let id = elem.id;
           let text = elem.textContent || "";
           let level = 0;
 
-          if (elem.tagName.startsWith("H")) {
-            level = Number(elem.tagName.replace("H", ""));
-          } else if (elem.tagName === "LI" || elem.tagName === "STRONG") {
-            const isSection = /^[0-9a-z]\s*[.\)]/.test(text.trim());
-            const isLabel =
-              elem.tagName === "STRONG" &&
-              text.includes(":") &&
-              text.length < 50;
-
-            if (isSection || isLabel) {
-              level = elem.tagName === "LI" ? 4 : 5;
-              if (!id) {
-                id =
-                  "point-" +
-                  text
-                    .trim()
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]/g, "-")
-                    .slice(0, 30);
-                elem.id = id;
-              }
-            } else {
-              return null;
-            }
+          if (elem.tagName === "H2") {
+            level = 2;
+          } else if (elem.tagName === "H3") {
+            level = 3;
+          } else if (elem.tagName === "H4") {
+            level = 4;
+          } else {
+            return null;
           }
 
-          return { id, text: text.trim(), level };
+          // Clean up text
+          text = text.trim();
+          if (!text || text.length > 80) {
+            text = text.slice(0, 70) + "...";
+          }
+
+          if (!id) {
+            id =
+              "nav-" +
+              text
+                .toLowerCase()
+                .replace(/[^a-z0-9]/g, "-")
+                .slice(0, 30);
+            elem.id = id;
+          }
+
+          return { id, text, level };
         })
         .filter((h): h is Heading => h !== null && !!h.id);
 
       const uniqueElements = elements.filter(
-        (h, index) => elements.findIndex((item) => item.id === h.id) === index,
+        (h, index) => elements.findIndex((item) => item.id === h.id) === index
       );
 
       setHeadings(uniqueElements);
@@ -120,7 +126,7 @@ export function ContentPanel() {
             }
           });
         },
-        { rootMargin: "-100px 0px -66%" },
+        { rootMargin: "-100px 0px -60%" }
       );
 
       uniqueElements.forEach((h) => {
@@ -131,15 +137,19 @@ export function ContentPanel() {
       return observer;
     };
 
-    const observer = queryElements();
-    return () => observer?.disconnect();
+    // Slight delay to allow MDX hydration
+    const timer = setTimeout(() => {
+      queryElements();
+    }, 300);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Auto-scroll sidebar when active item changes
   useEffect(() => {
     if (activeId && sidebarNavRef.current) {
       const activeElement = sidebarNavRef.current.querySelector(
-        `[href="#${activeId}"]`,
+        `[href="#${activeId}"]`
       );
       if (activeElement) {
         activeElement.scrollIntoView({
@@ -150,37 +160,37 @@ export function ContentPanel() {
     }
   }, [activeId]);
 
-  if (headings.length === 0) return null;
-
   // Calculate progression percentage based on active index
   const activeIndex = headings.findIndex((h) => h.id === activeId);
   const progress =
     headings.length > 0
-      ? Math.round(((activeIndex >= 0 ? activeIndex + 1 : 1) / headings.length) * 100)
+      ? Math.round(
+          ((activeIndex >= 0 ? activeIndex + 1 : 1) / headings.length) * 100
+        )
       : 0;
 
   return (
     <>
-      {/* Floating Smart Trigger Button (Visible when collapsed on Desktop, or on Tablet/Mobile) */}
+      {/* Floating Smart Trigger Button on the LEFT */}
       <AnimatePresence>
         {(isCollapsed || !isMounted) && (
           <motion.div
-            initial={{ opacity: 0, x: 50, scale: 0.9 }}
+            initial={{ opacity: 0, x: -40, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 50, scale: 0.9 }}
+            exit={{ opacity: 0, x: -40, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed right-3 md:right-5 top-24 md:top-28 z-40"
+            className="fixed left-4 md:left-6 top-20 md:top-24 z-40"
           >
             <button
               onClick={toggleCollapsed}
               className={cn(
-                "group relative flex items-center gap-2.5 p-2.5 md:p-3 rounded-2xl md:rounded-3xl",
-                "bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border border-white/40 dark:border-white/10",
+                "group relative flex items-center gap-3 p-3 md:p-3.5 rounded-2xl md:rounded-3xl",
+                "bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-white/60 dark:border-white/10",
                 "shadow-neu-flat hover:shadow-float active:shadow-neu-pressed transition-all duration-300",
                 "text-slate-800 dark:text-slate-100 hover:scale-105 active:scale-95",
                 "min-w-[48px] min-h-[48px] cursor-pointer"
               )}
-              title="Hiện tiến trình bài học (Màn hình TV: ẩn để mở rộng không gian) [Alt + T]"
+              title="Hiện tiến trình bài học [Alt + T]"
             >
               {/* Circular Progress Ring */}
               <div className="relative w-8 h-8 shrink-0 flex items-center justify-center">
@@ -202,15 +212,15 @@ export function ContentPanel() {
                     d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   />
                 </svg>
-                <PanelRightOpen size={16} className="absolute text-primary" />
+                <PanelLeftOpen size={16} className="absolute text-primary" />
               </div>
 
-              {/* Progress Text with expand hint */}
+              {/* Progress Text */}
               <div className="hidden sm:flex flex-col text-left pr-1">
                 <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
-                  Mục lục
+                  Tiến trình
                 </span>
-                <span className="text-xs font-black text-slate-800 dark:text-white leading-none">
+                <span className="text-xs font-black text-slate-900 dark:text-white leading-none">
                   {progress}%
                 </span>
               </div>
@@ -219,22 +229,47 @@ export function ContentPanel() {
         )}
       </AnimatePresence>
 
-      {/* Desktop Side Panel - Smart Neomorphic & Glassmorphic Drawer */}
+      {/* Backdrop overlay for mobile & focused reading when drawer is open */}
+      <AnimatePresence>
+        {!isCollapsed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={toggleCollapsed}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 xl:hidden"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Main Drawer on the LEFT side */}
       <motion.aside
         initial={false}
         animate={{
-          x: isCollapsed ? 340 : 0,
+          x: isCollapsed ? -360 : 0,
           opacity: isCollapsed ? 0 : 1,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={cn(
-          "hidden xl:flex fixed right-0 top-1 bottom-1 w-80 z-40 flex-col",
+          "fixed left-0 top-0 bottom-0 w-80 sm:w-88 z-50 flex flex-col",
+          "bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-2xl border-r border-slate-200/80 dark:border-white/10 shadow-2xl",
           isCollapsed && "pointer-events-none"
         )}
       >
-        <div className="flex-1 flex flex-col overflow-hidden bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-l-[40px] shadow-[-20px_0_60px_rgba(0,0,0,0.06)] border-l border-y border-white dark:border-white/10">
-          {/* Header with Title, Progress Bar, and Smart Collapse Button */}
+        <div className="flex-1 flex flex-col h-full overflow-hidden">
+          {/* Top Bar: Return Link, Title & Close Button */}
           <div className="pt-5 px-5 pb-3 border-b border-slate-100 dark:border-slate-800">
+            {/* Quick Home / Back Link */}
+            <div className="mb-3">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-black uppercase tracking-wider text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+              >
+                <ArrowLeft size={14} />
+                <span>Trang chủ / Chọn bài</span>
+              </Link>
+            </div>
+
             <div className="flex items-center justify-between gap-2 mb-2.5">
               <div className="flex items-center gap-2 min-w-0">
                 <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
@@ -250,17 +285,17 @@ export function ContentPanel() {
                 </div>
               </div>
 
-              {/* Smart Collapse for TV Screen Button */}
+              {/* Close Button */}
               <button
                 onClick={toggleCollapsed}
                 className={cn(
                   "p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white",
                   "hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0",
-                  "cursor-pointer active:scale-95"
+                  "cursor-pointer active:scale-95 min-h-[44px] min-w-[44px] flex items-center justify-center"
                 )}
-                title="Thu gọn mục lục (Tối ưu không gian màn hình TV) [Alt + T]"
+                title="Thu gọn tiến trình [Alt + T]"
               >
-                <PanelRightClose size={18} />
+                <PanelLeftClose size={20} />
               </button>
             </div>
 
@@ -277,77 +312,70 @@ export function ContentPanel() {
           {/* Navigation Items */}
           <nav
             ref={sidebarNavRef}
-            className="flex-1 overflow-y-auto px-2 py-3 space-y-1 custom-scrollbar scroll-smooth"
+            className="flex-1 overflow-y-auto px-3 py-3 space-y-1 custom-scrollbar scroll-smooth"
           >
-            {headings.map((heading) => (
-              <a
-                key={heading.id}
-                href={`#${heading.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById(heading.id)
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className={cn(
-                  "flex items-start gap-3 py-1.5 px-3 rounded-[2rem] transition-all duration-300 relative group/item",
-                  "font-black leading-tight",
-                  heading.level === 2
-                    ? "text-[18px]"
-                    : heading.level === 3
-                      ? "ml-3 text-[16px]"
-                      : heading.level === 4
-                        ? "ml-6 text-[15px]"
-                        : "ml-8 text-[14px]",
-                  activeId === heading.id
-                    ? "bg-slate-950 text-yellow-400 shadow-xl scale-[1.03] -translate-x-1"
-                    : heading.level === 2
-                      ? "text-rose-500 hover:text-rose-600 hover:bg-black/5 dark:hover:bg-white/5"
-                      : heading.level === 3
-                        ? "text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 hover:bg-black/5 dark:hover:bg-white/5"
-                        : heading.level === 4
-                          ? "text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 hover:bg-black/5 dark:hover:bg-white/5"
-                          : "text-slate-500 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5",
-                )}
-              >
-                {activeId === heading.id && (
-                  <motion.div
-                    layoutId="toc-indicator-line"
-                    className="absolute -left-2 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-yellow-400 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.6)]"
-                    transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                  />
-                )}
-
-                <div
-                  className={cn(
-                    "mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 transition-all duration-300 border-2",
-                    activeId === heading.id
-                      ? "bg-yellow-400 border-yellow-400 scale-125 shadow-[0_0_10px_rgba(250,204,21,1)]"
-                      : heading.level === 2
-                        ? "bg-rose-100 border-rose-500"
+            {headings.length > 0 ? (
+              headings.map((heading) => {
+                const isActive = activeId === heading.id;
+                return (
+                  <a
+                    key={heading.id}
+                    href={`#${heading.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById(heading.id)
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className={cn(
+                      "flex items-start gap-2.5 py-2 px-3 rounded-2xl transition-all duration-200 relative group/item",
+                      "font-bold leading-snug cursor-pointer",
+                      heading.level === 2
+                        ? "text-[15px] font-black mt-2 bg-slate-50/70 dark:bg-slate-800/40"
                         : heading.level === 3
-                          ? "bg-indigo-100 border-indigo-500"
-                          : heading.level === 4
-                            ? "bg-emerald-100 border-emerald-500"
-                            : "bg-transparent border-slate-300 group-hover/item:border-slate-400",
-                  )}
-                />
+                        ? "ml-2 text-[14px]"
+                        : "ml-4 text-[13px] font-medium opacity-90",
+                      isActive
+                        ? "bg-primary text-white shadow-lg shadow-primary/25 scale-[1.01]"
+                        : heading.level === 2
+                        ? "text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "mt-1.5 w-2 h-2 rounded-full shrink-0 transition-all",
+                        isActive
+                          ? "bg-white scale-125 shadow-sm"
+                          : heading.level === 2
+                          ? "bg-primary"
+                          : "bg-slate-300 dark:bg-slate-600"
+                      )}
+                    />
 
-                <span className="leading-tight transition-all">
-                  {heading.text}
-                </span>
-              </a>
-            ))}
+                    <span className="leading-snug break-words">
+                      {heading.text}
+                    </span>
+                  </a>
+                );
+              })
+            ) : (
+              <div className="p-4 text-center text-xs text-slate-400">
+                Đang nạp cấu trúc bài học...
+              </div>
+            )}
           </nav>
 
-          {/* Footer note: TV Mode hint */}
-          <div className="p-3 bg-slate-50/60 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 text-center">
+          {/* Footer Controls: Teacher Mode & Fullscreen TV Mode */}
+          <div className="p-3 bg-slate-50/80 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800 space-y-2">
+            <TeacherToggle />
+
             <button
               onClick={toggleCollapsed}
-              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary text-xs font-bold shadow-sm transition-all cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary text-xs font-bold shadow-sm transition-all cursor-pointer min-h-[44px]"
             >
-              <Tv size={14} className="text-primary shrink-0" />
-              <span>Chế độ TV: Nhấn để ẩn thanh</span>
+              <Tv size={15} className="text-primary shrink-0" />
+              <span>Chế độ TV: Ẩn thanh mở rộng màn hình [Alt+T]</span>
             </button>
           </div>
         </div>
