@@ -44,24 +44,24 @@ export function Alert({ children, type = "info", title, className }: AlertProps)
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.2 }}
       className={cn(
-        "flex gap-4 p-5 md:p-6 rounded-2xl transition-all my-5 focus-ring-hover border-l-6",
-        "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10",
+        "flex gap-4 p-5 md:p-6 rounded-2xl transition-all my-5 border-l-4",
+        "bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm",
         accentStyle,
         className
       )}
     >
       <div className="shrink-0 mt-1">
-        <Icon size={28} />
+        <Icon size={26} />
       </div>
       <div className="flex-1 text-slate-800 dark:text-slate-100">
         {title && (
-          <h5 className="font-black text-lg md:text-xl mb-2 uppercase tracking-wider text-inherit">
+          <h5 className="font-bold text-lg md:text-xl mb-2 uppercase tracking-wider text-inherit">
             {title}
           </h5>
         )}
-        <div className="text-base md:text-lg leading-relaxed font-medium">
+        <div className="text-base md:text-lg leading-relaxed font-normal text-slate-700 dark:text-slate-300">
           {children}
         </div>
       </div>

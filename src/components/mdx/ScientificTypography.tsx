@@ -21,7 +21,7 @@ export function MDXP(props: any) {
 
   return (
     <p
-      className="text-lg md:text-xl leading-relaxed [&:not(:first-child)]:mt-5 text-slate-800 dark:text-slate-100 font-medium"
+      className="text-lg md:text-xl leading-relaxed [&:not(:first-child)]:mt-5 text-slate-800 dark:text-slate-200 font-normal"
       {...props}
     />
   );
@@ -30,7 +30,7 @@ export function MDXP(props: any) {
 export function MDXUl(props: any) {
   return (
     <ul
-      className="my-4 ml-8 list-disc text-slate-800 dark:text-slate-100 font-medium space-y-2 text-lg md:text-xl leading-relaxed"
+      className="my-4 ml-8 list-disc text-slate-800 dark:text-slate-200 font-normal space-y-2 text-lg md:text-xl leading-relaxed"
       {...props}
     />
   );
@@ -39,7 +39,7 @@ export function MDXUl(props: any) {
 export function MDXOl(props: any) {
   return (
     <ol
-      className="my-4 ml-8 list-decimal text-slate-800 dark:text-slate-100 font-medium space-y-2 text-lg md:text-xl leading-relaxed"
+      className="my-4 ml-8 list-decimal text-slate-800 dark:text-slate-200 font-normal space-y-2 text-lg md:text-xl leading-relaxed"
       {...props}
     />
   );
@@ -48,7 +48,7 @@ export function MDXOl(props: any) {
 export function MDXA(props: any) {
   return (
     <a
-      className="font-black text-sky-600 dark:text-sky-400 hover:underline decoration-2 underline-offset-4 transition-all"
+      className="font-bold text-sky-600 dark:text-sky-400 hover:underline decoration-2 underline-offset-4 transition-all"
       {...props}
     />
   );
@@ -57,7 +57,7 @@ export function MDXA(props: any) {
 export function MDXThead(props: any) {
   return (
     <thead
-      className="bg-[#d5d5d5] dark:bg-[#1a1a1a] text-slate-800 dark:text-slate-100 uppercase font-black text-sm md:text-base tracking-wider"
+      className="bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 uppercase font-bold text-sm md:text-base tracking-wider border-b border-slate-200 dark:border-slate-700"
       {...props}
     />
   );
@@ -66,7 +66,7 @@ export function MDXThead(props: any) {
 export function MDXTbody(props: any) {
   return (
     <tbody
-      className="divide-y-2 divide-black/5 dark:divide-white/10 text-slate-800 dark:text-slate-100 font-semibold text-base md:text-lg"
+      className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-800 dark:text-slate-200 font-normal text-base md:text-lg"
       {...props}
     />
   );
@@ -75,7 +75,7 @@ export function MDXTbody(props: any) {
 export function MDXTr(props: any) {
   return (
     <tr
-      className="hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+      className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors"
       {...props}
     />
   );
@@ -88,7 +88,7 @@ export function MDXTh(props: any) {
 export function MDXTd(props: any) {
   return (
     <td
-      className="px-6 py-4 border-r border-black/5 dark:border-white/10 last:border-0"
+      className="px-6 py-4 border-r border-slate-100 dark:border-slate-800 last:border-0"
       {...props}
     />
   );
@@ -97,7 +97,7 @@ export function MDXTd(props: any) {
 export function MDXHr(props: any) {
   return (
     <hr
-      className="my-10 border-t-2 border-black/10 dark:border-white/10 rounded-full w-1/3 mx-auto"
+      className="my-10 border-t border-slate-200 dark:border-slate-800 rounded-full w-1/4 mx-auto"
       {...props}
     />
   );
@@ -106,7 +106,7 @@ export function MDXHr(props: any) {
 export function MDXCode(props: any) {
   return (
     <code
-      className="font-mono px-2 py-0.5 rounded-lg bg-[#d5d5d5] dark:bg-[#2d2d2d] text-sky-700 dark:text-sky-300 font-bold text-sm md:text-base"
+      className="font-mono px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sky-700 dark:text-sky-300 font-bold text-sm md:text-base border border-slate-200/60 dark:border-slate-700/60"
       {...props}
     />
   );

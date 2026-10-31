@@ -171,7 +171,7 @@ export function ContentPanel() {
 
   return (
     <>
-      {/* Floating Smart Trigger Button at BOTTOM LEFT (Avoids overlapping title) */}
+      {/* Floating Smart Trigger Button at BOTTOM LEFT (Clean, Minimalist, never overlaps title) */}
       <AnimatePresence>
         {(isCollapsed || !isMounted) && (
           <motion.div
@@ -185,9 +185,9 @@ export function ContentPanel() {
               onClick={toggleCollapsed}
               className={cn(
                 "group relative flex items-center gap-3 p-3 md:p-3.5 rounded-2xl md:rounded-3xl",
-                "bg-[#e0e0e0] dark:bg-[#212121] text-slate-800 dark:text-slate-100",
-                "shadow-neu hover:shadow-neu-sm active:shadow-neu-pressed transition-all duration-300",
-                "border border-white/60 dark:border-white/10 hover:scale-105 active:scale-95",
+                "bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl text-slate-800 dark:text-slate-100",
+                "border border-slate-200/80 dark:border-slate-800 shadow-md hover:shadow-lg hover:border-sky-400/50",
+                "transition-all duration-300 hover:scale-105 active:scale-95",
                 "min-w-[48px] min-h-[48px] cursor-pointer"
               )}
               title="Hiện tiến trình bài học [Alt + T]"
@@ -196,7 +196,7 @@ export function ContentPanel() {
               <div className="relative w-8 h-8 shrink-0 flex items-center justify-center">
                 <svg className="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
                   <path
-                    className="text-[#bebebe] dark:text-[#333333]"
+                    className="text-slate-200 dark:text-slate-800"
                     strokeWidth="3.5"
                     stroke="currentColor"
                     fill="none"
@@ -217,7 +217,7 @@ export function ContentPanel() {
 
               {/* Progress Text */}
               <div className="hidden sm:flex flex-col text-left pr-1">
-                <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   Tiến trình
                 </span>
                 <span className="text-xs font-black text-slate-900 dark:text-white leading-none">
@@ -237,12 +237,12 @@ export function ContentPanel() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={toggleCollapsed}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 xl:hidden"
+            className="fixed inset-0 bg-slate-950/30 backdrop-blur-xs z-40 xl:hidden"
           />
         )}
       </AnimatePresence>
 
-      {/* Main Drawer on the LEFT side (Neumorphism #e0e0e0 / #212121) */}
+      {/* Main Drawer on the LEFT side (Minimalist Luxury) */}
       <motion.aside
         initial={false}
         animate={{
@@ -252,18 +252,18 @@ export function ContentPanel() {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={cn(
           "fixed left-0 top-0 bottom-0 w-80 sm:w-92 z-50 flex flex-col",
-          "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border-r border-white/60 dark:border-white/10",
+          "bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border-r border-slate-200/80 dark:border-slate-800 shadow-2xl",
           isCollapsed && "pointer-events-none"
         )}
       >
         <div className="flex-1 flex flex-col h-full overflow-hidden">
           {/* Top Bar: Return Link, Title & Close Button */}
-          <div className="pt-5 px-5 pb-3 border-b border-black/5 dark:border-white/5">
+          <div className="pt-5 px-5 pb-3 border-b border-slate-100 dark:border-slate-800/80">
             {/* Quick Home / Back Link */}
             <div className="mb-3">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl text-xs font-black uppercase tracking-wider text-slate-700 hover:text-slate-950 dark:text-slate-200 dark:hover:text-white bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm hover:shadow-neu active:shadow-neu-pressed border border-white/60 dark:border-white/10 transition-all min-h-[44px]"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-slate-950 dark:text-slate-200 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700 transition-colors min-h-[44px]"
               >
                 <ArrowLeft size={15} />
                 <span>Trang chủ / Chọn bài</span>
@@ -272,14 +272,14 @@ export function ContentPanel() {
 
             <div className="flex items-center justify-between gap-2 mb-3">
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-9 h-9 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0 border border-white/50 dark:border-white/10">
+                <div className="w-9 h-9 rounded-2xl bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 border border-sky-200/60 dark:border-sky-900/40 flex items-center justify-center shrink-0">
                   <List size={18} />
                 </div>
                 <div className="truncate">
                   <h3 className="font-black text-sm text-slate-900 dark:text-white truncate leading-none">
                     Tiến trình bài học
                   </h3>
-                  <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
+                  <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-1">
                     {progress}% hoàn thành
                   </p>
                 </div>
@@ -289,9 +289,8 @@ export function ContentPanel() {
               <button
                 onClick={toggleCollapsed}
                 className={cn(
-                  "p-2 rounded-2xl text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white",
-                  "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm hover:shadow-neu active:shadow-neu-pressed",
-                  "border border-white/60 dark:border-white/10 transition-all shrink-0",
+                  "p-2 rounded-2xl text-slate-500 hover:text-slate-900 dark:hover:text-white",
+                  "hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0",
                   "cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                 )}
                 title="Thu gọn tiến trình [Alt + T]"
@@ -300,8 +299,8 @@ export function ContentPanel() {
               </button>
             </div>
 
-            {/* Linear Progress Bar (Inset Track) */}
-            <div className="w-full h-2 bg-[#d6d6d6] dark:bg-[#181818] shadow-neu-pressed-sm rounded-full overflow-hidden p-0.5">
+            {/* Linear Progress Bar */}
+            <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-sky-500 to-cyan-400 rounded-full"
                 animate={{ width: `${progress}%` }}
@@ -313,7 +312,7 @@ export function ContentPanel() {
           {/* Navigation Items */}
           <nav
             ref={sidebarNavRef}
-            className="flex-1 overflow-y-auto px-3.5 py-3 space-y-2 custom-scrollbar scroll-smooth"
+            className="flex-1 overflow-y-auto px-3.5 py-3 space-y-1.5 custom-scrollbar scroll-smooth"
           >
             {headings.length > 0 ? (
               headings.map((heading) => {
@@ -330,25 +329,25 @@ export function ContentPanel() {
                     }}
                     className={cn(
                       "flex items-start gap-2.5 py-2.5 px-3.5 rounded-2xl transition-all duration-200 relative group/item",
-                      "font-bold leading-snug cursor-pointer",
+                      "leading-snug cursor-pointer",
                       heading.level === 2
                         ? "text-[15px] font-black mt-2"
                         : heading.level === 3
-                        ? "ml-2 text-[14px]"
+                        ? "ml-2 text-[14px] font-bold"
                         : "ml-4 text-[13px] font-medium opacity-90",
                       isActive
-                        ? "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed text-sky-700 dark:text-sky-300 border border-sky-400/40"
-                        : "text-slate-700 dark:text-slate-300 hover:bg-[#e0e0e0] dark:hover:bg-[#212121] hover:shadow-neu-sm"
+                        ? "bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 border border-sky-200/60 dark:border-sky-800/60 shadow-xs font-black"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50"
                     )}
                   >
                     <div
                       className={cn(
                         "mt-1.5 w-2 h-2 rounded-full shrink-0 transition-all",
                         isActive
-                          ? "bg-sky-600 scale-125 shadow-sm"
+                          ? "bg-sky-600 scale-125"
                           : heading.level === 2
                           ? "bg-sky-500"
-                          : "bg-slate-400 dark:bg-slate-600"
+                          : "bg-slate-300 dark:bg-slate-600"
                       )}
                     />
 
@@ -359,14 +358,14 @@ export function ContentPanel() {
                 );
               })
             ) : (
-              <div className="p-4 text-center text-xs text-slate-500">
+              <div className="p-4 text-center text-xs text-slate-400">
                 Đang nạp cấu trúc bài học...
               </div>
             )}
           </nav>
 
           {/* Footer Controls: Theme Toggle, Teacher Toggle & TV Mode */}
-          <div className="p-3.5 bg-[#e0e0e0] dark:bg-[#212121] border-t border-black/5 dark:border-white/5 space-y-2.5">
+          <div className="p-3.5 bg-slate-50/80 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800/80 space-y-2.5">
             <div className="flex items-center gap-2">
               <div className="flex-1">
                 <TeacherToggle className="!w-full justify-center !min-h-[44px]" />
@@ -376,9 +375,9 @@ export function ContentPanel() {
 
             <button
               onClick={toggleCollapsed}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm hover:shadow-neu active:shadow-neu-pressed border border-white/60 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-sky-600 text-xs font-black transition-all cursor-pointer min-h-[44px]"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-sky-600 dark:hover:text-sky-400 text-xs font-bold transition-all cursor-pointer min-h-[44px] shadow-xs"
             >
-              <Tv size={15} className="text-sky-600 shrink-0" />
+              <Tv size={15} className="text-sky-600 dark:text-sky-400 shrink-0" />
               <span>Chế độ TV: Ẩn thanh bài học [Alt+T]</span>
             </button>
           </div>

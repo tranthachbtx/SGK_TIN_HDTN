@@ -37,8 +37,8 @@ export function BottomNavItem({
       className={cn(
         "flex flex-col items-center gap-1 p-2 transition-all min-h-[44px] min-w-[44px] justify-center rounded-2xl",
         active
-          ? "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed text-sky-600 dark:text-sky-400 font-black border border-sky-400/30"
-          : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
+          ? "bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 font-black border border-sky-200/60 dark:border-sky-900/40"
+          : "text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white"
       )}
     >
       <div className="shrink-0">{icon}</div>
@@ -51,7 +51,7 @@ export function BottomNavItem({
 
 export function BottomNav({ pathname }: { pathname: string }) {
   return (
-    <div className="md:hidden fixed bottom-3 left-4 right-4 bg-[#e0e0e0]/90 dark:bg-[#212121]/90 backdrop-blur-2xl border border-white/60 dark:border-white/10 shadow-neu z-40 px-4 py-2 flex justify-between items-center rounded-3xl">
+    <div className="md:hidden fixed bottom-3 left-4 right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/80 dark:border-slate-800 shadow-xl z-40 px-4 py-2 flex justify-between items-center rounded-3xl">
       <BottomNavItem
         href="/"
         icon={<Home size={20} />}

@@ -19,23 +19,22 @@ export function ThemeToggle({ className, showLabel = true }: ThemeToggleProps) {
     <motion.button
       onClick={toggleTheme}
       whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.96 }}
+      whileTap={{ scale: 0.97 }}
       className={cn(
-        "relative flex items-center gap-2.5 px-3.5 py-2 rounded-2xl transition-all duration-300 font-bold min-h-[44px] min-w-[44px] cursor-pointer",
-        "bg-[#e0e0e0] dark:bg-[#212121] text-slate-800 dark:text-slate-100",
-        "shadow-neu-sm hover:shadow-neu",
-        "border border-white/60 dark:border-white/10",
+        "relative flex items-center gap-2.5 px-3.5 py-2 rounded-2xl transition-all duration-200 font-bold min-h-[44px] min-w-[44px] cursor-pointer",
+        "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100",
+        "border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-slate-300 dark:hover:border-slate-700",
         className
       )}
-      title={isDark ? "Chuyển sang giao diện Sáng (#e0e0e0)" : "Chuyển sang giao diện Tối (#212121)"}
+      title={isDark ? "Chuyển sang giao diện Sáng" : "Chuyển sang giao diện Tối"}
       aria-label="Chuyển chế độ sáng tối"
     >
       <div
         className={cn(
-          "w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 shrink-0",
+          "w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0",
           isDark
-            ? "bg-amber-400/20 text-amber-300 shadow-inner"
-            : "bg-amber-500/10 text-amber-600 shadow-sm"
+            ? "bg-amber-400/10 text-amber-300"
+            : "bg-amber-500/10 text-amber-600"
         )}
       >
         {isDark ? <Moon size={18} className="fill-current" /> : <Sun size={18} className="fill-amber-500" />}
@@ -43,7 +42,7 @@ export function ThemeToggle({ className, showLabel = true }: ThemeToggleProps) {
 
       {showLabel && (
         <div className="flex flex-col items-start leading-none text-left pr-1">
-          <span className="text-[9px] uppercase tracking-wider opacity-60 font-black">
+          <span className="text-[9px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold">
             Giao diện
           </span>
           <span className="text-xs font-black mt-0.5">

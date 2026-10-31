@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import { ClassTimer } from "./ClassTimer";
 
 /* =========================================================================
-   1. LESSON PLAN HEADER (NEUMORPHISM #e0e0e0)
+   1. LESSON PLAN HEADER (MINIMALIST & SANG TRỌNG)
    ========================================================================= */
 
 interface LessonPlanHeaderProps {
@@ -40,20 +40,20 @@ export function LessonPlanHeader({
   const displayBadge = badge && !badge.includes("5512") ? badge : undefined;
 
   return (
-    <div className="relative mb-8 p-6 md:p-8 rounded-3xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10">
+    <div className="relative mb-8 p-6 md:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
       {/* Top Tag Badges */}
       <div className="flex flex-wrap items-center gap-2 mb-4">
         {displayBadge && (
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-sky-700 dark:text-sky-300 border border-sky-300/40 dark:border-sky-800/40">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200/60 dark:border-sky-900/40">
             <ShieldCheck size={14} />
             {displayBadge}
           </span>
         )}
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-rose-600 dark:text-rose-300 border border-rose-300/40 dark:border-rose-800/40">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-200/60 dark:border-rose-900/40">
           <BookOpen size={14} />
           {bookSeries}
         </span>
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-amber-700 dark:text-amber-300 border border-amber-300/40 dark:border-amber-800/40">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200/60 dark:border-amber-900/40">
           <Clock size={14} />
           {duration}
         </span>
@@ -61,12 +61,12 @@ export function LessonPlanHeader({
 
       {/* Main Subject & Topic */}
       <div className="mb-2">
-        <p className="text-xs md:text-sm font-black tracking-widest uppercase text-slate-500 dark:text-slate-400">
+        <p className="text-xs md:text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
           {subject} • {topic}
         </p>
       </div>
 
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
         {title}
       </h1>
     </div>
@@ -116,21 +116,21 @@ export function LearningObjectives({
   return (
     <section
       id="muc-tieu-bai-hoc"
-      className="my-8 rounded-3xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10 overflow-hidden transition-all duration-300"
+      className="my-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden transition-all duration-300"
     >
       <div
         onClick={() => setIsExpanded(!isExpanded)}
-        className="p-5 md:p-6 flex items-center justify-between cursor-pointer hover:bg-black/2 dark:hover:bg-white/2 transition-colors"
+        className="p-5 md:p-6 flex items-center justify-between cursor-pointer hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors"
       >
         <div className="flex items-center gap-3.5">
-          <div className="w-11 h-11 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0 border border-white/50 dark:border-white/10">
+          <div className="w-11 h-11 rounded-2xl bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 border border-sky-200/60 dark:border-sky-900/40 flex items-center justify-center shrink-0">
             <Target size={24} />
           </div>
           <div>
-            <span className="text-[11px] uppercase font-black tracking-widest text-sky-600 dark:text-sky-400 block mb-0.5">
+            <span className="text-[11px] uppercase font-bold tracking-widest text-sky-600 dark:text-sky-400 block mb-0.5">
               Phần I • Đầu giờ học
             </span>
-            <h2 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white leading-tight !m-0">
+            <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white leading-tight !m-0">
               I. MỤC TIÊU BÀI HỌC
             </h2>
           </div>
@@ -144,15 +144,15 @@ export function LearningObjectives({
       </div>
 
       {isExpanded && (
-        <div className="p-5 md:p-6 pt-2 border-t border-black/5 dark:border-white/5 space-y-4">
+        <div className="p-5 md:p-6 pt-2 border-t border-slate-100 dark:border-slate-800/80 space-y-4">
           {children ? (
             children
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
               {/* 1. Về kiến thức */}
-              <div className="p-5 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed flex flex-col justify-between border border-white/40 dark:border-white/5">
+              <div className="p-5 md:p-6 rounded-2xl bg-sky-50/50 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-sky-700 dark:text-sky-300 font-black text-base md:text-lg">
+                  <div className="flex items-center gap-2 mb-3 text-sky-800 dark:text-sky-300 font-black text-base md:text-lg">
                     <BookOpen size={20} className="shrink-0 text-sky-600 dark:text-sky-400" />
                     <span>1. Về kiến thức</span>
                   </div>
@@ -168,9 +168,9 @@ export function LearningObjectives({
               </div>
 
               {/* 2. Về năng lực */}
-              <div className="p-5 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed flex flex-col justify-between border border-white/40 dark:border-white/5">
+              <div className="p-5 md:p-6 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300 font-black text-base md:text-lg">
+                  <div className="flex items-center gap-2 mb-3 text-indigo-800 dark:text-indigo-300 font-black text-base md:text-lg">
                     <Cpu size={20} className="shrink-0 text-indigo-600 dark:text-indigo-400" />
                     <span>2. Về năng lực</span>
                   </div>
@@ -186,9 +186,9 @@ export function LearningObjectives({
               </div>
 
               {/* 3. Về phẩm chất */}
-              <div className="p-5 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed flex flex-col justify-between border border-white/40 dark:border-white/5">
+              <div className="p-5 md:p-6 rounded-2xl bg-rose-50/50 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-300 font-black text-base md:text-lg">
+                  <div className="flex items-center gap-2 mb-3 text-rose-800 dark:text-rose-300 font-black text-base md:text-lg">
                     <Sparkles size={20} className="shrink-0 text-rose-500 dark:text-rose-400" />
                     <span>3. Về phẩm chất</span>
                   </div>
@@ -256,17 +256,17 @@ export function EquipmentChecklist({ items, children }: EquipmentChecklistProps)
   return (
     <section
       id="thiet-bi-va-hoc-lieu"
-      className="my-8 p-5 md:p-7 rounded-3xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10"
+      className="my-8 p-5 md:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm"
     >
       <div className="flex items-center gap-3 mb-3">
-        <div className="w-11 h-11 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-white/50 dark:border-white/10">
+        <div className="w-11 h-11 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-900/40 flex items-center justify-center shrink-0">
           <Laptop size={22} />
         </div>
         <div>
-          <span className="text-[11px] uppercase font-black tracking-widest text-emerald-600 dark:text-emerald-400 block mb-0.5">
+          <span className="text-[11px] uppercase font-bold tracking-widest text-emerald-600 dark:text-emerald-400 block mb-0.5">
             Phần II • Sẵn sàng trước khi học
           </span>
-          <h2 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white leading-tight !m-0">
+          <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white leading-tight !m-0">
             II. THIẾT BỊ VÀ HỌC LIỆU CHUẨN BỊ
           </h2>
         </div>
@@ -287,14 +287,14 @@ export function EquipmentChecklist({ items, children }: EquipmentChecklistProps)
                 key={idx}
                 onClick={() => toggleCheck(idx)}
                 className={cn(
-                  "p-5 rounded-2xl transition-all cursor-pointer flex flex-col justify-between min-h-[130px]",
+                  "p-5 rounded-2xl transition-all cursor-pointer flex flex-col justify-between min-h-[130px] border",
                   isChecked
-                    ? "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed border border-emerald-500/30 text-emerald-950 dark:text-emerald-300"
-                    : "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm border border-white/50 dark:border-white/5 text-slate-700 dark:text-slate-200 hover:shadow-neu"
+                    ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/60 text-emerald-950 dark:text-emerald-200 shadow-xs"
+                    : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700"
                 )}
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <span className="font-black text-base md:text-lg flex items-center gap-2">
+                  <span className="font-bold text-base md:text-lg flex items-center gap-2">
                     {item.name}
                   </span>
                   <CheckCircle2
@@ -305,7 +305,7 @@ export function EquipmentChecklist({ items, children }: EquipmentChecklistProps)
                     )}
                   />
                 </div>
-                <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
                   {item.description}
                 </p>
               </div>
@@ -347,26 +347,34 @@ export function PedagogyActivity({
   // Activity theme color based on number
   const themeByNum: Record<
     string,
-    { iconColor: string; textColor: string; icon: string }
+    { iconColor: string; textColor: string; icon: string; bgBadge: string; borderBadge: string }
   > = {
     "1": {
       iconColor: "text-sky-600 dark:text-sky-400",
       textColor: "text-sky-700 dark:text-sky-300",
+      bgBadge: "bg-sky-50 dark:bg-sky-950/40",
+      borderBadge: "border-sky-200/60 dark:border-sky-900/40",
       icon: "🚀",
     },
     "2": {
       iconColor: "text-indigo-600 dark:text-indigo-400",
       textColor: "text-indigo-700 dark:text-indigo-300",
+      bgBadge: "bg-indigo-50 dark:bg-indigo-950/40",
+      borderBadge: "border-indigo-200/60 dark:border-indigo-900/40",
       icon: "📖",
     },
     "3": {
       iconColor: "text-emerald-600 dark:text-emerald-400",
       textColor: "text-emerald-700 dark:text-emerald-300",
+      bgBadge: "bg-emerald-50 dark:bg-emerald-950/40",
+      borderBadge: "border-emerald-200/60 dark:border-emerald-900/40",
       icon: "🩺",
     },
     "4": {
       iconColor: "text-amber-600 dark:text-amber-400",
       textColor: "text-amber-700 dark:text-amber-300",
+      bgBadge: "bg-amber-50 dark:bg-amber-950/40",
+      borderBadge: "border-amber-200/60 dark:border-amber-900/40",
       icon: "🌟",
     },
   };
@@ -375,31 +383,35 @@ export function PedagogyActivity({
 
   return (
     <section id={id} className="my-10 scroll-mt-28">
-      {/* Activity Header Banner - Pure Neumorphism */}
-      <div className="p-5 md:p-6 rounded-3xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10">
+      {/* Activity Header Banner - Minimalist */}
+      <div className="p-5 md:p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start md:items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm flex items-center justify-center text-2xl shrink-0 border border-white/50 dark:border-white/10">
+            <div className={cn(
+              "w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0 border",
+              theme.bgBadge,
+              theme.borderBadge
+            )}>
               {theme.icon}
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span
                   className={cn(
-                    "text-xs md:text-sm uppercase font-black tracking-widest",
+                    "text-xs md:text-sm uppercase font-bold tracking-widest",
                     theme.textColor
                   )}
                 >
                   Hoạt động {number}
                 </span>
                 {duration && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-slate-700 dark:text-slate-300 border border-white/50 dark:border-white/10">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                     <Clock size={11} />
                     {duration}
                   </span>
                 )}
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-800 dark:text-white tracking-tight leading-snug !m-0">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-snug !m-0">
                 {title}
               </h2>
             </div>
@@ -408,7 +420,7 @@ export function PedagogyActivity({
           {(objective || content || product) && (
             <button
               onClick={() => setShowDetails(!showDetails)}
-              className="self-start md:self-center px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider bg-[#e0e0e0] dark:bg-[#212121] text-slate-700 dark:text-slate-200 shadow-neu-sm hover:shadow-neu transition-all flex items-center gap-1.5 min-h-[44px] cursor-pointer border border-white/50 dark:border-white/10"
+              className="self-start md:self-center px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1.5 min-h-[44px] cursor-pointer"
             >
               <span>{showDetails ? "Thu gọn yêu cầu" : "Xem mục tiêu hoạt động"}</span>
               {showDetails ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
@@ -418,10 +430,10 @@ export function PedagogyActivity({
 
         {/* Pedagogical Spec Drawer */}
         {showDetails && (objective || content || product) && (
-          <div className="mt-5 pt-5 border-t border-black/5 dark:border-white/5 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-5 pt-5 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-4">
             {objective && (
-              <div className="p-4 rounded-xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed border border-white/40 dark:border-white/5">
-                <span className="text-xs font-black uppercase text-sky-600 dark:text-sky-400 block mb-1">
+              <div className="p-4 rounded-xl bg-sky-50/50 dark:bg-sky-950/20 border border-sky-100 dark:border-sky-900/40">
+                <span className="text-xs font-bold uppercase text-sky-700 dark:text-sky-300 block mb-1">
                   a) Mục tiêu
                 </span>
                 <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
@@ -430,8 +442,8 @@ export function PedagogyActivity({
               </div>
             )}
             {content && (
-              <div className="p-4 rounded-xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed border border-white/40 dark:border-white/5">
-                <span className="text-xs font-black uppercase text-indigo-600 dark:text-indigo-400 block mb-1">
+              <div className="p-4 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+                <span className="text-xs font-bold uppercase text-indigo-700 dark:text-indigo-300 block mb-1">
                   b) Nội dung
                 </span>
                 <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
@@ -440,8 +452,8 @@ export function PedagogyActivity({
               </div>
             )}
             {product && (
-              <div className="p-4 rounded-xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed border border-white/40 dark:border-white/5">
-                <span className="text-xs font-black uppercase text-emerald-600 dark:text-emerald-400 block mb-1">
+              <div className="p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40">
+                <span className="text-xs font-bold uppercase text-emerald-700 dark:text-emerald-300 block mb-1">
                   c) Sản phẩm cần đạt
                 </span>
                 <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
@@ -489,21 +501,21 @@ export function SubTask({
   return (
     <div
       id={id}
-      className="my-8 p-5 md:p-6 rounded-2xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm border border-white/50 dark:border-white/5 scroll-mt-28"
+      className="my-8 p-5 md:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm scroll-mt-28"
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-black/5 dark:border-white/5 mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-lg bg-indigo-600 text-white font-black text-xs uppercase tracking-wider shadow-xs">
+            <span className="px-2.5 py-0.5 rounded-lg bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider">
               Nhiệm vụ {number}
             </span>
             {duration && (
-              <span className="text-xs font-black text-indigo-600 dark:text-indigo-400">
+              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
                 ⏱️ {duration}
               </span>
             )}
           </div>
-          <h3 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white !m-0">
+          <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white !m-0">
             {title}
           </h3>
         </div>
@@ -520,10 +532,10 @@ export function SubTask({
       </div>
 
       {showPedagogy && (
-        <div className="mb-5 p-4 rounded-xl bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-pressed border border-white/40 dark:border-white/5 text-sm md:text-base space-y-2">
+        <div className="mb-5 p-4 rounded-xl bg-indigo-50/40 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 text-sm md:text-base space-y-2">
           {objective && (
             <div>
-              <strong className="text-indigo-600 dark:text-indigo-400 font-bold">
+              <strong className="text-indigo-700 dark:text-indigo-300 font-bold">
                 a) Mục tiêu:
               </strong>{" "}
               <span className="text-slate-700 dark:text-slate-300 font-normal">{objective}</span>
@@ -531,7 +543,7 @@ export function SubTask({
           )}
           {content && (
             <div>
-              <strong className="text-indigo-600 dark:text-indigo-400 font-bold">
+              <strong className="text-indigo-700 dark:text-indigo-300 font-bold">
                 b) Nội dung:
               </strong>{" "}
               <span className="text-slate-700 dark:text-slate-300 font-normal">{content}</span>
@@ -539,7 +551,7 @@ export function SubTask({
           )}
           {product && (
             <div>
-              <strong className="text-emerald-600 dark:text-emerald-400 font-bold">
+              <strong className="text-emerald-700 dark:text-emerald-300 font-bold">
                 c) Sản phẩm cần đạt:
               </strong>{" "}
               <span className="text-slate-700 dark:text-slate-300 font-normal">{product}</span>
@@ -554,7 +566,7 @@ export function SubTask({
 }
 
 /* =========================================================================
-   6. SLIDE STEP (NEUMORPHISM #e0e0e0)
+   6. SLIDE STEP (MINIMALIST & SANG TRỌNG)
    ========================================================================= */
 
 interface SlideStepProps {
@@ -576,6 +588,8 @@ const STEP_METADATA: Record<
     icon: string;
     accentBorder: string;
     textColor: string;
+    badgeBg: string;
+    badgeBorder: string;
   }
 > = {
   1: {
@@ -583,24 +597,32 @@ const STEP_METADATA: Record<
     icon: "🎯",
     accentBorder: "border-l-sky-500",
     textColor: "text-sky-700 dark:text-sky-300",
+    badgeBg: "bg-sky-50 dark:bg-sky-950/40",
+    badgeBorder: "border-sky-200/60 dark:border-sky-900/40",
   },
   2: {
     label: "Bước 2: Thực hiện nhiệm vụ",
     icon: "⚙️",
     accentBorder: "border-l-amber-500",
     textColor: "text-amber-700 dark:text-amber-300",
+    badgeBg: "bg-amber-50 dark:bg-amber-950/40",
+    badgeBorder: "border-amber-200/60 dark:border-amber-900/40",
   },
   3: {
     label: "Bước 3: Báo cáo, thảo luận",
     icon: "💬",
     accentBorder: "border-l-indigo-500",
     textColor: "text-indigo-700 dark:text-indigo-300",
+    badgeBg: "bg-indigo-50 dark:bg-indigo-950/40",
+    badgeBorder: "border-indigo-200/60 dark:border-indigo-900/40",
   },
   4: {
     label: "Bước 4: Kết luận, nhận định",
     icon: "📌",
     accentBorder: "border-l-emerald-500",
     textColor: "text-emerald-700 dark:text-emerald-300",
+    badgeBg: "bg-emerald-50 dark:bg-emerald-950/40",
+    badgeBorder: "border-emerald-200/60 dark:border-emerald-900/40",
   },
 };
 
@@ -636,19 +658,20 @@ export function SlideStep({
       id={elementId}
       className={cn(
         "p-6 md:p-7 rounded-3xl relative transition-all duration-200 scroll-mt-28",
-        "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu border border-white/60 dark:border-white/10",
-        "border-l-6",
+        "bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm",
+        "border-l-4",
         meta.accentBorder
       )}
     >
       {/* Top Step Indicator */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-black/5 dark:border-white/5">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100 dark:border-slate-800/80">
         <div className="flex items-center gap-2">
           {/* Step Badge */}
           <span
             className={cn(
-              "px-3.5 py-1 rounded-xl text-xs md:text-sm font-black tracking-wider uppercase flex items-center gap-2",
-              "bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm border border-white/50 dark:border-white/10",
+              "px-3.5 py-1 rounded-xl text-xs md:text-sm font-bold tracking-wider uppercase flex items-center gap-2 border",
+              meta.badgeBg,
+              meta.badgeBorder,
               meta.textColor
             )}
           >
@@ -658,7 +681,7 @@ export function SlideStep({
         </div>
 
         {duration && (
-          <span className="flex items-center gap-1 text-xs md:text-sm font-bold px-3 py-0.5 rounded-full bg-[#e0e0e0] dark:bg-[#212121] shadow-neu-sm text-slate-600 dark:text-slate-300 border border-white/40 dark:border-white/10">
+          <span className="flex items-center gap-1 text-xs md:text-sm font-bold px-3 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
             <Clock size={13} />
             {duration}
           </span>
@@ -667,7 +690,7 @@ export function SlideStep({
 
       {/* Step Title */}
       {title && (
-        <h4 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white leading-snug mb-3">
+        <h4 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white leading-snug mb-3">
           {title}
         </h4>
       )}

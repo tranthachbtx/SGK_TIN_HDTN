@@ -45,10 +45,10 @@ export function Quiz({ data, className, ...rest }: any) {
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      whileHover={{ y: -4, scale: 1.01 }}
-      transition={{ duration: 0.25 }}
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.2 }}
       className={cn(
-        "bg-white/90 dark:bg-slate-900/90 border border-slate-200/60 dark:border-white/10 p-6 md:p-7 my-6 rounded-3xl relative overflow-hidden transition-all duration-300 shadow-sm backdrop-blur-xl",
+        "bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 md:p-7 my-6 rounded-3xl relative overflow-hidden transition-all duration-200 shadow-sm",
         className
       )}
     >

@@ -18,7 +18,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const [isTeacherMode, setIsTeacherModeState] = useState(false);
   const [theme, setThemeState] = useState<ThemeMode>("light");
 
-  // Load preferences from localStorage on mount (default to light mode #e0e0e0)
+  // Load preferences from localStorage on mount (default to light mode)
   useEffect(() => {
     // Teacher mode preference
     const savedTeacher = localStorage.getItem("isTeacherMode");
@@ -26,7 +26,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       setIsTeacherModeState(savedTeacher === "true");
     }
 
-    // Theme preference (default to light mode #e0e0e0)
+    // Theme preference (default to light mode)
     const savedTheme = localStorage.getItem("app_theme") as ThemeMode | null;
     if (savedTheme === "dark") {
       setThemeState("dark");

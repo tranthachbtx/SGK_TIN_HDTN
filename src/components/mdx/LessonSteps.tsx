@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useSettings } from '@/contexts/SettingsContext';
-import { GlassCard } from './GlassCard';
 
 interface StepProps {
     title?: string;
@@ -11,12 +10,12 @@ interface StepProps {
 }
 
 const stepVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
         opacity: 1,
         y: 0,
         transition: {
-            duration: 0.5,
+            duration: 0.3,
             ease: "easeOut"
         }
     }
@@ -29,15 +28,15 @@ export function StepEngagement({ title = "1. Mở đầu (Engagement)", children
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="my-10 p-6 rounded-3xl bg-[#f0f9ff] border-2 border-blue-100 shadow-xl shadow-blue-100/30"
+            className="my-8 p-6 md:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 border-l-4 border-l-sky-500 shadow-sm"
         >
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-sky-500 flex items-center justify-center text-white shadow-lg shadow-sky-200 dark:shadow-none">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 border border-sky-200/60 dark:border-sky-900/40 flex items-center justify-center">
                     <span className="text-xl">🚀</span>
                 </div>
-                <h2 className="text-2xl font-bold text-sky-900 dark:text-sky-300 !m-0">{title}</h2>
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white !m-0">{title}</h2>
             </div>
-            <div className="space-y-4">{children}</div>
+            <div className="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed font-normal">{children}</div>
         </motion.section>
     );
 }
@@ -49,15 +48,15 @@ export function StepKnowledge({ title = "2. Hình thành kiến thức (Knowledg
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="my-10 p-6 rounded-3xl bg-[#fffafa] border-2 border-salmon-100 shadow-xl shadow-salmon-100/30"
+            className="my-8 p-6 md:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 border-l-4 border-l-indigo-500 shadow-sm"
         >
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-salmon-500 bg-[#FF8C69] flex items-center justify-center text-white shadow-lg shadow-salmon-200 dark:shadow-none">
+                <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-900/40 flex items-center justify-center">
                     <span className="text-xl">📖</span>
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 !m-0">{title}</h2>
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white !m-0">{title}</h2>
             </div>
-            <div className="space-y-4">{children}</div>
+            <div className="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed font-normal">{children}</div>
         </motion.section>
     );
 }
@@ -69,15 +68,15 @@ export function StepPractice({ title = "3. Luyện tập (Practice)", children }
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="my-10 p-6 rounded-3xl bg-[#f5fff7] border-2 border-emerald-100 shadow-xl shadow-emerald-100/30"
+            className="my-8 p-6 md:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 border-l-4 border-l-emerald-500 shadow-sm"
         >
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-200 dark:shadow-none">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-900/40 flex items-center justify-center">
                     <span className="text-xl">🧩</span>
                 </div>
-                <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-300 !m-0">{title}</h2>
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white !m-0">{title}</h2>
             </div>
-            <div className="space-y-4">{children}</div>
+            <div className="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed font-normal">{children}</div>
         </motion.section>
     );
 }
@@ -89,15 +88,15 @@ export function StepApplication({ title = "4. Vận dụng (Application)", child
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="my-10 p-6 rounded-3xl bg-[#fffdf0] border-2 border-amber-100 shadow-xl shadow-amber-100/30"
+            className="my-8 p-6 md:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 border-l-4 border-l-amber-500 shadow-sm"
         >
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-white shadow-lg shadow-amber-200 dark:shadow-none">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-900/40 flex items-center justify-center">
                     <span className="text-xl">🌟</span>
                 </div>
-                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-300 !m-0">{title}</h2>
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white !m-0">{title}</h2>
             </div>
-            <div className="space-y-4">{children}</div>
+            <div className="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed font-normal">{children}</div>
         </motion.section>
     );
 }
@@ -114,11 +113,11 @@ export function TeacherNotes({ children }: { children: React.ReactNode }) {
                     exit={{ opacity: 0, height: 0, y: -10 }}
                     className="overflow-hidden mt-4"
                 >
-                    <div className="p-5 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border-2 border-dashed border-indigo-200 dark:border-indigo-800 shadow-inner">
-                        <div className="flex items-center gap-2 mb-2 text-indigo-600 dark:text-indigo-400 font-bold uppercase text-xs tracking-wider">
-                            <span className="text-lg">👩‍🏫</span> Ghi chú Sư phạm (5512)
+                    <div className="p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/60">
+                        <div className="flex items-center gap-2 mb-2 text-indigo-700 dark:text-indigo-300 font-bold uppercase text-xs tracking-wider">
+                            <span className="text-lg">👩‍🏫</span> Ghi chú Sư phạm
                         </div>
-                        <div className="prose prose-indigo dark:prose-invert max-w-none text-sm leading-relaxed">
+                        <div className="prose prose-indigo dark:prose-invert max-w-none text-sm leading-relaxed text-slate-800 dark:text-slate-200">
                             {children}
                         </div>
                     </div>
@@ -132,7 +131,6 @@ export function RawContent({ children }: { children: React.ReactNode }) {
     return <div className="raw-content-wrapper">{children}</div>;
 }
 
-// Export object for easier registration
 export const LessonSteps = {
     StepEngagement,
     StepKnowledge,

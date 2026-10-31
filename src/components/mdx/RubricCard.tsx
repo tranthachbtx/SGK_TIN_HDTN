@@ -46,7 +46,7 @@ export function RubricCard() {
   const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
 
   return (
-    <div className="my-8 rounded-[2rem] border-2 border-amber-200 dark:border-amber-900/50 bg-white/95 dark:bg-slate-900/95 shadow-xl overflow-hidden backdrop-blur-xl not-prose p-6 md:p-8 space-y-6">
+    <div className="my-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm not-prose p-6 md:p-8 space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
         <div className="flex items-center gap-3">

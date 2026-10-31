@@ -18,75 +18,86 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  /* Neumorphism.io/#e0e0e0 Authentic Palette */
-  --background: #e0e0e0;
-  --foreground: #2d3748;
+  /* Minimalist Luxury Palette - Light Mode */
+  --background: #f8fafc; /* Crisp, clean porcelain slate-50 */
+  --foreground: #0f172a; /* Slate 900 - rich ink, high readability */
 
-  --card: #e0e0e0;
-  --card-foreground: #2d3748;
-  --popover: #e0e0e0;
-  --popover-foreground: #2d3748;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
 
-  /* Brand Accents */
-  --primary: #0284c7;
+  /* Luxury Accents */
+  --primary: #0284c7; /* Sky 600 */
   --primary-foreground: #ffffff;
-  --secondary: #ff7866;
+  --secondary: #f43f5e; /* Rose 500 */
   --secondary-foreground: #ffffff;
 
-  --muted: #d4d4d4;
-  --muted-foreground: #64748b;
-  --accent: #e8ecf0;
+  --muted: #f1f5f9; /* Slate 100 */
+  --muted-foreground: #64748b; /* Slate 500 */
+  --accent: #f8fafc;
   --accent-foreground: #0284c7;
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: #d0d0d0;
-  --input: #e0e0e0;
+  --border: #e2e8f0; /* Hairline Slate 200 */
+  --input: #f1f5f9;
   --ring: #0284c7;
-  --radius: 1.75rem;
+  --radius: 1.25rem; /* Clean modern curves */
 
-  /* Neumorphic Shadows for #e0e0e0 (Dual Light & Dark Shadows) */
-  --shadow-neu: 9px 9px 18px #bebebe, -9px -9px 18px #ffffff;
-  --shadow-neu-sm: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
-  --shadow-neu-pressed: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
-  --shadow-neu-pressed-sm: inset 2px 2px 5px #bebebe, inset -2px -2px 5px #ffffff;
-  --shadow-float: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  /* Minimalist Shadows - Airy, Subtly Elevated, High-End */
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  --shadow-dropdown: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-float: 0 14px 30px -8px rgba(0, 0, 0, 0.08);
+
+  /* Compatibility shadow tokens */
+  --shadow-neu: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-neu-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-neu-pressed: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --shadow-neu-pressed-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
 
   --sidebar-width: 0px;
   --toc-width: 0px;
 }
 
-/* Explicit Dark Mode (#212121 Neumorphism) */
+/* Minimalist Luxury Palette - Dark Mode */
 .dark {
-  --background: #212121;
-  --foreground: #e0e0e0;
+  --background: #0b0f19; /* Deep obsidian space */
+  --foreground: #f8fafc; /* Crisp Slate 50 */
 
-  --card: #212121;
-  --card-foreground: #e0e0e0;
-  --popover: #212121;
-  --popover-foreground: #e0e0e0;
+  --card: #111827; /* Rich midnight card slate-900 */
+  --card-foreground: #f8fafc;
+  --popover: #111827;
+  --popover-foreground: #f8fafc;
 
-  --primary: #38bdf8;
-  --primary-foreground: #ffffff;
-  --secondary: #fb7185;
-  --secondary-foreground: #ffffff;
+  --primary: #38bdf8; /* Luminous Sky 400 */
+  --primary-foreground: #090d16;
+  --secondary: #fb7185; /* Rose 400 */
+  --secondary-foreground: #090d16;
 
-  --muted: #2c2c2c;
-  --muted-foreground: #a0a0a0;
-  --accent: #2d2d2d;
+  --muted: #1e293b; /* Slate 800 */
+  --muted-foreground: #94a3b8; /* Slate 400 */
+  --accent: #1e293b;
   --accent-foreground: #38bdf8;
 
-  --border: #2c2c2c;
-  --input: #212121;
+  --border: #1e293b; /* Slate 800 */
+  --input: #1e293b;
   --ring: #38bdf8;
 
-  /* Neumorphic Shadows for #212121 */
-  --shadow-neu: 8px 8px 16px #161616, -8px -8px 16px #2c2c2c;
-  --shadow-neu-sm: 4px 4px 8px #161616, -4px -4px 8px #2c2c2c;
-  --shadow-neu-pressed: inset 4px 4px 8px #161616, inset -4px -4px 8px #2c2c2c;
-  --shadow-neu-pressed-sm: inset 2px 2px 5px #161616, inset -2px -2px 5px #2c2c2c;
-  --shadow-float: 0 15px 40px -10px rgba(0, 0, 0, 0.5);
+  /* Minimalist Shadows for Dark Mode */
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 12px 24px -4px rgba(0, 0, 0, 0.6);
+  --shadow-dropdown: 0 25px 35px -5px rgba(0, 0, 0, 0.7);
+  --shadow-float: 0 15px 35px -5px rgba(0, 0, 0, 0.6);
+
+  --shadow-neu: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --shadow-neu-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-neu-pressed: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  --shadow-neu-pressed-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4);
 }
 
 @theme {
@@ -113,6 +124,10 @@
   --radius-md: calc(var(--radius) - 4px);
   --radius-sm: calc(var(--radius) - 8px);
 
+  --shadow-subtle: var(--shadow-subtle);
+  --shadow-card: var(--shadow-card);
+  --shadow-hover: var(--shadow-hover);
+  --shadow-dropdown: var(--shadow-dropdown);
   --shadow-neu: var(--shadow-neu);
   --shadow-neu-sm: var(--shadow-neu-sm);
   --shadow-neu-pressed: var(--shadow-neu-pressed);
@@ -163,7 +178,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 h1,
@@ -182,64 +197,66 @@ strong {
   font-weight: 800;
 }
 
-/* Neumorphism Utility Classes */
-.neu-card {
+/* Minimalist Card & Surface Utility Classes */
+.minimal-card {
   background: var(--card);
-  box-shadow: var(--shadow-neu);
-  border-radius: 1.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark .neu-card {
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.minimal-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.neu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .neu-inset {
-  background: var(--card);
-  box-shadow: var(--shadow-neu-pressed);
-  border-radius: 1.25rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 4px);
 }
 
 .neu-btn {
   background: var(--card);
-  box-shadow: var(--shadow-neu-sm);
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subtle);
+  border-radius: 0.875rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 44px;
 }
 
-.dark .neu-btn {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .neu-btn:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-neu);
 }
 
 .neu-btn:active {
   transform: translateY(0);
-  box-shadow: var(--shadow-neu-pressed);
 }
 
-/* Glassmorphism hybrid */
+/* Minimalist Glass Container */
 .glass {
-  background: rgba(224, 224, 224, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-neu);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 1.75rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark .glass {
-  background: rgba(33, 33, 33, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-neu);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid var(--border);
 }
 
 .focus-ring-hover {
@@ -248,7 +265,7 @@ strong {
 }
 
 .focus-ring-hover:hover {
-  box-shadow: var(--shadow-neu);
+  box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
 }
 
@@ -274,22 +291,23 @@ strong {
   color: var(--muted-foreground) !important;
 }
 
-/* Custom Scrollbar */
+/* Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bebebe;
-  border-radius: 10px;
+  background: #cbd5e1;
+  border-radius: 9999px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #334155;
 }
 
 ::-webkit-scrollbar-thumb:hover {
